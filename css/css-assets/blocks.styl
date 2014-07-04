@@ -1,0 +1,1141 @@
+// BLOCKS
+@import '../assets/imports.styl'
+
+sidebarPanelWidth = 4*gs
+sidebarBtnsRestColor = c-grey7
+sidebarBtnsHoverColor = c-grey6
+// sidebarBtnsHoverColor = red
+sidebarScrollTopHeight = 11*gs
+
+/* 2dd245c639f53c95bb8dda4ae880acc1 */
+.sidebar-n-panel
+  position relative
+  background rgba(white, .95)
+  @media screen and (max-width:1100px)
+    transform translateX(- headerLeftSize)
+    transition all .3s ease-in
+  .sidebar-panel
+    height 100%
+    position absolute
+    ne 0
+    display none
+  &__sidebar-l
+    overflow hidden
+    width headerLeftSize
+    .sidebar
+      max-height 100%
+      overflow-y auto
+      padding-bottom 4*gs
+
+  /* 18dc84f92e17a6cffd9a07ebe1b86fff */
+  @media screen and (max-width:1100px)
+    padding-right sidebarPanelWidth
+    height 100%
+    position fixed
+    {root()}__sidebar-l
+      height 100%
+      width headerLeftSize
+    .sidebar-panel
+      display block
+
+  /* 18dc84f92e17a6cffd9a07ebe1b86fff */
+  &.is-expanded
+    box-shadow .5*gs 0 0 rgba(c-grey3, .1)
+    transform translateX(0)
+    .sidebar-expand
+      &:before
+        transform rotate(180deg) translateX(gs/2)
+
+    // {root()}__sidebar-l
+
+  @media screen and (max-width:568px)
+    display none
+
+/* 0e0013fd36e58408b7246ec8a8edfb66 */
+.sidebar-btn
+  rect sidebarPanelWidth
+  position relative
+  size = 2.5*gs
+  color sidebarBtnsRestColor
+  &:hover
+    color sidebarBtnsHoverColor
+    cursor pointer
+    background c-controls-hover
+  .icon
+    rect size
+    fill currentColor
+    center size
+      
+/* 9c53be8ee1b8adc743428f4eef68f072 */
+.sidebar-scoll-top
+  @extends .sidebar-btn
+  width sidebarPanelWidth
+  position relative
+  height sidebarScrollTopHeight
+  &:before, &:after
+    content ''
+    position absolute
+    size = (gs/2)
+    rect 0
+    border size solid transparent
+    border-bottom-color currentColor
+    center(2*size)
+  &:before
+    margin-top - 1.5*gs
+  &:after
+    margin-top -.5*gs
+
+/* 8d97f4a419a59976b2f18e6311d0d56c */
+.sidebar-expand
+  @extends .sidebar-btn
+  width sidebarPanelWidth
+  // min-height 20*gs // just for dev purposes
+  position relative
+  &:before
+    content ''
+    rect 0
+    position absolute
+    size = (gs/2)
+    rect 0
+    border size solid transparent
+    border-left-color currentColor
+    center(2*size)
+    margin-left  -(size/2)
+  
+/* 0ef5d460a3af92c75b2b1acabdb438fe */
+.sidebar
+  width headerLeftSize
+  padding 0 4*gs
+
+  .sidebar-header
+    margin gs 0
+
+    &{root()}__about-header
+      text-align center
+      margin-bottom 2*gs
+      padding-right 1.5*gs
+
+    & + ul
+      margin-left .3*gs
+
+  ul
+    & + .sidebar-header
+      margin-top 2.5*gs
+  
+  &__search
+    margin 2*gs 0 2*gs
+
+
+
+/* fc5824bd35eff85f11d426e8dbfd9ddf */
+// .sidebar-list
+//   .sidebar-list-item
+//     & + {end()}
+//       margin-top 0
+
+/* 0a0478d84d885b39b0df7c5939a6037c */
+.input-icon
+  position relative
+  display inline-block
+  width 100%
+  .icon
+    position absolute
+    right .7*gs
+    top  gs
+    rect 2.5*gs
+    fill c-blue1
+    easy-click()
+    &:hover
+      cursor pointer
+  /* bc450f49128e9768ab944e51920e0250 */
+  &--header
+    .input
+      width 100%
+      padding 0 4*gs 0 gs
+      border-width .2*gs
+      // color c-blue1
+      color c-grey9
+      &:focus, &:hover
+        color c-blue1
+        box-shadow none
+
+/* 08683ec747ff35de14ad2765f8a9078e */
+.header-link-line
+  .header-link
+    & + .header-link
+      margin-left 3*gs
+
+/* 1c23fe75816818e2ccedba3fd66d8310 */
+.rounded-btn
+  color white
+  font-size 16px
+  display inline-block
+  padding .5*gs 1.5*gs .7*gs
+  border-radius 2*gs
+
+  /* e2f1e61773da4f83d2d33fd6e38f3dec */
+  &--blue2
+    background c-blue2
+    &{root()}--hoverable
+      cursor pointer
+      &:hover
+        background c-blue2-hover
+
+  /* 45c74b08d69d3ab7893bf7a96d097290 */
+  &--blue3
+    background c-blue3
+    &{root()}--hoverable
+      cursor pointer
+      &:hover
+        background c-blue3-hover
+
+/* cbb3694893dda7ad17fa70e114baabde */
+.header
+  height 8*gs
+  position absolute
+  nw 0
+  width 100%
+  z-index headerLayer
+  transform translateZ(0)
+
+  &.is-menu
+    shadow()
+    .main-header-menu
+      display block
+      box-shadow -(.4*gs) (.4*gs) 0 rgba(c-grey1, .1)
+
+  // right header side
+  &__right
+    position absolute
+    height 100%
+    background rgba(white, .96)
+    padding-left headerLeftSize
+    width 100%
+    z-index 0
+    &__request-demo
+      position absolute
+      left headerLeftSize + 2.5*gs
+      top 2.6*gs
+    &__actions
+      float right
+      margin-right 10*gs
+      margin-top  2.9*gs
+      display none
+      // @media screen and (max-width:720px)
+      //   display none
+
+      // @media screen and (max-width:750px)
+      //   margin-right 7*gs
+      //   .header-link
+      //     & + {end()}
+      //       margin-left 2*gs
+
+    .icon
+      position absolute
+      right 2*gs
+      top 2.8*gs
+      fill c-blue1
+      rect 2.5*gs
+      easy-click()
+      &:hover
+        cursor pointer
+        fill c-blue1-hover
+    .input-icon--header
+      display none // intent for @mobile
+
+    .main-header-menu
+      position absolute
+      right 0
+      top 100%
+      display none
+
+  // left side with logo
+  &__left
+    width headerLeftSize
+    background c-blue2
+    height 100%
+    text-align center
+    position absolute
+    border-bottom-left-radius inherit
+    nw 0
+    z-index 1
+    &:hover
+      background c-blue2-hover
+      cursor pointer
+    .icon-text
+      padding-top 1px
+      display inline-block
+      margin-top gs - 2px
+      .icon
+        rect 6*gs
+      &__text
+        outage()
+        margin-left 7*gs
+        margin-top 2.2*gs
+        font-size 24px
+
+  &{root()}--at-tablet
+    {root()}
+      &__right
+        .icon
+          right 3*gs
+
+  /* c23cdad713ba9c41c6ed2c9bf8e5bac7 */
+  @media screen and (max-width:568px)
+    height 6*gs
+    {root()}
+      &__left
+        width 7*gs
+        .icon-text
+          margin-top .3*gs
+          .icon
+            rect 4.8*gs
+          &__text
+            display none
+      &__right
+        .icon
+          right 1.5*gs
+          top 1.8*gs
+        .input-icon--header
+          display block
+          width auto
+          right 5*gs
+          position absolute
+          top .9*gs
+          left 8*gs
+          vertical-align top
+          .icon
+            top gs
+            right gs
+        &__request-demo, &__actions
+          display none
+
+/* 883c00286c7cedf015ccc175d0a02dec */
+.sidebar-panel
+  width sidebarPanelWidth
+  min-height 60*gs // just for dev purposes
+  position relative
+  border-right 1px solid sidebarBtnsRestColor
+  box-shadow -1px 0 0 sidebarBtnsRestColor
+  position relative
+  z-index 1
+
+  &__core
+    position relative
+    rect 100%
+  
+  /* 88600f049550246039629c60accbcd80 */
+  &.is-scroll-top
+    .sidebar-scoll-top
+      display block
+    .sidebar-expand
+      bottom sidebarScrollTopHeight
+      &:hover
+        box-shadow 0 1px 0 currentColor,
+          -1px 0 0 currentColor,
+          -1px 1px 0 currentColor,
+          inset 0 1px 0 currentColor,
+          inset -1px 0 0 currentColor
+
+  &__top-btns
+    position absolute
+    // top sidebarPanelWidth
+    top 0
+    z-index 0
+    .sidebar-btn
+      box-shadow 0 1px 0 currentColor, inset 0 1px 0 currentColor
+      z-index 0
+      &:hover
+        box-shadow 0 1px 0 currentColor,
+          -1px 0 0 currentColor,
+          -1px 1px 0 currentColor,
+          inset -1px 0 0 currentColor,
+          inset 0 1px 0 currentColor
+
+  &__search
+    position absolute
+    top 4*gs
+    z-index 1
+    color sidebarBtnsRestColor
+    width 4*gs
+    box-shadow inset 0 1px 0 currentColor,
+          -1px 0 0 currentColor,
+          -1px 1px 0 currentColor,
+          inset -1px 0 0 currentColor
+
+    &:hover
+      background c-controls-hover
+      color sidebarBtnsHoverColor
+    &:after
+      content ''
+      position absolute
+      width 100%
+      height gs
+      top 100%
+      left 0
+      background white
+      // hl()
+
+
+    .input
+      border-color transparent
+      height 4.1*gs
+      background transparent
+      color transparent
+      padding-right 4.5*gs
+      &:hover
+        border-width 0
+        &:focus
+          border-width 1px
+      &:focus
+        width 20*gs
+        border-color sidebarBtnsRestColor
+        border-width 1px
+        border-left 0
+        border-top-left-radius 0
+        border-bottom-left-radius 0
+        shadow()
+        background white
+        color c-blue3
+        & + .input-icon__label
+          display inline-block
+          right -16*gs
+
+    .input-icon__label
+      margin-top -.2*gs
+      position absolute
+      top 0*gs
+      rect 4*gs
+    .icon
+      fill sidebarBtnsRestColor
+      &:hover
+        fill sidebarBtnsHoverColor
+          
+  .sidebar-expand
+    position absolute
+    top 2*sidebarPanelWidth
+    bottom 0
+    height auto
+    z-index 2
+    box-shadow inset 0 1px 0 currentColor,
+          -1px 0 0 currentColor,
+          -1px 1px 0 currentColor,
+          inset -1px 0 0 currentColor
+    &:hover
+      background c-controls-hover
+      box-shadow inset 0 1px 0 currentColor,
+          -1px 0 0 currentColor,
+          -1px 1px 0 currentColor,
+          inset -1px 0 0 currentColor
+
+
+  .sidebar-scoll-top
+    position absolute
+    bottom 0
+    display none
+    box-shadow inset 0 1px 0 currentColor
+    &:hover
+      box-shadow inset 0 1px 0 currentColor,
+          -1px 0 0 currentColor,
+          inset -1px 0 0 currentColor        
+
+/* 5d4df2ebe88a96c8866f3354f0610d8a */
+.post-credits
+  display inline-block
+
+  /* 466efe1e238c2d46c929fa0b1bf5bad8 */
+  &.is-at-bottom
+    @media screen and (max-width:568px)
+      text-align left
+      .credits-item
+        display block
+        & + {end()}
+          padding-left 0
+          margin-top (gs/2)
+          &:after
+            display none
+
+  .credits-item
+    display inline-block
+    position relative
+    padding = 2.6*gs
+    & + {end()}
+      padding-left padding
+      size = .6*gs
+      &:after
+        content ''
+        position absolute
+        top .8*gs
+        left (padding/2) - (size/2) - 1
+        rect size
+        background c-grey8
+        background rgba(c-blue1, .25)
+        border-radius 50%
+
+/* 5d02ddbe8c0a2b36f876b2e73e401714 */
+.credits-item
+  color c-blue1
+  font-size 1.4*gs
+  // font-weight 100
+
+/* 483cacc355c9becf9fbb76a795edc719 */
+vertGutter = 2*gs
+.post
+  color c-blue1
+  max-width 80*gs
+  text-align left
+  > p
+    &:first-child
+      padding-top 2*gs
+      img
+        margin-top -2*gs
+      @media screen and (max-width:568px)
+        padding-top gs
+        img
+          margin-top - gs
+
+  h2
+    text-transform uppercase
+    font-size 3.2*gs
+    line-height 4.3*gs
+    font-weight 600
+    text-align center
+    padding 0 12*gs
+    @media screen and (max-width:900px)
+      padding 0 6*gs
+    @media screen and (max-width:700px)
+      padding 0
+    @media screen and (max-width:520px)
+      font-size 1.8*gs
+      line-height 2.4*gs
+      padding 0 2*gs
+    a
+      font inherit
+      color inherit
+
+  h4
+    text-transform uppercase
+    text-align center
+    font-weight 600
+    font-size 2.2*gs
+    line-height 3*gs
+    margin-top 3*gs
+    & + p
+      margin-top 1*gs
+    @media screen and (max-width:568px)
+      font-size 1.6*gs
+      line-height 2.6*gs
+      & + p
+        margin-top .5*gs
+
+  h5
+    font-size 2*gs
+    font-weight 600
+    margin-top 1.7*vertGutter
+    @media screen and (max-width:520px)
+      font-size 1.6*gs
+      padding-left 2*gs
+      margin-top 1*vertGutter
+    & + ul
+      margin-top vertGutter
+      @media screen and (max-width:520px)
+        margin-top .8*vertGutter
+
+  strong
+    font-weight 600
+  img
+    max-width 100%
+    height auto
+    // margin vertGutter 0
+    margin-top .6*gs
+    & + p
+      margin-top vertGutter
+      @media screen and (max-width:520px)
+        margin-top .5*vertGutter
+
+    &.is-left      
+      float left
+      margin 1.5*vertGutter 1.5*vertGutter 0 0
+      @media screen and (max-width:750px)
+        float none
+        display block
+        margin-left 0
+        margin-right 0
+        fly()
+      @media screen and (max-width:520px)
+        margin-top    .5*vertGutter
+        margin-bottom .5*vertGutter
+
+    &.is-right
+      float right
+      margin 1.5*vertGutter 0 0 1.5*vertGutter
+      @media screen and (max-width:750px)
+        float none
+        display block
+        margin-left 0
+        margin-right 0
+        fly()
+
+  p, blockquote, li
+    font-size 1.8*gs
+    line-height 2.8*gs
+    @media screen and (max-width:520px)
+      font-size 1.6*gs
+      line-height 2.2*gs
+    & + p
+      margin-top vertGutter
+      @media screen and (max-width:520px)
+        margin-top .5*vertGutter
+
+    & + .center-tweet
+      margin-top vertGutter
+      @media screen and (max-width:520px)
+        margin-top .25*vertGutter
+
+  .twitter-tweet
+    float left
+    max-width 40*gs II
+    margin .5*gs 1.5*vertGutter 0 0 II
+    min-width auto II
+    max-width 99% II
+    margin-right 0 !important
+    margin-top 2*gs II
+    @media screen and (max-width:750px)
+      float none
+      display block
+      margin-left auto II
+      margin-right auto II
+
+  .center-tweet
+    text-align center
+    margin-bottom 1.5*vertGutter
+    @media screen and (max-width:520px)
+      padding 0 gs
+    .twitter-tweet
+      float none
+      display inline-block II
+      margin-top .2*gs II
+
+  p
+    @media screen and (max-width:520px)
+      padding 0 2*gs
+
+  padding = 5*gs
+  blockquote
+    font-style italic
+    font-weight 100
+    padding-left padding
+    position relative
+    padding-right 4*gs
+    margin-left .5*gs
+    margin-top 2.5*gs
+    margin-bottom 2.5*gs
+    // p
+    //   padding-top 0
+    @media screen and (max-width:520px)
+      margin-top 1.5*gs
+      margin-bottom 1.5*gs
+      margin-left 2*gs
+      padding-left 2*gs
+    size = (.4*gs)
+    &:before
+      content ''
+      position absolute
+      height 100%
+      width size
+      background c-blue3
+      top 0
+      left: (padding/2)
+      margin-left -(size/2)
+  ul
+    margin-left 2.5*gs
+    margin-top 1.5*vertGutter
+    padding-right 4*gs
+    & + p
+      margin-top 1.5*vertGutter
+      @media screen and (max-width:520px)
+        margin-top .8*vertGutter
+  li
+    padding-left 2*gs
+    position relative
+    &:before
+      content ''
+      position absolute
+      left 0
+      top .9*gs
+      rect .8*gs
+      background c-blue1
+      border-radius 50%
+    & + li
+      margin-top (gs/2)
+      // @media screen and (max-width:520px)
+      //   margin-top (gs/2)
+  
+  .post-credits
+    margin .6*vertGutter 0
+    width 100%
+    text-align center
+    & + p
+      margin-top 2*gs
+    @media screen and (max-width:520px)
+      margin .2*vertGutter 0
+      margin-bottom 0
+      padding 0
+      .credits-item
+        font-size gs
+        line-height 1.4*gs
+        & + {end()}
+          margin-left 0
+          padding-left 1*gs
+          &:after
+            left .1*gs
+            rect .4*gs
+            top gs
+
+  .post-bottom-credits
+    margin-top 4*gs
+  &__comments
+    margin-top 10*gs
+    @media screen and (max-width:520px)
+      margin-top 3*gs
+      padding 0 2*gs
+
+
+/* 307c65e9540bc6fccc9e6fd2279d5029 */
+.post-splitter
+  position relative
+  color c-grey9
+  display block
+  /* 232c9e620aa69d70a8e0d7870bcf3bde */
+  &.is-at-bottom
+    @media screen and (max-width:568px)
+      width 10*gs
+      {root()}__logo
+        color c-blue3
+        left 4.5*gs
+        &:hover
+          color white
+      &:after
+        width .2*gs
+        height 100%
+        top 0
+        left 100%
+        background rgba(c-blue3,.2)
+
+  &:after
+    content ''
+    height .2*gs
+    width 100%
+    color inherit
+    background currentColor
+    position absolute
+    top 50%
+    left 0
+  size = 9*gs
+  &__logo
+    position relative
+    z-index 1
+    left 50%
+    margin-left -(size/2)
+    rect size
+    border-radius 50%
+    background white
+    display block
+    color inherit
+    overflow hidden
+    &:after
+      display none
+    &:hover
+      cursor pointer
+      background c-blue3
+      transition background .5s linear
+      color white
+      // {up(1)}__glare
+      //   left 100%
+      //   opacity 1
+      //   transition left .4s ease-in, opacity .35s ease-in
+    &__glare
+      opacity 0
+      rect 200%
+      left -150%
+      top -50%
+      position absolute
+      &:before, &:after
+        content ''
+        height 3*gs
+        width 200%
+        position absolute
+        background c-controls
+        transform rotate(55deg)
+        transform-origin left center
+      &:after
+        height (1*gs)
+        margin-top -2.5*gs
+  size = 6*gs
+  .icon
+    rect size
+    color inherit
+    fill currentColor
+    content 0
+    cursor pointer
+    center(size)
+      
+
+/* a86d1c01d59d3bd7500000bc1e9e2c95 */
+.share
+  display inline-block
+  .share-icon
+    float left
+    & + {end()}
+      margin-left gs
+  /* 7f6955dcb9404eb89ec15ff536abf13f */
+  @media screen and (max-width:568px)
+    .share-icon
+      border-color currentColor
+      & + .share-icon
+        margin-left 2.35*gs
+      &:hover
+        opacity .85
+
+/* 461123fd16a3c74fad9e12bd2e1d9052 */
+.posts-nav
+  display inline-block
+  padding 2*gs 0
+  border-top    .5*gs solid c-grey10
+  border-bottom .5*gs solid c-grey10
+  .next-post
+    display block
+    & + {end()}
+      margin-left 1.5*gs
+
+/* 30824a24708c4a88741a989711f46569 */
+.scroll-top
+  @extends .sidebar-scoll-top
+  border 1px solid c-grey8
+  border-radius br
+  rect 4*gs
+  background c-controls
+  shadow()
+  &:hover
+    background c-controls-hover
+  &:before
+    margin-top  -(gs) - .3*gs
+  &:after
+    margin-top  -(gs/3) - .1*gs
+  &:active
+    transform translate(.4*gs, .4*gs)
+    box-shadow none
+
+/* 39f63d887d62ca9f3304c12915e480c0 */
+.footer-share
+  .icon
+    fill white
+    float left
+    rect 3.2*gs
+    & + {end()}
+      margin-left 3.5*gs
+    &:hover
+      opacity .85
+      cursor pointer
+
+/* d3e01bfb115e62608a0e6368805c0fd1 */
+.mobile-footer
+  background c-blue2
+  text-align center
+  padding 2.5*gs 0
+  display none
+  height 28.5*gs
+  /* the same */
+  @media screen and (max-width:568px)
+    display block
+  &__link
+    display inline-block
+    font-weight 400
+    color white
+    font-size 1.6*gs
+    &:after
+      display none
+    & + {end()}
+      margin-top (gs/2)
+  .footer-share
+    display table
+    margin 3*gs
+    fly()
+
+  &__copy
+    margin-top 2.5*gs
+    color white
+    font-size gs
+    line-height 1.5*gs
+    padding 0 4*gs
+    width 30*gs
+    fly()
+
+
+/* b36c411c24ef77dd961d77f8e385155e */
+.footer
+  padding 1.5*gs 4*gs 2*gs 4*gs
+  background c-blue2
+  height 25*gs
+  width 100%
+  color white
+  font-size 1.5*gs
+  &__share
+    text-align center
+    .icon
+      rect 3.2*gs
+      & + {end()}
+        margin-left 1.5*gs
+  .footer-share
+    display inline-block
+    margin-bottom 2*gs
+  &__links-block
+    float left
+    margin-bottom 5*gs
+    & + {end()}
+      margin-left 4*gs
+    &__header
+      text-transform uppercase
+      font-weight 700
+      margin-bottom gs
+      letter-spacing 1px
+    &__item
+      color white
+      display inline-block
+      margin-top -.2*gs
+      letter-spacing .5px
+      // & + {end()}
+      //   margin-top .1*gs
+  &__copy
+    display block
+    clear both
+    text-align center
+    font-size 1.2*gs
+
+/* fba81d5c6fe0b497ba63528a944ab619 */
+.main-header-menu
+  width 240px
+  @media screen and (max-width:1100px)
+    width auto
+    .main-header-menu-section-l
+      display inline-block
+      float left
+      .main-header-menu-item
+        padding-right 3*gs
+  @media screen and (max-width:400px)
+    width 100%
+    text-align center
+    background-color rgba(255,255,255,.95)
+    .main-header-menu-item
+      padding-right 0
+      background-color transparent
+    .main-header-menu-section-l
+      float none
+      padding 2*gs 0
+
+
+/*  */
+.main-header-menu-item
+  font-size 20px
+  height 67px
+  color #416c7c
+  background-color rgba(255,255,255,.95)
+  padding-left 3*gs
+  padding-top 23px
+  text-align left
+  display block
+  @media screen and (max-width:568px)
+    font-size 1.5*gs
+    padding-top gs
+    height 4*gs
+  @media screen and (max-width:400px)
+    font-size 1.2*gs
+    padding-top (gs/2)
+    height 3*gs
+
+  /*  */
+  &.is-hoverable
+    &:hover
+      cursor pointer
+      background-color #7AB9D0
+      color white
+      text-decoration none
+
+  /*  */
+  &.is-checkable
+    &.is-check
+      background-color #7ab9d0
+      color white
+      cursor default
+      box-shadow inset 4px 0 0 white
+
+.post
+  .post-splitter
+    margin 8*gs 0
+    max-width 40*gs
+    fly()
+    @media screen and (max-width:568px)
+      margin 4*gs 0
+
+.more-link
+  display none
+
+
+// OLD STYLES:
+c-lightBlue = #61dcff
+
+.calendar-period
+  margin-bottom 2*gs
+
+.calendar-table
+  width 100%
+  .post
+    padding-bottom 0
+  table
+    width 100%
+  tr
+    width 100%
+    padding 2*gs
+    &:nth-of-type(odd)
+      background #F5FBFD
+  td
+    padding gs
+
+.user-thumb
+  overflow hidden
+  margin-bottom 6*gs
+  text-align left
+  color c-blue1
+  padding-bottom 4*gs
+  border-bottom 2px solid c-grey9
+  &__avatar
+    float left
+  &__text
+    margin-left 8*gs
+    padding-right 6*gs
+    line-height 20px
+
+#archives-title
+  margin-bottom 4*gs
+  color c-blue1
+  display block
+  font-size 24px
+  border-bottom 2px solid #f1f1f1
+  padding-bottom 1.5*gs
+  font-weight 400
+  text-align left
+  @media screen and (max-width:520px)
+    margin-left  2*gs
+    margin-right 2*gs
+
+.calendar-table
+  min-width 60*gs
+  @media screen and (max-width:720px)
+    min-width 40*gs
+  @media screen and (max-width:520px)
+    padding 0 2*gs
+
+strong
+  font-weight bold
+
+.calendar-period
+  text-align left
+
+#date_title, .calendar-period
+  @media screen and (max-width:520px)
+    padding 0 2*gs
+
+.date-posts-nav
+  @media screen and (max-width:400px)
+    margin-left 2*gs
+    margin-right 2*gs
+    .grid-bit
+      width 100%
+      display block
+      & + {end()}
+        margin-left 0
+        margin-top 2*gs
+
+
+
+// .l-h-x3-g
+//   line-height 3*gs
+
+// .l-h-x2-5-g
+//   line-height 2.5*gs
+
+// .l-h-x2-25-g
+//   line-height 2.25*gs
+
+// .search-input
+//   max-width 76*gs
+
+/* 34f28b60c8011d2c96bdf82d3ebfd797 */
+columnWidth = 43*gs
+.post-bottom-credits
+  text-align center
+  max-width 60*gs
+  fly()
+  .post-credits
+    margin-top 2*gs
+  .share
+    margin-top gs
+  .post-splitter
+    width columnWidth
+    margin 0 auto
+  .next-post
+    padding-left  gs
+    padding-right gs
+    // min-width columnWidth
+    margin-top 3*gs
+    min-width 75%
+    & + {end()}
+      margin-top 2*gs
+  &__line
+    border-top .2*gs solid c-grey9
+    max-width columnWidth
+    margin 0 auto
+    margin-top 3*gs
+    opacity 0
+  /* e394a8cc55f307c0e9dc59b924d2d079 */
+  @media screen and (max-width:568px)
+    max-width 40*gs
+    {root()}
+      &__top
+        display table
+        fly()
+        .post-credits
+          float left
+          margin-left 2.5*gs
+          margin-top .8*gs
+          font-weight 100
+          text-align left
+          width auto
+          .credits-item
+            padding-left 0
+        .post-splitter
+          margin-top 0
+          margin-bottom 0
+
+      &__line
+        width 200%
+        max-width 200%
+        left -50%
+        position relative
+    .post-splitter
+      float left
+      width 10*gs
+    .share
+      display inline-block
+      margin-top 3.5*gs
+    .next-post
+      max-width 84%
+      min-width 84%
+      margin-top 3.5*gs
+  @media screen and (max-width:520px)
+    .share
+      margin-bottom .5*gs
+
+
+
+

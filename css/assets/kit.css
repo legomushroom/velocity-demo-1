@@ -1,0 +1,69 @@
+body {
+  margin-bottom: 200px;
+  background: #fff;
+}
+.hash-e {
+  font-size: 12px;
+  color: #9d9d9d;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  max-width: 100%;
+  padding: 10px 0;
+  white-space: nowrap;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 50px;
+}
+.icon-sample-kl {
+  float: left;
+  margin: 20px;
+}
+.k-sample {
+  float: left;
+  margin: 20px;
+}
+.k-content {
+  background-color: #9d9d9d;
+  width: 100%;
+  height: 100%;
+  min-height: 20px;
+  border-radius: 3px;
+}
+.main-kl {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+.section-kl {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.section-kl + .section-kl {
+  margin-top: 80px;
+}
+.header-ke {
+  font-size: 16px;
+  padding: 20px 0;
+  color: #656565;
+  background-color: rgba(0,0,0,0.01);
+  padding-left: 20px;
+  margin-left: -20px;
+  border-radius: 3px;
+}
+.color-sample-ke {
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+.k-w-bg,
+.k-d-bg {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 3px;
+}
+.k-d-bg {
+  background-color: #9d9d9d;
+}

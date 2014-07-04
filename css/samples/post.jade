@@ -1,0 +1,39 @@
+doctype
+html
+  head
+    meta(charset='UTF-8')
+    title StatSocial Blog
+    link(rel="stylesheet", type="text/css", href="../main.css")
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700,800', rel='stylesheet', type='text/css')
+    meta(name="viewport", content="width=device-width, maximum-scale=1, user-scalable=no")
+  body.base-p.base-p--post
+    include ../icons.svg
+
+    - el = { class: '', inputId: 'c23cdad713ba9c41c6ed2c9bf8e5bac7', id: 'js-header'} 
+    include ../partials/header
+
+    .base-p__core#js-core
+      .base-p__core__wrapper
+        .base-p__core__sidebar
+          - el = { class: '', id: 'js-sidebar'} 
+          include ../partials/sidebar-n-panel
+        .base-p__core__main
+          .base-p__core__main__line
+            include ../partials/post
+    .base-p__footer
+      .base-p__footer__core
+        include ../partials/normal-footer
+        include ../partials/mobile-footer
+
+
+    .scroll-top#js-scroll-top
+
+    script(src="../../bower_components/jquery/dist/jquery.js")
+    script(src="../../bower_components/velocity/jquery.velocity.js")
+    script(src="../../js/raf.js")
+    script(src="../../js/helpers.js")
+    script(src="../../js/main.js")
+
+
+
+

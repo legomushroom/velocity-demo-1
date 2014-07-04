@@ -1,0 +1,146 @@
+gs = 10px
+br = 3px
+PX = (1/16)em
+RX = (1/16)rem
+
+baseLayer    = 0
+contentLayer = 10
+headerLayer  = 20
+modalLayer   = 30
+
+headerLeftSize = 32*gs
+headerHeight = 8*gs
+
+
+outage()
+  font-family 'outageregular'
+
+use('nesting-tree-traversal.js')
+
+easy-click()
+  &:after
+    content ''
+    position absolute
+    rect 200%
+    z-index 1
+    nw -50%
+
+shadow()
+  box-shadow .4*gs .4*gs 0 0 rgba(c-grey3, .1)
+down-shadow()
+  box-shadow 0 .4*gs 0 0 rgba(c-grey3, .1)
+
+retina(path, size= 100%, color= white)
+  background color url(path+'.png') no-repeat center center
+  background-size size
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi)
+    background color url(path+'-@2x.png') no-repeat center center
+    background-size size
+
+random(a,b)
+  return math(math(0, 'random')*(b - a + 1) + a, 'floor')
+
+norm(font,pixelSize)
+  (1/(font/16))*pixelSize
+
+center(size)
+  position absolute
+  margin-left: -(size/2)
+  margin-top:  -(size/2)
+  nw 50%
+
+
+fly()
+  margin-left auto
+  margin-right auto
+
+t(position)
+  top position
+
+b(position)
+  bottom position 
+
+l(position)
+  left position
+
+r(position)
+  right position
+
+nw(position=0)
+  top   position
+  left  position
+ne(position=0)
+  top   position 
+  right   position
+sw(position=0)
+  bottom  position
+  left  position
+se(position=0)
+  bottom  position
+  right   position
+
+bbox()
+  box-sizing border-box
+
+cbox()
+  box-sizing content-box
+
+circle(size)
+  rect size
+  border-radius 50%
+
+rect(size)
+  width size
+  height size
+
+min-rect(size)
+  min-width size
+  min-height size
+
+max-rect(size)
+  max-width size
+  max-height size
+
+triangle(size=gs, color=c-grey5, position='top')
+  border 4px solid transparent
+  rect 0
+
+  if position == 'top'
+    border-top-color color
+
+  if position == 'left'
+    border-left-color color
+
+  if position == 'right'
+    border-right-color color
+
+  if position == 'right'
+    border-right-color color
+
+hl(color=deeppink, size=1px)
+  outline size solid color
+
+textel()
+  white-space: nowrap
+  -webkit-text-overflow: ellipsis
+  -moz-text-overflow: ellipsis
+  -o-text-overflow: ellipsis
+  text-overflow: ellipsis
+  overflow:hidden
+
+placeholder-mixin(args)
+  &::-webkit-input-placeholder { /* WebKit browsers */
+        color: args.color
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: args.color
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: args.colorg
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+      color: args.color
+  }
+
+II = !important
+

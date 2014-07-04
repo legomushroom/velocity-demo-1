@@ -1,0 +1,368 @@
+doctype
+html
+  head
+    meta(charset='UTF-8')
+    title StatSocial Blog
+    link(rel="stylesheet", type="text/css", href="main.css")
+    link(rel="stylesheet", type="text/css", href="assets/kit.css")
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700,800', rel='stylesheet', type='text/css')
+    
+  body
+    include icons.svg
+    .main-kl
+      .section-kl
+        .header-ke Colors
+        .cf.m-t-x3-g
+          .color-sample-ke.c-grey1-bg-g
+          .color-sample-ke.c-grey2-bg-g
+          .color-sample-ke.c-grey3-bg-g
+          .color-sample-ke.c-grey4-bg-g
+          .color-sample-ke.c-grey5-bg-g
+          .color-sample-ke.c-grey6-bg-g
+          .color-sample-ke.c-grey7-bg-g
+          .color-sample-ke.c-grey8-bg-g
+          .color-sample-ke.c-grey9-bg-g
+          .color-sample-ke.c-grey10-bg-g
+
+        .cf
+          .color-sample-ke.c-blue1-bg-g
+          .color-sample-ke.c-blue2-bg-g
+          .color-sample-ke.c-blue3-bg-g
+
+        .cf
+          .color-sample-ke.c-facebook-bg-g
+          .color-sample-ke.c-linkedin-bg-g
+          .color-sample-ke.c-twitter-bg-g
+        .cf
+          .color-sample-ke.c-google-bg-g
+
+      - var data = {}
+
+      .section-kl
+        .header-ke Icons
+        .k-sample
+          .hash-e#b749f3862138d6f5dc48e711cf78d96f b749f3862138d6f5dc48e711cf78d96f
+          - var el = { path: 'logo-icon' }
+          include partials/icon
+
+        .k-sample
+          .hash-e#b749f3862138d6f5dc48e711cf78d96f b749f3862138d6f5dc48e711cf78d96f
+          - var el = { path: 'logo-text-icon' }
+          include partials/icon
+
+        .k-sample
+          .hash-e#87402ed31b2c5fde31ba52b67ea2889b 87402ed31b2c5fde31ba52b67ea2889b
+          - var el = { path: 'menu-icon' }
+          include partials/icon
+
+        .k-sample
+          .hash-e#e502a02855e64daa899c07361dd2273c e502a02855e64daa899c07361dd2273c
+          - var el = { path: 'search-icon' }
+          include partials/icon
+
+        .k-sample
+          .hash-e#746e6ba9c0df5d97461c470e28d32d52 746e6ba9c0df5d97461c470e28d32d52
+          - var el = { path: 'twitter-icon' }
+          include partials/icon
+
+        .k-sample
+          .hash-e#c37260ea5c7fabcc9f95683438c22637 c37260ea5c7fabcc9f95683438c22637
+          - var el = { path: 'facebook-icon' }
+          include partials/icon
+
+        .k-sample
+          .hash-e#b6d79b50e33f243184987be55ba89750 b6d79b50e33f243184987be55ba89750
+          - var el = { path: 'linkedin-icon' }
+          include partials/icon
+
+        .k-sample
+          .hash-e#d45cd032517911de45b16c722c2c6087 d45cd032517911de45b16c722c2c6087
+          - var el = { path: 'google-icon' }
+          include partials/icon
+
+        .cf
+
+      .section-kl
+        .header-ke Elements
+        .k-sample
+          .hash-e#67e12e92af48d19f9837ee74a939186d 67e12e92af48d19f9837ee74a939186d
+          a(href="#") Link
+
+        .k-sample
+          .hash-e#ddc4137247ad4d4bc5668efb0f33fac4 ddc4137247ad4d4bc5668efb0f33fac4
+          a(href="#").next-post ← older posts
+
+        .k-sample
+          .hash-e#04fb5a24890d2727c7d068012f03d5be 04fb5a24890d2727c7d068012f03d5be
+          a(href="#").next-post.next-post--read-more read more →
+
+        .cf
+
+        .k-sample
+          .hash-e#333473649f1a25a7bf3d21b835adaa06 333473649f1a25a7bf3d21b835adaa06
+          - el = { class: 'share-icon--twitter', id: ''}
+          - el.icon = { path: 'twitter-icon' }
+          include partials/share-icon
+
+        .k-sample
+          .hash-e#3c5c6e87f864179fba9ba330a3d2d01d 3c5c6e87f864179fba9ba330a3d2d01d
+          - el = { class: 'share-icon--facebook', id: ''}
+          - el.icon = { path: 'facebook-icon' }
+          include partials/share-icon
+
+        .k-sample
+          .hash-e#012b156610f7a08ac477c0b51092f409 012b156610f7a08ac477c0b51092f409
+          - el = { class: 'share-icon--linkedin', id: ''}
+          - el.icon = { path: 'linkedin-icon' }
+          include partials/share-icon
+        
+        .k-sample
+          .hash-e#ce133e0571031a40d6608ea8a2f0ef43 ce133e0571031a40d6608ea8a2f0ef43
+          - el = { class: 'share-icon--google', id: ''}
+          - el.icon = { path: 'google-icon' }
+          include partials/share-icon
+
+        .cf
+
+        .hash-e#ec9afeed491f9ee1f433b3ef35b6dd58 ec9afeed491f9ee1f433b3ef35b6dd58
+        .sidebar-header What is StatSocial?
+
+        .hash-e#c389dcb7895129bf6e660063a6290571 c389dcb7895129bf6e660063a6290571
+        .sidebar-about StatSocial delivers enterprise-class Twitter analytics that help marketers understand their social consumers. By identifying where Twitter users exist elsewhere on the Web, StatSocial offers an unparalleled level of demographic and psychographic insights from consumer data aggregated not just from Twitter, but from over sixty social sites and every major blog platform.
+
+        .hash-e#7d7ed33281e44c7092ef2f908536f698 7d7ed33281e44c7092ef2f908536f698
+        - el = { text: 'Matt Laure Joins Facebook', class: '', id: ''} 
+        include partials/sidebar-list-item
+
+        .hash-e#e55a1d273d2927877a38268403c3d6d3 e55a1d273d2927877a38268403c3d6d3
+        .k-d-bg.k-sample
+          - el = { text: 'statsocial' }
+          - el.icon = { path: 'logo-icon'}
+          include partials/icon-text
+
+        .cf
+
+        .hash-e#9d86756becc3c306959936f4c7e3a19f 9d86756becc3c306959936f4c7e3a19f
+        - el = { text: 'Log In', class: '', id: ''} 
+        include partials/header-link
+
+        .hash-e#1c23fe75816818e2ccedba3fd66d8310 1c23fe75816818e2ccedba3fd66d8310
+        .k-d-bg.k-sample
+          - el = { text: 'Request Demo', class: '', id: ''} 
+          include partials/rounded-btn
+
+        .k-sample
+          .hash-e#e2f1e61773da4f83d2d33fd6e38f3dec e2f1e61773da4f83d2d33fd6e38f3dec
+          - var className = 'rounded-btn--blue2 rounded-btn--hoverable'
+          - el = { text: 'Request Demo', class: className, id: ''} 
+          include partials/rounded-btn
+        
+        .k-sample
+          .hash-e#45c74b08d69d3ab7893bf7a96d097290 45c74b08d69d3ab7893bf7a96d097290
+          - var className = 'rounded-btn--blue3 rounded-btn--hoverable'
+          - el = { text: 'Request Demo', class: className, id: ''} 
+          include partials/rounded-btn
+
+        .cf
+        .hash-e#018b2f03df7c065c694e5892b9287021 018b2f03df7c065c694e5892b9287021
+        - el = { class: '', id: ''} 
+        include partials/input
+      
+      .cf
+  
+      .section-kl
+        .header-ke Blocks
+        .hash-e#08683ec747ff35de14ad2765f8a9078e 08683ec747ff35de14ad2765f8a9078e        
+        - el = { items: ['Log In', 'Sign Up'], class: '', id: ''} 
+        include partials/header-link-line
+        
+        .k-sample
+          .hash-e#a86d1c01d59d3bd7500000bc1e9e2c95 a86d1c01d59d3bd7500000bc1e9e2c95
+          - el = { class: '', id: ''} 
+          include partials/share
+
+        .k-sample
+          .hash-e#7f6955dcb9404eb89ec15ff536abf13f 7f6955dcb9404eb89ec15ff536abf13f
+          - el = { class: 'is-at-mobile', id: ''} 
+          include partials/share
+
+        .cf
+
+        .hash-e#fc5824bd35eff85f11d426e8dbfd9ddf fc5824bd35eff85f11d426e8dbfd9ddf
+        - el = { items: [{text: 'Matt Laure Joins Facebook'},{text: 'Obama takes Tumblr'},{text: 'The Best & Worst of Twitter: Week of 6/1/2014'}], class: '', id: ''} 
+        include partials/sidebar-list
+        
+        .k-sample
+          .hash-e#0e0013fd36e58408b7246ec8a8edfb66z 0e0013fd36e58408b7246ec8a8edfb66
+          - el = { class: '', id: ''}
+          - el.icon = { path: 'search-icon' }
+          include partials/sidebar-btn
+
+        .k-sample
+          .hash-e#0e0013fd36e58408b7246ec8a8edfb66z 0e0013fd36e58408b7246ec8a8edfb66z
+          - el = { class: '', id: ''}
+          - el.icon = { path: 'home-icon' }
+          include partials/sidebar-btn
+
+        .k-sample
+          .hash-e#9c53be8ee1b8adc743428f4eef68f072 9c53be8ee1b8adc743428f4eef68f072
+          .sidebar-scoll-top
+
+        .k-sample
+          .hash-e#8d97f4a419a59976b2f18e6311d0d56c 8d97f4a419a59976b2f18e6311d0d56c
+          .sidebar-expand
+
+        .k-sample
+          .hash-e#883c00286c7cedf015ccc175d0a02dec 883c00286c7cedf015ccc175d0a02dec
+          - el = { class: '', id: ''}
+          include partials/sidebar-panel
+
+        .k-sample(style="display:none;")
+          .hash-e#88600f049550246039629c60accbcd80 88600f049550246039629c60accbcd80
+          - el = { class:'is-scroll-top', inputId: '88600f049550246039629c60accbcd80' }
+          include partials/sidebar-panel
+
+        .k-sample
+          .hash-e#0ef5d460a3af92c75b2b1acabdb438fe 0ef5d460a3af92c75b2b1acabdb438fe
+          - el = { class: '', id: ''} 
+          include partials/sidebar
+
+        .cf
+        
+        .k-sample(style="margin-bottom: 60px;")
+          .hash-e#2dd245c639f53c95bb8dda4ae880acc1 2dd245c639f53c95bb8dda4ae880acc1
+          - el = { class: '', id: ''} 
+          include partials/sidebar-n-panel
+
+        .k-sample(style="height: 700px; margin-bottom: 60px;")
+          .hash-e#18dc84f92e17a6cffd9a07ebe1b86fff 18dc84f92e17a6cffd9a07ebe1b86fff
+          - el = { class: 'is-at-tablet', id: '', inputId: '18dc84f92e17a6cffd9a07ebe1b86fff'} 
+          include partials/sidebar-n-panel
+
+        .k-sample(style="height: 700px; margin-bottom: 60px;")
+          .hash-e#61ca1fbc891c10f80910e08063426d4c 61ca1fbc891c10f80910e08063426d4c
+          - el = { class: 'is-expanded', id: '', inputId: '61ca1fbc891c10f80910e08063426d4c'} 
+          include partials/sidebar-n-panel
+
+        .cf
+
+        .k-sample
+          .hash-e#5d02ddbe8c0a2b36f876b2e73e401714 5d02ddbe8c0a2b36f876b2e73e401714
+          - el = { prefix: 'in', text: 'Celebrity accounts', class: '', id: ''} 
+          include partials/credits-item
+
+        .k-sample
+          .hash-e#5d4df2ebe88a96c8866f3354f0610d8a 5d4df2ebe88a96c8866f3354f0610d8a
+          - el = { class: '', id: ''}
+          include partials/post-credits
+
+        .k-sample
+          .hash-e#466efe1e238c2d46c929fa0b1bf5bad8 466efe1e238c2d46c929fa0b1bf5bad8
+          - el = { class: 'is-at-bottom', id: ''}
+          include partials/post-credits
+
+        .k-sample
+          .hash-e#9169ec8ffdffab60ca80fbbc4a2a72b6 9169ec8ffdffab60ca80fbbc4a2a72b6
+          - el = { class: 'is-at-bottom is-at-mobile', id: ''}
+          include partials/post-credits
+
+        .cf
+        
+        .k-sample(style="width: 400px")
+          .hash-e#307c65e9540bc6fccc9e6fd2279d5029 307c65e9540bc6fccc9e6fd2279d5029
+          - el = { class: '', id: ''} 
+          include partials/post-splitter
+
+        .k-sample(style="width: 400px")
+          .hash-e#232c9e620aa69d70a8e0d7870bcf3bde 232c9e620aa69d70a8e0d7870bcf3bde
+          - el = { class: 'is-at-mobile is-at-bottom', id: ''} 
+          include partials/post-splitter
+
+        .cf
+
+        .hash-e#34f28b60c8011d2c96bdf82d3ebfd797 34f28b60c8011d2c96bdf82d3ebfd797
+        - el = { class: '', id: ''}
+        include partials/post-bottom-credits
+
+        .hash-e#e394a8cc55f307c0e9dc59b924d2d079 e394a8cc55f307c0e9dc59b924d2d079
+        - el = { class: 'is-at-mobile', id: '', creditsClass: 'is-at-bottom is-at-mobile'}
+        include partials/post-bottom-credits
+
+        .hash-e#461123fd16a3c74fad9e12bd2e1d9052 461123fd16a3c74fad9e12bd2e1d9052
+        .posts-nav.grid.grid--gutter-x2
+          a.next-post.grid-bit.grid-bit--1-2 ← older posts
+          a.next-post.grid-bit.grid-bit--1-2 recent posts →
+
+        .hash-e#30824a24708c4a88741a989711f46569 30824a24708c4a88741a989711f46569
+        .scroll-top
+
+        .hash-e#39f63d887d62ca9f3304c12915e480c0 39f63d887d62ca9f3304c12915e480c0
+        .k-d-bg.k-sample
+          - el = { class: '', id: ''}
+          include partials/footer-share
+          
+        .cf
+
+        .hash-e#b36c411c24ef77dd961d77f8e385155e b36c411c24ef77dd961d77f8e385155e
+        include partials/normal-footer
+
+        .cf
+
+        .hash-e#fba81d5c6fe0b497ba63528a944ab619 fba81d5c6fe0b497ba63528a944ab619
+        include partials/main-header-menu
+
+        .cf
+
+
+        .hash-e#d3e01bfb115e62608a0e6368805c0fd1 d3e01bfb115e62608a0e6368805c0fd1
+        - el = { class: 'is-at-mobile', id: ''} 
+        include partials/mobile-footer
+
+        .cf
+
+        .hash-e#483cacc355c9becf9fbb76a795edc719 483cacc355c9becf9fbb76a795edc719
+        include partials/post
+
+        .hash-e#0a0478d84d885b39b0df7c5939a6037c 0a0478d84d885b39b0df7c5939a6037c
+        - el = { class: '', id: ''}
+        - el.input = { id: 'input-0a0478d84d885b39b0df7c5939a6037c'}
+        - el.icon =  { path: 'search-icon' }
+        include partials/input-icon
+
+        .hash-e#bc450f49128e9768ab944e51920e0250 bc450f49128e9768ab944e51920e0250
+        - el = { class: 'input-icon--header', id: ''}
+        - el.input = { id: 'input-bc450f49128e9768ab944e51920e0250'}
+        - el.icon =  { path: 'search-icon' }
+        include partials/input-icon
+
+        .hash-e#cbb3694893dda7ad17fa70e114baabde cbb3694893dda7ad17fa70e114baabde
+        - el = { class: '', id: ''} 
+        include partials/header
+       
+
+        .hash-e#c23cdad713ba9c41c6ed2c9bf8e5bac7 c23cdad713ba9c41c6ed2c9bf8e5bac7
+        div(style="width: 420px")
+          - el = { class: 'header--at-mobile', inputId: 'c23cdad713ba9c41c6ed2c9bf8e5bac7', id: ''} 
+          include partials/header
+
+      .section-kl
+        .header-ke Grid
+        .hash-e#c9f545437c019c6b67579d6dadc07ecf c9f545437c019c6b67579d6dadc07ecf
+        - var gridSize = 20
+        - for (var i=1; i<(gridSize/2)+1; i++ )
+          .grid.grid--gutter-x2.m-t-x2-g
+            .grid-bit(class="grid-bit--#{i}-#{gridSize}"):    .k-content
+            .grid-bit(class="grid-bit--#{gridSize-i}-#{gridSize}"): .k-content
+
+        .hash-e#b9a0ff7b6444fe8b3932c06919534ab5 b9a0ff7b6444fe8b3932c06919534ab5
+        - for (var i=1; i<(gridSize/2)+1; i++ )
+          .grid.grid--sliced.grid--gutter-x4.m-t-x2-g
+            .grid-bit(class="grid-bit--#{i}-#{gridSize}"):    .k-content
+            .grid-bit(class="grid-bit--#{gridSize-i}-#{gridSize}"): .k-content
+
+
+      
+
+
+
+

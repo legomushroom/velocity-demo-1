@@ -1,0 +1,14 @@
+{
+  "name": "sample-app",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "2.1.0",
+    "velocity": "latest",
+    "iscroll": "latest"
+  }
+}

@@ -1,0 +1,35 @@
+// ICONS
+@import '../assets/imports.styl'
+
+.icon
+	rect 3*gs + gs/5
+	fill c-grey5
+	display block
+	position relative
+	
+	/* f9478b0efe4b679e7d93ff6714fc849a */
+	&.is-dribbble
+		fill c-red1
+
+	/* c0a851890861617e15db37a979ff4095 */
+	&.is-twitter
+		fill c-blue1
+
+	/* 78466e66bbe30e3ca3fee109d95eb553 */
+	&.is-facebook
+		fill c-facebook
+
+	&:after
+		content: ''
+		rect 100%
+		position absolute
+		nw 0
+
+	svg
+		float left
+		rect 100%
+
+	&.is-hoverable
+		&:hover
+			fill c-grey4
+			cursor pointer

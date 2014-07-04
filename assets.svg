@@ -1,0 +1,17 @@
+<svg id="svg" width="500" height="500" viewBox="0 0 500 500" style="margin-left:-100%;position:absolute;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" enable-background="new 0 0 500 500" xml:space="preserve">
+  <defs>
+    <pattern id="flowers-cream-pattern" width="400" height="400" patternUnits="userSpaceOnUse">
+      <image
+        width="400"
+        height="400"
+        xlink:href="css/i/flowers-cream.png"></image>
+    </pattern>
+
+    <pattern id="owls-pattern" width="400" height="300" patternUnits="userSpaceOnUse" y="200">
+      <image id="js-owls-image"
+        width="400"
+        height="300"
+        xlink:href="css/i/owls.jpg"></image>
+    </pattern>
+  </defs>
+</svg>

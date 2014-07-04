@@ -1,0 +1,173 @@
+// ELEMENTS
+@import '../assets/imports.styl'
+
+/* 7d7ed33281e44c7092ef2f908536f698 */
+.sidebar
+  li
+    font-size 16px
+    line-height 26px
+    color c-blue1
+    list-style none
+    position relative
+    padding-left 2*gs
+    font-weight 400
+    > a
+      color inherit 
+    &:before
+      content ''
+      position absolute
+      left .5*gs
+      top gs
+      rect .6*gs
+      background c-blue1
+      border-radius 50%
+
+/* ec9afeed491f9ee1f433b3ef35b6dd58 */
+.sidebar-header
+  color c-blue1
+  font-weight 600
+  font-size 18px
+  line-height 26px
+
+/* c389dcb7895129bf6e660063a6290571 */
+.sidebar-about
+  color c-blue1
+  font-size 14px
+  line-height 24px
+
+/* 018b2f03df7c065c694e5892b9287021 */
+.input
+  outline none
+  border 1px solid currentColor
+  min-height 4*gs // consider textrarea
+  border-radius br
+  display block
+  width 100%
+  padding-left gs
+  font-size 16px
+  color c-blue1
+  placeholder-mixin({color: rgba(c-blue1, .3)})
+  &:focus, &:hover
+    box-shadow 0 0 0 1px currentColor
+
+/* 9d86756becc3c306959936f4c7e3a19f */
+.header-link
+  color c-blue1
+  font-size 16px
+  line-height 22px
+  display inline-block
+
+/* e55a1d273d2927877a38268403c3d6d3 */
+.icon-text
+  color white
+  .icon
+    float left
+    fill currentColor
+  &__text
+    margin-left 5*gs
+
+/* 67e12e92af48d19f9837ee74a939186d */
+a, .link
+  text-decoration none
+  position relative
+  display inline-block
+  color c-blue3
+  cursor default
+  line-height 22px
+  
+  &:hover
+    cursor pointer
+    text-decoration underline
+  &:focus
+    outline none
+    hl c-blue1
+
+/* 333473649f1a25a7bf3d21b835adaa06 */
+.share-icon
+  rect 5*gs
+  border-radius 50%
+  position relative
+  display block
+  overflow hidden
+  cursor pointer
+  border 2px solid transparent
+  size = 2.4*gs
+  &:hover
+    // opacity .8
+    border-color currentColor
+    transition border-color .3s linear
+
+  .icon
+    fill currentColor
+    rect size
+    center(size)
+
+  iframe, .IN-widget
+    position absolute II
+    z-index 1 II
+    top 0  II
+    left 0  II
+    transform scale(10) II
+    opacity 0
+
+  /* 333473649f1a25a7bf3d21b835adaa06 */
+  &--twitter
+    color c-twitter
+    .icon
+      transform translate(.1*gs, .1*gs)
+    a
+      transform scale(10)
+      position relative
+      z-index 20
+      opacity 0
+
+  /* 3c5c6e87f864179fba9ba330a3d2d01d */
+  &--facebook
+    color c-facebook
+    position relative
+    a
+     transform scale(10)
+     position relative
+     z-index 20
+     opacity 0
+
+  /* 012b156610f7a08ac477c0b51092f409 */
+  &--linkedin
+    color c-linkedin
+
+  /* ce133e0571031a40d6608ea8a2f0ef43 */
+  &--google
+    color c-google
+    .icon
+      // rect 4*gs
+      margin-top  -1*gs
+      margin-left -1*gs
+    iframe
+      transform translate(-65px, 0) II
+      position relative
+
+/* ddc4137247ad4d4bc5668efb0f33fac4 */
+.next-post
+  border 1px solid c-grey9
+  padding .2*gs 2.5% .4*gs
+  border-radius br
+  color c-blue1
+  font-size 1.6*gs
+  line-height 2.2*gs
+  &:after
+    display none
+  &:hover
+    border-color currentColor
+    text-decoration none
+  &:active
+    border-color c-grey8
+  /* 04fb5a24890d2727c7d068012f03d5be */
+  &--read-more
+    background c-grey10
+    border-color c-grey10
+    &:hover
+      background c-grey9
+      border-color c-grey9
+    &:active
+      background c-grey10
+      border-color c-grey10
