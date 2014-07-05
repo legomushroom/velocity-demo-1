@@ -14,17 +14,25 @@ class Main
     @$sliceLine    = $('#js-slice-line')
 
   run:->
-    new Spriter
-      sprites:  @$dust.children()
-      duration: 800*@s
-      delay:    275*@s
-
+    @start = 0
+    @dur = @start + 300*@s
     @$flowersCream.velocity
         y: 300
       ,
-        duration: 300*@s
+        duration: @dur
+        delay:    @start
         easing: 'ease-in'
-    
+
+    @start = @start + 275*@s
+    @dur = 800*@s
+    new Spriter
+      sprites:  @$dust.children()
+      duration: @dur
+      delay:    @start
+
+
+    @start = @start + @dur
+    @dur = 400*@s
     @$sliceLine.velocity
         rotateZ: 315
         scale: 1
@@ -32,6 +40,7 @@ class Main
         width: 600
         transformOrigin: '50% 50%'
       ,
-        delay: 1000*@s
+        delay: @start
+        duration: @dur
 
 new Main

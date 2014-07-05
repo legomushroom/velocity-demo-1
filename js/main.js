@@ -21,17 +21,24 @@
     };
 
     Main.prototype.run = function() {
-      new Spriter({
-        sprites: this.$dust.children(),
-        duration: 800 * this.s,
-        delay: 275 * this.s
-      });
+      this.start = 0;
+      this.dur = this.start + 300 * this.s;
       this.$flowersCream.velocity({
         y: 300
       }, {
-        duration: 300 * this.s,
+        duration: this.dur,
+        delay: this.start,
         easing: 'ease-in'
       });
+      this.start = this.start + 275 * this.s;
+      this.dur = 800 * this.s;
+      new Spriter({
+        sprites: this.$dust.children(),
+        duration: this.dur,
+        delay: this.start
+      });
+      this.start = this.start + this.dur;
+      this.dur = 400 * this.s;
       return this.$sliceLine.velocity({
         rotateZ: 315,
         scale: 1,
@@ -39,7 +46,8 @@
         width: 600,
         transformOrigin: '50% 50%'
       }, {
-        delay: 1000 * this.s
+        delay: this.start,
+        duration: this.dur
       });
     };
 
