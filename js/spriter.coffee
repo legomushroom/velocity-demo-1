@@ -20,7 +20,7 @@ class Spriter
         progress:($els,progress)=>
           for i in [0...@cnt]
             if progress >= i*(1/@cnt)
-              if !@["lock#{i}"] 
+              if !@["lock#{i}"]
                 @["lock#{i}"] = true
                 @sprites[i-1]?.style.display = 'none'
                 @sprites[i].style.display = 'block'

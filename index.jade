@@ -9,10 +9,18 @@ html
     include assets.svg
     svg(viewBox="0 0 1280 900")
       rect.rect#js-flowers-cream(fill="url(#flowers-cream-pattern)", width="300", height="300", x="490", y="-600")
-      mask(id="dust-mask")
+      
+      g#js-cream-triangles.h-g
+        path#js-cream-triangle1(d="M0,0 L0,300 L300,0 L0,0 Z", fill="url(#flowers-cream-pattern)")
+        g#js-cream-triangle2-wrapper
+          path#js-cream-triangle2(d="M0,300 L300,300 L300,0 L0,300 Z", fill="url(#flowers-cream-pattern)")
+      
+      mask#dust-mask
         include dust.svg
         rect(id="js-slice-line", transform="scale(0) rotate(45)", opacity="0", height="2", width="400", x=340, y=450, fill="white")
+
       rect(fill="url(#owls-pattern)", mask="url(#dust-mask)", width="1280", height="800")
+
 
     script(src="bower_components/jquery/dist/jquery.js")
     script(src="bower_components/velocity/jquery.velocity.min.js")

@@ -3,7 +3,7 @@ class Main
     @vars()
     setTimeout =>
       @run()
-    , 200*@s
+    , 200
 
   vars:->
     @s = 1
@@ -12,9 +12,14 @@ class Main
     @$owlsImage    = $('#js-owls-image')
     @$flowersCream = $('#js-flowers-cream')
     @$sliceLine    = $('#js-slice-line')
+    @$creamTriangle1 = $('#js-cream-triangle1').css 'transform': 'translate(490px,300px)'
+    @$creamTriangle2 = $('#js-cream-triangle2')
+    @$creamTriangles = $('#js-cream-triangles')
+    @$creamTriangleWrapper = $('#js-cream-triangle2-wrapper').css 'transform': 'translate(490px,300px)'
+
 
   run:->
-    @start = 0
+    @start = 0*@s
     @dur = @start + 300*@s
     @$flowersCream.velocity
         y: 300
@@ -31,7 +36,7 @@ class Main
       delay:    @start
 
 
-    @start = @start + @dur
+    @start = @start + @dur - 200*@s
     @dur = 400*@s
     @$sliceLine.velocity
         rotateZ: 315
@@ -42,5 +47,70 @@ class Main
       ,
         delay: @start
         duration: @dur
+
+    @start = @start + @dur + 200*@s
+    @dur = 30*@s
+    translateSize = 20
+    @$creamTriangles.velocity
+        translateY: 2*translateSize
+        translateX: 2*translateSize
+      ,
+        duration: @dur
+        delay:    @start
+        begin:=>
+          @$sliceLine.hide()
+          @$creamTriangles.show()
+          @$flowersCream.hide()
+
+      .velocity
+          translateY: 0
+          translateX: 0
+        ,
+          duration: 10*@dur
+          easing: 'easeOutElastic'
+
+    @$creamTriangle1.css 'transform-origin': '50% 50%'
+
+    @$creamTriangle1.velocity
+        translateX: 490
+        translateY: 300
+      ,
+        duration: 1
+
+      .velocity
+        translateX: 490 - translateSize
+        translateY: 300 + translateSize/2
+      ,
+        duration: 6*@dur
+        delay:    @start - 400*@s
+        easing: 'easeOutElastic'
+
+      .velocity
+        translateX: 490 - translateSize/2 - 160
+        translateY: 300 - translateSize/2 + 160
+      ,
+        duration: 20*@dur
+        delay:    200*@s
+        easing: 'linear'
+        # easing: 'none'
+
+      .velocity
+        translateX: 490 - translateSize/2 - 150
+        translateY: 300 - translateSize/2 + 650
+        rotateZ: -120
+        transformOrigin: '50%'
+      ,
+        duration: 36*@dur
+        easing: 'linear'
+
+
+     @$creamTriangle2.velocity
+        rotateX: 90
+      ,
+        duration: 800*@s
+        delay: @start + 1000*@s
+        easing: 'easeOutBounce'
+        begin:=>
+          @$creamTriangle2.css transformOrigin: '50% 100%'
 
 new Main
