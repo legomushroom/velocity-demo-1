@@ -13,5 +13,20 @@
         height="300"
         xlink:href="css/i/owls.jpg"></image>
     </pattern>
+
+    <pattern id="cheese-pattern" width="400" height="300" patternUnits="userSpaceOnUse" y="200">
+      <image id="js-cheese-image"
+        width="400"
+        height="300"
+        xlink:href="css/i/cheese.jpg"></image>
+    </pattern>
+
+    <pattern id="wood-pattern" width="400" height="300" patternUnits="userSpaceOnUse" y="200">
+      <image id="js-wood-image"
+        width="400"
+        height="300"
+        xlink:href="css/i/wood.jpg"></image>
+    </pattern>
+
   </defs>
 </svg>

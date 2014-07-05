@@ -1,9 +1,7 @@
 class Main
   constructor:->
     @vars()
-    setTimeout =>
-      @run()
-    , 200
+    @run()
 
   vars:->
     @s = 1
@@ -12,11 +10,11 @@ class Main
     @$owlsImage    = $('#js-owls-image')
     @$flowersCream = $('#js-flowers-cream')
     @$sliceLine    = $('#js-slice-line')
+    @$divSparks    = $('#js-div-sparks')
     @$creamTriangle1 = $('#js-cream-triangle1').css 'transform': 'translate(490px,300px)'
     @$creamTriangle2 = $('#js-cream-triangle2')
     @$creamTriangles = $('#js-cream-triangles')
     @$creamTriangleWrapper = $('#js-cream-triangle2-wrapper').css 'transform': 'translate(490px,300px)'
-
 
   run:->
     @start = 0*@s
@@ -108,9 +106,39 @@ class Main
         rotateX: 90
       ,
         duration: 800*@s
-        delay: @start + 1000*@s
+        delay: @start + 1200*@s
         easing: 'easeOutBounce'
         begin:=>
           @$creamTriangle2.css transformOrigin: '50% 100%'
 
-new Main
+    @$divSparks.velocity
+        translateX: 235 - translateSize/5
+        translateY: 50 + translateSize/5
+      ,
+        duration: 3*@dur
+        delay:    @start
+        easing: 'easeOutElastic'
+        begin:=> @$divSparks.show()
+
+
+    @start = @start - 50*@s
+    @dur = 50*@s
+    @$divSparks.children().each (i, item)=>
+      $item = $(item)
+      length = $item[0].getTotalLength()
+      $item.velocity
+          'strokeDasharray': length
+        ,
+          duration: 1
+
+        .velocity
+          'strokeDashoffset': if i is 3 then -length else length
+        ,
+          delay: @start + h.rand(1,300)*@s + i*20*@s
+          duration: @dur + h.rand(50,100)*@s
+          begin:=>
+            @$divSparks.show()
+
+setTimeout =>
+  new Main
+, 500

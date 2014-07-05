@@ -4,11 +4,7 @@
   Main = (function() {
     function Main() {
       this.vars();
-      setTimeout((function(_this) {
-        return function() {
-          return _this.run();
-        };
-      })(this), 200);
+      this.run();
     }
 
     Main.prototype.vars = function() {
@@ -18,6 +14,7 @@
       this.$owlsImage = $('#js-owls-image');
       this.$flowersCream = $('#js-flowers-cream');
       this.$sliceLine = $('#js-slice-line');
+      this.$divSparks = $('#js-div-sparks');
       this.$creamTriangle1 = $('#js-cream-triangle1').css({
         'transform': 'translate(490px,300px)'
       });
@@ -112,11 +109,11 @@
         duration: 36 * this.dur,
         easing: 'linear'
       });
-      return this.$creamTriangle2.velocity({
+      this.$creamTriangle2.velocity({
         rotateX: 90
       }, {
         duration: 800 * this.s,
-        delay: this.start + 1000 * this.s,
+        delay: this.start + 1200 * this.s,
         easing: 'easeOutBounce',
         begin: (function(_this) {
           return function() {
@@ -126,12 +123,51 @@
           };
         })(this)
       });
+      this.$divSparks.velocity({
+        translateX: 235 - translateSize / 5,
+        translateY: 50 + translateSize / 5
+      }, {
+        duration: 3 * this.dur,
+        delay: this.start,
+        easing: 'easeOutElastic',
+        begin: (function(_this) {
+          return function() {
+            return _this.$divSparks.show();
+          };
+        })(this)
+      });
+      this.start = this.start - 50 * this.s;
+      this.dur = 50 * this.s;
+      return this.$divSparks.children().each((function(_this) {
+        return function(i, item) {
+          var $item, length;
+          $item = $(item);
+          length = $item[0].getTotalLength();
+          return $item.velocity({
+            'strokeDasharray': length
+          }, {
+            duration: 1
+          }).velocity({
+            'strokeDashoffset': i === 3 ? -length : length
+          }, {
+            delay: _this.start + h.rand(1, 300) * _this.s + i * 20 * _this.s,
+            duration: _this.dur + h.rand(50, 100) * _this.s,
+            begin: function() {
+              return _this.$divSparks.show();
+            }
+          });
+        };
+      })(this));
     };
 
     return Main;
 
   })();
 
-  new Main;
+  setTimeout((function(_this) {
+    return function() {
+      return new Main;
+    };
+  })(this), 500);
 
 }).call(this);

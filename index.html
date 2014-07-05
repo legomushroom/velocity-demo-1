@@ -20,6 +20,21 @@
         height="300"
         xlink:href="css/i/owls.jpg"></image>
     </pattern>
+
+    <pattern id="cheese-pattern" width="400" height="300" patternUnits="userSpaceOnUse" y="200">
+      <image id="js-cheese-image"
+        width="400"
+        height="300"
+        xlink:href="css/i/cheese.jpg"></image>
+    </pattern>
+
+    <pattern id="wood-pattern" width="400" height="300" patternUnits="userSpaceOnUse" y="200">
+      <image id="js-wood-image"
+        width="400"
+        height="300"
+        xlink:href="css/i/wood.jpg"></image>
+    </pattern>
+
   </defs>
 </svg>
 
@@ -237,9 +252,22 @@
         <rect id="js-slice-line" transform="scale(0) rotate(45)" opacity="0" height="2" width="400" x="340" y="450" fill="white"></rect>
       </mask>
       <rect fill="url(#owls-pattern)" mask="url(#dust-mask)" width="1280" height="800"></rect>
+      <mask id="div-sparks-mask">
+        <g id="js-div-sparks" stroke="white" stroke-width="1.5" transform="translate(235,50)" class="h-g">
+          <path id="Path-1" d="M774.768438,-0.312275905 L458.962027,337.084693"></path>
+          <path id="Path-2" d="M629.534911,164.827713 L459.892692,333.790631"></path>
+          <path id="Path-3" d="M695.730037,149.127504 L460.937316,334.955134"></path>
+          <path id="Path-4" d="M458.229458,337.575208 L-0.456375436,786.648057"></path>
+          <path id="Path-5" d="M582.356135,228.558727 L458.422328,336.872135"></path>
+          <path id="Path-6" d="M595.479623,203.599569 L513.360903,277.612355"></path>
+          <path id="Path-7" d="M573.797284,227.506022 L521.744715,276.654458"></path>
+        </g>
+      </mask>
+      <rect fill="url(#wood-pattern)" mask="url(#div-sparks-mask)" width="1280" height="800"></rect>
     </svg>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/velocity/jquery.velocity.min.js"></script>
+    <script src="js/helpers.js"></script>
     <script src="js/spriter.js"></script>
     <script src="js/main.js"></script>
   </body>
