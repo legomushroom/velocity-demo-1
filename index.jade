@@ -11,11 +11,12 @@ html
       rect.rect#js-flowers-cream(fill="url(#flowers-cream-pattern)", width="300", height="300", x="490", y="-600")
       mask(id="dust-mask")
         include dust.svg
-        rect(id="js-slice-line", transform="scale(0)", height="2", width="400", x=340, y=450, fill="white")
+        rect(id="js-slice-line", transform="scale(0) rotate(45)", opacity="0", height="2", width="400", x=340, y=450, fill="white")
       rect(fill="url(#owls-pattern)", mask="url(#dust-mask)", width="1280", height="800")
 
     script(src="bower_components/jquery/dist/jquery.js")
     script(src="bower_components/velocity/jquery.velocity.min.js")
+    script(src="js/spriter.js")
     script(src="js/main.js")
 
 

@@ -21,50 +21,16 @@
     };
 
     Main.prototype.run = function() {
-      setTimeout((function(_this) {
-        return function() {
-          var $currDust, $dustChilds, $prevDust, s;
-          _this.$owlsImage.velocity({
-            opacity: 1
-          }, {
-            duration: 1500
-          });
-          $currDust = null;
-          $prevDust = null;
-          $dustChilds = _this.$dust.children();
-          s = _this.s;
-          return $dustChilds.each(function(i, item) {
-            $prevDust = $currDust;
-            $currDust = $(item);
-            return (function($prevDust, $currDust, i, $dustChilds, s) {
-              return setTimeout((function(_this) {
-                return function() {
-                  if ($prevDust != null) {
-                    $prevDust.hide();
-                  }
-                  $currDust.show();
-                  if (i === $dustChilds.length - 1) {
-                    return setTimeout(function() {
-                      return $currDust.hide();
-                    }, 80);
-                  }
-                };
-              })(this), i * 80 * s);
-            })($prevDust, $currDust, i, $dustChilds, s);
-          });
-        };
-      })(this), 275 * this.s);
+      new Spriter({
+        sprites: this.$dust.children(),
+        duration: 800,
+        delay: 275
+      });
       this.$flowersCream.velocity({
         y: 300
       }, {
         duration: 300 * this.s,
         easing: 'ease-in'
-      });
-      this.$sliceLine.velocity({
-        rotateZ: 45,
-        opacity: 0
-      }, {
-        duration: 1
       });
       return this.$sliceLine.velocity({
         rotateZ: 315,
@@ -73,7 +39,7 @@
         width: 600,
         transformOrigin: '50% 50%'
       }, {
-        delay: 800
+        delay: 1000
       });
     };
 

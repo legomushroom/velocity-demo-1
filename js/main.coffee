@@ -14,30 +14,10 @@ class Main
     @$sliceLine    = $('#js-slice-line')
 
   run:->
-    setTimeout =>
-      @$owlsImage.velocity
-          opacity: 1
-        ,
-          duration: 1500
-
-      $currDust = null
-      $prevDust = null
-      $dustChilds = @$dust.children()
-      s = @s
-      $dustChilds.each (i, item)->
-        $prevDust = $currDust
-        $currDust = $(item)
-        do ($prevDust, $currDust, i, $dustChilds, s)->
-          setTimeout =>
-            $prevDust?.hide()
-            $currDust.show()
-            if i is $dustChilds.length-1
-              setTimeout =>
-                $currDust.hide()
-              , 80
-
-          , (i*80*s)
-    , 275*@s
+    new Spriter 
+      sprites:  @$dust.children()
+      duration: 800
+      delay:    275
 
     @$flowersCream.velocity
         y: 300
@@ -46,18 +26,12 @@ class Main
         easing: 'ease-in'
     
     @$sliceLine.velocity
-        rotateZ: 45
-        opacity: 0
-      ,
-        duration: 1
-
-    @$sliceLine.velocity
         rotateZ: 315
         scale: 1
         opacity: 100
         width: 600
         transformOrigin: '50% 50%'
       ,
-        delay: 800
+        delay: 1000
 
 new Main
