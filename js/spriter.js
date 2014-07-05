@@ -11,6 +11,7 @@
     Spriter.prototype.vars = function() {
       this.duration = this.o.duration != null ? this.o.duration || 400 : void 0;
       this.delay = this.o.delay != null ? this.o.delay || 0 : void 0;
+      this.easing = this.o.easing != null ? this.o.easing || 'linear' : void 0;
       this.sprites = this.o.sprites || (console.error('no sprites were specified'));
       return this.cnt = this.sprites.length;
     };
@@ -21,6 +22,7 @@
       }, {
         duration: this.duration,
         delay: this.delay,
+        easing: this.easing,
         progress: (function(_this) {
           return function($els, progress) {
             var i, _i, _ref, _ref1, _results;

@@ -14,10 +14,10 @@ class Main
     @$sliceLine    = $('#js-slice-line')
 
   run:->
-    new Spriter 
+    new Spriter
       sprites:  @$dust.children()
-      duration: 800
-      delay:    275
+      duration: 800*@s
+      delay:    275*@s
 
     @$flowersCream.velocity
         y: 300
@@ -32,6 +32,6 @@ class Main
         width: 600
         transformOrigin: '50% 50%'
       ,
-        delay: 1000
+        delay: 1000*@s
 
 new Main

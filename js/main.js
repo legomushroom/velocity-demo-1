@@ -23,8 +23,8 @@
     Main.prototype.run = function() {
       new Spriter({
         sprites: this.$dust.children(),
-        duration: 800,
-        delay: 275
+        duration: 800 * this.s,
+        delay: 275 * this.s
       });
       this.$flowersCream.velocity({
         y: 300
@@ -39,7 +39,7 @@
         width: 600,
         transformOrigin: '50% 50%'
       }, {
-        delay: 1000
+        delay: 1000 * this.s
       });
     };
 

@@ -6,6 +6,7 @@ class Spriter
   vars:->
     @duration = if @o.duration? then @o.duration or 400
     @delay    = if @o.delay? then @o.delay or 0
+    @easing    = if @o.easing? then @o.easing or 'linear'
     @sprites = @o.sprites or (console.error 'no sprites were specified')
     @cnt = @sprites.length
 
@@ -15,6 +16,7 @@ class Spriter
       ,
         duration: @duration
         delay:    @delay
+        easing:   @easing
         progress:($els,progress)=>
           for i in [0...@cnt]
             if progress >= i*(1/@cnt)
