@@ -134,8 +134,8 @@ class Main
         .velocity
           'strokeDashoffset': if i is 3 then -length else length
         ,
-          delay: @start + h.rand(1,300)*@s + i*20*@s
-          duration: @dur + h.rand(50,100)*@s
+          delay: @start + h.rand(1,100)*@s + i*20*@s
+          duration: @dur + h.rand(0,50)*@s
           begin:=>
             @$divSparks.show()
 

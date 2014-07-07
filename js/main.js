@@ -150,8 +150,8 @@
           }).velocity({
             'strokeDashoffset': i === 3 ? -length : length
           }, {
-            delay: _this.start + h.rand(1, 300) * _this.s + i * 20 * _this.s,
-            duration: _this.dur + h.rand(50, 100) * _this.s,
+            delay: _this.start + h.rand(1, 100) * _this.s + i * 20 * _this.s,
+            duration: _this.dur + h.rand(0, 50) * _this.s,
             begin: function() {
               return _this.$divSparks.show();
             }
