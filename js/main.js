@@ -8,37 +8,62 @@
     }
 
     Main.prototype.vars = function() {
-      this.s = 1;
+      this.s = 5;
       this.$pattern = $('#flowers-cream-pattern');
       this.$dust = $('#js-dust');
-      this.$wave1Rect = $('#js-wave1-u-rect');
-      this.wave1Y = 1000;
-      this.wave1YStart = 1800;
-      this.wave1UnderlineY = 75;
-      this.$wave1 = $('#js-wave1').velocity({
-        translateY: this.wave1YStart,
-        translateX: 0,
-        rotateZ: -25
-      }, {
-        duration: 1
-      });
-      this.$wave12 = $('#js-wave12').velocity({
-        translateY: this.wave1YStart - this.wave1UnderlineY,
-        translateX: 0,
-        rotateZ: -25
-      }, {
-        duration: 1
-      });
-      this.$wave1U = $('#js-wave1-u').velocity({
-        translateY: this.wave1Y,
-        translateX: -400,
-        rotateZ: -25
-      }, {
-        duration: 1
-      });
+      this.$wave1 = $('#js-wave1');
       this.$wave1Top = $('#js-wave1-top');
-      this.$wave1TopU = $('#js-wave1-top-u');
       this.$wave1Top2 = $('#js-wave1-top2');
+      this.wave1YStart = 1350;
+      this.wave1Y = 700;
+      this.$wave1Top.velocity({
+        translateY: 0
+      }, {
+        duration: 1
+      });
+      this.$wave1Top2.velocity({
+        rotateX: -90,
+        translateY: 20
+      }, {
+        duration: 1
+      });
+      this.$wave1.velocity({
+        rotateZ: -25,
+        translateX: -400,
+        translateY: this.wave1YStart
+      }, {
+        duration: 1
+      });
+      this.$wave2 = $('#js-wave2');
+      this.$wave2Top = $('#js-wave2-top');
+      this.$wave2Top2 = $('#js-wave2-top2');
+      this.$wave2Top3 = $('#js-wave2-top3');
+      this.$wave2Top3Rect = $('#js-wave2-top3-rect');
+      this.wave2YStart = 1350;
+      this.wave2Y = 400;
+      this.$wave2Top.velocity({
+        translateY: 0
+      }, {
+        duration: 1
+      });
+      this.$wave2Top2.velocity({
+        rotateX: -90,
+        translateY: 20
+      }, {
+        duration: 1
+      });
+      this.$wave2Top3.velocity({
+        translateY: -20
+      }, {
+        duration: 1
+      });
+      this.$wave2.velocity({
+        rotateZ: -25,
+        translateX: -400,
+        translateY: this.wave2YStart
+      }, {
+        duration: 1
+      });
       this.$owlsImage = $('#js-owls-image');
       this.$flowersCream = $('#js-flowers-cream');
       this.$sliceLine = $('#js-slice-line');
@@ -172,82 +197,133 @@
           });
         };
       })(this));
-      return this.wave1(3000 * this.s);
+      this.wave1(2300 * this.s);
+      return this.wave2(4200 * this.s);
     };
 
     Main.prototype.wave1 = function(delay) {
-      var baseDuration, topDuration;
-      baseDuration = 2000 * this.s;
-      topDuration = 1000 * this.s;
+      var topRotateDur1, wave1Time;
+      wave1Time = 1200 * this.s;
+      topRotateDur1 = wave1Time / 3;
+      this.$wave1.velocity({
+        translateY: this.wave1Y
+      }, {
+        delay: delay,
+        duration: wave1Time,
+        easing: 'ease-out',
+        begin: (function(_this) {
+          return function() {
+            return _this.$wave1.show();
+          };
+        })(this)
+      }).velocity({
+        translateY: this.wave1YStart
+      }, {
+        duration: wave1Time,
+        easing: 'ease-in'
+      });
       this.$wave1Top.css({
         'transform-origin': 'center bottom'
-      }).velocity({
-        rotateX: -180
-      }, {
-        delay: delay + 400 * this.s,
-        duration: topDuration
       });
-      this.$wave1TopU.css({
-        'transform-origin': 'center bottom'
-      }).velocity({
-        rotateX: -180
+      this.$wave1Top.velocity({
+        rotateX: -90
       }, {
-        delay: delay + 300 * this.s,
-        duration: topDuration
+        delay: delay + wave1Time,
+        duration: topRotateDur1,
+        complete: (function(_this) {
+          return function() {
+            return _this.$wave1Top.hide();
+          };
+        })(this)
       });
       this.$wave1Top2.css({
         'transform-origin': 'center bottom'
+      });
+      this.$wave1Top2.velocity({
+        rotateX: -180,
+        translateY: 4
+      }, {
+        delay: delay + wave1Time + .75 * topRotateDur1,
+        duration: topRotateDur1
+      });
+      return this.$creamTriangle2.velocity({
+        rotateZ: -5,
+        translateY: -45,
+        translateX: -40
+      }, {
+        duration: topRotateDur1,
+        delay: .88 * (delay + wave1Time)
       }).velocity({
-        rotateX: -180
+        rotateZ: -7,
+        translateY: -20,
+        translateX: -25
       }, {
-        delay: delay + 400 * this.s,
-        duration: topDuration
+        duration: topRotateDur1
       });
-      this.$wave1U.velocity({
-        translateY: this.wave1YStart,
-        translateX: 0,
-        opacity: 100,
-        easing: 'ease-out'
+    };
+
+    Main.prototype.wave2 = function(delay) {
+      var topRotateDur2, wave2Time;
+      wave2Time = 1500 * this.s;
+      topRotateDur2 = wave2Time / 3;
+      this.$wave2.velocity({
+        translateY: this.wave2Y
       }, {
-        duration: baseDuration,
-        delay: delay + 800 * this.s
-      });
-      console.log(this.$wave1Rect[0]);
-      this.$wave1Rect.velocity({
-        height: 35,
-        y: 19
+        delay: delay,
+        duration: wave2Time,
+        easing: 'ease-out',
+        begin: (function(_this) {
+          return function() {
+            return _this.$wave2.show();
+          };
+        })(this),
+        progress: (function(_this) {
+          return function($els, progress) {
+            if (progress >= 0.375) {
+              _this.$wave2Top3.hide();
+              return _this.$wave2Top3Rect.hide();
+            }
+          };
+        })(this)
+      }).velocity({
+        translateY: this.wave2YStart
       }, {
-        delay: delay + 800 * this.s
-      });
-      this.$wave12.velocity({
-        translateY: this.wave1Y - this.wave1UnderlineY,
-        translateX: -400,
-        opacity: 100,
+        duration: wave2Time,
         easing: 'ease-in'
-      }, {
-        delay: delay - 1200 * this.s,
-        duration: baseDuration
-      }).velocity({
-        translateY: this.wave1YStart - this.wave1UnderlineY,
-        translateX: 0,
-        easing: 'ease-out'
-      }, {
-        duration: baseDuration
       });
-      return this.$wave1.velocity({
-        translateY: this.wave1Y,
-        translateX: -400,
-        opacity: 100,
-        easing: 'ease-in'
+      this.$wave2Top.css({
+        'transform-origin': 'center bottom'
+      });
+      this.$wave2Top.velocity({
+        rotateX: -90
       }, {
-        delay: delay - 1200 * this.s,
-        duration: baseDuration
-      }).velocity({
-        translateY: this.wave1YStart,
-        translateX: 0,
+        delay: delay + wave2Time,
+        duration: topRotateDur2
+      });
+      this.$wave2Top2.css({
+        'transform-origin': 'center bottom'
+      });
+      this.$wave2Top2.velocity({
+        rotateX: -180,
+        translateY: 4
+      }, {
+        delay: delay + wave2Time + .75 * topRotateDur2,
+        duration: topRotateDur2
+      });
+      return this.$creamTriangle2.velocity({
+        rotateZ: -12,
+        translateY: -80,
+        translateX: -90
+      }, {
+        duration: 1.2 * topRotateDur2,
+        delay: 1000 * this.s,
         easing: 'ease-out'
+      }).velocity({
+        rotateZ: -13,
+        translateY: 800,
+        translateX: 600
       }, {
-        duration: baseDuration
+        duration: 1
       });
     };
 

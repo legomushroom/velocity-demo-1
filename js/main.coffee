@@ -4,40 +4,59 @@ class Main
     @run()
 
   vars:->
-    @s = 1
+    @s = 5
     @$pattern      = $('#flowers-cream-pattern')
     @$dust         = $('#js-dust')
-    @$wave1Rect    = $('#js-wave1-u-rect')
 
-    @wave1Y        = 1000
-    @wave1YStart   = 1800
-    @wave1UnderlineY = 75
     @$wave1        = $('#js-wave1')
-      .velocity {
-          translateY: @wave1YStart
-          translateX: 0
-          rotateZ: -25
-        }, duration: 1
+    @$wave1Top     = $('#js-wave1-top')
+    @$wave1Top2    = $('#js-wave1-top2')
 
-    @$wave12        = $('#js-wave12')
-      .velocity {
-          translateY: @wave1YStart - @wave1UnderlineY
-          translateX: 0
-          rotateZ: -25
-        }, duration: 1
+    @wave1YStart = 1350
+    @wave1Y      = 700
+    @$wave1Top.velocity {
+        translateY: 0
+      }, duration: 1
 
-    @$wave1U        = $('#js-wave1-u')
-      .velocity {
-          translateY: @wave1Y
-          translateX: -400
-          rotateZ: -25
-        }, duration: 1
+    @$wave1Top2.velocity {
+        rotateX: -90
+        translateY: 20
+      }, duration: 1
+
+    @$wave1.velocity {
+        rotateZ: -25
+        translateX: -400
+        translateY: @wave1YStart
+      }, duration: 1
 
 
-    @$wave1Top      = $('#js-wave1-top')
-    @$wave1TopU     = $('#js-wave1-top-u')
-    @$wave1Top2     = $('#js-wave1-top2')
+    @$wave2        = $('#js-wave2')
+    @$wave2Top     = $('#js-wave2-top')
+    @$wave2Top2    = $('#js-wave2-top2')
+    @$wave2Top3    = $('#js-wave2-top3')
+    @$wave2Top3Rect= $('#js-wave2-top3-rect')
 
+    @wave2YStart = 1350
+    @wave2Y      = 400
+    @$wave2Top.velocity {
+        translateY: 0
+      }, duration: 1
+
+    @$wave2Top2.velocity {
+        rotateX: -90
+        translateY: 20
+      }, duration: 1
+
+    @$wave2Top3.velocity {
+        translateY: -20
+      }, duration: 1
+
+    @$wave2.velocity {
+        rotateZ: -25
+        translateX: -400
+        translateY: @wave2YStart
+      }, duration: 1
+    
     @$owlsImage    = $('#js-owls-image')
     @$flowersCream = $('#js-flowers-cream')
     @$sliceLine    = $('#js-slice-line')
@@ -68,7 +87,6 @@ class Main
       sprites:  @$dust.children()
       duration: @dur
       delay:    @start
-
 
     @start = @start + @dur - 200*@s
     @dur = 400*@s
@@ -175,84 +193,109 @@ class Main
           begin:=>
             @$divSparks.show()
 
-    @wave1(3000*@s)
+    @wave1(2300*@s)
+    @wave2(4200*@s)
 
   wave1:(delay)->
-    baseDuration = 2000*@s
-    topDuration  = 1000*@s
-    @$wave1Top
-      .css 'transform-origin': 'center bottom'
-      .velocity {
-        rotateX: -180
-      },
-        delay: delay + 400*@s
-        duration: topDuration
-
-    @$wave1TopU
-      .css 'transform-origin': 'center bottom'
-      .velocity {
-        rotateX: -180
-      },
-        delay: delay + 300*@s
-        duration: topDuration
-
-    @$wave1Top2
-      .css 'transform-origin': 'center bottom'
-      .velocity {
-        rotateX: -180
-      },
-        delay: delay + 400*@s
-        duration: topDuration
-
-    @$wave1U
-      .velocity {
-        translateY: @wave1YStart
-        translateX: 0
-        opacity: 100
-        easing: 'ease-out'
-      },
-        duration: baseDuration
-        delay: delay + 800*@s
-
-    console.log @$wave1Rect[0]
-    @$wave1Rect.velocity {
-        height: 35
-        y: 19
-      },
-        delay: delay + 800*@s
-
-
-    @$wave12
-      .velocity {
-        translateY: @wave1Y - @wave1UnderlineY
-        translateX: -400
-        opacity: 100
-        easing: 'ease-in'
-      },
-        delay: delay - 1200*@s
-        duration: baseDuration
-
-      .velocity {
-        translateY: @wave1YStart - @wave1UnderlineY
-        translateX: 0
-        easing: 'ease-out'
-      }, duration: baseDuration
-
-    @$wave1
-      .velocity {
+    wave1Time = 1200*@s
+    topRotateDur1 = wave1Time/3
+    @$wave1.velocity {
         translateY: @wave1Y
-        translateX: -400
-        opacity: 100
-        easing: 'ease-in'
       },
-        delay: delay - 1200*@s
-        duration: baseDuration
+        delay: delay
+        duration: wave1Time
+        easing: 'ease-out'
+        begin:=>
+          @$wave1.show()
 
       .velocity {
         translateY: @wave1YStart
-        translateX: 0
+      },
+        duration: wave1Time
+        easing: 'ease-in'
+
+    @$wave1Top.css 'transform-origin': 'center bottom'
+    @$wave1Top.velocity {
+      rotateX: -90
+    },
+      delay: delay + wave1Time
+      duration: topRotateDur1
+      complete:=> @$wave1Top.hide()
+
+    @$wave1Top2.css 'transform-origin': 'center bottom'
+    @$wave1Top2.velocity {
+      rotateX: -180
+      translateY: 4
+    },
+      delay: delay + wave1Time + .75*topRotateDur1
+      duration: topRotateDur1
+
+    @$creamTriangle2.velocity {
+        rotateZ:    -5
+        translateY: -45
+        translateX: -40
+      },
+        duration: topRotateDur1
+        delay: .88*(delay + wave1Time)
+
+      .velocity {
+        rotateZ:    -7
+        translateY: -20
+        translateX: -25
+      },
+        duration: topRotateDur1
+
+  wave2:(delay)->
+    wave2Time = 1500*@s
+    topRotateDur2 = wave2Time/3
+    @$wave2.velocity {
+        translateY: @wave2Y
+      },
+        delay: delay
+        duration: wave2Time
         easing: 'ease-out'
-      }, duration: baseDuration
+        begin:=> @$wave2.show()
+        progress:($els, progress)=>
+          if progress >= 0.375
+            @$wave2Top3.hide()
+            @$wave2Top3Rect.hide()
+
+      .velocity {
+        translateY: @wave2YStart
+      },
+        duration: wave2Time
+        easing: 'ease-in'
+
+    @$wave2Top.css 'transform-origin': 'center bottom'
+    @$wave2Top.velocity {
+      rotateX: -90
+    },
+      delay: delay + wave2Time
+      duration: topRotateDur2
+
+    @$wave2Top2.css 'transform-origin': 'center bottom'
+    @$wave2Top2.velocity {
+      rotateX: -180
+      translateY: 4
+    },
+      delay: delay + wave2Time + .75*topRotateDur2
+      duration: topRotateDur2
+
+    @$creamTriangle2.velocity {
+        rotateZ:    -12
+        translateY: -80
+        translateX: -90
+      },
+        duration: 1.2*topRotateDur2
+        delay: 1000*@s
+        easing: 'ease-out'
+
+      .velocity {
+        rotateZ:    -13
+        translateY: 800
+        translateX: 600
+      },
+        duration: 1
 
 setTimeout =>
   new Main
