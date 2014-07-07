@@ -11,6 +11,30 @@
       this.s = 1;
       this.$pattern = $('#flowers-cream-pattern');
       this.$dust = $('#js-dust');
+      this.$wave1 = $('#js-wave1').velocity({
+        translateY: 1800,
+        translateX: 0,
+        rotateZ: -25
+      }, {
+        duration: 1
+      });
+      this.$wave12 = $('#js-wave12').velocity({
+        translateY: 1300,
+        translateX: -400,
+        rotateZ: -25
+      }, {
+        duration: 1
+      });
+      this.$wave1U = $('#js-wave1-u').velocity({
+        translateY: 1300,
+        translateX: -400,
+        rotateZ: -25
+      }, {
+        duration: 1
+      });
+      this.$wave1Top = $('#js-wave1-top');
+      this.$wave1TopU = $('#js-wave1-top-u');
+      this.$wave1Top2 = $('#js-wave1-top2');
       this.$owlsImage = $('#js-owls-image');
       this.$flowersCream = $('#js-flowers-cream');
       this.$sliceLine = $('#js-slice-line');
@@ -26,138 +50,61 @@
     };
 
     Main.prototype.run = function() {
-      var translateSize;
-      this.start = 0 * this.s;
-      this.dur = this.start + 300 * this.s;
-      this.$flowersCream.velocity({
-        y: 300
+      return this.wave1(2000 * this.s);
+    };
+
+    Main.prototype.wave1 = function(delay) {
+      var baseDuration, topDuration;
+      baseDuration = 2000 * this.s;
+      topDuration = 1000 * this.s;
+      this.$wave1Top.css({
+        'transform-origin': 'center bottom'
+      }).velocity({
+        rotateX: -180
       }, {
-        duration: this.dur,
-        delay: this.start,
-        easing: 'ease-in'
+        delay: delay + 400 * this.s,
+        duration: topDuration
       });
-      this.start = this.start + 275 * this.s;
-      this.dur = 800 * this.s;
-      new Spriter({
-        sprites: this.$dust.children(),
-        duration: this.dur,
-        delay: this.start
+      this.$wave1TopU.css({
+        'transform-origin': 'center bottom'
+      }).velocity({
+        rotateX: -180
+      }, {
+        delay: delay + 400 * this.s,
+        duration: topDuration
       });
-      this.start = this.start + this.dur - 200 * this.s;
-      this.dur = 400 * this.s;
-      this.$sliceLine.velocity({
-        rotateZ: 315,
-        scale: 1,
+      this.$wave1Top2.css({
+        'transform-origin': 'center bottom'
+      }).velocity({
+        rotateX: -180
+      }, {
+        delay: delay + 500 * this.s,
+        duration: topDuration
+      });
+      this.$wave1U.velocity({
+        translateY: 1800,
+        translateX: 0,
         opacity: 100,
-        width: 600,
-        transformOrigin: '50% 50%'
+        easing: 'ease-out'
       }, {
-        delay: this.start,
-        duration: this.dur
+        duration: baseDuration,
+        delay: delay + 800 * this.s
       });
-      this.start = this.start + this.dur + 200 * this.s;
-      this.dur = 30 * this.s;
-      translateSize = 20;
-      this.$creamTriangles.velocity({
-        translateY: 2 * translateSize,
-        translateX: 2 * translateSize
+      return this.$wave1.velocity({
+        translateY: 1300,
+        translateX: -400,
+        opacity: 100,
+        easing: 'ease-in'
       }, {
-        duration: this.dur,
-        delay: this.start,
-        begin: (function(_this) {
-          return function() {
-            _this.$sliceLine.hide();
-            _this.$creamTriangles.show();
-            return _this.$flowersCream.hide();
-          };
-        })(this)
+        delay: delay - 1200 * this.s,
+        duration: baseDuration
       }).velocity({
-        translateY: 0,
-        translateX: 0
+        translateY: 1800,
+        translateX: 0,
+        easing: 'ease-out'
       }, {
-        duration: 10 * this.dur,
-        easing: 'easeOutElastic'
+        duration: baseDuration
       });
-      this.$creamTriangle1.css({
-        'transform-origin': '50% 50%'
-      });
-      this.$creamTriangle1.velocity({
-        translateX: 490,
-        translateY: 300
-      }, {
-        duration: 1
-      }).velocity({
-        translateX: 490 - translateSize,
-        translateY: 300 + translateSize / 2
-      }, {
-        duration: 6 * this.dur,
-        delay: this.start - 400 * this.s,
-        easing: 'easeOutElastic'
-      }).velocity({
-        translateX: 490 - translateSize / 2 - 160,
-        translateY: 300 - translateSize / 2 + 160
-      }, {
-        duration: 20 * this.dur,
-        delay: 200 * this.s,
-        easing: 'linear'
-      }).velocity({
-        translateX: 490 - translateSize / 2 - 150,
-        translateY: 300 - translateSize / 2 + 650,
-        rotateZ: -120,
-        transformOrigin: '50%'
-      }, {
-        duration: 36 * this.dur,
-        easing: 'linear'
-      });
-      this.$creamTriangle2.velocity({
-        rotateX: 90
-      }, {
-        duration: 800 * this.s,
-        delay: this.start + 1200 * this.s,
-        easing: 'easeOutBounce',
-        begin: (function(_this) {
-          return function() {
-            return _this.$creamTriangle2.css({
-              transformOrigin: '50% 100%'
-            });
-          };
-        })(this)
-      });
-      this.$divSparks.velocity({
-        translateX: 235 - translateSize / 5,
-        translateY: 50 + translateSize / 5
-      }, {
-        duration: 3 * this.dur,
-        delay: this.start,
-        easing: 'easeOutElastic',
-        begin: (function(_this) {
-          return function() {
-            return _this.$divSparks.show();
-          };
-        })(this)
-      });
-      this.start = this.start - 50 * this.s;
-      this.dur = 50 * this.s;
-      return this.$divSparks.children().each((function(_this) {
-        return function(i, item) {
-          var $item, length;
-          $item = $(item);
-          length = $item[0].getTotalLength();
-          return $item.velocity({
-            'strokeDasharray': length
-          }, {
-            duration: 1
-          }).velocity({
-            'strokeDashoffset': i === 3 ? -length : length
-          }, {
-            delay: _this.start + h.rand(1, 100) * _this.s + i * 20 * _this.s,
-            duration: _this.dur + h.rand(0, 50) * _this.s,
-            begin: function() {
-              return _this.$divSparks.show();
-            }
-          });
-        };
-      })(this));
     };
 
     return Main;
