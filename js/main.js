@@ -90,6 +90,15 @@
         duration: baseDuration,
         delay: delay + 800 * this.s
       });
+      this.$wave12.velocity({
+        translateY: 1800,
+        translateX: 0,
+        opacity: 100,
+        easing: 'ease-out'
+      }, {
+        duration: baseDuration,
+        delay: delay + 900 * this.s
+      });
       return this.$wave1.velocity({
         translateY: 1300,
         translateX: -400,
