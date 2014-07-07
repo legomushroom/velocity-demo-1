@@ -2995,6 +2995,7 @@ svg {
   max-width: 1280px;
   max-height: 1280px;
   display: block;
+  overflow: hidden;
   margin-left: auto;
   margin-right: auto;
 }
