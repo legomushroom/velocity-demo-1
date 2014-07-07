@@ -1,5 +1,11 @@
 <svg id="svg" width="500" height="500" viewBox="0 0 500 500" style="margin-left:-100%;position:absolute;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" enable-background="new 0 0 500 500" xml:space="preserve">
   <defs>
+    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="wave-gradient">
+        <stop stop-color="#79FFD3" offset="0%"></stop>
+        <stop stop-color="#2AC3EF" offset="46.2176487%"></stop>
+        <stop stop-color="#A752BA" offset="100%"></stop>
+    </linearGradient>
+
     <pattern id="flowers-cream-pattern" width="400" height="400" patternUnits="userSpaceOnUse">
       <image
         width="400"

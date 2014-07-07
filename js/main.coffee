@@ -4,7 +4,7 @@ class Main
     @run()
 
   vars:->
-    @s = 5
+    @s = 1
     @$pattern      = $('#flowers-cream-pattern')
     @$dust         = $('#js-dust')
 
@@ -166,8 +166,8 @@ class Main
      #      @$creamTriangle2.css transformOrigin: '50% 100%'
 
     @$divSparks.velocity
-        translateX: 235 - translateSize/5
-        translateY: 50 + translateSize/5
+        translateX: 235 - translateSize/8
+        translateY: 50 + translateSize/8
       ,
         duration: 3*@dur
         delay:    @start

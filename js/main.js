@@ -8,7 +8,7 @@
     }
 
     Main.prototype.vars = function() {
-      this.s = 5;
+      this.s = 1;
       this.$pattern = $('#flowers-cream-pattern');
       this.$dust = $('#js-dust');
       this.$wave1 = $('#js-wave1');
@@ -163,8 +163,8 @@
         easing: 'linear'
       });
       this.$divSparks.velocity({
-        translateX: 235 - translateSize / 5,
-        translateY: 50 + translateSize / 5
+        translateX: 235 - translateSize / 8,
+        translateY: 50 + translateSize / 8
       }, {
         duration: 3 * this.dur,
         delay: this.start,
