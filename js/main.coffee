@@ -291,41 +291,17 @@ class Main
     $('#js-c-mask1').velocity {
       r: 152
     },
-      delay: delay + 1600*@s
-      duration: 400*@s
-      easing: 'ease-out'
+      delay: delay + 2000*@s
+      duration: 200*@s
+      easing: 'linear'
 
     $('#js-c-mask2').velocity {
       r: 152
       opacity: 100
     },
-      delay: delay + 1600*@s
-      duration: 400*@s
-      easing: 'ease-out'
-
-    $paths = $('#js-c-mask-fwirework').find('path')
-
-    $paths.each (i, item)=>
-      $path = $(item)
-      length = $path[0].getTotalLength()
-      $path.velocity {
-        strokeDasharray: length
-        strokeDashoffset: length
-      },
-        duration: 1
-
-      $path
-        .velocity {
-          strokeDashoffset: 0
-        },
-          delay: h.rand(1,500)*@s + delay + 1200*@s + i*50*@s
-          duration: 400
-
-        .velocity {
-          strokeDashoffset: 2*length
-        },
-          duration: 400
-
+      delay: delay + 2000*@s
+      duration: 200*@s
+      easing: 'linear'
 
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>
