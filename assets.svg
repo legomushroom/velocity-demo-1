@@ -27,14 +27,14 @@
         xlink:href="css/i/cheese.jpg"></image>
     </pattern>
 
-    <pattern id="caleydoscope-pattern" width="100" height="100" patternUnits="userSpaceOnUse">
+    <pattern id="caleydoscope-pattern" width="150" height="150" patternUnits="userSpaceOnUse">
       <image id="js-caleydoscope-image"
         width="300"
         height="300"
         xlink:href="css/i/caleydoscope.png" x="-150" y="-150"></image>
     </pattern>
 
-    <pattern id="caleydoscope-pattern2" width="100" height="100" patternUnits="userSpaceOnUse">
+    <pattern id="caleydoscope-pattern2" width="150" height="150" patternUnits="userSpaceOnUse">
       <image id="js-caleydoscope-image2"
         width="300"
         height="300"

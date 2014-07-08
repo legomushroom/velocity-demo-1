@@ -14,6 +14,7 @@
       this.$caleydoscopePattern = $('#caleydoscope-pattern');
       this.$caleydoscopeImage = $('#js-caleydoscope-image');
       this.$caleydoscopeImage2 = $('#js-caleydoscope-image2');
+      this.$caleydoscope = $('#js-caleydoscope');
       this.$wave1 = $('#js-wave1');
       this.$wave1Top = $('#js-wave1-top');
       this.$wave1Top2 = $('#js-wave1-top2');
@@ -83,23 +84,37 @@
 
     Main.prototype.run = function() {
       var translateSize;
+      this.$caleydoscope.css({
+        'transform-origin': 'center center'
+      });
+      this.$caleydoscope.velocity({
+        rotateZ: 36000
+      }, {
+        loop: 200,
+        duration: 500000,
+        easing: 'linear'
+      });
       this.$caleydoscopeImage.css({
         'transform-origin': 'center center'
       });
       this.$caleydoscopeImage.velocity({
-        rotateZ: 36000
+        translateX: 150,
+        translateY: 150
       }, {
-        duration: 1000000,
-        easing: 'linear'
+        loop: 200,
+        duration: 2000,
+        easing: 'ease'
       });
       this.$caleydoscopeImage2.css({
         'transform-origin': 'center center'
       });
       this.$caleydoscopeImage2.velocity({
-        rotateZ: -36000
+        translateX: -150,
+        translateY: -150
       }, {
-        duration: 1000000,
-        easing: 'linear'
+        loop: 200,
+        duration: 2000,
+        easing: 'ease'
       });
       this.start = 0 * this.s;
       this.dur = this.start + 300 * this.s;

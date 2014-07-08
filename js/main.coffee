@@ -10,6 +10,7 @@ class Main
     @$caleydoscopePattern = $('#caleydoscope-pattern')
     @$caleydoscopeImage = $('#js-caleydoscope-image')
     @$caleydoscopeImage2 = $('#js-caleydoscope-image2')
+    @$caleydoscope = $('#js-caleydoscope')
 
     @$wave1        = $('#js-wave1')
     @$wave1Top     = $('#js-wave1-top')
@@ -75,19 +76,32 @@ class Main
       .css 'transform': 'translate(490px,300px)'
 
   run:->
+    @$caleydoscope.css 'transform-origin': 'center center'
+    @$caleydoscope.velocity {
+      rotateZ: 36000
+      },
+        loop: 200
+        duration: 500000
+        easing: 'linear'
+
+
     @$caleydoscopeImage.css 'transform-origin': 'center center'
     @$caleydoscopeImage.velocity {
-      rotateZ: 36000
+      translateX: 150
+      translateY: 150
     },
-      duration: 1000000
-      easing: 'linear'
+      loop: 200
+      duration: 2000
+      easing: 'ease'
 
     @$caleydoscopeImage2.css 'transform-origin': 'center center'
     @$caleydoscopeImage2.velocity {
-      rotateZ: -36000
+      translateX: -150
+      translateY: -150
     },
-      duration: 1000000
-      easing: 'linear'
+      loop: 200
+      duration: 2000
+      easing: 'ease'
 
 
     @start = 0*@s
