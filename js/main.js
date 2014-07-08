@@ -14,6 +14,10 @@
       this.$caleydoscopePattern = $('#caleydoscope-pattern');
       this.$caleydoscopeImage = $('#js-caleydoscope-image');
       this.$caleydoscopeImage2 = $('#js-caleydoscope-image2');
+      this.$caleydoscopeImage3 = $('#js-caleydoscope-image3');
+      this.$caleydoscopeImage4 = $('#js-caleydoscope-image4');
+      this.$caleydoscopeImage5 = $('#js-caleydoscope-image5');
+      this.$caleydoscopeImage6 = $('#js-caleydoscope-image6');
       this.$caleydoscope = $('#js-caleydoscope');
       this.$wave1 = $('#js-wave1');
       this.$wave1Top = $('#js-wave1-top');
@@ -84,38 +88,6 @@
 
     Main.prototype.run = function() {
       var translateSize;
-      this.$caleydoscope.css({
-        'transform-origin': 'center center'
-      });
-      this.$caleydoscope.velocity({
-        rotateZ: 36000
-      }, {
-        loop: 200,
-        duration: 500000,
-        easing: 'linear'
-      });
-      this.$caleydoscopeImage.css({
-        'transform-origin': 'center center'
-      });
-      this.$caleydoscopeImage.velocity({
-        translateX: 150,
-        translateY: 150
-      }, {
-        loop: 200,
-        duration: 2000,
-        easing: 'ease'
-      });
-      this.$caleydoscopeImage2.css({
-        'transform-origin': 'center center'
-      });
-      this.$caleydoscopeImage2.velocity({
-        translateX: -150,
-        translateY: -150
-      }, {
-        loop: 200,
-        duration: 2000,
-        easing: 'ease'
-      });
       this.start = 0 * this.s;
       this.dur = this.start + 300 * this.s;
       this.$flowersCream.velocity({
@@ -234,7 +206,8 @@
         };
       })(this));
       this.wave2(2300 * this.s);
-      return this.wave1(4000 * this.s);
+      this.wave1(4000 * this.s);
+      return this.caleydoscope(4500 * this.s);
     };
 
     Main.prototype.wave1 = function(delay) {
@@ -348,6 +321,106 @@
         translateX: 800
       }, {
         duration: 1
+      });
+    };
+
+    Main.prototype.caleydoscope = function(delay) {
+      var $paths;
+      $paths = this.$caleydoscope.find('path');
+      $paths.each((function(_this) {
+        return function(i, item) {
+          var $path, length;
+          $path = $(item);
+          length = $path[0].getTotalLength();
+          return $path.velocity({
+            opacity: 1
+          }, {
+            delay: h.rand(1, 150) * _this.s + i * 150 * _this.s + delay,
+            duration: 900
+          });
+        };
+      })(this));
+      this.$caleydoscope.css({
+        'transform-origin': 'center center'
+      });
+      this.$caleydoscope.velocity({
+        rotateZ: 720
+      }, {
+        duration: 10000,
+        easing: 'linear',
+        delay: delay
+      });
+      this.$caleydoscopeImage.css({
+        'transform-origin': 'center center'
+      });
+      this.$caleydoscopeImage.velocity({
+        translateX: -150,
+        translateY: -150
+      }, {
+        loop: 2,
+        duration: 5000,
+        easing: 'ease',
+        delay: delay
+      });
+      this.$caleydoscopeImage2.css({
+        'transform-origin': 'center center'
+      });
+      this.$caleydoscopeImage2.velocity({
+        translateX: 150,
+        translateY: 150
+      }, {
+        loop: 2,
+        duration: 5000,
+        easing: 'ease',
+        delay: delay
+      });
+      this.$caleydoscopeImage3.css({
+        'transform-origin': 'center center'
+      });
+      this.$caleydoscopeImage3.velocity({
+        translateX: -150,
+        translateY: -150
+      }, {
+        loop: 2,
+        duration: 5000,
+        easing: 'ease',
+        delay: delay
+      });
+      this.$caleydoscopeImage4.css({
+        'transform-origin': 'center center'
+      });
+      this.$caleydoscopeImage4.velocity({
+        translateX: 150,
+        translateY: 150
+      }, {
+        loop: 2,
+        duration: 5000,
+        easing: 'ease',
+        delay: delay
+      });
+      this.$caleydoscopeImage5.css({
+        'transform-origin': 'center center'
+      });
+      this.$caleydoscopeImage5.velocity({
+        translateX: -150,
+        translateY: -150
+      }, {
+        loop: 2,
+        duration: 5000,
+        easing: 'ease',
+        delay: delay
+      });
+      this.$caleydoscopeImage6.css({
+        'transform-origin': 'center center'
+      });
+      return this.$caleydoscopeImage6.velocity({
+        translateX: 150,
+        translateY: 150
+      }, {
+        loop: 2,
+        duration: 5000,
+        easing: 'ease',
+        delay: delay
       });
     };
 

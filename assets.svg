@@ -41,6 +41,34 @@
         xlink:href="css/i/caleydoscope.png" x="-150" y="-150"></image>
     </pattern>
 
+    <pattern id="caleydoscope-pattern3" width="150" height="150" patternUnits="userSpaceOnUse">
+      <image id="js-caleydoscope-image3"
+        width="300"
+        height="300"
+        xlink:href="css/i/caleydoscope2.jpg" x="-150" y="-150"></image>
+    </pattern>
+
+    <pattern id="caleydoscope-pattern4" width="150" height="150" patternUnits="userSpaceOnUse">
+      <image id="js-caleydoscope-image4"
+        width="300"
+        height="300"
+        xlink:href="css/i/caleydoscope2.jpg" x="-150" y="-150"></image>
+    </pattern>
+
+    <pattern id="caleydoscope-pattern5" width="150" height="150" patternUnits="userSpaceOnUse">
+      <image id="js-caleydoscope-image5"
+        width="300"
+        height="300"
+        xlink:href="css/i/caleydoscope4.jpg" x="-150" y="-150"></image>
+    </pattern>
+
+    <pattern id="caleydoscope-pattern6" width="150" height="150" patternUnits="userSpaceOnUse">
+      <image id="js-caleydoscope-image6"
+        width="300"
+        height="300"
+        xlink:href="css/i/caleydoscope5.jpg" x="-150" y="-150"></image>
+    </pattern>
+
 
     <pattern id="wood-pattern" width="400" height="300" patternUnits="userSpaceOnUse" y="200">
       <image id="js-wood-image"
@@ -48,6 +76,7 @@
         height="300"
         xlink:href="css/i/wood.jpg"></image>
     </pattern>
+
 
   </defs>
 </svg>

@@ -10,6 +10,10 @@ class Main
     @$caleydoscopePattern = $('#caleydoscope-pattern')
     @$caleydoscopeImage = $('#js-caleydoscope-image')
     @$caleydoscopeImage2 = $('#js-caleydoscope-image2')
+    @$caleydoscopeImage3 = $('#js-caleydoscope-image3')
+    @$caleydoscopeImage4 = $('#js-caleydoscope-image4')
+    @$caleydoscopeImage5 = $('#js-caleydoscope-image5')
+    @$caleydoscopeImage6 = $('#js-caleydoscope-image6')
     @$caleydoscope = $('#js-caleydoscope')
 
     @$wave1        = $('#js-wave1')
@@ -76,34 +80,6 @@ class Main
       .css 'transform': 'translate(490px,300px)'
 
   run:->
-    @$caleydoscope.css 'transform-origin': 'center center'
-    @$caleydoscope.velocity {
-      rotateZ: 36000
-      },
-        loop: 200
-        duration: 500000
-        easing: 'linear'
-
-
-    @$caleydoscopeImage.css 'transform-origin': 'center center'
-    @$caleydoscopeImage.velocity {
-      translateX: 150
-      translateY: 150
-    },
-      loop: 200
-      duration: 2000
-      easing: 'ease'
-
-    @$caleydoscopeImage2.css 'transform-origin': 'center center'
-    @$caleydoscopeImage2.velocity {
-      translateX: -150
-      translateY: -150
-    },
-      loop: 200
-      duration: 2000
-      easing: 'ease'
-
-
     @start = 0*@s
     @dur = @start + 300*@s
     @$flowersCream.velocity
@@ -187,16 +163,6 @@ class Main
         duration: 36*@dur
         easing: 'linear'
 
-
-     # @$creamTriangle2.velocity
-     #    rotateX: 90
-     #  ,
-     #    duration: 800*@s
-     #    delay: @start + 1200*@s
-     #    easing: 'easeOutBounce'
-     #    begin:=>
-     #      @$creamTriangle2.css transformOrigin: '50% 100%'
-
     @$divSparks.velocity
         translateX: 235 - translateSize/8
         translateY: 50 + translateSize/8
@@ -227,6 +193,8 @@ class Main
 
     @wave2(2300*@s)
     @wave1(4000*@s)
+    @caleydoscope(4500*@s)
+
 
   wave1:(delay)->
     wave1Time = 1200*@s
@@ -264,20 +232,6 @@ class Main
       easing: 'ease-out'
       duration: topRotateDur1
 
-    # @$creamTriangle2.velocity {
-    #     rotateZ:    -5
-    #     translateY: -45
-    #     translateX: -40
-    #   },
-    #     duration: topRotateDur1
-    #     delay: .88*(delay + wave1Time)
-
-    #   .velocity {
-    #     rotateZ:    -7
-    #     translateY: -20
-    #     translateX: -25
-    #   },
-    #     duration: topRotateDur1
 
   wave2:(delay)->
     wave2Time = 1500*@s
@@ -330,6 +284,88 @@ class Main
         translateX: 800
       },
         duration: 1
+
+  caleydoscope:(delay)->
+    $paths = @$caleydoscope.find('path')
+    $paths.each (i, item)=>
+      $path = $(item)
+      length = $path[0].getTotalLength()
+      $path
+        .velocity {
+          opacity: 1
+        },
+          delay: h.rand(1,150)*@s + i*150*@s + delay
+          duration: 900
+
+
+    @$caleydoscope.css 'transform-origin': 'center center'
+    @$caleydoscope.velocity {
+      rotateZ: 720
+      },
+        duration: 10000
+        easing: 'linear'
+        delay: delay
+
+
+    @$caleydoscopeImage.css 'transform-origin': 'center center'
+    @$caleydoscopeImage.velocity {
+      translateX: -150
+      translateY: -150
+    },
+      loop: 2
+      duration: 5000
+      easing: 'ease'
+      delay: delay
+
+    @$caleydoscopeImage2.css 'transform-origin': 'center center'
+    @$caleydoscopeImage2.velocity {
+      translateX: 150
+      translateY: 150
+    },
+      loop: 2
+      duration: 5000
+      easing: 'ease'
+      delay: delay
+
+    @$caleydoscopeImage3.css 'transform-origin': 'center center'
+    @$caleydoscopeImage3.velocity {
+      translateX: -150
+      translateY: -150
+    },
+      loop: 2
+      duration: 5000
+      easing: 'ease'
+      delay: delay
+
+    @$caleydoscopeImage4.css 'transform-origin': 'center center'
+    @$caleydoscopeImage4.velocity {
+      translateX: 150
+      translateY: 150
+    },
+      loop: 2
+      duration: 5000
+      easing: 'ease'
+      delay: delay
+
+    @$caleydoscopeImage5.css 'transform-origin': 'center center'
+    @$caleydoscopeImage5.velocity {
+      translateX: -150
+      translateY: -150
+    },
+      loop: 2
+      duration: 5000
+      easing: 'ease'
+      delay: delay
+
+    @$caleydoscopeImage6.css 'transform-origin': 'center center'
+    @$caleydoscopeImage6.velocity {
+      translateX: 150
+      translateY: 150
+    },
+      loop: 2
+      duration: 5000
+      easing: 'ease'
+      delay: delay
 
 setTimeout =>
   new Main

@@ -3003,3 +3003,6 @@ svg {
   display: none;
   fill: #fff;
 }
+.caleydoscope path {
+  opacity: 0;
+}
