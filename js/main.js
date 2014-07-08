@@ -205,9 +205,7 @@
           });
         };
       })(this));
-      this.wave2(2300 * this.s);
-      this.wave1(4000 * this.s);
-      return this.caleydoscope(4500 * this.s);
+      return this.caleydoscope(50 * this.s);
     };
 
     Main.prototype.wave1 = function(delay) {
@@ -326,6 +324,45 @@
 
     Main.prototype.caleydoscope = function(delay) {
       var $paths;
+      $('#js-c-mask1').velocity({
+        r: 152
+      }, {
+        delay: delay + 1600 * this.s,
+        duration: 400 * this.s,
+        easing: 'ease-out'
+      });
+      $('#js-c-mask2').velocity({
+        r: 152,
+        opacity: 100
+      }, {
+        delay: delay + 1600 * this.s,
+        duration: 400 * this.s,
+        easing: 'ease-out'
+      });
+      $paths = $('#js-c-mask-fwirework').find('path');
+      $paths.each((function(_this) {
+        return function(i, item) {
+          var $path, length;
+          $path = $(item);
+          length = $path[0].getTotalLength();
+          $path.velocity({
+            strokeDasharray: length,
+            strokeDashoffset: length
+          }, {
+            duration: 1
+          });
+          return $path.velocity({
+            strokeDashoffset: 0
+          }, {
+            delay: h.rand(1, 500) * _this.s + delay + 1200 * _this.s + i * 50 * _this.s,
+            duration: 400
+          }).velocity({
+            strokeDashoffset: 2 * length
+          }, {
+            duration: 400
+          });
+        };
+      })(this));
       $paths = this.$caleydoscope.find('path');
       $paths.each((function(_this) {
         return function(i, item) {
@@ -346,7 +383,7 @@
       this.$caleydoscope.velocity({
         rotateZ: 720
       }, {
-        duration: 10000,
+        duration: 12000,
         easing: 'linear',
         delay: delay
       });

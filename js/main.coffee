@@ -191,9 +191,10 @@ class Main
           begin:=>
             @$divSparks.show()
 
-    @wave2(2300*@s)
-    @wave1(4000*@s)
-    @caleydoscope(4500*@s)
+    # @wave2(2300*@s)
+    # @wave1(4000*@s)
+    # @caleydoscope(4500*@s)
+    @caleydoscope(50*@s)
 
 
   wave1:(delay)->
@@ -286,6 +287,46 @@ class Main
         duration: 1
 
   caleydoscope:(delay)->
+
+    $('#js-c-mask1').velocity {
+      r: 152
+    },
+      delay: delay + 1600*@s
+      duration: 400*@s
+      easing: 'ease-out'
+
+    $('#js-c-mask2').velocity {
+      r: 152
+      opacity: 100
+    },
+      delay: delay + 1600*@s
+      duration: 400*@s
+      easing: 'ease-out'
+
+    $paths = $('#js-c-mask-fwirework').find('path')
+
+    $paths.each (i, item)=>
+      $path = $(item)
+      length = $path[0].getTotalLength()
+      $path.velocity {
+        strokeDasharray: length
+        strokeDashoffset: length
+      },
+        duration: 1
+
+      $path
+        .velocity {
+          strokeDashoffset: 0
+        },
+          delay: h.rand(1,500)*@s + delay + 1200*@s + i*50*@s
+          duration: 400
+
+        .velocity {
+          strokeDashoffset: 2*length
+        },
+          duration: 400
+
+
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>
       $path = $(item)
@@ -302,7 +343,7 @@ class Main
     @$caleydoscope.velocity {
       rotateZ: 720
       },
-        duration: 10000
+        duration: 12000
         easing: 'linear'
         delay: delay
 
