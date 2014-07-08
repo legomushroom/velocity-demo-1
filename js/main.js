@@ -11,11 +11,14 @@
       this.s = 1;
       this.$pattern = $('#flowers-cream-pattern');
       this.$dust = $('#js-dust');
+      this.$caleydoscopePattern = $('#caleydoscope-pattern');
+      this.$caleydoscopeImage = $('#js-caleydoscope-image');
+      this.$caleydoscopeImage2 = $('#js-caleydoscope-image2');
       this.$wave1 = $('#js-wave1');
       this.$wave1Top = $('#js-wave1-top');
       this.$wave1Top2 = $('#js-wave1-top2');
       this.wave1YStart = 1350;
-      this.wave1Y = 700;
+      this.wave1Y = 900;
       this.$wave1Top.velocity({
         translateY: 0
       }, {
@@ -80,6 +83,24 @@
 
     Main.prototype.run = function() {
       var translateSize;
+      this.$caleydoscopeImage.css({
+        'transform-origin': 'center center'
+      });
+      this.$caleydoscopeImage.velocity({
+        rotateZ: 36000
+      }, {
+        duration: 1000000,
+        easing: 'linear'
+      });
+      this.$caleydoscopeImage2.css({
+        'transform-origin': 'center center'
+      });
+      this.$caleydoscopeImage2.velocity({
+        rotateZ: -36000
+      }, {
+        duration: 1000000,
+        easing: 'linear'
+      });
       this.start = 0 * this.s;
       this.dur = this.start + 300 * this.s;
       this.$flowersCream.velocity({
@@ -197,14 +218,14 @@
           });
         };
       })(this));
-      this.wave1(2300 * this.s);
-      return this.wave2(4200 * this.s);
+      this.wave2(2300 * this.s);
+      return this.wave1(4000 * this.s);
     };
 
     Main.prototype.wave1 = function(delay) {
       var topRotateDur1, wave1Time;
       wave1Time = 1200 * this.s;
-      topRotateDur1 = wave1Time / 3;
+      topRotateDur1 = wave1Time / 4;
       this.$wave1.velocity({
         translateY: this.wave1Y
       }, {
@@ -230,6 +251,7 @@
       }, {
         delay: delay + wave1Time,
         duration: topRotateDur1,
+        easing: 'ease-out',
         complete: (function(_this) {
           return function() {
             return _this.$wave1Top.hide();
@@ -239,25 +261,12 @@
       this.$wave1Top2.css({
         'transform-origin': 'center bottom'
       });
-      this.$wave1Top2.velocity({
+      return this.$wave1Top2.velocity({
         rotateX: -180,
         translateY: 4
       }, {
-        delay: delay + wave1Time + .75 * topRotateDur1,
-        duration: topRotateDur1
-      });
-      return this.$creamTriangle2.velocity({
-        rotateZ: -5,
-        translateY: -45,
-        translateX: -40
-      }, {
-        duration: topRotateDur1,
-        delay: .88 * (delay + wave1Time)
-      }).velocity({
-        rotateZ: -7,
-        translateY: -20,
-        translateX: -25
-      }, {
+        delay: delay + wave1Time + .95 * topRotateDur1,
+        easing: 'ease-out',
         duration: topRotateDur1
       });
     };
@@ -265,7 +274,7 @@
     Main.prototype.wave2 = function(delay) {
       var topRotateDur2, wave2Time;
       wave2Time = 1500 * this.s;
-      topRotateDur2 = wave2Time / 3;
+      topRotateDur2 = wave2Time / 4;
       this.$wave2.velocity({
         translateY: this.wave2Y
       }, {
@@ -307,7 +316,7 @@
         rotateX: -180,
         translateY: 4
       }, {
-        delay: delay + wave2Time + .75 * topRotateDur2,
+        delay: delay + wave2Time + .95 * topRotateDur2,
         duration: topRotateDur2
       });
       return this.$creamTriangle2.velocity({
@@ -315,13 +324,13 @@
         translateY: -80,
         translateX: -90
       }, {
-        duration: 1.2 * topRotateDur2,
-        delay: 1000 * this.s,
+        duration: 2 * topRotateDur2,
+        delay: delay + 700 * this.s,
         easing: 'ease-out'
       }).velocity({
-        rotateZ: -13,
+        rotateZ: -12,
         translateY: 800,
-        translateX: 600
+        translateX: 800
       }, {
         duration: 1
       });

@@ -7,13 +7,16 @@ class Main
     @s = 1
     @$pattern      = $('#flowers-cream-pattern')
     @$dust         = $('#js-dust')
+    @$caleydoscopePattern = $('#caleydoscope-pattern')
+    @$caleydoscopeImage = $('#js-caleydoscope-image')
+    @$caleydoscopeImage2 = $('#js-caleydoscope-image2')
 
     @$wave1        = $('#js-wave1')
     @$wave1Top     = $('#js-wave1-top')
     @$wave1Top2    = $('#js-wave1-top2')
 
     @wave1YStart = 1350
-    @wave1Y      = 700
+    @wave1Y      = 900
     @$wave1Top.velocity {
         translateY: 0
       }, duration: 1
@@ -72,6 +75,21 @@ class Main
       .css 'transform': 'translate(490px,300px)'
 
   run:->
+    @$caleydoscopeImage.css 'transform-origin': 'center center'
+    @$caleydoscopeImage.velocity {
+      rotateZ: 36000
+    },
+      duration: 1000000
+      easing: 'linear'
+
+    @$caleydoscopeImage2.css 'transform-origin': 'center center'
+    @$caleydoscopeImage2.velocity {
+      rotateZ: -36000
+    },
+      duration: 1000000
+      easing: 'linear'
+
+
     @start = 0*@s
     @dur = @start + 300*@s
     @$flowersCream.velocity
@@ -193,12 +211,12 @@ class Main
           begin:=>
             @$divSparks.show()
 
-    @wave1(2300*@s)
-    @wave2(4200*@s)
+    @wave2(2300*@s)
+    @wave1(4000*@s)
 
   wave1:(delay)->
     wave1Time = 1200*@s
-    topRotateDur1 = wave1Time/3
+    topRotateDur1 = wave1Time/4
     @$wave1.velocity {
         translateY: @wave1Y
       },
@@ -220,6 +238,7 @@ class Main
     },
       delay: delay + wave1Time
       duration: topRotateDur1
+      easing: 'ease-out'
       complete:=> @$wave1Top.hide()
 
     @$wave1Top2.css 'transform-origin': 'center bottom'
@@ -227,27 +246,28 @@ class Main
       rotateX: -180
       translateY: 4
     },
-      delay: delay + wave1Time + .75*topRotateDur1
+      delay: delay + wave1Time + .95*topRotateDur1
+      easing: 'ease-out'
       duration: topRotateDur1
 
-    @$creamTriangle2.velocity {
-        rotateZ:    -5
-        translateY: -45
-        translateX: -40
-      },
-        duration: topRotateDur1
-        delay: .88*(delay + wave1Time)
+    # @$creamTriangle2.velocity {
+    #     rotateZ:    -5
+    #     translateY: -45
+    #     translateX: -40
+    #   },
+    #     duration: topRotateDur1
+    #     delay: .88*(delay + wave1Time)
 
-      .velocity {
-        rotateZ:    -7
-        translateY: -20
-        translateX: -25
-      },
-        duration: topRotateDur1
+    #   .velocity {
+    #     rotateZ:    -7
+    #     translateY: -20
+    #     translateX: -25
+    #   },
+    #     duration: topRotateDur1
 
   wave2:(delay)->
     wave2Time = 1500*@s
-    topRotateDur2 = wave2Time/3
+    topRotateDur2 = wave2Time/4
     @$wave2.velocity {
         translateY: @wave2Y
       },
@@ -278,7 +298,7 @@ class Main
       rotateX: -180
       translateY: 4
     },
-      delay: delay + wave2Time + .75*topRotateDur2
+      delay: delay + wave2Time + .95*topRotateDur2
       duration: topRotateDur2
 
     @$creamTriangle2.velocity {
@@ -286,14 +306,14 @@ class Main
         translateY: -80
         translateX: -90
       },
-        duration: 1.2*topRotateDur2
-        delay: 1000*@s
+        duration: 2*topRotateDur2
+        delay: delay + 700*@s
         easing: 'ease-out'
 
       .velocity {
-        rotateZ:    -13
+        rotateZ:    -12
         translateY: 800
-        translateX: 600
+        translateX: 800
       },
         duration: 1
 
