@@ -328,7 +328,7 @@
         r: 152
       }, {
         delay: delay + 2000 * this.s,
-        duration: 200 * this.s,
+        duration: 400 * this.s,
         easing: 'linear'
       });
       $('#js-c-mask2').velocity({
@@ -336,7 +336,7 @@
         opacity: 100
       }, {
         delay: delay + 2000 * this.s,
-        duration: 200 * this.s,
+        duration: 400 * this.s,
         easing: 'linear'
       });
       $paths = this.$caleydoscope.find('path');

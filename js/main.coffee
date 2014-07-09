@@ -292,7 +292,7 @@ class Main
       r: 152
     },
       delay: delay + 2000*@s
-      duration: 200*@s
+      duration: 400*@s
       easing: 'linear'
 
     $('#js-c-mask2').velocity {
@@ -300,7 +300,7 @@ class Main
       opacity: 100
     },
       delay: delay + 2000*@s
-      duration: 200*@s
+      duration: 400*@s
       easing: 'linear'
 
     $paths = @$caleydoscope.find('path')
