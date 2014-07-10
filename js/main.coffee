@@ -194,10 +194,10 @@ class Main
           begin:=>
             @$divSparks.show()
 
-    # @wave2(2300*@s)
-    # @wave1(4000*@s)
-    # @caleydoscope(4500*@s)
-    @caleydoscope(50*@s)
+    @wave2(2300*@s)
+    @wave1(4000*@s)
+    @caleydoscope(5000*@s)
+    # @caleydoscope(50*@s)
 
 
   wave1:(delay)->
@@ -305,36 +305,40 @@ class Main
       delay: delay + 2000*@s
       duration: 400*@s
       easing: 'linear'
-
-    @$owlsPattern2.velocity {
-        x: 0
-        y: 0
-      },
-        loop: 2
-        duration: 5000
-        easing: 'ease'
-        delay: delay + 2000*@s
+    
+    caleydDelay1 = 300*@s
 
     @$velocityText.children().each (i, item)=>
       $item  = $(item)
       $item.css 'transform-origin': 'center center'
+      length = $item[0].getTotalLength()
+      size = 14
+      x = if i < 5 then size*(5-i) else -size*i
+
       $item.velocity {
-          skewX:  h.rand(-50, 50)
-          skewY:  h.rand(-50, 50)
-          opacity:  0
-          # scale:  0
+          strokeDasharray: length
+          strokeDashoffset: length
+          scale:  0
         },
           duration: 1
 
         .velocity {
-          skewX:  0
-          skewY:  0
           opacity: 100
-          # scale:  1
+          strokeDashoffset: 0
+          scale:  1
         },
-          duration: 700*@s + h.rand(0, 100)*@s
-          delay: delay + 2500*@s + h.rand(0, 200)*@s
+          duration: 1000*@s + h.rand(0, 100)*@s
+          delay: delay + 2000*@s + h.rand(0, 500)*@s
           easing: 'easeOutElastic'
+
+        .velocity {
+          rotateZ: h.rand(25, 120)
+          translateX: h.rand(-200, 200)
+          translateY: h.rand(-200, 200)
+          scale: 0
+        },
+          duration: 500*@s + h.rand(0, 100)*@s
+          delay: caleydDelay1 + h.rand(0, 200)*@s
 
     @$blow.children().each (i, item)=>
       $item  = $(item)
@@ -350,7 +354,7 @@ class Main
           r: 0
         },
           duration: 700*@s + h.rand(0, 100)*@s
-          delay: 400*@s + h.rand(0, 500)*@s
+          delay: 400*@s + caleydDelay1 + h.rand(0, 500)*@s
 
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>

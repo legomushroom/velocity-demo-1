@@ -208,7 +208,9 @@
           });
         };
       })(this));
-      return this.caleydoscope(50 * this.s);
+      this.wave2(2300 * this.s);
+      this.wave1(4000 * this.s);
+      return this.caleydoscope(5000 * this.s);
     };
 
     Main.prototype.wave1 = function(delay) {
@@ -326,7 +328,7 @@
     };
 
     Main.prototype.caleydoscope = function(delay) {
-      var $paths;
+      var $paths, caleydDelay1;
       $('#js-c-mask1').velocity({
         r: 152
       }, {
@@ -342,36 +344,39 @@
         duration: 400 * this.s,
         easing: 'linear'
       });
-      this.$owlsPattern2.velocity({
-        x: 0,
-        y: 0
-      }, {
-        loop: 2,
-        duration: 5000,
-        easing: 'ease',
-        delay: delay + 2000 * this.s
-      });
+      caleydDelay1 = 300 * this.s;
       this.$velocityText.children().each((function(_this) {
         return function(i, item) {
-          var $item;
+          var $item, length, size, x;
           $item = $(item);
           $item.css({
             'transform-origin': 'center center'
           });
+          length = $item[0].getTotalLength();
+          size = 14;
+          x = i < 5 ? size * (5 - i) : -size * i;
           return $item.velocity({
-            skewX: h.rand(-50, 50),
-            skewY: h.rand(-50, 50),
-            opacity: 0
+            strokeDasharray: length,
+            strokeDashoffset: length,
+            scale: 0
           }, {
             duration: 1
           }).velocity({
-            skewX: 0,
-            skewY: 0,
-            opacity: 100
+            opacity: 100,
+            strokeDashoffset: 0,
+            scale: 1
           }, {
-            duration: 700 * _this.s + h.rand(0, 100) * _this.s,
-            delay: delay + 2500 * _this.s + h.rand(0, 200) * _this.s,
+            duration: 1000 * _this.s + h.rand(0, 100) * _this.s,
+            delay: delay + 2000 * _this.s + h.rand(0, 500) * _this.s,
             easing: 'easeOutElastic'
+          }).velocity({
+            rotateZ: h.rand(25, 120),
+            translateX: h.rand(-200, 200),
+            translateY: h.rand(-200, 200),
+            scale: 0
+          }, {
+            duration: 500 * _this.s + h.rand(0, 100) * _this.s,
+            delay: caleydDelay1 + h.rand(0, 200) * _this.s
           });
         };
       })(this));
@@ -390,7 +395,7 @@
             r: 0
           }, {
             duration: 700 * _this.s + h.rand(0, 100) * _this.s,
-            delay: 400 * _this.s + h.rand(0, 500) * _this.s
+            delay: 400 * _this.s + caleydDelay1 + h.rand(0, 500) * _this.s
           });
         };
       })(this));
