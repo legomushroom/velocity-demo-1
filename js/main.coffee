@@ -199,7 +199,6 @@ class Main
     @caleydoscope(5000*@s)
     # @caleydoscope(50*@s)
 
-
   wave1:(delay)->
     wave1Time = 1200*@s
     topRotateDur1 = wave1Time/4
