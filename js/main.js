@@ -11,6 +11,7 @@
       this.s = 1;
       this.$pattern = $('#flowers-cream-pattern');
       this.$dust = $('#js-dust');
+      this.$blow = $('#js-c-blow');
       this.$caleydoscopePattern = $('#caleydoscope-pattern');
       this.$caleydoscopeImage = $('#js-caleydoscope-image');
       this.$caleydoscopeImage2 = $('#js-caleydoscope-image2');
@@ -339,6 +340,20 @@
         duration: 400 * this.s,
         easing: 'linear'
       });
+      this.$blow.children().each((function(_this) {
+        return function(i, item) {
+          var $item;
+          $item = $(item);
+          return $item.velocity({
+            translateY: h.rand(-200, 200),
+            translateX: h.rand(-200, 200),
+            r: 0
+          }, {
+            delay: delay + 2000 * _this.s,
+            duration: 700 * _this.s
+          });
+        };
+      })(this));
       $paths = this.$caleydoscope.find('path');
       $paths.each((function(_this) {
         return function(i, item) {

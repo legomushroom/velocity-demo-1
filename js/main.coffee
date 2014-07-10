@@ -7,6 +7,7 @@ class Main
     @s = 1
     @$pattern      = $('#flowers-cream-pattern')
     @$dust         = $('#js-dust')
+    @$blow         = $('#js-c-blow')
     @$caleydoscopePattern = $('#caleydoscope-pattern')
     @$caleydoscopeImage = $('#js-caleydoscope-image')
     @$caleydoscopeImage2 = $('#js-caleydoscope-image2')
@@ -302,6 +303,16 @@ class Main
       delay: delay + 2000*@s
       duration: 400*@s
       easing: 'linear'
+
+    @$blow.children().each (i, item)=>
+      $item  = $(item)
+      $item.velocity {
+        translateY: h.rand(-200, 200)
+        translateX: h.rand(-200, 200)
+        r: 0
+        },
+          delay: delay + 2000*@s
+          duration: 700*@s
 
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>
