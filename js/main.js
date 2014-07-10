@@ -20,6 +20,8 @@
       this.$caleydoscopeImage5 = $('#js-caleydoscope-image5');
       this.$caleydoscopeImage6 = $('#js-caleydoscope-image6');
       this.$caleydoscope = $('#js-caleydoscope');
+      this.$owlsPattern2 = $('#js-owls-image2');
+      this.$velocityText = $('#js-velocity-text');
       this.$wave1 = $('#js-wave1');
       this.$wave1Top = $('#js-wave1-top');
       this.$wave1Top2 = $('#js-wave1-top2');
@@ -340,6 +342,39 @@
         duration: 400 * this.s,
         easing: 'linear'
       });
+      this.$owlsPattern2.velocity({
+        x: 0,
+        y: 0
+      }, {
+        loop: 2,
+        duration: 5000,
+        easing: 'ease',
+        delay: delay + 2000 * this.s
+      });
+      this.$velocityText.children().each((function(_this) {
+        return function(i, item) {
+          var $item;
+          $item = $(item);
+          $item.css({
+            'transform-origin': 'center center'
+          });
+          return $item.velocity({
+            skewX: h.rand(-50, 50),
+            skewY: h.rand(-50, 50),
+            opacity: 0
+          }, {
+            duration: 1
+          }).velocity({
+            skewX: 0,
+            skewY: 0,
+            opacity: 100
+          }, {
+            duration: 700 * _this.s + h.rand(0, 100) * _this.s,
+            delay: delay + 2500 * _this.s + h.rand(0, 200) * _this.s,
+            easing: 'easeOutElastic'
+          });
+        };
+      })(this));
       this.$blow.children().each((function(_this) {
         return function(i, item) {
           var $item;
@@ -347,7 +382,7 @@
           return $item.velocity({
             r: h.rand(10, 50)
           }, {
-            delay: delay + 2000 * _this.s + h.rand(0, 100) * _this.s,
+            delay: delay + 2000 * _this.s + h.rand(0, 500) * _this.s,
             duration: 400 * _this.s + h.rand(0, 100) * _this.s
           }).velocity({
             translateY: h.rand(-150, 150),
@@ -355,7 +390,7 @@
             r: 0
           }, {
             duration: 700 * _this.s + h.rand(0, 100) * _this.s,
-            delay: 400 * _this.s + h.rand(0, 200) * _this.s
+            delay: 400 * _this.s + h.rand(0, 500) * _this.s
           });
         };
       })(this));

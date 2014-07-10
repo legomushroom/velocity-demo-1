@@ -20,6 +20,16 @@
         xlink:href="css/i/owls.jpg"></image>
     </pattern>
 
+
+    <pattern id="owls-pattern2" width="150" height="150" patternUnits="userSpaceOnUse" y="200">
+      <image id="js-owls-image2"
+        x="-75" y="-75"
+        width="300"
+        height="300"
+        xlink:href="css/i/caleydoscope3.jpg"></image>
+    </pattern>
+
+
     <pattern id="cheese-pattern" width="400" height="300" patternUnits="userSpaceOnUse" y="200">
       <image id="js-cheese-image"
         width="400"
@@ -76,6 +86,14 @@
         height="300"
         xlink:href="css/i/wood.jpg"></image>
     </pattern>
+
+    <filter id="f_multiply" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+      <feFlood x="0" y="0" width="96" height="32" flood-color="#EA312F" result="a"/>
+      <feFlood x="0" y="50" width="96" height="32" flood-color="#EA312F" result="b"/>
+      <feFlood  x="0" y="50" width="32" height="96" flood-opacity="0.8" flood-color="#3A5BA6" result="c"/>
+      <feBlend in="a" in2="b" result="ab" mode="multiply"/>
+      <feBlend in="ab" in2="c" mode="multiply"/>
+     </filter>
 
 
   </defs>

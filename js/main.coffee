@@ -16,6 +16,8 @@ class Main
     @$caleydoscopeImage5 = $('#js-caleydoscope-image5')
     @$caleydoscopeImage6 = $('#js-caleydoscope-image6')
     @$caleydoscope = $('#js-caleydoscope')
+    @$owlsPattern2 = $('#js-owls-image2')
+    @$velocityText = $('#js-velocity-text')
 
     @$wave1        = $('#js-wave1')
     @$wave1Top     = $('#js-wave1-top')
@@ -304,12 +306,42 @@ class Main
       duration: 400*@s
       easing: 'linear'
 
+    @$owlsPattern2.velocity {
+        x: 0
+        y: 0
+      },
+        loop: 2
+        duration: 5000
+        easing: 'ease'
+        delay: delay + 2000*@s
+
+    @$velocityText.children().each (i, item)=>
+      $item  = $(item)
+      $item.css 'transform-origin': 'center center'
+      $item.velocity {
+          skewX:  h.rand(-50, 50)
+          skewY:  h.rand(-50, 50)
+          opacity:  0
+          # scale:  0
+        },
+          duration: 1
+
+        .velocity {
+          skewX:  0
+          skewY:  0
+          opacity: 100
+          # scale:  1
+        },
+          duration: 700*@s + h.rand(0, 100)*@s
+          delay: delay + 2500*@s + h.rand(0, 200)*@s
+          easing: 'easeOutElastic'
+
     @$blow.children().each (i, item)=>
       $item  = $(item)
       $item.velocity {
           r:  h.rand(10, 50)
         },
-          delay: delay + 2000*@s + h.rand(0, 100)*@s
+          delay: delay + 2000*@s + h.rand(0, 500)*@s
           duration: 400*@s + h.rand(0, 100)*@s
 
         .velocity {
@@ -318,7 +350,7 @@ class Main
           r: 0
         },
           duration: 700*@s + h.rand(0, 100)*@s
-          delay: 400*@s + h.rand(0, 200)*@s
+          delay: 400*@s + h.rand(0, 500)*@s
 
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>
