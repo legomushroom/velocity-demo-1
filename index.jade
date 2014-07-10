@@ -14,8 +14,7 @@ html
 
         g#js-c-blow(transform="translate(640,450)")
           - for (var i = 0; i < 20; i++)
-            circle(r="25", fill="white")
-
+            circle(r="0", fill="white")
 
       g#js-caleydoscope.caleydoscope(stroke='none', stroke-width='0', fill='none', fill-rule='evenodd', mask="url(#caleydoscope-mask)")
         g(transform="translate(422,231)")
@@ -50,8 +49,7 @@ html
               path(d='M6.89354444,166.302292 L93.2425454,104.310029 L111.494455,122.791586 C111.494455,122.791586 74.1287205,165.328801 6.89354444,166.302292 L6.89354444,166.302292 Z', transform='translate(59.393544, 135.310029) rotate(135.000000) translate(-59.393544, -135.310029) ')
               path(d='M82.1264343,332.481531 L168.475435,270.489268 L186.727345,288.970825 C186.727345,288.970825 149.36161,331.50804 82.1264343,332.481531 L82.1264343,332.481531 Z', transform='translate(134.626434, 301.489268) rotate(45.000000) translate(-134.626434, -301.489268) ')
   
-      
-
+      text(transform="translate(640,460)", fill="url(#wood-pattern)", style="font-size: 40px; font-family: muro", text-anchor="middle") VELOCITYJS
       
       //- rect.rect#js-flowers-cream(fill="url(#flowers-cream-pattern)", width="300", height="300", x="490", y="-600")      
       //- g#js-cream-triangles.h-g

@@ -345,12 +345,17 @@
           var $item;
           $item = $(item);
           return $item.velocity({
-            translateY: h.rand(-200, 200),
-            translateX: h.rand(-200, 200),
+            r: h.rand(10, 50)
+          }, {
+            delay: delay + 2000 * _this.s + h.rand(0, 100) * _this.s,
+            duration: 400 * _this.s + h.rand(0, 100) * _this.s
+          }).velocity({
+            translateY: h.rand(-150, 150),
+            translateX: h.rand(-150, 150),
             r: 0
           }, {
-            delay: delay + 2000 * _this.s,
-            duration: 700 * _this.s
+            duration: 700 * _this.s + h.rand(0, 100) * _this.s,
+            delay: 400 * _this.s + h.rand(0, 200) * _this.s
           });
         };
       })(this));

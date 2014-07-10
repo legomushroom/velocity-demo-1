@@ -307,12 +307,18 @@ class Main
     @$blow.children().each (i, item)=>
       $item  = $(item)
       $item.velocity {
-        translateY: h.rand(-200, 200)
-        translateX: h.rand(-200, 200)
-        r: 0
+          r:  h.rand(10, 50)
         },
-          delay: delay + 2000*@s
-          duration: 700*@s
+          delay: delay + 2000*@s + h.rand(0, 100)*@s
+          duration: 400*@s + h.rand(0, 100)*@s
+
+        .velocity {
+          translateY: h.rand(-150, 150)
+          translateX: h.rand(-150, 150)
+          r: 0
+        },
+          duration: 700*@s + h.rand(0, 100)*@s
+          delay: 400*@s + h.rand(0, 200)*@s
 
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>
