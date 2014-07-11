@@ -3,23 +3,15 @@
 
   Main = (function() {
     function Main() {
-      this.vars();
+      if (typeof this.vars === "function") {
+        this.vars();
+      }
       this.run();
     }
 
-    Main.prototype.vars = function() {
-      return this.s = 1;
-    };
-
     Main.prototype.run = function() {
-      new Triangles({
+      return new Meets({
         delay: 0
-      });
-      new Waves({
-        delay: h.time(2300)
-      });
-      return new Caleydoscope({
-        delay: h.time(5000)
       });
     };
 
