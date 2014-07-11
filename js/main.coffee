@@ -289,23 +289,24 @@ class Main
         duration: 1
 
   caleydoscope:(delay)->
+    $mask1 = $('#js-c-mask1')
+    caleydDelay1 = 100*@s
 
-    $('#js-c-mask1').velocity {
-      r: 152
+    $mask1.velocity {
+      r: 50
     },
-      delay: delay + 2000*@s
-      duration: 400*@s
-      easing: 'linear'
+      delay: delay + 1900*@s + caleydDelay1
+      duration: 800*@s
+      easing: 'easeOutElastic'
 
-    $('#js-c-mask2').velocity {
-      r: 152
-      opacity: 100
-    },
-      delay: delay + 2000*@s
-      duration: 400*@s
-      easing: 'linear'
+    # $('#js-c-mask2').velocity {
+    #   r: 152
+    #   opacity: 100
+    # },
+    #   delay: delay + 2000*@s
+    #   duration: 400*@s
+    #   easing: 'linear'
     
-    caleydDelay1 = 300*@s
 
     @$velocityText.children().each (i, item)=>
       $item  = $(item)
@@ -342,7 +343,7 @@ class Main
     @$blow.children().each (i, item)=>
       $item  = $(item)
       $item.velocity {
-          r:  h.rand(10, 50)
+          r:  if i is 0 then 50 else h.rand(10, 50)
         },
           delay: delay + 2000*@s + h.rand(0, 500)*@s
           duration: 400*@s + h.rand(0, 100)*@s
@@ -352,8 +353,11 @@ class Main
           translateX: h.rand(-150, 150)
           r: 0
         },
-          duration: 700*@s + h.rand(0, 100)*@s
-          delay: 400*@s + caleydDelay1 + h.rand(0, 500)*@s
+          duration: 800*@s
+          delay: 400*@s + caleydDelay1 + h.rand(0, 300)*@s
+          begin: =>
+            @$blow.css 'opacity': 1
+            $mask1.hide()
 
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>

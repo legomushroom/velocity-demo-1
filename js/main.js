@@ -328,23 +328,16 @@
     };
 
     Main.prototype.caleydoscope = function(delay) {
-      var $paths, caleydDelay1;
-      $('#js-c-mask1').velocity({
-        r: 152
+      var $mask1, $paths, caleydDelay1;
+      $mask1 = $('#js-c-mask1');
+      caleydDelay1 = 100 * this.s;
+      $mask1.velocity({
+        r: 50
       }, {
-        delay: delay + 2000 * this.s,
-        duration: 400 * this.s,
-        easing: 'linear'
+        delay: delay + 1900 * this.s + caleydDelay1,
+        duration: 800 * this.s,
+        easing: 'easeOutElastic'
       });
-      $('#js-c-mask2').velocity({
-        r: 152,
-        opacity: 100
-      }, {
-        delay: delay + 2000 * this.s,
-        duration: 400 * this.s,
-        easing: 'linear'
-      });
-      caleydDelay1 = 300 * this.s;
       this.$velocityText.children().each((function(_this) {
         return function(i, item) {
           var $item, length, size, x;
@@ -385,7 +378,7 @@
           var $item;
           $item = $(item);
           return $item.velocity({
-            r: h.rand(10, 50)
+            r: i === 0 ? 50 : h.rand(10, 50)
           }, {
             delay: delay + 2000 * _this.s + h.rand(0, 500) * _this.s,
             duration: 400 * _this.s + h.rand(0, 100) * _this.s
@@ -394,8 +387,14 @@
             translateX: h.rand(-150, 150),
             r: 0
           }, {
-            duration: 700 * _this.s + h.rand(0, 100) * _this.s,
-            delay: 400 * _this.s + caleydDelay1 + h.rand(0, 500) * _this.s
+            duration: 800 * _this.s,
+            delay: 400 * _this.s + caleydDelay1 + h.rand(0, 300) * _this.s,
+            begin: function() {
+              _this.$blow.css({
+                'opacity': 1
+              });
+              return $mask1.hide();
+            }
           });
         };
       })(this));

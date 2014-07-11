@@ -9,10 +9,10 @@ html
     include assets.svg
     svg(viewBox="0 0 1280 900")
       mask#caleydoscope-mask
-        circle#js-c-mask1(r="100", fill="white", stroke="none", stroke-width="0", transform="translate(640,450)")
-        circle#js-c-mask2(r="25", fill="black", stroke="none", stroke-width="0", transform="translate(640,450)", opacity="0")
+        circle#js-c-mask1(r="150", fill="white", stroke="none", stroke-width="0", transform="translate(640,450)")
+        //- circle#js-c-mask2(r="25", fill="black", stroke="none", stroke-width="0", transform="translate(640,450)", opacity="0")
 
-        g#js-c-blow(transform="translate(640,450)")
+        g#js-c-blow(transform="translate(640,450)", opacity="0")
           - for (var i = 0; i < 50; i++)
             circle(r="0", fill="white")
 
