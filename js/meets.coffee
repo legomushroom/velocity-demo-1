@@ -70,7 +70,7 @@ class Meets
             duration: h.time(5000)
             easing: 'linear'
 
-        @$circles.children().each (i, item)=>
+        @$circles.children().each (i, item)->
           $item = $ item
           $item.velocity { r: 0 },
             delay: h.time h.rand(0, 300)
@@ -89,12 +89,12 @@ class Meets
             duration: 1
             delay: h.time(0)
 
-          .velocity {
-            translateX: 0
-            translateY: 0
-            rotateZ: 0
-            },
-              easing: 'easeOutElastic'
+        .velocity {
+          translateX: 0
+          translateY: 0
+          rotateZ: 0
+          },
+            easing: 'easeOutElastic'
 
         translate = 5
         @$shirts.css 'transform-origin': 'center center'
