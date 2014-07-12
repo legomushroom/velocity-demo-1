@@ -13,6 +13,20 @@ class Meets
     @$rightShirt = $('#js-right-shirt')
     @$rightShirt.velocity {translateX: 500}, duration:1
 
+    @$leftShirt = $('#js-left-shirt')
+    @$leftShirt.velocity {translateX: -500}, duration:1
+
+    @$sleeves  = $('.js-sleeve')
+    @$shirts   = $('.js-shirt')
+
+    @$circles  = $('#js-meets-cicles')
+
+    @$dogsPattern = $('#js-space-dogs-image')
+
+    @$rightButton = $('#js-right-button')
+    @$leftButton  = $('#js-left-button')
+    @$buttons     = $('#js-right-button, #js-left-button')
+
     @$rightFist = $('#js-right-fist')
     @$leftFist  = $('#js-left-fist')
     @$circle    = $('#js-circle')
@@ -41,6 +55,72 @@ class Meets
         # delay: @delay
         duration: bumpDuration
         easing: 'ease-in'
+
+    @$leftShirt.velocity { translateX: 0 },
+      # delay: @delay
+      duration: bumpDuration
+      easing: 'ease-in'
+      complete: =>
+
+
+        @$dogsPattern.velocity {
+          translateX: -150
+          translateY: -150
+          },
+            duration: h.time(5000)
+            easing: 'linear'
+
+        @$circles.children().each (i, item)=>
+          $item = $ item
+          $item.velocity { r: 0 },
+            delay: h.time h.rand(0, 300)
+            duration: h.time h.rand(400, 700)
+
+        @$rightButton.show()
+        @$leftButton.show()
+
+        translate = 5
+        @$sleeves.css 'transform-origin': 'center center'
+        @$sleeves.velocity {
+          translateX: h.rand(-translate,translate)
+          translateY: h.rand(-translate,translate)
+          rotateZ: h.rand(-25,25)
+          },
+            duration: 1
+            delay: h.time(0)
+
+          .velocity {
+            translateX: 0
+            translateY: 0
+            rotateZ: 0
+            },
+              easing: 'easeOutElastic'
+
+        translate = 5
+        @$shirts.css 'transform-origin': 'center center'
+        @$shirts.velocity {
+          # translateX: -translate
+          translateY: -translate
+          },
+            duration: 1
+
+          .velocity {
+            translateX: 0
+            translateY: 0
+            },
+              easing: 'easeOutElastic'
+        
+        translate = 5
+        @$buttons.velocity {
+          translateY: translate
+          },
+            duration: 1
+
+          .velocity {
+            translateX: 0
+            translateY: 0
+            },
+              easing: 'easeOutElastic'
 
     fistX = 20
     fistAngle = -10
@@ -95,7 +175,7 @@ class Meets
           strokeDashoffset: 0
           # strokeWidth: 10
         },
-          delay: @delay + h.time(350)
+          delay: @delay + h.time(450)
           duration: h.time(150)
 
         .velocity {

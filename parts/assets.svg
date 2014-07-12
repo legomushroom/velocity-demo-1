@@ -87,7 +87,7 @@
         xlink:href="css/i/wood.jpg"></image>
     </pattern>
 
-    <pattern id="space-dogs-pattern" width="400" height="300" patternUnits="userSpaceOnUse" y="200">
+    <pattern id="space-dogs-pattern" width="200" height="150" patternUnits="userSpaceOnUse" y="200">
       <image id="js-space-dogs-image"
         width="400"
         height="300"

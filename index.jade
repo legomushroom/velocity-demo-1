@@ -6,6 +6,10 @@ html
     link(rel="stylesheet", type="text/css", href="css/main.css")
   
   body
+    - var rand = function(min, max){
+    -  return Math.floor((Math.random() * ((max + 1) - min)) + min)
+    - }
+
     include parts/assets.svg
     svg(viewBox="0 0 1280 900")
       include parts/meets

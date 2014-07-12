@@ -28,6 +28,19 @@
       }, {
         duration: 1
       });
+      this.$leftShirt = $('#js-left-shirt');
+      this.$leftShirt.velocity({
+        translateX: -500
+      }, {
+        duration: 1
+      });
+      this.$sleeves = $('.js-sleeve');
+      this.$shirts = $('.js-shirt');
+      this.$circles = $('#js-meets-cicles');
+      this.$dogsPattern = $('#js-space-dogs-image');
+      this.$rightButton = $('#js-right-button');
+      this.$leftButton = $('#js-left-button');
+      this.$buttons = $('#js-right-button, #js-left-button');
       this.$rightFist = $('#js-right-fist');
       this.$leftFist = $('#js-left-fist');
       this.$circle = $('#js-circle');
@@ -62,6 +75,79 @@
       }, {
         duration: bumpDuration,
         easing: 'ease-in'
+      });
+      this.$leftShirt.velocity({
+        translateX: 0
+      }, {
+        duration: bumpDuration,
+        easing: 'ease-in',
+        complete: (function(_this) {
+          return function() {
+            var translate;
+            _this.$dogsPattern.velocity({
+              translateX: -150,
+              translateY: -150
+            }, {
+              duration: h.time(5000),
+              easing: 'linear'
+            });
+            _this.$circles.children().each(function(i, item) {
+              var $item;
+              $item = $(item);
+              return $item.velocity({
+                r: 0
+              }, {
+                delay: h.time(h.rand(0, 300)),
+                duration: h.time(h.rand(400, 700))
+              });
+            });
+            _this.$rightButton.show();
+            _this.$leftButton.show();
+            translate = 5;
+            _this.$sleeves.css({
+              'transform-origin': 'center center'
+            });
+            _this.$sleeves.velocity({
+              translateX: h.rand(-translate, translate),
+              translateY: h.rand(-translate, translate),
+              rotateZ: h.rand(-25, 25)
+            }, {
+              duration: 1,
+              delay: h.time(0)
+            }).velocity({
+              translateX: 0,
+              translateY: 0,
+              rotateZ: 0
+            }, {
+              easing: 'easeOutElastic'
+            });
+            translate = 5;
+            _this.$shirts.css({
+              'transform-origin': 'center center'
+            });
+            _this.$shirts.velocity({
+              translateY: -translate
+            }, {
+              duration: 1
+            }).velocity({
+              translateX: 0,
+              translateY: 0
+            }, {
+              easing: 'easeOutElastic'
+            });
+            translate = 5;
+            return _this.$buttons.velocity({
+              translateY: translate
+            }, {
+              duration: 1
+            }).velocity({
+              translateX: 0,
+              translateY: 0
+            }, {
+              easing: 'easeOutElastic'
+            });
+          };
+        })(this)
       });
       fistX = 20;
       fistAngle = -10;
@@ -132,7 +218,7 @@
           return $item.velocity({
             strokeDashoffset: 0
           }, {
-            delay: _this.delay + h.time(350),
+            delay: _this.delay + h.time(450),
             duration: h.time(150)
           }).velocity({
             strokeDashoffset: -25
