@@ -104,11 +104,11 @@ class Meets
           },
             duration: 1
 
-          .velocity {
-            translateX: 0
-            translateY: 0
-            },
-              easing: 'easeOutElastic'
+        .velocity {
+          translateX: 0
+          translateY: 0
+          },
+            easing: 'easeOutElastic'
         
         translate = 5
         @$buttons.velocity {
@@ -116,11 +116,11 @@ class Meets
           },
             duration: 1
 
-          .velocity {
-            translateX: 0
-            translateY: 0
-            },
-              easing: 'easeOutElastic'
+        .velocity {
+          translateX: 0
+          translateY: 0
+          },
+            easing: 'easeOutElastic'
 
     fistX = 20
     fistAngle = -10
