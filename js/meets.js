@@ -36,8 +36,15 @@
       });
       this.$sleeves = $('.js-sleeve');
       this.$shirts = $('.js-shirt');
-      this.$circles = $('#js-meets-cicles');
       this.$dogsPattern = $('#js-space-dogs-image');
+      this.$meets = $('#js-meets');
+      this.$meets.velocity({
+        scale: 50,
+        translateX: -1280,
+        translateY: -200
+      }, {
+        duration: 1
+      });
       this.$rightButton = $('#js-right-button');
       this.$leftButton = $('#js-left-button');
       this.$buttons = $('#js-right-button, #js-left-button');
@@ -76,6 +83,19 @@
         duration: bumpDuration,
         easing: 'ease-in'
       });
+      this.$meets.velocity({
+        scale: 1,
+        translateX: 0,
+        translateY: 0,
+        rotateZ: 0
+      }, {
+        duration: h.time(800),
+        delay: this.delay + h.time(100),
+        easing: 'ease-in',
+        complete: (function(_this) {
+          return function() {};
+        })(this)
+      });
       this.$leftShirt.velocity({
         translateX: 0
       }, {
@@ -90,16 +110,6 @@
             }, {
               duration: h.time(5000),
               easing: 'linear'
-            });
-            _this.$circles.children().each(function(i, item) {
-              var $item;
-              $item = $(item);
-              return $item.velocity({
-                r: 0
-              }, {
-                delay: h.time(h.rand(0, 300)),
-                duration: h.time(h.rand(400, 700))
-              });
             });
             _this.$rightButton.show();
             _this.$leftButton.show();

@@ -19,9 +19,17 @@ class Meets
     @$sleeves  = $('.js-sleeve')
     @$shirts   = $('.js-shirt')
 
-    @$circles  = $('#js-meets-cicles')
-
     @$dogsPattern = $('#js-space-dogs-image')
+
+    @$meets = $('#js-meets')
+    @$meets.velocity {
+      scale: 50
+      # rotateZ: 180
+      translateX: -1280
+      translateY: -200
+      }, duration: 1
+
+    # @$circles = $('#js-meets-circles')
 
     @$rightButton = $('#js-right-button')
     @$leftButton  = $('#js-left-button')
@@ -56,25 +64,48 @@ class Meets
         duration: bumpDuration
         easing: 'ease-in'
 
+
+    @$meets.velocity {
+      scale: 1
+      translateX: 0
+      translateY: 0
+      rotateZ: 0
+      },
+      duration: h.time(800)
+      delay: @delay + h.time(100)
+      easing: 'ease-in'
+      complete: =>
+        # @$circles.children().each (i, item)->
+        #   $item = $(item)
+        #   $item.velocity {
+        #     opacity: 1
+        #     # translateY: 10
+        #   },
+        #     delay: h.time i*30
+        #     duration: h.time 100
+        #     begin:->
+        #       $item.show()
+
+        #   .velocity {
+        #     opacity: 0
+        #     # translateY: 0
+        #   },
+        #     duration: h.time 100
+        #     easing: 'easeOutElastic'
+        #     complete:->
+        #       $item.hide()
+
     @$leftShirt.velocity { translateX: 0 },
       # delay: @delay
       duration: bumpDuration
       easing: 'ease-in'
       complete: =>
-
-
         @$dogsPattern.velocity {
           translateX: -150
           translateY: -150
           },
             duration: h.time(5000)
             easing: 'linear'
-
-        @$circles.children().each (i, item)->
-          $item = $ item
-          $item.velocity { r: 0 },
-            delay: h.time h.rand(0, 300)
-            duration: h.time h.rand(400, 700)
 
         @$rightButton.show()
         @$leftButton.show()
@@ -160,7 +191,6 @@ class Meets
         delay: fistDelay,
         easing: 'easeOutElastic'
       }
-
 
     @$circle.velocity {
       r: 150
