@@ -27,6 +27,8 @@ var paths = {
     kit:      devFolder + 'css/kit.jade',
     kitCss:   devFolder + 'css/assets/kit.styl',
     index:    devFolder + 'index.jade',
+    parts:    devFolder + 'parts/*.svg',
+    parts2:   devFolder + 'parts/*.jade',
     partials: devFolder + 'css/partials/**/*.jade',
     samples:  devFolder + 'css/samples/**/*.jade',
     templates:devFolder + 'templates/**/*.*',
@@ -90,8 +92,8 @@ gulp.task('coffee', function(e){
     return gulp.src(paths.src.js)
           .pipe(plumber())
           .pipe(changed(paths.src.js))
-          .pipe(coffeelint())
-          .pipe(coffeelint.reporter())
+          // .pipe(coffeelint())
+          // .pipe(coffeelint.reporter())
           .pipe(coffee())
           .pipe(gulp.dest(paths.dist.js))
           .pipe(livereload())
@@ -194,7 +196,7 @@ gulp.task('default', function(){
     gulp.run('index:jade');
   });
 
-  gulp.watch(paths.src.index, function(e){
+  gulp.watch([paths.src.index, paths.src.parts, paths.src.parts2], function(e){
     gulp.run('index:jade');
   });
 

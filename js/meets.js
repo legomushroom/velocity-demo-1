@@ -22,8 +22,16 @@
       }, {
         duration: 1
       });
+      this.$rightShirt = $('#js-right-shirt');
+      this.$rightShirt.velocity({
+        translateX: 500
+      }, {
+        duration: 1
+      });
       this.$rightFist = $('#js-right-fist');
       this.$leftFist = $('#js-left-fist');
+      this.$circle = $('#js-circle');
+      this.$burst = $('#js-meets-burst');
       this.$rightFistWrapper = $('#js-right-fist-wrapper');
       return this.$leftFistWrapper = $('#js-left-fist-wrapper');
     };
@@ -49,8 +57,14 @@
         duration: bumpDuration,
         easing: 'ease-in'
       });
+      this.$rightShirt.velocity({
+        translateX: 0
+      }, {
+        duration: bumpDuration,
+        easing: 'ease-in'
+      });
       fistX = 20;
-      fistAngle = -20;
+      fistAngle = -10;
       fistDuration = h.time(700);
       fistDuration2 = h.time(700);
       fistDelay = fistDuration / 2;
@@ -93,7 +107,7 @@
         delay: fistDelay,
         easing: 'easeOutElastic'
       });
-      return this.$leftFistWrapper.velocity({
+      this.$leftFistWrapper.velocity({
         translateX: fistX
       }, {
         duration: 1
@@ -104,6 +118,29 @@
         delay: fistDelay,
         easing: 'easeOutElastic'
       });
+      this.$circle.velocity({
+        r: 150,
+        strokeWidth: 0,
+        opacity: 1
+      }, {
+        delay: this.delay + h.time(350)
+      });
+      return this.$burst.children().each((function(_this) {
+        return function(i, item) {
+          var $item;
+          $item = $(item);
+          return $item.velocity({
+            strokeDashoffset: 0
+          }, {
+            delay: _this.delay + h.time(350),
+            duration: h.time(150)
+          }).velocity({
+            strokeDashoffset: -25
+          }, {
+            duration: h.time(150)
+          });
+        };
+      })(this));
     };
 
     return Meets;

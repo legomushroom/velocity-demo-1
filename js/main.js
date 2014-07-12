@@ -19,10 +19,8 @@
 
   })();
 
-  setTimeout((function(_this) {
-    return function() {
-      return new Main;
-    };
-  })(this), 500);
+  setTimeout(function() {
+    return new Main;
+  }, 500);
 
 }).call(this);

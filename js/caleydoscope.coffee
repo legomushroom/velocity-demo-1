@@ -36,11 +36,10 @@ class Caleydoscope
       x = if i < 5 then size*(5-i) else -size*i
 
       $item.velocity {
-          strokeDasharray: length
-          strokeDashoffset: length
-          scale:  0
-        },
-          duration: 1
+        strokeDasharray: length
+        strokeDashoffset: length
+        scale:  0
+        }, duration: 1
 
         .velocity {
           opacity: 100
@@ -63,7 +62,7 @@ class Caleydoscope
     @$blow.children().each (i, item)=>
       $item  = $(item)
       $item.velocity {
-          r:  if i is 0 then 50 else h.rand(10, 50)
+        r:  if i is 0 then 50 else h.rand(10, 50)
         },
           delay: @delay + 2000*@s + h.rand(0, 500)*@s
           duration: 400*@s + h.rand(0, 100)*@s

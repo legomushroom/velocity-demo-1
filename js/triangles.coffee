@@ -28,12 +28,10 @@ class Triangles
   run:->
     @start = 0*@s
     @dur = @start + 300*@s
-    @$flowersCream.velocity
-        y: 300
-      ,
-        duration: @dur
-        delay:    @start
-        easing: 'ease-in'
+    @$flowersCream.velocity {y: 300},
+      duration: @dur
+      delay:    @start
+      easing: 'ease-in'
 
     @start = @start + 275*@s
     @dur = 800*@s
@@ -44,23 +42,23 @@ class Triangles
 
     @start = @start + @dur - 200*@s
     @dur = 400*@s
-    @$sliceLine.velocity
-        rotateZ: 315
-        scale: 1
-        opacity: 100
-        width: 600
-        transformOrigin: '50% 50%'
-      ,
+    @$sliceLine.velocity {
+      rotateZ: 315
+      scale: 1
+      opacity: 100
+      width: 600
+      transformOrigin: '50% 50%'
+      },
         delay: @start
         duration: @dur
 
     @start = @start + @dur + 200*@s
     @dur = 30*@s
     translateSize = 20
-    @$creamTriangles.velocity
-        translateY: 2*translateSize
-        translateX: 2*translateSize
-      ,
+    @$creamTriangles.velocity {
+      translateY: 2*translateSize
+      translateX: 2*translateSize
+      },
         duration: @dur
         delay:    @start
         begin:=>
@@ -68,19 +66,19 @@ class Triangles
           @$creamTriangles.show()
           @$flowersCream.hide()
 
-      .velocity
-          translateY: 0
-          translateX: 0
-        ,
+      .velocity {
+        translateY: 0
+        translateX: 0
+        },
           duration: 10*@dur
           easing: 'easeOutElastic'
 
     @$creamTriangle1.css 'transform-origin': '50% 50%'
 
-    @$creamTriangle1.velocity
-        translateX: 490
-        translateY: 300
-      ,
+    @$creamTriangle1.velocity {
+      translateX: 490
+      translateY: 300
+      },
         duration: 1
 
       .velocity
@@ -109,25 +107,21 @@ class Triangles
         duration: 36*@dur
         easing: 'linear'
 
-    @$divSparks.velocity
-        translateX: 235 - translateSize/8
-        translateY: 50 + translateSize/8
-      ,
+    @$divSparks.velocity {
+      translateX: 235 - translateSize/8
+      translateY: 50 + translateSize/8
+      },
         duration: 3*@dur
         delay:    @start
         easing: 'easeOutElastic'
         begin:=> @$divSparks.show()
-
 
     @start = @start - 50*@s
     @dur = 100*@s
     @$divSparks.children().each (i, item)=>
       $item = $(item)
       length = $item[0].getTotalLength()
-      $item.velocity
-          'strokeDasharray': length
-        ,
-          duration: 1
+      $item.velocity {'strokeDasharray': length}, duration: 1
 
         .velocity
           'strokeDashoffset': if i is 3 then -length else length

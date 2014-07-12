@@ -87,14 +87,21 @@
         xlink:href="css/i/wood.jpg"></image>
     </pattern>
 
-    <pattern id="rose-pattern" width="250" height="250" patternUnits="userSpaceOnUse" y="200">
+    <pattern id="space-dogs-pattern" width="400" height="300" patternUnits="userSpaceOnUse" y="200">
+      <image id="js-space-dogs-image"
+        width="400"
+        height="300"
+        xlink:href="css/i/space-dogs.jpg"></image>
+    </pattern>
+
+    <pattern id="rose-pattern" width="175" height="175" patternUnits="userSpaceOnUse" y="175">
       <image id="js-rose-image"
-        width="250"
-        height="250"
+        width="175"
+        height="175"
         xlink:href="css/i/flowers-roses.jpg"></image>
     </pattern>
 
-    <pattern id="blue-flowers-pattern" width="375" height="250.5" patternUnits="userSpaceOnUse" x="150">
+    <pattern id="blue-flowers-pattern" width="375" height="250.5" patternUnits="userSpaceOnUse" x="0" y="200">
       <image id="js-blue-image"
         width="375"
         height="250.5"

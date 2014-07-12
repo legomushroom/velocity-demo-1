@@ -20,19 +20,19 @@ class Waves
     @wave1YStart = 1350
     @wave1Y      = 900
     @$wave1Top.velocity {
-        translateY: 0
-      }, duration: 1
+      translateY: 0
+    }, duration: 1
 
     @$wave1Top2.velocity {
-        rotateX: -90
-        translateY: 20
-      }, duration: 1
+      rotateX: -90
+      translateY: 20
+    }, duration: 1
 
     @$wave1.velocity {
-        rotateZ: -25
-        translateX: -400
-        translateY: @wave1YStart
-      }, duration: 1
+      rotateZ: -25
+      translateX: -400
+      translateY: @wave1YStart
+    }, duration: 1
 
 
     @$wave2        = $('#js-wave2')
@@ -44,23 +44,23 @@ class Waves
     @wave2YStart = 1350
     @wave2Y      = 400
     @$wave2Top.velocity {
-        translateY: 0
-      }, duration: 1
+      translateY: 0
+    }, duration: 1
 
     @$wave2Top2.velocity {
-        rotateX: -90
-        translateY: 20
-      }, duration: 1
+      rotateX: -90
+      translateY: 20
+    }, duration: 1
 
     @$wave2Top3.velocity {
-        translateY: -20
-      }, duration: 1
+      translateY: -20
+    }, duration: 1
 
     @$wave2.velocity {
-        rotateZ: -25
-        translateX: -400
-        translateY: @wave2YStart
-      }, duration: 1
+      rotateZ: -25
+      translateX: -400
+      translateY: @wave2YStart
+    }, duration: 1
 
   run:->
     @wave1(@delay + h.time(1700))
@@ -69,14 +69,13 @@ class Waves
   wave1:(delay)->
     wave1Time = h.time(1200)
     topRotateDur1 = wave1Time/4
-    @$wave1.velocity {
-        translateY: @wave1Y
-      },
-        delay: delay
-        duration: wave1Time
-        easing: 'ease-out'
-        begin:=>
-          @$wave1.show()
+    @$wave1.velocity({ translateY: @wave1Y },
+      delay: delay
+      duration: wave1Time
+      easing: 'ease-out'
+      begin:=>
+        @$wave1.show()
+    )
 
       .velocity {
         translateY: @wave1YStart
@@ -106,19 +105,17 @@ class Waves
   wave2:(delay)->
     wave2Time = h.time(1500)
     topRotateDur2 = wave2Time/4
-    @$wave2.velocity {
-        translateY: @wave2Y
-      },
-        delay: delay
-        duration: wave2Time
-        easing: 'ease-out'
-        begin:=> @$wave2.show()
-        progress:($els, progress)=>
-          if progress >= 0.375
-            @$wave2Top3.hide()
-            @$wave2Top3Rect.hide()
+    @$wave2.velocity({ translateY: @wave2Y},
+      delay: delay
+      duration: wave2Time
+      easing: 'ease-out'
+      begin:=> @$wave2.show()
+      progress:($els, progress)=>
+        if progress >= 0.375
+          @$wave2Top3.hide()
+          @$wave2Top3Rect.hide()
 
-      .velocity {
+      ).velocity {
         translateY: @wave2YStart
       },
         duration: wave2Time
@@ -139,16 +136,15 @@ class Waves
       delay: delay + wave2Time + .95*topRotateDur2
       duration: topRotateDur2
 
-    @$creamTriangle2.velocity {
-        rotateZ:    -12
-        translateY: -80
-        translateX: -90
+    @$creamTriangle2.velocity({
+      rotateZ:    -12
+      translateY: -80
+      translateX: -90
       },
         duration: 2*topRotateDur2
         delay: delay + h.time(700)
         easing: 'ease-out'
-
-      .velocity {
+      ).velocity {
         rotateZ:    -12
         translateY: 800
         translateX: 800

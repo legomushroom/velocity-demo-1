@@ -9,6 +9,6 @@ class Main
     # new Waves delay: h.time(2300)
     # new Caleydoscope delay: h.time(5000)
 
-setTimeout =>
+setTimeout ->
   new Main
 , 500

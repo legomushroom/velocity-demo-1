@@ -11,24 +11,22 @@ class Spriter
     @cnt = @sprites.length
 
   init:->
-    $('<div />').velocity
-        p: 0
-      ,
-        duration: @duration
-        delay:    @delay
-        easing:   @easing
-        progress:($els,progress)=>
-          for i in [0...@cnt]
-            if progress >= i*(1/@cnt)
-              if !@["lock#{i}"]
-                @["lock#{i}"] = true
-                @sprites[i-1]?.style.display = 'none'
-                @sprites[i].style.display = 'block'
-                if i is @cnt-1
-                  do (i) =>
-                    setTimeout ()=>
-                      @sprites[i].style.display = 'none'
-                    , 1/@cnt
+    $('<div />').velocity {p: 0},
+      duration: @duration
+      delay:    @delay
+      easing:   @easing
+      progress:($els,progress)=>
+        for i in [0...@cnt]
+          if progress >= i*(1/@cnt)
+            if !@["lock#{i}"]
+              @["lock#{i}"] = true
+              @sprites[i-1]?.style.display = 'none'
+              @sprites[i].style.display = 'block'
+              if i is @cnt-1
+                do (i) =>
+                  setTimeout ()=>
+                    @sprites[i].style.display = 'none'
+                  , 1/@cnt
 
 window.Spriter = Spriter
 
