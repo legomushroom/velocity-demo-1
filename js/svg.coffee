@@ -28,15 +28,14 @@ class Svg
         arr.push parseInt point, 10
     console.log arr
     @$t.velocity {
-      rotateY: 80
+      p: 100
       },
         progress:()=>
-          console.log arguments
-          @$t.attr 'd', "M#{arr[0]},#{arr[1]} L#{arr[2]},#{arr[3]} L#{arr[4]},#{arr[5]} L#{arr[6]},#{arr[7]} Z"
+          @$t.attr 'd', "M#{arr[0]},#{arr[1]} L#{arr[2]},#{arr[3]} L#{arr[4]},#{arr[5]} Z"
     
     .velocity {
       rotateY: 0
-    }, easing: 'easeOutElastic'
+    }
 
 
   changeS:->

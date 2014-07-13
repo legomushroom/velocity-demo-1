@@ -39,18 +39,15 @@
       }
       console.log(arr);
       return this.$t.velocity({
-        rotateY: 80
+        p: 100
       }, {
         progress: (function(_this) {
           return function() {
-            console.log(arguments);
-            return _this.$t.attr('d', "M" + arr[0] + "," + arr[1] + " L" + arr[2] + "," + arr[3] + " L" + arr[4] + "," + arr[5] + " L" + arr[6] + "," + arr[7] + " Z");
+            return _this.$t.attr('d', "M" + arr[0] + "," + arr[1] + " L" + arr[2] + "," + arr[3] + " L" + arr[4] + "," + arr[5] + " Z");
           };
         })(this)
       }).velocity({
         rotateY: 0
-      }, {
-        easing: 'easeOutElastic'
       });
     };
 
