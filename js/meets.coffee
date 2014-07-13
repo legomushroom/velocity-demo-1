@@ -35,7 +35,7 @@ class Meets
 
     @$rightFistWrapper = $('#js-right-fist-wrapper')
     @$leftFistWrapper  = $('#js-left-fist-wrapper')
-    @bumpDelay = h.time(1000)
+    @bumpDelay = h.time(700)
 
   run:->
     bumpDuration = h.time(400)

@@ -13,8 +13,11 @@
       new Caleydoscope({
         delay: 0
       });
-      return new Meets({
+      new Meets({
         delay: h.time(3400)
+      });
+      return new Svg({
+        delay: h.time(5200)
       });
     };
 

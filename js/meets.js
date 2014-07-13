@@ -47,7 +47,7 @@
       this.$burst = $('#js-meets-burst');
       this.$rightFistWrapper = $('#js-right-fist-wrapper');
       this.$leftFistWrapper = $('#js-left-fist-wrapper');
-      return this.bumpDelay = h.time(1000);
+      return this.bumpDelay = h.time(700);
     };
 
     Meets.prototype.run = function() {
