@@ -5,6 +5,7 @@ class Meets
 
   vars:->
     @delay = @o.delay or 0
+
     @$leftHand  = $('#js-left-hand')
     @$leftHand.velocity {translateX: 500}, duration:1
     @$rightHand = $('#js-right-hand')
@@ -21,15 +22,7 @@ class Meets
 
     @$dogsPattern = $('#js-space-dogs-image')
 
-    @$meets = $('#js-meets')
-    @$meets.velocity {
-      scale: 50
-      # rotateZ: 180
-      translateX: -1280
-      translateY: -200
-      }, duration: 1
-
-    # @$circles = $('#js-meets-circles')
+    @$circles = $('#js-meets-circles')
 
     @$rightButton = $('#js-right-button')
     @$leftButton  = $('#js-left-button')
@@ -42,6 +35,7 @@ class Meets
 
     @$rightFistWrapper = $('#js-right-fist-wrapper')
     @$leftFistWrapper  = $('#js-left-fist-wrapper')
+    @bumpDelay = h.time(1000)
 
   run:->
     bumpDuration = h.time(400)
@@ -50,6 +44,7 @@ class Meets
       # delay: @delay
       duration: bumpDuration
       easing: 'ease-in'
+      delay: @delay + @bumpDelay
       begin:=>
         @$leftHand.show()
         @$rightHand.show()
@@ -57,48 +52,38 @@ class Meets
     @$rightHand.velocity { translateX: 0 },
         # delay: @delay
         duration: bumpDuration
+        delay: @delay + @bumpDelay
         easing: 'ease-in'
 
     @$rightShirt.velocity { translateX: 0 },
         # delay: @delay
         duration: bumpDuration
+        delay: @delay + @bumpDelay
         easing: 'ease-in'
 
-
-    @$meets.velocity {
-      scale: 1
-      translateX: 0
-      translateY: 0
-      rotateZ: 0
+    @$circles.children().each (i, item)=>
+      $item = $(item)
+      x = parseFloat $item.attr 'data-x'
+      y = parseFloat $item.attr 'data-y'
+      $item.velocity {
+        translateX: x
+        translateY: y
       },
-      duration: h.time(800)
-      delay: @delay + h.time(100)
-      easing: 'ease-in'
-      complete: =>
-        # @$circles.children().each (i, item)->
-        #   $item = $(item)
-        #   $item.velocity {
-        #     opacity: 1
-        #     # translateY: 10
-        #   },
-        #     delay: h.time i*30
-        #     duration: h.time 100
-        #     begin:->
-        #       $item.show()
+        duration: 1
+        delay: @delay
 
-        #   .velocity {
-        #     opacity: 0
-        #     # translateY: 0
-        #   },
-        #     duration: h.time 100
-        #     easing: 'easeOutElastic'
-        #     complete:->
-        #       $item.hide()
+      $item.velocity {
+        r: 0
+        translateX: x + h.rand(-50,50)
+        translateY: y + h.rand(-50,50)
+        rotateZ: h.rand(-60,60)
+      }, duration: h.time(1000)
 
     @$leftShirt.velocity { translateX: 0 },
       # delay: @delay
       duration: bumpDuration
       easing: 'ease-in'
+      delay: @delay + @bumpDelay
       complete: =>
         @$dogsPattern.velocity {
           translateX: -150
@@ -110,49 +95,6 @@ class Meets
         @$rightButton.show()
         @$leftButton.show()
 
-        translate = 5
-        @$sleeves.css 'transform-origin': 'center center'
-        @$sleeves.velocity {
-          translateX: h.rand(-translate,translate)
-          translateY: h.rand(-translate,translate)
-          rotateZ: h.rand(-25,25)
-          },
-            duration: 1
-            delay: h.time(0)
-
-        .velocity {
-          translateX: 0
-          translateY: 0
-          rotateZ: 0
-          },
-            easing: 'easeOutElastic'
-
-        translate = 5
-        @$shirts.css 'transform-origin': 'center center'
-        @$shirts.velocity {
-          # translateX: -translate
-          translateY: -translate
-          },
-            duration: 1
-
-        .velocity {
-          translateX: 0
-          translateY: 0
-          },
-            easing: 'easeOutElastic'
-        
-        translate = 5
-        @$buttons.velocity {
-          translateY: translate
-          },
-            duration: 1
-
-        .velocity {
-          translateX: 0
-          translateY: 0
-          },
-            easing: 'easeOutElastic'
-
     fistX = 20
     fistAngle = -10
     fistDuration = h.time(700)
@@ -163,7 +105,7 @@ class Meets
       .velocity {rotateZ: fistAngle}, {duration:1}
       .velocity {rotateZ: 0}, {
         duration: fistDuration,
-        delay: fistDelay,
+        delay: @delay + fistDelay + @bumpDelay,
         easing: 'easeOutElastic'
       }
 
@@ -172,7 +114,7 @@ class Meets
       .velocity {rotateZ: fistAngle}, {duration:1}
       .velocity {rotateZ: 0}, {
         duration: fistDuration,
-        delay: fistDelay,
+        delay: @delay + fistDelay + @bumpDelay,
         easing: 'easeOutElastic'
       }
 
@@ -180,7 +122,7 @@ class Meets
       .velocity {translateX: fistX}, {duration:1}
       .velocity {translateX: 0}, {
         duration: fistDuration2,
-        delay: fistDelay,
+        delay: @delay + fistDelay + @bumpDelay,
         easing: 'easeOutElastic'
       }
 
@@ -188,7 +130,7 @@ class Meets
       .velocity {translateX: fistX}, {duration:1}
       .velocity {translateX: 0}, {
         duration: fistDuration2,
-        delay: fistDelay,
+        delay: @delay + fistDelay + @bumpDelay,
         easing: 'easeOutElastic'
       }
 
@@ -205,7 +147,7 @@ class Meets
           strokeDashoffset: 0
           # strokeWidth: 10
         },
-          delay: @delay + h.time(450)
+          delay: @delay + h.time(450) + @bumpDelay
           duration: h.time(150)
 
         .velocity {
