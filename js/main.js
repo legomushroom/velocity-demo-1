@@ -10,14 +10,8 @@
     }
 
     Main.prototype.run = function() {
-      new Caleydoscope({
-        delay: 0
-      });
-      new Meets({
-        delay: h.time(3400)
-      });
       return new Svg({
-        delay: h.time(5200)
+        delay: h.time(0)
       });
     };
 
