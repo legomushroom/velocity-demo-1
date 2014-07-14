@@ -19,8 +19,57 @@
 
     Svg.prototype.run = function() {
       this.hider();
-      this.changeS();
-      this.runG();
+      this.showS();
+      this.showV();
+      return this.runG();
+    };
+
+    Svg.prototype.showS = function() {
+      var i, item, _i, _len, _ref;
+      this.strokeArray = this.$s.attr('stroke-dashArray').split(',');
+      _ref = this.strokeArray;
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        item = _ref[i];
+        this.strokeArray[i] = parseInt(this.strokeArray[i], 10);
+      }
+      return this.$s.velocity({
+        p: 0,
+        strokeDashoffset: 1000,
+        opacity: 1
+      }, {
+        duration: h.time(1200),
+        complete: (function(_this) {
+          return function() {
+            _this.$s.attr('stroke-dasharray', '0');
+            return _this.runS();
+          };
+        })(this)
+      });
+    };
+
+    Svg.prototype.runS = function() {
+      return this.$s.velocity({
+        'translateY': -194,
+        'translateX': -52
+      }, {
+        duration: h.time(1000),
+        delay: h.time(400),
+        easing: 'easeOutBounce',
+        complete: (function(_this) {
+          return function() {
+            _this.$s.velocity({
+              'translateY': 0,
+              'translateX': 0
+            }, {
+              duration: 1
+            });
+            return _this.runS();
+          };
+        })(this)
+      });
+    };
+
+    Svg.prototype.showV = function() {
       this.preV();
       return this.runV();
     };
@@ -29,14 +78,15 @@
       return this.$v.velocity({
         p: 1
       }, {
-        delay: h.time(500),
+        delay: h.time(300),
         progress: (function(_this) {
           return function($els, proc) {
             return _this.$v.attr('d', "M" + (_this.x1 + (_this.deltaX1 * proc)) + "," + _this.arr[1] + "\n L" + _this.arr[2] + "," + _this.arr[3] + "\n L" + (_this.x2 - (_this.deltaX2 * proc)) + "," + _this.arr[5] + " Z");
           };
         })(this)
       }).velocity({
-        p: 0
+        p: 0,
+        opacity: 1
       }, {
         duration: h.time(700),
         progress: (function(_this) {
@@ -68,30 +118,8 @@
       }
       this.x1 = this.arr[0];
       this.x2 = this.arr[4];
-      this.deltaX1 = 44;
-      return this.deltaX2 = 44;
-    };
-
-    Svg.prototype.changeS = function() {
-      return this.$s.velocity({
-        'translateY': -194,
-        'translateX': -52
-      }, {
-        duration: h.time(1000),
-        delay: h.time(400),
-        easing: 'easeOutBounce',
-        complete: (function(_this) {
-          return function() {
-            _this.$s.velocity({
-              'translateY': 0,
-              'translateX': 0
-            }, {
-              duration: 1
-            });
-            return _this.changeS();
-          };
-        })(this)
-      });
+      this.deltaX1 = 80;
+      return this.deltaX2 = 80;
     };
 
     Svg.prototype.runG = function() {
@@ -108,7 +136,8 @@
       }).velocity({
         scaleX: 1,
         scaleY: 1,
-        rotateZ: 0
+        rotateZ: 0,
+        opacity: 1
       }, {
         duration: h.time(400),
         complete: (function(_this) {

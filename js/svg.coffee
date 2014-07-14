@@ -15,15 +15,49 @@ class Svg
   run:->
     @hider()
 
-    @changeS()
+    @showS()
+    @showV()
     @runG()
+
+  showS:->
+    @strokeArray = @$s.attr('stroke-dashArray').split ','
+    for item, i in @strokeArray
+      @strokeArray[i] = parseInt @strokeArray[i], 10
+
+    @$s.velocity {
+      p: 0
+      strokeDashoffset: 1000
+      opacity: 1
+      },
+        duration: h.time 1200
+        complete:=>
+          @$s.attr 'stroke-dasharray', '0'
+          @runS()
+
+  runS:->
+    @$s.velocity {
+      'translateY': -194
+      'translateX': -52
+      },
+        duration: h.time 1000
+        delay:    h.time 400
+        easing:   'easeOutBounce'
+        complete:=>
+          @$s.velocity {
+            'translateY': 0
+            'translateX': 0
+            },
+              duration: 1
+          @runS()
+
+  showV:->
     @preV(); @runV()
 
   runV:->
     @$v.velocity {
       p: 1
       },
-        delay: h.time 500
+        delay:    h.time 300
         progress:($els, proc)=>
           @$v.attr 'd',
             """
@@ -34,6 +68,7 @@ class Svg
     
     .velocity {
       p: 0
+      opacity: 1
     },
       duration: h.time 700
       progress:($els, proc)=>
@@ -55,25 +90,8 @@ class Svg
         @arr.push parseInt point, 10
     @x1 = @arr[0]
     @x2 = @arr[4]
-    @deltaX1 = 44
-    @deltaX2 = 44
-
-
-  changeS:->
-    @$s.velocity {
-      'translateY': -194
-      'translateX': -52
-      },
-        duration: h.time 1000
-        delay:    h.time 400
-        easing:   'easeOutBounce'
-        complete:=>
-          @$s.velocity {
-            'translateY': 0
-            'translateX': 0
-            },
-              duration: 1
-          @changeS()
+    @deltaX1 = 80
+    @deltaX2 = 80
 
   runG:->
     @$g.css 'transform-origin': 'center center'
@@ -90,6 +108,7 @@ class Svg
       scaleX:  1
       scaleY:  1
       rotateZ: 0
+      opacity: 1
       },
         duration: h.time 400
         complete:=> @runG()
