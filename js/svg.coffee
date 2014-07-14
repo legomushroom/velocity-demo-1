@@ -23,7 +23,7 @@ class Svg
     @$t.velocity {
       p: 1
       },
-        delay: h.time 1200
+        delay: h.time 500
         progress:($els, proc)=>
           @$t.attr 'd',
             """
@@ -55,8 +55,8 @@ class Svg
         @arr.push parseInt point, 10
     @x1 = @arr[0]
     @x2 = @arr[4]
-    @deltaX1 = 60
-    @deltaX2 = 60
+    @deltaX1 = 44
+    @deltaX2 = 44
 
 
   changeS:->
@@ -65,7 +65,7 @@ class Svg
       'translateX': -52
       },
         duration: h.time 1000
-        delay:    h.time 800
+        delay:    h.time 400
         easing:   'easeOutBounce'
         complete:=>
           @$s.velocity {
@@ -82,7 +82,7 @@ class Svg
       scaleY: 1.25
       # rotateZ: h.rand(-20,20)
       },
-        delay:    h.time 1600
+        delay:    h.time 600
         duration: h.time 400
         easing: 'easeOutBounce'
 

@@ -29,7 +29,7 @@
       return this.$t.velocity({
         p: 1
       }, {
-        delay: h.time(1200),
+        delay: h.time(500),
         progress: (function(_this) {
           return function($els, proc) {
             return _this.$t.attr('d', "M" + (_this.x1 + (_this.deltaX1 * proc)) + "," + _this.arr[1] + "\n L" + _this.arr[2] + "," + _this.arr[3] + "\n L" + (_this.x2 - (_this.deltaX2 * proc)) + "," + _this.arr[5] + " Z");
@@ -68,8 +68,8 @@
       }
       this.x1 = this.arr[0];
       this.x2 = this.arr[4];
-      this.deltaX1 = 60;
-      return this.deltaX2 = 60;
+      this.deltaX1 = 44;
+      return this.deltaX2 = 44;
     };
 
     Svg.prototype.changeS = function() {
@@ -78,7 +78,7 @@
         'translateX': -52
       }, {
         duration: h.time(1000),
-        delay: h.time(800),
+        delay: h.time(400),
         easing: 'easeOutBounce',
         complete: (function(_this) {
           return function() {
@@ -102,7 +102,7 @@
         scaleX: 1.25,
         scaleY: 1.25
       }, {
-        delay: h.time(1600),
+        delay: h.time(600),
         duration: h.time(400),
         easing: 'easeOutBounce'
       }).velocity({
