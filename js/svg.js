@@ -21,34 +21,55 @@
       this.hider();
       this.changeS();
       this.runG();
+      this.preT();
       return this.runT();
     };
 
     Svg.prototype.runT = function() {
-      var arr, i, point, points, _i, _len;
+      return this.$t.velocity({
+        p: 1
+      }, {
+        delay: h.time(1200),
+        progress: (function(_this) {
+          return function($els, proc) {
+            return _this.$t.attr('d', "M" + (_this.x1 + (_this.deltaX1 * proc)) + "," + _this.arr[1] + "\n L" + _this.arr[2] + "," + _this.arr[3] + "\n L" + (_this.x2 - (_this.deltaX2 * proc)) + "," + _this.arr[5] + " Z");
+          };
+        })(this)
+      }).velocity({
+        p: 0
+      }, {
+        progress: (function(_this) {
+          return function($els, proc) {
+            proc = h.elasticOut(proc);
+            return _this.$t.attr('d', "M" + ((_this.x1 + _this.deltaX1) - (_this.deltaX1 * proc)) + "," + _this.arr[1] + "\n L" + _this.arr[2] + "," + _this.arr[3] + "\n L" + ((_this.x2 - _this.deltaX2) + (_this.deltaX2 * proc)) + "," + _this.arr[5] + " Z");
+          };
+        })(this),
+        complete: (function(_this) {
+          return function() {
+            return _this.runT();
+          };
+        })(this),
+        easing: 'easeOutBounce'
+      });
+    };
+
+    Svg.prototype.preT = function() {
+      var i, point, points, _i, _len;
       this.$t.css({
         'transform-origin': 'center center'
       });
-      arr = [];
+      this.arr = [];
       points = this.$t.attr('d').split(/\,|M|L|\s/);
       for (i = _i = 0, _len = points.length; _i < _len; i = ++_i) {
         point = points[i];
         if (point && point !== 'Z') {
-          arr.push(parseInt(point, 10));
+          this.arr.push(parseInt(point, 10));
         }
       }
-      console.log(arr);
-      return this.$t.velocity({
-        p: 100
-      }, {
-        progress: (function(_this) {
-          return function() {
-            return _this.$t.attr('d', "M" + arr[0] + "," + arr[1] + " L" + arr[2] + "," + arr[3] + " L" + arr[4] + "," + arr[5] + " Z");
-          };
-        })(this)
-      }).velocity({
-        rotateY: 0
-      });
+      this.x1 = this.arr[0];
+      this.x2 = this.arr[4];
+      this.deltaX1 = 60;
+      return this.deltaX2 = 60;
     };
 
     Svg.prototype.changeS = function() {
@@ -74,15 +95,16 @@
     };
 
     Svg.prototype.runG = function() {
-      this.isRunG = !this.isRunG;
       this.$g.css({
         'transform-origin': 'center center'
       });
       return this.$g.velocity({
-        scaleX: this.isRunG ? 1.25 : 1,
-        scaleY: !this.isRunG ? 1.25 : 1
+        scaleX: 1.25,
+        scaleY: 1.25
       }, {
-        duration: h.time(400)
+        delay: h.time(1600),
+        duration: h.time(400),
+        easing: 'easeOutBounce'
       }).velocity({
         scaleX: 1,
         scaleY: 1,

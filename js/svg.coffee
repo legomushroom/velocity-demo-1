@@ -17,25 +17,46 @@ class Svg
 
     @changeS()
     @runG()
-    @runT()
+    @preT(); @runT()
 
   runT:->
+    @$t.velocity {
+      p: 1
+      },
+        delay: h.time 1200
+        progress:($els, proc)=>
+          @$t.attr 'd',
+            """
+            M#{@x1+(@deltaX1*proc)},#{@arr[1]}
+             L#{@arr[2]},#{@arr[3]}
+             L#{@x2-(@deltaX2*proc)},#{@arr[5]} Z
+            """
+    
+    .velocity {
+      p: 0
+    },
+      progress:($els, proc)=>
+        proc = h.elasticOut proc
+        @$t.attr 'd',
+          """
+          M#{(@x1+@deltaX1)-(@deltaX1*proc)},#{@arr[1]}
+           L#{@arr[2]},#{@arr[3]}
+           L#{(@x2-@deltaX2)+(@deltaX2*proc)},#{@arr[5]} Z
+          """
+      complete:=> @runT()
+      easing: 'easeOutBounce'
+
+  preT:->
     @$t.css 'transform-origin': 'center center'
-    arr = []
+    @arr = []
     points =  @$t.attr('d').split /\,|M|L|\s/
     for point,i in points
       if point and point isnt 'Z'
-        arr.push parseInt point, 10
-    console.log arr
-    @$t.velocity {
-      p: 100
-      },
-        progress:()=>
-          @$t.attr 'd', "M#{arr[0]},#{arr[1]} L#{arr[2]},#{arr[3]} L#{arr[4]},#{arr[5]} Z"
-    
-    .velocity {
-      rotateY: 0
-    }
+        @arr.push parseInt point, 10
+    @x1 = @arr[0]
+    @x2 = @arr[4]
+    @deltaX1 = 60
+    @deltaX2 = 60
 
 
   changeS:->
@@ -55,14 +76,15 @@ class Svg
           @changeS()
 
   runG:->
-    @isRunG = !@isRunG
     @$g.css 'transform-origin': 'center center'
     @$g.velocity {
-      scaleX: if @isRunG  then 1.25 else 1
-      scaleY: if !@isRunG then 1.25 else 1
+      scaleX: 1.25
+      scaleY: 1.25
       # rotateZ: h.rand(-20,20)
       },
+        delay:    h.time 1600
         duration: h.time 400
+        easing: 'easeOutBounce'
 
     .velocity {
       scaleX:  1
