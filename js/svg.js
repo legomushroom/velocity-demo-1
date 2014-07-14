@@ -14,52 +14,52 @@
       this.$circles = $('#js-svg-circles');
       this.$s = $('#js-svg-s');
       this.$g = $('#js-svg-g');
-      return this.$t = $('#js-svg-t');
+      return this.$v = $('#js-svg-v');
     };
 
     Svg.prototype.run = function() {
       this.hider();
       this.changeS();
       this.runG();
-      this.preT();
-      return this.runT();
+      this.preV();
+      return this.runV();
     };
 
-    Svg.prototype.runT = function() {
-      return this.$t.velocity({
+    Svg.prototype.runV = function() {
+      return this.$v.velocity({
         p: 1
       }, {
         delay: h.time(500),
         progress: (function(_this) {
           return function($els, proc) {
-            return _this.$t.attr('d', "M" + (_this.x1 + (_this.deltaX1 * proc)) + "," + _this.arr[1] + "\n L" + _this.arr[2] + "," + _this.arr[3] + "\n L" + (_this.x2 - (_this.deltaX2 * proc)) + "," + _this.arr[5] + " Z");
+            return _this.$v.attr('d', "M" + (_this.x1 + (_this.deltaX1 * proc)) + "," + _this.arr[1] + "\n L" + _this.arr[2] + "," + _this.arr[3] + "\n L" + (_this.x2 - (_this.deltaX2 * proc)) + "," + _this.arr[5] + " Z");
           };
         })(this)
       }).velocity({
         p: 0
       }, {
+        duration: h.time(700),
         progress: (function(_this) {
           return function($els, proc) {
             proc = h.elasticOut(proc);
-            return _this.$t.attr('d', "M" + ((_this.x1 + _this.deltaX1) - (_this.deltaX1 * proc)) + "," + _this.arr[1] + "\n L" + _this.arr[2] + "," + _this.arr[3] + "\n L" + ((_this.x2 - _this.deltaX2) + (_this.deltaX2 * proc)) + "," + _this.arr[5] + " Z");
+            return _this.$v.attr('d', "M" + ((_this.x1 + _this.deltaX1) - (_this.deltaX1 * proc)) + "," + _this.arr[1] + "\n L" + _this.arr[2] + "," + _this.arr[3] + "\n L" + ((_this.x2 - _this.deltaX2) + (_this.deltaX2 * proc)) + "," + _this.arr[5] + " Z");
           };
         })(this),
         complete: (function(_this) {
           return function() {
-            return _this.runT();
+            return _this.runV();
           };
-        })(this),
-        easing: 'easeOutBounce'
+        })(this)
       });
     };
 
-    Svg.prototype.preT = function() {
+    Svg.prototype.preV = function() {
       var i, point, points, _i, _len;
-      this.$t.css({
+      this.$v.css({
         'transform-origin': 'center center'
       });
       this.arr = [];
-      points = this.$t.attr('d').split(/\,|M|L|\s/);
+      points = this.$v.attr('d').split(/\,|M|L|\s/);
       for (i = _i = 0, _len = points.length; _i < _len; i = ++_i) {
         point = points[i];
         if (point && point !== 'Z') {

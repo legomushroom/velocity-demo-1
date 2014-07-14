@@ -10,22 +10,22 @@ class Svg
     @$circles = $('#js-svg-circles')
     @$s = $('#js-svg-s')
     @$g = $('#js-svg-g')
-    @$t = $('#js-svg-t')
+    @$v = $('#js-svg-v')
 
   run:->
     @hider()
 
     @changeS()
     @runG()
-    @preT(); @runT()
+    @preV(); @runV()
 
-  runT:->
-    @$t.velocity {
+  runV:->
+    @$v.velocity {
       p: 1
       },
         delay: h.time 500
         progress:($els, proc)=>
-          @$t.attr 'd',
+          @$v.attr 'd',
             """
             M#{@x1+(@deltaX1*proc)},#{@arr[1]}
              L#{@arr[2]},#{@arr[3]}
@@ -35,21 +35,21 @@ class Svg
     .velocity {
       p: 0
     },
+      duration: h.time 700
       progress:($els, proc)=>
         proc = h.elasticOut proc
-        @$t.attr 'd',
+        @$v.attr 'd',
           """
           M#{(@x1+@deltaX1)-(@deltaX1*proc)},#{@arr[1]}
            L#{@arr[2]},#{@arr[3]}
            L#{(@x2-@deltaX2)+(@deltaX2*proc)},#{@arr[5]} Z
           """
-      complete:=> @runT()
-      easing: 'easeOutBounce'
+      complete:=> @runV()
 
-  preT:->
-    @$t.css 'transform-origin': 'center center'
+  preV:->
+    @$v.css 'transform-origin': 'center center'
     @arr = []
-    points =  @$t.attr('d').split /\,|M|L|\s/
+    points =  @$v.attr('d').split /\,|M|L|\s/
     for point,i in points
       if point and point isnt 'Z'
         @arr.push parseInt point, 10
