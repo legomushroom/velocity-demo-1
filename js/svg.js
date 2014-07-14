@@ -14,14 +14,22 @@
       this.$circles = $('#js-svg-circles');
       this.$s = $('#js-svg-s');
       this.$g = $('#js-svg-g');
-      return this.$v = $('#js-svg-v');
+      this.$v = $('#js-svg-v');
+      this.$text = $('#js-svg-text');
+      this.$svgStroke = $('.svg-stroke');
+      this.$gradient = $('#js-gradient');
+      this.maxCnt = 5;
+      return this.cnt = 0;
     };
 
     Svg.prototype.run = function() {
-      this.hider();
-      this.showS();
-      this.showV();
-      return this.runG();
+      return this.hider().then((function(_this) {
+        return function() {
+          _this.showS();
+          _this.showV();
+          return _this.runG();
+        };
+      })(this));
     };
 
     Svg.prototype.showS = function() {
@@ -57,6 +65,12 @@
         easing: 'easeOutBounce',
         complete: (function(_this) {
           return function() {
+            if (_this.cnt++ === _this.maxCnt) {
+              _this.destroy();
+            }
+            if (_this.isDestroy) {
+              return;
+            }
             _this.$s.velocity({
               'translateY': 0,
               'translateX': 0
@@ -97,6 +111,9 @@
         })(this),
         complete: (function(_this) {
           return function() {
+            if (_this.isDestroy) {
+              return;
+            }
             return _this.runV();
           };
         })(this)
@@ -142,14 +159,22 @@
         duration: h.time(400),
         complete: (function(_this) {
           return function() {
-            return _this.runG();
+            if (_this.isDestroy) {
+              return;
+            }
+            _this.runG();
+            return _this.$text.velocity({
+              opacity: 1
+            });
           };
         })(this)
       });
     };
 
     Svg.prototype.hider = function() {
-      return this.$circles.children().each((function(_this) {
+      var dfr;
+      dfr = new $.Deferred;
+      this.$circles.children().each((function(_this) {
         return function(i, item) {
           var $item, data, x, y;
           $item = $(item);
@@ -171,9 +196,19 @@
             rotateZ: h.rand(20, 70),
             translateX: x,
             translateY: y
+          }, {
+            complete: function() {
+              _this.$gradient.show();
+              return dfr.resolve();
+            }
           });
         };
       })(this));
+      return dfr.promise();
+    };
+
+    Svg.prototype.destroy = function() {
+      return this.isDestroy = true;
     };
 
     return Svg;

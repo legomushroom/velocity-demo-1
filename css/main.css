@@ -3006,3 +3006,8 @@ svg {
 .caleydoscope path {
   opacity: 0;
 }
+.svg-letter {
+  stroke: #fff;
+  opacity: 0;
+  stroke-width: 5;
+}

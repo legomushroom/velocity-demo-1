@@ -11,13 +11,28 @@ class Svg
     @$s = $('#js-svg-s')
     @$g = $('#js-svg-g')
     @$v = $('#js-svg-v')
+    @$text = $('#js-svg-text')
+    @$svgStroke = $('.svg-stroke')
+    @$gradient = $('#js-gradient')
+
+    @maxCnt = 5
+    @cnt = 0
 
   run:->
-    @hider()
+    @hider().then =>
+      @showS()
+      @showV()
+      @runG()
 
-    @showS()
-    @showV()
-    @runG()
+    # @$svgStroke.each (i, item)=>
+    #   $item = $ item
+    #   $item.velocity {
+    #     strokeWidth: 7
+    #     },
+    #       loop: 5
+    #       duration: h.time 1200
+    #       delay: h.time h.rand 0, 300
+
 
   showS:->
     @strokeArray = @$s.attr('stroke-dashArray').split ','
@@ -43,6 +58,8 @@ class Svg
         delay:    h.time 400
         easing:   'easeOutBounce'
         complete:=>
+          if @cnt++ is @maxCnt then @destroy()
+          return if @isDestroy
           @$s.velocity {
             'translateY': 0
             'translateX': 0
@@ -79,7 +96,9 @@ class Svg
            L#{@arr[2]},#{@arr[3]}
            L#{(@x2-@deltaX2)+(@deltaX2*proc)},#{@arr[5]} Z
           """
-      complete:=> @runV()
+      complete:=>
+        return if @isDestroy
+        @runV()
 
   preV:->
     @$v.css 'transform-origin': 'center center'
@@ -111,10 +130,14 @@ class Svg
       opacity: 1
       },
         duration: h.time 400
-        complete:=> @runG()
+        complete:=>
+          return if @isDestroy
+          @runG()
+          @$text.velocity {opacity:1}
 
 
   hider:->
+    dfr = new $.Deferred
     @$circles.children().each (i, item)=>
       $item = $(item)
       data = $item.data()
@@ -136,6 +159,14 @@ class Svg
         rotateZ: h.rand(20,70)
         translateX: x
         translateY: y
-        }
+        },
+          complete:=>
+            @$gradient.show()
+            dfr.resolve()
+
+    dfr.promise()
+
+  destroy:->
+    @isDestroy = true
 
 window.Svg = Svg

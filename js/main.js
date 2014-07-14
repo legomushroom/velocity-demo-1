@@ -10,8 +10,20 @@
     }
 
     Main.prototype.run = function() {
-      return new Svg({
-        delay: h.time(0)
+      new Caleydoscope({
+        delay: 0
+      });
+      new Meets({
+        delay: h.time(3400)
+      });
+      new Svg({
+        delay: h.time(4800)
+      });
+      new Triangles({
+        delay: h.time(9200)
+      });
+      return new Waves({
+        delay: h.time(11200)
       });
     };
 

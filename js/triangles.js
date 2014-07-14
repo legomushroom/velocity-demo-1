@@ -5,7 +5,16 @@
     function Triangles(o) {
       this.o = o != null ? o : {};
       this.vars();
-      this.run();
+      $('<div />').velocity({
+        p: 0
+      }, {
+        duration: this.delay,
+        complete: (function(_this) {
+          return function() {
+            return _this.run();
+          };
+        })(this)
+      });
     }
 
     Triangles.prototype.vars = function() {

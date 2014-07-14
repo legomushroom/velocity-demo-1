@@ -1,7 +1,12 @@
 class Triangles
   constructor:(@o={})->
     @vars()
-    @run()
+
+    $('<div />').velocity {
+      p: 0
+    },
+      duration: @delay
+      complete:=> @run()
 
   vars:->
     @delay = @o.delay or 0
