@@ -8,6 +8,7 @@ class Svg
 
     @$div = $('<div />')
     @$circles = $('#js-svg-circles')
+    @$sW = $('#js-svg-s-wrapper')
     @$s = $('#js-svg-s')
     @$g = $('#js-svg-g')
     @$v = $('#js-svg-v')
@@ -17,37 +18,26 @@ class Svg
 
     @maxCnt = 5
     @cnt = 0
+    @delayStep = 300
 
   run:->
-    @hider().then =>
-      @showS()
-      @showV()
-      @runG()
+    @hider()
 
-    # @$svgStroke.each (i, item)=>
-    #   $item = $ item
-    #   $item.velocity {
-    #     strokeWidth: 7
-    #     },
-    #       loop: 5
-    #       duration: h.time 1200
-    #       delay: h.time h.rand 0, 300
-
+    @$div.velocity {
+      p: 1
+    },
+      delay: @delay - h.time 600
+      complete:=>
+        @showS()
+        @showV()
+        @runG()
 
   showS:->
-    @strokeArray = @$s.attr('stroke-dashArray').split ','
-    for item, i in @strokeArray
-      @strokeArray[i] = parseInt @strokeArray[i], 10
-
-    @$s.velocity {
-      p: 0
-      strokeDashoffset: 1000
+    @$sW.velocity {
       opacity: 1
       },
         duration: h.time 1200
-        complete:=>
-          @$s.attr 'stroke-dasharray', '0'
-          @runS()
+        complete:=> @runS()
 
   runS:->
     @$s.velocity {
@@ -55,7 +45,7 @@ class Svg
       'translateX': -52
       },
         duration: h.time 1000
-        delay:    h.time 400
+        delay: @delayStep
         easing:   'easeOutBounce'
         complete:=>
           if @cnt++ is @maxCnt then @destroy()
@@ -74,7 +64,7 @@ class Svg
     @$v.velocity {
       p: 1
       },
-        delay:    h.time 300
+        delay:    h.time 2*@delayStep
         progress:($els, proc)=>
           @$v.attr 'd',
             """
@@ -119,7 +109,7 @@ class Svg
       scaleY: 1.25
       # rotateZ: h.rand(-20,20)
       },
-        delay:    h.time 600
+        delay:    h.time 3*@delayStep
         duration: h.time 400
         easing: 'easeOutBounce'
 
@@ -160,9 +150,8 @@ class Svg
         translateX: x
         translateY: y
         },
-          complete:=>
-            @$gradient.show()
-            dfr.resolve()
+          begin:=> @$gradient.show()
+          complete:-> dfr.resolve()
 
     dfr.promise()
 

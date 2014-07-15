@@ -71,11 +71,12 @@ class Meets
       },
         duration: 1
         delay: @delay
-        
+      
       $item.velocity {
         r: 0
         translateX: x + h.rand(-50,50)
         translateY: y + h.rand(-50,50)
+        rotateZ: h.rand(-360,360)
       }, duration: h.time(1000)
 
     @$leftShirt.velocity { translateX: 0 },

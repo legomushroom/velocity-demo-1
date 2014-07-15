@@ -32,6 +32,8 @@
       });
       this.$creamTriangle2 = $('#js-cream-triangle2');
       this.$creamTriangles = $('#js-cream-triangles');
+      this.blowDelay = 500;
+      this.$gW = $('#js-svg-g-wrapper');
       return this.$creamTriangleWrapper = $('#js-cream-triangle2-wrapper').css({
         'transform': 'translate(490px,300px)'
       });
@@ -136,7 +138,7 @@
       });
       this.start = this.start - 50 * this.s;
       this.dur = 100 * this.s;
-      return this.$divSparks.children().each((function(_this) {
+      this.$divSparks.children().each((function(_this) {
         return function(i, item) {
           var $item, length;
           $item = $(item);
@@ -156,6 +158,22 @@
           });
         };
       })(this));
+      return this.blow();
+    };
+
+    Triangles.prototype.blow = function() {
+      this.$gW.css({
+        'transform-origin': 'center center'
+      });
+      return this.$gW.velocity({
+        translateX: 2000,
+        translateY: 2000,
+        rotateZ: h.rand(200, 540)
+      }, {
+        duration: h.time(700),
+        delay: this.blowDelay,
+        easing: 'ease-out'
+      });
     };
 
     return Triangles;

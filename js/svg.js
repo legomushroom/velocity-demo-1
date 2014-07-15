@@ -12,6 +12,7 @@
       this.delay = this.o.delay || 0;
       this.$div = $('<div />');
       this.$circles = $('#js-svg-circles');
+      this.$sW = $('#js-svg-s-wrapper');
       this.$s = $('#js-svg-s');
       this.$g = $('#js-svg-g');
       this.$v = $('#js-svg-v');
@@ -19,36 +20,33 @@
       this.$svgStroke = $('.svg-stroke');
       this.$gradient = $('#js-gradient');
       this.maxCnt = 5;
-      return this.cnt = 0;
+      this.cnt = 0;
+      return this.delayStep = 300;
     };
 
     Svg.prototype.run = function() {
-      return this.hider().then((function(_this) {
-        return function() {
-          _this.showS();
-          _this.showV();
-          return _this.runG();
-        };
-      })(this));
+      this.hider();
+      return this.$div.velocity({
+        p: 1
+      }, {
+        delay: this.delay - h.time(600),
+        complete: (function(_this) {
+          return function() {
+            _this.showS();
+            _this.showV();
+            return _this.runG();
+          };
+        })(this)
+      });
     };
 
     Svg.prototype.showS = function() {
-      var i, item, _i, _len, _ref;
-      this.strokeArray = this.$s.attr('stroke-dashArray').split(',');
-      _ref = this.strokeArray;
-      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-        item = _ref[i];
-        this.strokeArray[i] = parseInt(this.strokeArray[i], 10);
-      }
-      return this.$s.velocity({
-        p: 0,
-        strokeDashoffset: 1000,
+      return this.$sW.velocity({
         opacity: 1
       }, {
         duration: h.time(1200),
         complete: (function(_this) {
           return function() {
-            _this.$s.attr('stroke-dasharray', '0');
             return _this.runS();
           };
         })(this)
@@ -61,7 +59,7 @@
         'translateX': -52
       }, {
         duration: h.time(1000),
-        delay: h.time(400),
+        delay: this.delayStep,
         easing: 'easeOutBounce',
         complete: (function(_this) {
           return function() {
@@ -92,7 +90,7 @@
       return this.$v.velocity({
         p: 1
       }, {
-        delay: h.time(300),
+        delay: h.time(2 * this.delayStep),
         progress: (function(_this) {
           return function($els, proc) {
             return _this.$v.attr('d', "M" + (_this.x1 + (_this.deltaX1 * proc)) + "," + _this.arr[1] + "\n L" + _this.arr[2] + "," + _this.arr[3] + "\n L" + (_this.x2 - (_this.deltaX2 * proc)) + "," + _this.arr[5] + " Z");
@@ -147,7 +145,7 @@
         scaleX: 1.25,
         scaleY: 1.25
       }, {
-        delay: h.time(600),
+        delay: h.time(3 * this.delayStep),
         duration: h.time(400),
         easing: 'easeOutBounce'
       }).velocity({
@@ -197,8 +195,10 @@
             translateX: x,
             translateY: y
           }, {
+            begin: function() {
+              return _this.$gradient.show();
+            },
             complete: function() {
-              _this.$gradient.show();
               return dfr.resolve();
             }
           });

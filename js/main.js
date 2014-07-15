@@ -19,11 +19,8 @@
       new Svg({
         delay: h.time(5200)
       });
-      new Triangles({
-        delay: h.time(9200)
-      });
-      return new Waves({
-        delay: h.time(11200)
+      return new Triangles({
+        delay: h.time(9400)
       });
     };
 

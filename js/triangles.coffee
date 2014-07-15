@@ -27,6 +27,13 @@ class Triangles
     @$creamTriangle2 = $('#js-cream-triangle2')
     @$creamTriangles = $('#js-cream-triangles')
 
+    @blowDelay = 500
+
+    # @$s = $('#js-svg-s')
+    @$gW = $('#js-svg-g-wrapper')
+    # @$v = $('#js-svg-v')
+
+
     @$creamTriangleWrapper = $('#js-cream-triangle2-wrapper')
       .css 'transform': 'translate(490px,300px)'
 
@@ -135,6 +142,19 @@ class Triangles
           duration: @dur
           begin:=>
             @$divSparks.show()
+
+    @blow()
+
+  blow:->
+    @$gW.css 'transform-origin': 'center center'
+    @$gW.velocity {
+      translateX: 2000
+      translateY: 2000
+      rotateZ: h.rand(200,540)
+      },
+        duration: h.time 700
+        delay: @blowDelay
+        easing: 'ease-out'
 
 
 
