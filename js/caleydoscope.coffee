@@ -25,7 +25,7 @@ class Caleydoscope
     $mask1.velocity {
       r: 75
     },
-      delay: @delay + 1900*@s + caleydDelay1
+      delay: @delay + 1800*@s + caleydDelay1
       duration: 600*@s
       # easing: 'easeOutElastic'
 
@@ -65,7 +65,7 @@ class Caleydoscope
       $item.velocity {
         r:  if i is 0 then 75 else h.rand(10, 50)
         },
-          delay: @delay + 1400*@s + h.rand(0, 500)*@s
+          delay: @delay + 1350*@s + h.rand(0, 500)*@s
           duration: 400*@s + h.rand(0, 300)*@s
 
         .velocity {
@@ -78,7 +78,7 @@ class Caleydoscope
           delay: 400*@s + caleydDelay1 + h.rand(0, 300)*@s
           begin: =>
             @$blow.css 'opacity': 1
-            $mask1.hide()
+            $mask1.css 'opacity': 0
 
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>

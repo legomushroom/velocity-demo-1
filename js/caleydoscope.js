@@ -31,7 +31,7 @@
       $mask1.velocity({
         r: 75
       }, {
-        delay: this.delay + 1900 * this.s + caleydDelay1,
+        delay: this.delay + 1800 * this.s + caleydDelay1,
         duration: 600 * this.s
       });
       this.$velocityText.children().each((function(_this) {
@@ -74,7 +74,7 @@
           return $item.velocity({
             r: i === 0 ? 75 : h.rand(10, 50)
           }, {
-            delay: _this.delay + 1400 * _this.s + h.rand(0, 500) * _this.s,
+            delay: _this.delay + 1350 * _this.s + h.rand(0, 500) * _this.s,
             duration: 400 * _this.s + h.rand(0, 300) * _this.s
           }).velocity({
             translateY: h.rand(-150, 150),
@@ -88,7 +88,9 @@
               _this.$blow.css({
                 'opacity': 1
               });
-              return $mask1.hide();
+              return $mask1.css({
+                'opacity': 0
+              });
             }
           });
         };
