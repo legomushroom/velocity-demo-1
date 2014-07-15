@@ -15,6 +15,7 @@ class Caleydoscope
     @$caleydoscopeImage5 = $('#js-caleydoscope-image5')
     @$caleydoscopeImage6 = $('#js-caleydoscope-image6')
     @$caleydoscope = $('#js-caleydoscope')
+    @$caleydoscopeWrap = $('#js-caleydoscope-wrapper')
     @delay = @o.delay or 0
 
   run:->
@@ -22,11 +23,11 @@ class Caleydoscope
     caleydDelay1 = 100*@s
 
     $mask1.velocity {
-      r: 50
+      r: 75
     },
       delay: @delay + 1900*@s + caleydDelay1
-      duration: 800*@s
-      easing: 'easeOutElastic'
+      duration: 600*@s
+      # easing: 'easeOutElastic'
 
     @$velocityText.children().each (i, item)=>
       $item  = $(item)
@@ -38,17 +39,17 @@ class Caleydoscope
       $item.velocity {
         strokeDasharray: length
         strokeDashoffset: length
-        scale:  0
+        # scale:  0
         }, duration: 1
 
         .velocity {
-          opacity: 100
+          opacity: 1
           strokeDashoffset: 0
-          scale:  1
+          # scale:  1
         },
           duration: 1000*@s + h.rand(0, 100)*@s
-          delay: @delay + 2000*@s + h.rand(0, 500)*@s
-          easing: 'easeOutElastic'
+          delay: @delay + 0*@s + h.rand(0, 500)*@s
+          easing: 'linear'
 
         .velocity {
           rotateZ: h.rand(25, 120)
@@ -57,20 +58,21 @@ class Caleydoscope
           scale: 0
         },
           duration: 500*@s + h.rand(0, 100)*@s
-          delay: caleydDelay1 + h.rand(0, 200)*@s
+          delay: caleydDelay1 + h.rand(0, 200)*@s + h.time(1000)
 
     @$blow.children().each (i, item)=>
       $item  = $(item)
       $item.velocity {
-        r:  if i is 0 then 50 else h.rand(10, 50)
+        r:  if i is 0 then 75 else h.rand(10, 50)
         },
-          delay: @delay + 2000*@s + h.rand(0, 500)*@s
-          duration: 400*@s + h.rand(0, 100)*@s
+          delay: @delay + 1400*@s + h.rand(0, 500)*@s
+          duration: 400*@s + h.rand(0, 300)*@s
 
         .velocity {
           translateY: h.rand(-150, 150)
           translateX: h.rand(-150, 150)
           r: 0
+          rotateZ: h.rand(-100,100)
         },
           duration: 800*@s
           delay: 400*@s + caleydDelay1 + h.rand(0, 300)*@s

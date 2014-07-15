@@ -21,7 +21,7 @@ mask#burst-mask
 
 rect(width="1280", height="900", fill="url(#space-dogs-pattern)", mask="url(#meets-mask)")
 g#js-meets-circles
-  - for (var i = 0; i < 13; i++ )
+  - for (var i = 0; i < 10; i++ )
     - var x = 640 + rand(-140,140);
     - var y = 250 + rand(-50,50);
     circle(fill="white", stroke="none", r="#{rand(50,100)}", transform="translate(#{x},#{y})", data-x="#{x}", data-y="#{y}")

@@ -8,7 +8,7 @@ class Main
     
     new Caleydoscope delay: 0
     new Meets delay:  h.time(3400)
-    new Svg   delay:  h.time(4800)
+    new Svg   delay:  h.time(5000)
     new Triangles delay: h.time(9200)
     new Waves delay: h.time(11200)
 

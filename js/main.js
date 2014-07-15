@@ -17,7 +17,7 @@
         delay: h.time(3400)
       });
       new Svg({
-        delay: h.time(4800)
+        delay: h.time(5000)
       });
       new Triangles({
         delay: h.time(9200)

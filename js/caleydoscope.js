@@ -20,6 +20,7 @@
       this.$caleydoscopeImage5 = $('#js-caleydoscope-image5');
       this.$caleydoscopeImage6 = $('#js-caleydoscope-image6');
       this.$caleydoscope = $('#js-caleydoscope');
+      this.$caleydoscopeWrap = $('#js-caleydoscope-wrapper');
       return this.delay = this.o.delay || 0;
     };
 
@@ -28,11 +29,10 @@
       $mask1 = $('#js-c-mask1');
       caleydDelay1 = 100 * this.s;
       $mask1.velocity({
-        r: 50
+        r: 75
       }, {
         delay: this.delay + 1900 * this.s + caleydDelay1,
-        duration: 800 * this.s,
-        easing: 'easeOutElastic'
+        duration: 600 * this.s
       });
       this.$velocityText.children().each((function(_this) {
         return function(i, item) {
@@ -46,18 +46,16 @@
           x = i < 5 ? size * (5 - i) : -size * i;
           return $item.velocity({
             strokeDasharray: length,
-            strokeDashoffset: length,
-            scale: 0
+            strokeDashoffset: length
           }, {
             duration: 1
           }).velocity({
-            opacity: 100,
-            strokeDashoffset: 0,
-            scale: 1
+            opacity: 1,
+            strokeDashoffset: 0
           }, {
             duration: 1000 * _this.s + h.rand(0, 100) * _this.s,
-            delay: _this.delay + 2000 * _this.s + h.rand(0, 500) * _this.s,
-            easing: 'easeOutElastic'
+            delay: _this.delay + 0 * _this.s + h.rand(0, 500) * _this.s,
+            easing: 'linear'
           }).velocity({
             rotateZ: h.rand(25, 120),
             translateX: h.rand(-200, 200),
@@ -65,7 +63,7 @@
             scale: 0
           }, {
             duration: 500 * _this.s + h.rand(0, 100) * _this.s,
-            delay: caleydDelay1 + h.rand(0, 200) * _this.s
+            delay: caleydDelay1 + h.rand(0, 200) * _this.s + h.time(1000)
           });
         };
       })(this));
@@ -74,14 +72,15 @@
           var $item;
           $item = $(item);
           return $item.velocity({
-            r: i === 0 ? 50 : h.rand(10, 50)
+            r: i === 0 ? 75 : h.rand(10, 50)
           }, {
-            delay: _this.delay + 2000 * _this.s + h.rand(0, 500) * _this.s,
-            duration: 400 * _this.s + h.rand(0, 100) * _this.s
+            delay: _this.delay + 1400 * _this.s + h.rand(0, 500) * _this.s,
+            duration: 400 * _this.s + h.rand(0, 300) * _this.s
           }).velocity({
             translateY: h.rand(-150, 150),
             translateX: h.rand(-150, 150),
-            r: 0
+            r: 0,
+            rotateZ: h.rand(-100, 100)
           }, {
             duration: 800 * _this.s,
             delay: 400 * _this.s + caleydDelay1 + h.rand(0, 300) * _this.s,
