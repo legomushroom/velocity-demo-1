@@ -10,7 +10,7 @@ class Triangles
 
   vars:->
     @delay = @o.delay or 0
-    @s = h.time(1)
+    @s = 50*h.time(1)
     @$pattern      = $('#flowers-cream-pattern')
     @$dust         = $('#js-dust')
     
@@ -27,7 +27,7 @@ class Triangles
     @$creamTriangle2 = $('#js-cream-triangle2')
     @$creamTriangles = $('#js-cream-triangles')
 
-    @blowDelay = 500
+    @blowDelay = 250
 
     # @$s = $('#js-svg-s')
     @$gW = $('#js-svg-g-wrapper')
@@ -149,11 +149,11 @@ class Triangles
     @$gW.css 'transform-origin': 'center center'
     @$gW.velocity {
       translateX: 2000
-      translateY: 2000
-      rotateZ: h.rand(200,540)
+      translateY: 3000
+      rotateZ: h.rand(800,1540)
       },
-        duration: h.time 700
-        delay: @blowDelay
+        duration: 700*@s
+        delay: @blowDelay*@s
         easing: 'ease-out'
 
 

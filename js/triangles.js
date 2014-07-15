@@ -19,7 +19,7 @@
 
     Triangles.prototype.vars = function() {
       this.delay = this.o.delay || 0;
-      this.s = h.time(1);
+      this.s = 50 * h.time(1);
       this.$pattern = $('#flowers-cream-pattern');
       this.$dust = $('#js-dust');
       this.$owlsPattern2 = $('#js-owls-image2');
@@ -32,7 +32,7 @@
       });
       this.$creamTriangle2 = $('#js-cream-triangle2');
       this.$creamTriangles = $('#js-cream-triangles');
-      this.blowDelay = 500;
+      this.blowDelay = 250;
       this.$gW = $('#js-svg-g-wrapper');
       return this.$creamTriangleWrapper = $('#js-cream-triangle2-wrapper').css({
         'transform': 'translate(490px,300px)'
@@ -167,11 +167,11 @@
       });
       return this.$gW.velocity({
         translateX: 2000,
-        translateY: 2000,
-        rotateZ: h.rand(200, 540)
+        translateY: 3000,
+        rotateZ: h.rand(800, 1540)
       }, {
-        duration: h.time(700),
-        delay: this.blowDelay,
+        duration: 700 * this.s,
+        delay: this.blowDelay * this.s,
         easing: 'ease-out'
       });
     };
