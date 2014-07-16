@@ -13,6 +13,7 @@ class Triangles
     @s = 1*h.time(1)
     @$pattern      = $('#flowers-cream-pattern')
     @$dust         = $('#js-dust')
+    @$svg          = $('#js-svg')
     
     @$owlsPattern2 = $('#js-owls-image2')
     
@@ -180,6 +181,7 @@ class Triangles
         duration: 800*@s
         delay: (@blowDelay+50)*@s
         easing: 'ease-out'
+        complete:=> @$svg.hide()
 
     # @$sW.css 'transform-origin': 'center center'
     # @$sW.velocity {

@@ -32,6 +32,8 @@ class Meets
     @$leftFist  = $('#js-left-fist')
     @$circle    = $('#js-circle')
     @$burst     = $('#js-meets-burst')
+    @$entireColeydoscope = $('#js-entire-caleydoscope')
+
 
     @$rightFistWrapper = $('#js-right-fist-wrapper')
     @$leftFistWrapper  = $('#js-left-fist-wrapper')
@@ -79,6 +81,7 @@ class Meets
         rotateZ: h.rand(-360,360)
       }, duration: h.time(1000)
 
+
     @$leftShirt.velocity { translateX: 0 },
       # delay: @delay
       duration: bumpDuration
@@ -95,8 +98,8 @@ class Meets
         @$rightButton.show()
         @$leftButton.show()
 
-    fistX = 20
-    fistAngle = -10
+    fistX = 50
+    fistAngle = -15
     fistDuration = h.time(700)
     fistDuration2 = h.time(700)
     fistDelay = fistDuration/2
@@ -132,13 +135,14 @@ class Meets
         duration: fistDuration2,
         delay: @delay + fistDelay + @bumpDelay,
         easing: 'easeOutElastic'
+        begin:=> @$entireColeydoscope.hide()
       }
 
-    @$circle.velocity {
-      r: 150
-      strokeWidth: 0
-      opacity: 1
-    }, delay: @delay + h.time(350)
+    # @$circle.velocity {
+    #   r: 150
+    #   strokeWidth: 0
+    #   opacity: 1
+    # }, delay: @delay + h.time(350)
 
     @$burst.children().each (i, item)=>
       $item = $(item)

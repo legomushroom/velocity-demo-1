@@ -106,7 +106,7 @@ class Caleydoscope
       translateX: -150
       translateY: -150
     },
-      loop: 2
+      loop: 0
       duration: 5000
       easing: 'ease'
       delay: @delay
@@ -116,7 +116,7 @@ class Caleydoscope
       translateX: 150
       translateY: 150
     },
-      loop: 2
+      loop: 0
       duration: 5000
       easing: 'ease'
       delay: @delay
@@ -126,7 +126,7 @@ class Caleydoscope
       translateX: -150
       translateY: -150
     },
-      loop: 2
+      loop: 0
       duration: 5000
       easing: 'ease'
       delay: @delay
@@ -136,7 +136,7 @@ class Caleydoscope
       translateX: 150
       translateY: 150
     },
-      loop: 2
+      loop: 0
       duration: 5000
       easing: 'ease'
       delay: @delay
@@ -146,7 +146,7 @@ class Caleydoscope
       translateX: -150
       translateY: -150
     },
-      loop: 2
+      loop: 0
       duration: 5000
       easing: 'ease'
       delay: @delay
@@ -156,7 +156,7 @@ class Caleydoscope
       translateX: 150
       translateY: 150
     },
-      loop: 2
+      loop: 0
       duration: 5000
       easing: 'ease'
       delay: @delay

@@ -126,7 +126,7 @@
         translateX: -150,
         translateY: -150
       }, {
-        loop: 2,
+        loop: 0,
         duration: 5000,
         easing: 'ease',
         delay: this.delay
@@ -138,7 +138,7 @@
         translateX: 150,
         translateY: 150
       }, {
-        loop: 2,
+        loop: 0,
         duration: 5000,
         easing: 'ease',
         delay: this.delay
@@ -150,7 +150,7 @@
         translateX: -150,
         translateY: -150
       }, {
-        loop: 2,
+        loop: 0,
         duration: 5000,
         easing: 'ease',
         delay: this.delay
@@ -162,7 +162,7 @@
         translateX: 150,
         translateY: 150
       }, {
-        loop: 2,
+        loop: 0,
         duration: 5000,
         easing: 'ease',
         delay: this.delay
@@ -174,7 +174,7 @@
         translateX: -150,
         translateY: -150
       }, {
-        loop: 2,
+        loop: 0,
         duration: 5000,
         easing: 'ease',
         delay: this.delay
@@ -186,7 +186,7 @@
         translateX: 150,
         translateY: 150
       }, {
-        loop: 2,
+        loop: 0,
         duration: 5000,
         easing: 'ease',
         delay: this.delay

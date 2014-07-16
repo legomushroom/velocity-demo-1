@@ -45,6 +45,7 @@
       this.$leftFist = $('#js-left-fist');
       this.$circle = $('#js-circle');
       this.$burst = $('#js-meets-burst');
+      this.$entireColeydoscope = $('#js-entire-caleydoscope');
       this.$rightFistWrapper = $('#js-right-fist-wrapper');
       this.$leftFistWrapper = $('#js-left-fist-wrapper');
       return this.bumpDelay = h.time(700);
@@ -123,8 +124,8 @@
           };
         })(this)
       });
-      fistX = 20;
-      fistAngle = -10;
+      fistX = 50;
+      fistAngle = -15;
       fistDuration = h.time(700);
       fistDuration2 = h.time(700);
       fistDelay = fistDuration / 2;
@@ -176,14 +177,12 @@
       }, {
         duration: fistDuration2,
         delay: this.delay + fistDelay + this.bumpDelay,
-        easing: 'easeOutElastic'
-      });
-      this.$circle.velocity({
-        r: 150,
-        strokeWidth: 0,
-        opacity: 1
-      }, {
-        delay: this.delay + h.time(350)
+        easing: 'easeOutElastic',
+        begin: (function(_this) {
+          return function() {
+            return _this.$entireColeydoscope.hide();
+          };
+        })(this)
       });
       return this.$burst.children().each((function(_this) {
         return function(i, item) {

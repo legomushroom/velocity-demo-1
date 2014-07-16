@@ -22,6 +22,7 @@
       this.s = 1 * h.time(1);
       this.$pattern = $('#flowers-cream-pattern');
       this.$dust = $('#js-dust');
+      this.$svg = $('#js-svg');
       this.$owlsPattern2 = $('#js-owls-image2');
       this.$owlsImage = $('#js-owls-image');
       this.$flowersCream = $('#js-flowers-cream');
@@ -203,7 +204,12 @@
       }, {
         duration: 800 * this.s,
         delay: (this.blowDelay + 50) * this.s,
-        easing: 'ease-out'
+        easing: 'ease-out',
+        complete: (function(_this) {
+          return function() {
+            return _this.$svg.hide();
+          };
+        })(this)
       });
       this.$gradientWrapper.css({
         'transform-origin': 'center 700px'

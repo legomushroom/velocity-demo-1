@@ -16,12 +16,14 @@ class Svg
     @$svgStroke = $('.svg-stroke')
     @$gradient = $('#js-gradient')
 
+    @$meets = $('#js-meets')
+
     @maxCnt = 3
     @cnt = 0
     @delayStep = 200
 
   run:->
-    @hider()
+    @hider().then => @$meets.hide()
 
     @$div.velocity {
       p: 1

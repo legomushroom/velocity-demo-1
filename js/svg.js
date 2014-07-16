@@ -19,13 +19,18 @@
       this.$text = $('#js-svg-text');
       this.$svgStroke = $('.svg-stroke');
       this.$gradient = $('#js-gradient');
+      this.$meets = $('#js-meets');
       this.maxCnt = 3;
       this.cnt = 0;
       return this.delayStep = 200;
     };
 
     Svg.prototype.run = function() {
-      this.hider();
+      this.hider().then((function(_this) {
+        return function() {
+          return _this.$meets.hide();
+        };
+      })(this));
       return this.$div.velocity({
         p: 1
       }, {
