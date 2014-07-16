@@ -115,7 +115,7 @@
       this.$caleydoscope.velocity({
         rotateZ: 720
       }, {
-        duration: 12000,
+        duration: 12000 * this.s,
         easing: 'linear',
         delay: this.delay
       });

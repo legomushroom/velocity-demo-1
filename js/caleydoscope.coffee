@@ -96,7 +96,7 @@ class Caleydoscope
     @$caleydoscope.velocity {
       rotateZ: 720
       },
-        duration: 12000
+        duration: 12000*@s
         easing: 'linear'
         delay: @delay
 

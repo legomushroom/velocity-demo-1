@@ -10,6 +10,7 @@
     }
 
     Main.prototype.run = function() {
+      var $grad, grad, i;
       new Caleydoscope({
         delay: 0
       });
@@ -22,8 +23,20 @@
       new Triangles({
         delay: h.time(8600)
       });
-      return new Waves({
+      new Waves({
         delay: h.time(11000)
+      });
+      i = 0;
+      $grad = $('#js-logo-gradient');
+      $grad.css({
+        'transform-origin': 'center center'
+      });
+      grad = $grad[0];
+      return $grad.velocity({
+        rotateZ: 720
+      }, {
+        duration: h.time(10000),
+        easing: 'linear'
       });
     };
 
