@@ -19,7 +19,7 @@
 
     Triangles.prototype.vars = function() {
       this.delay = this.o.delay || 0;
-      this.s = 50 * h.time(1);
+      this.s = 1 * h.time(1);
       this.$pattern = $('#flowers-cream-pattern');
       this.$dust = $('#js-dust');
       this.$owlsPattern2 = $('#js-owls-image2');
@@ -33,7 +33,14 @@
       this.$creamTriangle2 = $('#js-cream-triangle2');
       this.$creamTriangles = $('#js-cream-triangles');
       this.blowDelay = 250;
+      this.$s = $('#js-svg-s');
+      this.$v = $('#js-svg-v');
+      this.$g = $('#js-svg-g');
+      this.$sW = $('#js-svg-s-wrapper');
+      this.$vW = $('#js-svg-v-wrapper');
       this.$gW = $('#js-svg-g-wrapper');
+      this.$svgTextW = $('#js-svg-text-wrapper');
+      this.$gradientWrapper = $('#js-gradient-wrapper');
       return this.$creamTriangleWrapper = $('#js-cream-triangle2-wrapper').css({
         'transform': 'translate(490px,300px)'
       });
@@ -165,14 +172,56 @@
       this.$gW.css({
         'transform-origin': 'center center'
       });
-      return this.$gW.velocity({
-        translateX: 2000,
-        translateY: 3000,
-        rotateZ: h.rand(800, 1540)
+      this.$gW.velocity({
+        translateX: 1800,
+        translateY: 1000,
+        rotateZ: h.rand(500, 1000)
       }, {
-        duration: 700 * this.s,
+        duration: 2000 * this.s,
         delay: this.blowDelay * this.s,
         easing: 'ease-out'
+      });
+      this.$vW.css({
+        'transform-origin': 'center center'
+      });
+      this.$vW.velocity({
+        translateY: 2000,
+        translateX: -60,
+        rotateZ: h.rand(500, 1000)
+      }, {
+        duration: 1200 * this.s,
+        delay: this.blowDelay * this.s,
+        easing: 'ease-out'
+      });
+      this.$svgTextW.css({
+        'transform-origin': 'center center'
+      });
+      this.$svgTextW.velocity({
+        translateY: 2000,
+        translateX: -20,
+        rotateZ: h.rand(500, 1000)
+      }, {
+        duration: 800 * this.s,
+        delay: (this.blowDelay + 50) * this.s,
+        easing: 'ease-out'
+      });
+      this.$gradientWrapper.css({
+        'transform-origin': 'center 700px'
+      });
+      return this.$gradientWrapper.velocity({
+        translateX: -1600,
+        rotateZ: 100
+      }, {
+        duration: 1200 * this.s,
+        delay: this.blowDelay * this.s,
+        easing: 'ease-out',
+        begin: (function(_this) {
+          return function() {
+            _this.$s.velocity('stop');
+            _this.$v.velocity('stop');
+            return _this.$g.velocity('stop');
+          };
+        })(this)
       });
     };
 

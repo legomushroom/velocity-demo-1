@@ -16,9 +16,9 @@ class Svg
     @$svgStroke = $('.svg-stroke')
     @$gradient = $('#js-gradient')
 
-    @maxCnt = 5
+    @maxCnt = 3
     @cnt = 0
-    @delayStep = 300
+    @delayStep = 200
 
   run:->
     @hider()

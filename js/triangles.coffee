@@ -10,7 +10,7 @@ class Triangles
 
   vars:->
     @delay = @o.delay or 0
-    @s = 50*h.time(1)
+    @s = 1*h.time(1)
     @$pattern      = $('#flowers-cream-pattern')
     @$dust         = $('#js-dust')
     
@@ -29,10 +29,15 @@ class Triangles
 
     @blowDelay = 250
 
-    # @$s = $('#js-svg-s')
+    @$s = $('#js-svg-s')
+    @$v = $('#js-svg-v')
+    @$g = $('#js-svg-g')
+    @$sW = $('#js-svg-s-wrapper')
+    @$vW = $('#js-svg-v-wrapper')
     @$gW = $('#js-svg-g-wrapper')
-    # @$v = $('#js-svg-v')
 
+    @$svgTextW = $('#js-svg-text-wrapper')
+    @$gradientWrapper = $('#js-gradient-wrapper')
 
     @$creamTriangleWrapper = $('#js-cream-triangle2-wrapper')
       .css 'transform': 'translate(490px,300px)'
@@ -148,13 +153,57 @@ class Triangles
   blow:->
     @$gW.css 'transform-origin': 'center center'
     @$gW.velocity {
-      translateX: 2000
-      translateY: 3000
-      rotateZ: h.rand(800,1540)
+      translateX: 1800
+      translateY: 1000
+      rotateZ: h.rand(500,1000)
       },
-        duration: 700*@s
+        duration: 2000*@s
         delay: @blowDelay*@s
         easing: 'ease-out'
+
+    @$vW.css 'transform-origin': 'center center'
+    @$vW.velocity {
+      translateY: 2000
+      translateX: -60
+      rotateZ: h.rand(500,1000)
+      },
+        duration: 1200*@s
+        delay: @blowDelay*@s
+        easing: 'ease-out'
+
+    @$svgTextW.css 'transform-origin': 'center center'
+    @$svgTextW.velocity {
+      translateY: 2000
+      translateX: -20
+      rotateZ: h.rand(500,1000)
+      },
+        duration: 800*@s
+        delay: (@blowDelay+50)*@s
+        easing: 'ease-out'
+
+    # @$sW.css 'transform-origin': 'center center'
+    # @$sW.velocity {
+    #   translateX: -1200
+    #   translateY: 50
+    #   rotateZ: 50
+    #   },
+    #     duration: 1200*@s
+    #     delay: @blowDelay*@s
+    #     easing: 'ease-out'
+
+    @$gradientWrapper.css 'transform-origin': 'center 700px'
+    @$gradientWrapper.velocity {
+      translateX: -1600
+      # translateY: 50
+      rotateZ: 100
+      },
+        duration: 1200*@s
+        delay: @blowDelay*@s
+        easing: 'ease-out'
+        begin:=>
+          @$s.velocity('stop')
+          @$v.velocity('stop')
+          @$g.velocity('stop')
 
 
 

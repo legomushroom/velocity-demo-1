@@ -19,9 +19,9 @@
       this.$text = $('#js-svg-text');
       this.$svgStroke = $('.svg-stroke');
       this.$gradient = $('#js-gradient');
-      this.maxCnt = 5;
+      this.maxCnt = 3;
       this.cnt = 0;
-      return this.delayStep = 300;
+      return this.delayStep = 200;
     };
 
     Svg.prototype.run = function() {
