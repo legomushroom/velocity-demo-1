@@ -3,13 +3,21 @@ class Logo
     @vars()
     $('<div />').velocity {p:1},
       duration: @delay
-      complete:=> @run()
+      complete:=> @$logo.show(); @run()
 
   vars:->
     @delay = @o.delay or 0
     @s = 1*h.time(1)
+    @$logo      = $('#js-logo')
     @$logoLines = $('#js-logo-lines')
+    
+    @$text       = $('#js-logo-text')
+    @$hand       = $('#js-logo-hand')
+    @$handCircle = $('#js-hand-circle')
     @prepareLines()
+
+    for num, i in [1,2,3]
+      @["$circle#{num}"] = $("#js-logo-circle-#{num}")
 
     for num, i in [1,2,3]
       @["$line#{num}"] = $("#js-line-#{num}")
@@ -19,13 +27,15 @@ class Logo
 
   run:->
     lineDur1 = 300
-    lineDur2 = 300
-    lineDur3 = 300
+    lineDur2 = 250
+    lineDur3 = 200
+
+    entireDur = lineDur1+lineDur2+lineDur3
 
     @$logoLines.velocity {
       opacity: 1
     },
-      duration: (lineDur1+lineDur2+lineDur3)*@s
+      duration: entireDur*@s
       easing: 'linear'
 
     @$line1.velocity {
@@ -41,7 +51,7 @@ class Logo
       },
         duration: lineDur2*@s
         easing: 'linear'
-        delay: 260*@s
+        delay: 275*@s
         progress:($els, proc)=>
           proc > .65 and  @$shadow2.velocity {opacity: .1}
 
@@ -50,8 +60,58 @@ class Logo
       },
         duration: lineDur3*@s
         easing: 'linear'
-        delay: 2*250*@s
+        delay: 2*245*@s
         begin:=> @$shadow3.velocity {opacity: .1}
+
+
+    circlesDelay = entireDur - 100
+
+    @$text.velocity {
+      opacity: 1
+      },
+        duration: 500*@s
+        delay: (circlesDelay)*@s
+
+    @$circle1.velocity {
+      r: 180
+      },
+        duration: 500*@s
+        delay: (circlesDelay)*@s
+
+    handDelay = entireDur
+    @$hand.velocity {
+      translateX: 230
+      translateY: 341
+      }, duration: 1
+      
+      .velocity {
+        translateX: 190
+        translateY: 241
+        opacity: 1
+        },
+          duration: 400*@s
+          delay: (entireDur+200)*@s
+          complete:=>
+            @$hand.velocity {opacity:0}, duration: 400*@s
+
+            @$handCircle.velocity {
+              r: 25
+              strokeWidth: 0
+              opacity: 100
+              },
+                duration: 500*@s
+
+    # @$circle2.velocity {
+    #   r: 180
+    #   },
+    #     delay: (circlesDur+50)*@s
+
+    # @$circle3.velocity {
+    #   r: 180
+    #   },
+    #     delay: (circlesDur+100)*@s
+
+    
 
   prepareLines:->
     @$logoLines.children().each (i, line)->
