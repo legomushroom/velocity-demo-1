@@ -38,18 +38,20 @@
     };
 
     Logo.prototype.run = function() {
-      var lineDur;
-      lineDur = 300;
+      var lineDur1, lineDur2, lineDur3;
+      lineDur1 = 300;
+      lineDur2 = 300;
+      lineDur3 = 300;
       this.$logoLines.velocity({
         opacity: 1
       }, {
-        duration: 3 * lineDur * this.s,
+        duration: (lineDur1 + lineDur2 + lineDur3) * this.s,
         easing: 'linear'
       });
       this.$line1.velocity({
         strokeDashoffset: 0
       }, {
-        duration: lineDur * this.s,
+        duration: lineDur1 * this.s,
         easing: 'linear',
         progress: (function(_this) {
           return function($els, proc) {
@@ -62,7 +64,7 @@
       this.$line2.velocity({
         strokeDashoffset: 0
       }, {
-        duration: lineDur * this.s,
+        duration: lineDur2 * this.s,
         easing: 'linear',
         delay: 260 * this.s,
         progress: (function(_this) {
@@ -76,7 +78,7 @@
       return this.$line3.velocity({
         strokeDashoffset: 0
       }, {
-        duration: lineDur * this.s,
+        duration: lineDur3 * this.s,
         easing: 'linear',
         delay: 2 * 250 * this.s,
         begin: (function(_this) {

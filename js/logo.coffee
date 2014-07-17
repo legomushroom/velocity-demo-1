@@ -18,18 +18,20 @@ class Logo
       @["$shadow#{num}"] = $("#js-shadow-#{num}")
 
   run:->
-    lineDur = 300
+    lineDur1 = 300
+    lineDur2 = 300
+    lineDur3 = 300
 
     @$logoLines.velocity {
       opacity: 1
     },
-      duration: 3*lineDur*@s
+      duration: (lineDur1+lineDur2+lineDur3)*@s
       easing: 'linear'
 
     @$line1.velocity {
       strokeDashoffset: 0
       },
-        duration: lineDur*@s
+        duration: lineDur1*@s
         easing: 'linear'
         progress:($els, proc)=>
           proc > .65 and  @$shadow1.velocity {opacity: .1}
@@ -37,7 +39,7 @@ class Logo
     @$line2.velocity {
       strokeDashoffset: 0
       },
-        duration: lineDur*@s
+        duration: lineDur2*@s
         easing: 'linear'
         delay: 260*@s
         progress:($els, proc)=>
@@ -46,7 +48,7 @@ class Logo
     @$line3.velocity {
       strokeDashoffset: 0
       },
-        duration: lineDur*@s
+        duration: lineDur3*@s
         easing: 'linear'
         delay: 2*250*@s
         begin:=> @$shadow3.velocity {opacity: .1}
