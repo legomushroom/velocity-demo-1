@@ -7,10 +7,49 @@ class Logo
 
   vars:->
     @delay = @o.delay or 0
+    @s = 1*h.time(1)
     @$logoLines = $('#js-logo-lines')
+    @prepareLines()
+
+    for num, i in [1,2,3]
+      @["$line#{num}"] = $("#js-line-#{num}")
+
+    for num, i in [1,2,3]
+      @["$shadow#{num}"] = $("#js-shadow-#{num}")
 
   run:->
-    @prepareLines()
+    lineDur = 300
+
+    @$logoLines.velocity {
+      opacity: 1
+    },
+      duration: 3*lineDur*@s
+      easing: 'linear'
+
+    @$line1.velocity {
+      strokeDashoffset: 0
+      },
+        duration: lineDur*@s
+        easing: 'linear'
+        progress:($els, proc)=>
+          proc > .65 and  @$shadow1.velocity {opacity: .1}
+
+    @$line2.velocity {
+      strokeDashoffset: 0
+      },
+        duration: lineDur*@s
+        easing: 'linear'
+        delay: 260*@s
+        progress:($els, proc)=>
+          proc > .65 and  @$shadow2.velocity {opacity: .1}
+
+    @$line3.velocity {
+      strokeDashoffset: 0
+      },
+        duration: lineDur*@s
+        easing: 'linear'
+        delay: 2*250*@s
+        begin:=> @$shadow3.velocity {opacity: .1}
 
   prepareLines:->
     @$logoLines.children().each (i, line)->
