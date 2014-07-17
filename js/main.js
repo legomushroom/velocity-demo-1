@@ -33,10 +33,11 @@
       });
       grad = $grad[0];
       return $grad.velocity({
-        rotateZ: 720
+        rotateZ: 360
       }, {
-        duration: h.time(10000),
-        easing: 'linear'
+        duration: h.time(3000),
+        loop: 5,
+        easing: 'ease'
       });
     };
 
