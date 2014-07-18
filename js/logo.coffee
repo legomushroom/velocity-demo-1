@@ -64,24 +64,24 @@ class Logo
         begin:=> @$shadow3.velocity {opacity: .1}
 
 
-    circlesDelay = entireDur - 100
-
+    circlesDelay = entireDur - 300
+    textDuration = 900
     @$text.velocity {
       opacity: 1
       },
-        duration: 500*@s
+        duration: textDuration*@s
         delay: (circlesDelay)*@s
 
     @$circle1.velocity {
       r: 180
       },
-        duration: 500*@s
+        duration: textDuration*@s
         delay: (circlesDelay)*@s
 
     handDelay = entireDur
     @$hand.velocity {
-      translateX: 230
-      translateY: 341
+      translateX: 280
+      translateY: 291
       }, duration: 1
       
       .velocity {
@@ -89,8 +89,8 @@ class Logo
         translateY: 241
         opacity: 1
         },
-          duration: 400*@s
-          delay: (entireDur+200)*@s
+          duration: 500*@s
+          delay: (entireDur+100)*@s
           complete:=>
             @$hand.velocity {opacity:0}, duration: 400*@s
 

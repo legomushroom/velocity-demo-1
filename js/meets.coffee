@@ -98,8 +98,8 @@ class Meets
         @$rightButton.show()
         @$leftButton.show()
 
-    fistX = 50
-    fistAngle = -15
+    fistX = 40
+    fistAngle = -10
     fistDuration = h.time(700)
     fistDuration2 = h.time(700)
     fistDelay = fistDuration/2
@@ -122,28 +122,34 @@ class Meets
       }
 
     @$rightFistWrapper
-      .velocity {translateX: fistX}, {duration:1}
-      .velocity {translateX: 0}, {
-        duration: fistDuration2,
-        delay: @delay + fistDelay + @bumpDelay,
-        easing: 'easeOutElastic'
-      }
+      .velocity {translateX: fistX}, {
+        duration:1,
+        delay: @delay + fistDelay + @bumpDelay
+        }
+
+        .velocity {translateX: 0}, {
+          duration: fistDuration2,
+          easing: 'easeOutElastic'
+        }
 
     @$leftFistWrapper
-      .velocity {translateX: fistX}, {duration:1}
-      .velocity {translateX: 0}, {
-        duration: fistDuration2,
-        delay: @delay + fistDelay + @bumpDelay,
-        easing: 'easeOutElastic'
-        begin:=> @$entireColeydoscope.hide()
-      }
+      .velocity {translateX: -fistX}, {
+        duration:1,
+        delay: @delay + fistDelay + @bumpDelay
+        }
+
+        .velocity {translateX: 0}, {
+          duration: fistDuration2,
+          easing: 'easeOutElastic'
+          begin:=> @$entireColeydoscope.hide()
+        }
 
     # @$circle.velocity {
     #   r: 150
     #   strokeWidth: 0
     #   opacity: 1
     # }, delay: @delay + h.time(350)
-
+    
     @$burst.children().each (i, item)=>
       $item = $(item)
       $item
@@ -151,15 +157,14 @@ class Meets
           strokeDashoffset: 0
           # strokeWidth: 10
         },
-          delay: @delay + h.time(450) + @bumpDelay
+          delay: @delay + h.time(400) + @bumpDelay
           duration: h.time(150)
 
         .velocity {
-          strokeDashoffset: -25
+          strokeDashoffset: -35
           # strokeWidth: 0
         },
           duration: h.time(150)
-      # duration: h.time(500)
 
 window.Meets = Meets
 

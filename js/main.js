@@ -11,13 +11,13 @@
 
     Main.prototype.run = function() {
       new Caleydoscope({
-        delay: 0
+        delay: h.time(1000)
       });
       new Meets({
-        delay: h.time(2900)
+        delay: h.time(3900)
       });
       new Svg({
-        delay: h.time(4600)
+        delay: h.time(5600)
       });
       new Triangles({
         delay: h.time(8600)
@@ -26,7 +26,7 @@
         delay: h.time(11000)
       });
       return new Logo({
-        delay: h.time(13500)
+        delay: h.time(14200)
       });
     };
 

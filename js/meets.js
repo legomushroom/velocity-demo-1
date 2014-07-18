@@ -124,8 +124,8 @@
           };
         })(this)
       });
-      fistX = 50;
-      fistAngle = -15;
+      fistX = 40;
+      fistAngle = -10;
       fistDuration = h.time(700);
       fistDuration2 = h.time(700);
       fistDelay = fistDuration / 2;
@@ -160,23 +160,23 @@
       this.$rightFistWrapper.velocity({
         translateX: fistX
       }, {
-        duration: 1
+        duration: 1,
+        delay: this.delay + fistDelay + this.bumpDelay
       }).velocity({
         translateX: 0
       }, {
         duration: fistDuration2,
-        delay: this.delay + fistDelay + this.bumpDelay,
         easing: 'easeOutElastic'
       });
       this.$leftFistWrapper.velocity({
-        translateX: fistX
+        translateX: -fistX
       }, {
-        duration: 1
+        duration: 1,
+        delay: this.delay + fistDelay + this.bumpDelay
       }).velocity({
         translateX: 0
       }, {
         duration: fistDuration2,
-        delay: this.delay + fistDelay + this.bumpDelay,
         easing: 'easeOutElastic',
         begin: (function(_this) {
           return function() {
@@ -191,10 +191,10 @@
           return $item.velocity({
             strokeDashoffset: 0
           }, {
-            delay: _this.delay + h.time(450) + _this.bumpDelay,
+            delay: _this.delay + h.time(400) + _this.bumpDelay,
             duration: h.time(150)
           }).velocity({
-            strokeDashoffset: -25
+            strokeDashoffset: -35
           }, {
             duration: h.time(150)
           });

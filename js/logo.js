@@ -48,7 +48,7 @@
     };
 
     Logo.prototype.run = function() {
-      var circlesDelay, entireDur, handDelay, lineDur1, lineDur2, lineDur3;
+      var circlesDelay, entireDur, handDelay, lineDur1, lineDur2, lineDur3, textDuration;
       lineDur1 = 300;
       lineDur2 = 250;
       lineDur3 = 200;
@@ -100,23 +100,24 @@
           };
         })(this)
       });
-      circlesDelay = entireDur - 100;
+      circlesDelay = entireDur - 300;
+      textDuration = 900;
       this.$text.velocity({
         opacity: 1
       }, {
-        duration: 500 * this.s,
+        duration: textDuration * this.s,
         delay: circlesDelay * this.s
       });
       this.$circle1.velocity({
         r: 180
       }, {
-        duration: 500 * this.s,
+        duration: textDuration * this.s,
         delay: circlesDelay * this.s
       });
       handDelay = entireDur;
       return this.$hand.velocity({
-        translateX: 230,
-        translateY: 341
+        translateX: 280,
+        translateY: 291
       }, {
         duration: 1
       }).velocity({
@@ -124,8 +125,8 @@
         translateY: 241,
         opacity: 1
       }, {
-        duration: 400 * this.s,
-        delay: (entireDur + 200) * this.s,
+        duration: 500 * this.s,
+        delay: (entireDur + 100) * this.s,
         complete: (function(_this) {
           return function() {
             _this.$hand.velocity({
