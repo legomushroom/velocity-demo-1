@@ -14,6 +14,7 @@ class Logo
     @$text       = $('#js-logo-text')
     @$hand       = $('#js-logo-hand')
     @$handCircle = $('#js-hand-circle')
+    @$shadow     = $('#js-logo-shadow')
     @prepareLines()
 
     for num, i in [1,2,3]
@@ -53,7 +54,9 @@ class Logo
         easing: 'linear'
         delay: 275*@s
         progress:($els, proc)=>
-          proc > .65 and  @$shadow2.velocity {opacity: .1}
+          if proc > .65
+            @$shadow2.velocity {opacity: .1}
+            @$shadow.velocity  {opacity: .2}
 
     @$line3.velocity {
       strokeDashoffset: 0

@@ -54,7 +54,7 @@
             strokeDashoffset: 0
           }, {
             duration: 1000 * _this.s + h.rand(0, 100) * _this.s,
-            delay: _this.delay + 0 * _this.s + h.rand(0, 500) * _this.s,
+            delay: _this.delay + 200 * _this.s + h.rand(0, 500) * _this.s,
             easing: 'linear'
           }).velocity({
             rotateZ: h.rand(25, 120),
@@ -63,7 +63,10 @@
             scale: 0
           }, {
             duration: 500 * _this.s + h.rand(0, 100) * _this.s,
-            delay: caleydDelay1 + h.rand(0, 200) * _this.s + h.time(1000)
+            delay: caleydDelay1 + h.rand(0, 200) * _this.s + h.time(1000),
+            complete: function() {
+              return $item.hide();
+            }
           });
         };
       })(this));
@@ -91,6 +94,9 @@
               return $mask1.css({
                 'opacity': 0
               });
+            },
+            complete: function() {
+              return $item.hide();
             }
           });
         };

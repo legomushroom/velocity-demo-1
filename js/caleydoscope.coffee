@@ -48,7 +48,7 @@ class Caleydoscope
           # scale:  1
         },
           duration: 1000*@s + h.rand(0, 100)*@s
-          delay: @delay + 0*@s + h.rand(0, 500)*@s
+          delay: @delay + 200*@s + h.rand(0, 500)*@s
           easing: 'linear'
 
         .velocity {
@@ -59,6 +59,7 @@ class Caleydoscope
         },
           duration: 500*@s + h.rand(0, 100)*@s
           delay: caleydDelay1 + h.rand(0, 200)*@s + h.time(1000)
+          complete:-> $item.hide()
 
     @$blow.children().each (i, item)=>
       $item  = $(item)
@@ -79,6 +80,7 @@ class Caleydoscope
           begin: =>
             @$blow.css 'opacity': 1
             $mask1.css 'opacity': 0
+          complete:-> $item.hide()
 
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>

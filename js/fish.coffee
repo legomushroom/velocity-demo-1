@@ -11,8 +11,12 @@ class Fish
     @delay = @o.delay or 0
     @s = 1*h.time 1
 
-    @$bottomSplash  = $('#js-bottom-splash')
+    @$bottomSplash1 = $('#js-bottom-splash1')
     @$bottomSplash2 = $('#js-bottom-splash2')
+
+    @$topSplash1 = $('#js-top-splash1')
+    @$topSplash2 = $('#js-top-splash2')
+    @$scene      = $('#js-fish-scene')
 
     @$fish  = $('#js-fish')
     @$fish.css 'transform-origin': 'center center'
@@ -24,29 +28,48 @@ class Fish
     @$fishW = $('#js-fish-wrapper')
 
   run:->
-    position = @$fishW.attr('transform').split /translate\(|,|\)/
-    startX = parseInt position[1], 10
-    startY = parseInt position[2], 10
-
-    bubbleRadius = 20
     delayForSplash = 100
-    @$bottomSplash.children().each (i,item)=>
+    @splash
+      delayForSplash: delayForSplash
+      splash1: @$bottomSplash1
+      splash2: @$bottomSplash2
+
+    setTimeout =>
+      @splash
+        delayForSplash: delayForSplash
+        splash1: @$topSplash1
+        splash2: @$topSplash2
+    , 750*@s
+
+    @$fish.velocity {
+      translateX: 30
+      translateY: -150
+      },
+        duration: 1600*@s
+        easing: 'linear'
+        delay:  100*@s + delayForSplash*@s
+
+  splash:(o)->
+    bubbleRadius = 20
+    o.splash1.children().each (i,item)=>
       $item = $ item
       if i > 5 and i < 12
         $item.velocity {
           translateX: h.rand(-bubbleRadius,bubbleRadius)
           translateY: h.rand(0,bubbleRadius)
-          r: h.rand(5, 20)
+          r: 10
           },
-            duration: 400*@s
+            duration: 300*@s
 
         $item.velocity {
           translateX: h.rand(-5*bubbleRadius,5*bubbleRadius)
           translateY: h.rand(-5*bubbleRadius,5*bubbleRadius)
           r: 0
           },
-            duration: 700*@s
+            duration: 800*@s
             delay:    h.rand(50,100)*@s
+            complete:-> $item.hide()
+
       else
         $item.velocity {
           translateX: h.rand(-bubbleRadius,bubbleRadius)
@@ -54,7 +77,7 @@ class Fish
           r: h.rand(15, 20)
           },
             duration: 300*@s + h.rand(50,100)*@s
-            delay: h.rand(50,150)*@s + delayForSplash*@s
+            delay: h.rand(50,150)*@s + o.delayForSplash*@s
 
         $item.velocity {
           translateX: 0
@@ -63,9 +86,9 @@ class Fish
           rotateZ: h.rand(-100,100)
           },
             duration: 800*@s
+            complete:-> $item.hide()
 
-
-    @$bottomSplash2.children().each (i,item)=>
+    o.splash2.children().each (i,item)=>
       $item = $ item
       $item.velocity {
         translateX: h.rand(-bubbleRadius,bubbleRadius)
@@ -73,7 +96,7 @@ class Fish
         r: h.rand(10, 15)
         },
           duration: 300*@s
-          delay: h.rand(50,150)*@s + delayForSplash*@s
+          delay: h.rand(50,150)*@s + o.delayForSplash*@s
 
       $item.velocity {
         translateX: 0
@@ -82,30 +105,6 @@ class Fish
         rotateZ: h.rand(-100,100)
         },
           duration: 800*@s
-
-
-    @$fish.velocity {
-      translateX: 30
-      translateY: -150
-      },
-        duration: 2000*@s
-        easing: 'linear'
-        delay:  100*@s + delayForSplash*@s
-
-    # @$fishW.velocity {
-    #   opacity: 100
-    #   translateX: startX - 20
-    #   translateY: startY - 40
-    #   },duration: 1
-
-    #   .velocity {
-    #     opacity: 100
-    #     translateX: startX - 170
-    #     translateY: startY - 340
-    #     },
-    #       duration: 4000*@s
-    #       easing: 'linear'
-
-
+          complete:-> $item.hide()
 
 window.Fish = Fish

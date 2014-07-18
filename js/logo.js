@@ -27,6 +27,7 @@
       this.$text = $('#js-logo-text');
       this.$hand = $('#js-logo-hand');
       this.$handCircle = $('#js-hand-circle');
+      this.$shadow = $('#js-logo-shadow');
       this.prepareLines();
       _ref = [1, 2, 3];
       for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
@@ -80,9 +81,14 @@
         delay: 275 * this.s,
         progress: (function(_this) {
           return function($els, proc) {
-            return proc > .65 && _this.$shadow2.velocity({
-              opacity: .1
-            });
+            if (proc > .65) {
+              _this.$shadow2.velocity({
+                opacity: .1
+              });
+              return _this.$shadow.velocity({
+                opacity: .2
+              });
+            }
           };
         })(this)
       });
