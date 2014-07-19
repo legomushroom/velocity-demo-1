@@ -23,11 +23,22 @@
       this.delay = this.o.delay || 0;
       this.s = 1 * h.time(1);
       this.$logo = $('#js-logo');
+      this.$logoV = $('#js-logo-v');
+      this.$logoV.velocity({
+        translateX: 21,
+        translateY: 21
+      });
       this.$logoLines = $('#js-logo-lines');
       this.$text = $('#js-logo-text');
       this.$hand = $('#js-logo-hand');
       this.$handCircle = $('#js-hand-circle');
       this.$shadow = $('#js-logo-shadow');
+      this.$shadow.css({
+        'transform-origin': 'center'
+      });
+      this.$shadow.velocity({
+        scale: .85
+      });
       this.prepareLines();
       _ref = [1, 2, 3];
       for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
@@ -145,7 +156,24 @@
               strokeWidth: 0,
               opacity: 100
             }, {
-              duration: 500 * _this.s
+              duration: 500 * _this.s,
+              complete: function() {
+                return setTimeout(function() {
+                  _this.$logoV.velocity({
+                    translateY: 31
+                  }, {
+                    loop: 40,
+                    duration: 1500 * _this.s
+                  });
+                  return _this.$shadow.velocity({
+                    opacity: .4,
+                    scale: 1
+                  }, {
+                    loop: 40,
+                    duration: 1500 * _this.s
+                  });
+                }, 1000 * _this.s);
+              }
             });
           };
         })(this)

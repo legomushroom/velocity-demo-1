@@ -9,12 +9,23 @@ class Logo
     @delay = @o.delay or 0
     @s = 1*h.time(1)
     @$logo      = $('#js-logo')
+    @$logoV     = $('#js-logo-v')
+    @$logoV.velocity {
+      translateX: 21
+      translateY: 21
+      }
+
     @$logoLines = $('#js-logo-lines')
     
     @$text       = $('#js-logo-text')
     @$hand       = $('#js-logo-hand')
     @$handCircle = $('#js-hand-circle')
     @$shadow     = $('#js-logo-shadow')
+    @$shadow.css 'transform-origin': 'center'
+    @$shadow.velocity {
+      scale: .85
+      }
+
     @prepareLines()
 
     for num, i in [1,2,3]
@@ -103,6 +114,23 @@ class Logo
               opacity: 100
               },
                 duration: 500*@s
+                complete:=>
+                  setTimeout =>
+                    @$logoV.velocity {
+                      translateY: 31
+                      },
+                        loop: 40
+                        duration: 1500*@s
+
+                    @$shadow.velocity {
+                      opacity: .4
+                      scale: 1
+                      },
+                        loop: 40
+                        duration: 1500*@s
+
+                  , 1000*@s
+
 
     # @$circle2.velocity {
     #   r: 180
