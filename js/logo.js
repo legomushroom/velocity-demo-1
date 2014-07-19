@@ -37,7 +37,7 @@
         'transform-origin': 'center'
       });
       this.$shadow.velocity({
-        scale: .85
+        scale: .75
       });
       this.prepareLines();
       _ref = [1, 2, 3];
@@ -172,7 +172,7 @@
                     loop: 40,
                     duration: 1500 * _this.s
                   });
-                }, 1000 * _this.s);
+                }, 2000 * _this.s);
               }
             });
           };

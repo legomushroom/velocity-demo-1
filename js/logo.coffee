@@ -23,7 +23,7 @@ class Logo
     @$shadow     = $('#js-logo-shadow')
     @$shadow.css 'transform-origin': 'center'
     @$shadow.velocity {
-      scale: .85
+      scale: .75
       }
 
     @prepareLines()
@@ -129,7 +129,7 @@ class Logo
                         loop: 40
                         duration: 1500*@s
 
-                  , 1000*@s
+                  , 2000*@s
 
 
     # @$circle2.velocity {
