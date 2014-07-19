@@ -123,7 +123,7 @@ class Logo
                         duration: 1500*@s
 
                     @$shadow.velocity {
-                      opacity: .4
+                      opacity: .35
                       scale: 1
                       },
                         loop: 40

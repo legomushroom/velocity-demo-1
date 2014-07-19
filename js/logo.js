@@ -166,7 +166,7 @@
                     duration: 1500 * _this.s
                   });
                   return _this.$shadow.velocity({
-                    opacity: .4,
+                    opacity: .35,
                     scale: 1
                   }, {
                     loop: 40,
