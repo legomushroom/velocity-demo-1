@@ -35,6 +35,16 @@
       }, {
         duration: 1
       });
+      this.$shadow = $('#js-fish-shadow');
+      this.$shadow.css({
+        'transform-origin': 'center center'
+      });
+      this.$shadow.velocity({
+        translateX: 45,
+        translateY: 390
+      }, {
+        duration: 1
+      });
       return this.$fishW = $('#js-fish-wrapper');
     };
 
@@ -54,14 +64,32 @@
             splash2: _this.$topSplash2
           });
         };
-      })(this), 750 * this.s);
-      return this.$fish.velocity({
+      })(this), 775 * this.s);
+      this.$fish.velocity({
         translateX: 30,
         translateY: -150
       }, {
         duration: 1600 * this.s,
-        easing: 'linear',
+        easing: 'ease-in-out',
         delay: 100 * this.s + delayForSplash * this.s
+      });
+      return this.$shadow.velocity({
+        translateX: 40,
+        translateY: 200,
+        scale: .65,
+        opacity: .05
+      }, {
+        duration: 800 * this.s,
+        easing: 'ease-in',
+        delay: 100 * this.s + delayForSplash * this.s
+      }).velocity({
+        translateX: 30,
+        translateY: -150,
+        scale: 1,
+        opacity: .2
+      }, {
+        duration: 600 * this.s,
+        easing: 'ease-out'
       });
     };
 

@@ -18,12 +18,20 @@ class Fish
     @$topSplash2 = $('#js-top-splash2')
     @$scene      = $('#js-fish-scene')
 
-    @$fish  = $('#js-fish')
+    @$fish    = $('#js-fish')
     @$fish.css 'transform-origin': 'center center'
     @$fish.velocity {
       translateX: 35
       translateY: 390
       }, duration: 1
+
+    @$shadow  = $('#js-fish-shadow')
+    @$shadow.css 'transform-origin': 'center center'
+    @$shadow.velocity {
+      translateX: 45
+      translateY: 390
+      }, duration: 1
+
 
     @$fishW = $('#js-fish-wrapper')
 
@@ -39,15 +47,34 @@ class Fish
         delayForSplash: delayForSplash
         splash1: @$topSplash1
         splash2: @$topSplash2
-    , 750*@s
+    , 775*@s
 
     @$fish.velocity {
       translateX: 30
       translateY: -150
       },
         duration: 1600*@s
-        easing: 'linear'
+        easing: 'ease-in-out'
         delay:  100*@s + delayForSplash*@s
+
+    @$shadow.velocity {
+      translateX: 40
+      translateY: 200
+      scale: .65
+      opacity: .05
+      },
+        duration: 800*@s
+        easing: 'ease-in'
+        delay:  100*@s + delayForSplash*@s
+
+    .velocity {
+      translateX: 30
+      translateY: -150
+      scale: 1
+      opacity: .2
+      },
+        duration: 600*@s
+        easing: 'ease-out'
 
   splash:(o)->
     bubbleRadius = 20
