@@ -5,7 +5,7 @@ class Fish
       p: 1
       },
         duration: @delay
-        complete:=> @run()
+        complete:=> @$fishEntire.show(); @run()
 
   vars:->
     @delay = @o.delay or 0
@@ -18,7 +18,8 @@ class Fish
     @$topSplash2 = $('#js-top-splash2')
     @$scene      = $('#js-fish-scene')
 
-    @$fish    = $('#js-fish')
+    @$fish       = $('#js-fish')
+    @$fishEntire = $('#js-fish-scene')
     @$fish.css 'transform-origin': 'center center'
     @$fish.velocity {
       translateX: 35
@@ -47,6 +48,7 @@ class Fish
         delayForSplash: delayForSplash
         splash1: @$topSplash1
         splash2: @$topSplash2
+        isSecond: true
     , 775*@s
 
     @$fish.velocity {
@@ -103,14 +105,13 @@ class Fish
           translateY: h.rand(0,bubbleRadius)
           r: h.rand(15, 20)
           },
-            duration: 300*@s + h.rand(50,100)*@s
+            duration: 200*@s + h.rand(50,100)*@s
             delay: h.rand(50,150)*@s + o.delayForSplash*@s
 
         $item.velocity {
           translateX: 0
           translateY: 0
           r: 0
-          rotateZ: h.rand(-100,100)
           },
             duration: 800*@s
             complete:-> $item.hide()

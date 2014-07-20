@@ -48,7 +48,7 @@
       this.$entireColeydoscope = $('#js-entire-caleydoscope');
       this.$rightFistWrapper = $('#js-right-fist-wrapper');
       this.$leftFistWrapper = $('#js-left-fist-wrapper');
-      return this.bumpDelay = h.time(700);
+      return this.bumpDelay = h.time(600);
     };
 
     Meets.prototype.run = function() {

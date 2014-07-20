@@ -11,6 +11,7 @@
         duration: this.delay,
         complete: (function(_this) {
           return function() {
+            _this.$fishEntire.show();
             return _this.run();
           };
         })(this)
@@ -26,6 +27,7 @@
       this.$topSplash2 = $('#js-top-splash2');
       this.$scene = $('#js-fish-scene');
       this.$fish = $('#js-fish');
+      this.$fishEntire = $('#js-fish-scene');
       this.$fish.css({
         'transform-origin': 'center center'
       });
@@ -61,7 +63,8 @@
           return _this.splash({
             delayForSplash: delayForSplash,
             splash1: _this.$topSplash1,
-            splash2: _this.$topSplash2
+            splash2: _this.$topSplash2,
+            isSecond: true
           });
         };
       })(this), 775 * this.s);
@@ -125,14 +128,13 @@
               translateY: h.rand(0, bubbleRadius),
               r: h.rand(15, 20)
             }, {
-              duration: 300 * _this.s + h.rand(50, 100) * _this.s,
+              duration: 200 * _this.s + h.rand(50, 100) * _this.s,
               delay: h.rand(50, 150) * _this.s + o.delayForSplash * _this.s
             });
             return $item.velocity({
               translateX: 0,
               translateY: 0,
-              r: 0,
-              rotateZ: h.rand(-100, 100)
+              r: 0
             }, {
               duration: 800 * _this.s,
               complete: function() {

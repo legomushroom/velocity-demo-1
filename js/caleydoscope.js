@@ -5,11 +5,21 @@
     function Caleydoscope(o) {
       this.o = o != null ? o : {};
       this.vars();
-      this.run();
+      $('<div />').velocity({
+        p: 1
+      }, {
+        duration: this.delay,
+        complete: (function(_this) {
+          return function() {
+            _this.$caleydoscopeEntire.show();
+            return _this.run();
+          };
+        })(this)
+      });
     }
 
     Caleydoscope.prototype.vars = function() {
-      this.s = h.time(1);
+      this.s = 1 * h.time(1);
       this.$velocityText = $('#js-velocity-text');
       this.$blow = $('#js-c-blow');
       this.$caleydoscopePattern = $('#caleydoscope-pattern');
@@ -21,17 +31,55 @@
       this.$caleydoscopeImage6 = $('#js-caleydoscope-image6');
       this.$caleydoscope = $('#js-caleydoscope');
       this.$caleydoscopeWrap = $('#js-caleydoscope-wrapper');
+      this.$caleydoscopeEntire = $('#js-entire-caleydoscope');
+      this.$burst = $('#js-caleydoscope-burst');
+      this.$burst2 = $('#js-caleydoscope-burst2');
       return this.delay = this.o.delay || 0;
     };
 
     Caleydoscope.prototype.run = function() {
-      var $mask1, $paths, caleydDelay1;
+      var $mask1, $paths, caleydDelay1, len;
       $mask1 = $('#js-c-mask1');
       caleydDelay1 = 100 * this.s;
+      this.$caleydoscopeEntire;
+      len = 20;
+      this.$burst.children().each((function(_this) {
+        return function(i, item) {
+          var $item;
+          $item = $(item);
+          return $item.velocity({
+            strokeDashoffset: 0
+          }, {
+            delay: 2300 * _this.s,
+            duration: 200 * _this.s
+          }).velocity({
+            strokeDashoffset: -len
+          }, {
+            duration: 200 * _this.s
+          });
+        };
+      })(this));
+      len = 10;
+      this.$burst2.children().each((function(_this) {
+        return function(i, item) {
+          var $item;
+          $item = $(item);
+          return $item.velocity({
+            strokeDashoffset: 0
+          }, {
+            delay: 2500 * _this.s,
+            duration: 200 * _this.s
+          }).velocity({
+            strokeDashoffset: -len
+          }, {
+            duration: 200 * _this.s
+          });
+        };
+      })(this));
       $mask1.velocity({
         r: 75
       }, {
-        delay: this.delay + 1800 * this.s + caleydDelay1,
+        delay: 1800 * this.s + caleydDelay1,
         duration: 600 * this.s
       });
       this.$velocityText.children().each((function(_this) {
@@ -46,16 +94,22 @@
           x = i < 5 ? size * (5 - i) : -size * i;
           return $item.velocity({
             strokeDasharray: length,
-            strokeDashoffset: length
+            strokeDashoffset: length,
+            rotateY: i % 1 === 0 ? 90 : -90,
+            opacity: 0
           }, {
             duration: 1
           }).velocity({
             opacity: 1,
-            strokeDashoffset: 0
+            strokeDashoffset: 0,
+            rotateY: 0
           }, {
             duration: 1000 * _this.s + h.rand(0, 100) * _this.s,
-            delay: _this.delay + 200 * _this.s + h.rand(0, 500) * _this.s,
-            easing: 'linear'
+            delay: 600 * _this.s + h.rand(0, 500) * _this.s,
+            easing: 'linear',
+            begin: function() {
+              return _this.$velocityText.show();
+            }
           }).velocity({
             rotateZ: h.rand(25, 120),
             translateX: h.rand(-200, 200),
@@ -77,7 +131,7 @@
           return $item.velocity({
             r: i === 0 ? 75 : h.rand(10, 50)
           }, {
-            delay: _this.delay + 1350 * _this.s + h.rand(0, 500) * _this.s,
+            delay: 1350 * _this.s + h.rand(0, 500) * _this.s,
             duration: 400 * _this.s + h.rand(0, 300) * _this.s
           }).velocity({
             translateY: h.rand(-150, 150),
@@ -110,7 +164,7 @@
           return $path.velocity({
             opacity: 1
           }, {
-            delay: h.rand(1, 150) * _this.s + i * 150 * _this.s + _this.delay,
+            delay: h.rand(1, 150) * _this.s + i * 150 * _this.s,
             duration: 900
           });
         };
@@ -122,8 +176,7 @@
         rotateZ: 720
       }, {
         duration: 12000 * this.s,
-        easing: 'linear',
-        delay: this.delay
+        easing: 'linear'
       });
       this.$caleydoscopeImage.css({
         'transform-origin': 'center center'
@@ -134,8 +187,7 @@
       }, {
         loop: 0,
         duration: 5000,
-        easing: 'ease',
-        delay: this.delay
+        easing: 'ease'
       });
       this.$caleydoscopeImage2.css({
         'transform-origin': 'center center'
@@ -146,8 +198,7 @@
       }, {
         loop: 0,
         duration: 5000,
-        easing: 'ease',
-        delay: this.delay
+        easing: 'ease'
       });
       this.$caleydoscopeImage3.css({
         'transform-origin': 'center center'
@@ -158,8 +209,7 @@
       }, {
         loop: 0,
         duration: 5000,
-        easing: 'ease',
-        delay: this.delay
+        easing: 'ease'
       });
       this.$caleydoscopeImage4.css({
         'transform-origin': 'center center'
@@ -170,8 +220,7 @@
       }, {
         loop: 0,
         duration: 5000,
-        easing: 'ease',
-        delay: this.delay
+        easing: 'ease'
       });
       this.$caleydoscopeImage5.css({
         'transform-origin': 'center center'
@@ -182,8 +231,7 @@
       }, {
         loop: 0,
         duration: 5000,
-        easing: 'ease',
-        delay: this.delay
+        easing: 'ease'
       });
       this.$caleydoscopeImage6.css({
         'transform-origin': 'center center'
@@ -194,8 +242,7 @@
       }, {
         loop: 0,
         duration: 5000,
-        easing: 'ease',
-        delay: this.delay
+        easing: 'ease'
       });
     };
 

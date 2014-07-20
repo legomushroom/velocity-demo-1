@@ -19,6 +19,7 @@
       this.$text = $('#js-svg-text');
       this.$svgStroke = $('.svg-stroke');
       this.$gradient = $('#js-gradient');
+      this.$svg = $('#js-svg');
       this.$meets = $('#js-meets');
       this.maxCnt = 3;
       this.cnt = 0;
@@ -192,7 +193,8 @@
             delay: _this.delay,
             begin: function() {
               !_this.isCircles && _this.$circles.show();
-              return _this.isCircles = true;
+              _this.isCircles = true;
+              return _this.$svg.show();
             }
           }).velocity({
             r: h.rand(150, 300),

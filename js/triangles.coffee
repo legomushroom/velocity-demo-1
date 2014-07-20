@@ -6,7 +6,7 @@ class Triangles
       p: 0
     },
       duration: @delay
-      complete:=> @run()
+      complete:=> @$triangles.show(); @run()
 
   vars:->
     @delay = @o.delay or 0
@@ -21,6 +21,8 @@ class Triangles
     @$flowersCream = $('#js-flowers-cream')
     @$sliceLine    = $('#js-slice-line')
     @$divSparks    = $('#js-div-sparks')
+
+    @$triangles    = $('#js-triangles')
 
     @$creamTriangle1 = $('#js-cream-triangle1')
       .css 'transform': 'translate(490px,300px)'

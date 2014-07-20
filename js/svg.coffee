@@ -15,6 +15,7 @@ class Svg
     @$text = $('#js-svg-text')
     @$svgStroke = $('.svg-stroke')
     @$gradient = $('#js-gradient')
+    @$svg = $('#js-svg')
 
     @$meets = $('#js-meets')
 
@@ -27,12 +28,12 @@ class Svg
 
     @$div.velocity {
       p: 1
-    },
-      delay: @delay - h.time 600
-      complete:=>
-        @showS()
-        @showV()
-        @runG()
+      },
+        delay: @delay - h.time 600
+        complete:=>
+          @showS()
+          @showV()
+          @runG()
 
   showS:->
     @$sW.velocity {
@@ -145,6 +146,7 @@ class Svg
           begin:=>
             !@isCircles and @$circles.show()
             @isCircles = true
+            @$svg.show()
 
       .velocity {
         r: h.rand(150,300)

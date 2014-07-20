@@ -11,6 +11,7 @@
         duration: this.delay,
         complete: (function(_this) {
           return function() {
+            _this.$triangles.show();
             return _this.run();
           };
         })(this)
@@ -28,6 +29,7 @@
       this.$flowersCream = $('#js-flowers-cream');
       this.$sliceLine = $('#js-slice-line');
       this.$divSparks = $('#js-div-sparks');
+      this.$triangles = $('#js-triangles');
       this.$creamTriangle1 = $('#js-cream-triangle1').css({
         'transform': 'translate(490px,300px)'
       });
