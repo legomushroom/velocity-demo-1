@@ -5,6 +5,7 @@ class Meets
 
   vars:->
     @delay = @o.delay or 0
+    @s = 1*h.time 1
 
     @$leftHand  = $('#js-left-hand')
     @$leftHand.velocity {translateX: 500}, duration:1
@@ -16,6 +17,9 @@ class Meets
 
     @$leftShirt = $('#js-left-shirt')
     @$leftShirt.velocity {translateX: -500}, duration:1
+
+
+    @$blow     = $('#js-meets-blow')
 
     @$sleeves  = $('.js-sleeve')
     @$shirts   = $('.js-shirt')
@@ -165,6 +169,32 @@ class Meets
           # strokeWidth: 0
         },
           duration: h.time(150)
+
+    @$blow.children().each (i, item)=>
+      $item = $(item)
+      x = h.rand(-700, 700)
+      y = h.rand(-700, 700)
+      $item.velocity {
+        translateX: x
+        translateY: y
+        rotateZ: h.rand(-360,360)
+        rotateX: h.rand(-360,360)
+        rotateY: h.rand(-360,360)
+        },
+          delay: @delay + h.time(0) + @bumpDelay
+          duration: 1000*@s
+          easing: 'ease-out'
+          begin:=> @$blow.show()
+
+      .velocity {
+        translateY: y+1200
+        rotateZ: h.rand(-1200,1200)
+        rotateX: h.rand(-1200,1200)
+        rotateY: h.rand(-1200,1200)
+        opacity: 0
+        },
+          duration: 3000*@s
+          easing: 'ease-in'
 
 window.Meets = Meets
 
