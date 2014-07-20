@@ -215,21 +215,21 @@
             rotateX: h.rand(-360, 360),
             rotateY: h.rand(-360, 360)
           }, {
-            delay: _this.delay + h.time(0) + _this.bumpDelay,
+            delay: _this.delay + h.time(400) + _this.bumpDelay,
             duration: 1000 * _this.s,
             easing: 'ease-out',
             begin: function() {
               return _this.$blow.show();
             }
           }).velocity({
-            translateY: y + 1200,
+            translateY: y + 500,
+            translateX: x < 0 ? x - 500 : x + 500,
             rotateZ: h.rand(-1200, 1200),
             rotateX: h.rand(-1200, 1200),
-            rotateY: h.rand(-1200, 1200),
-            opacity: 0
+            rotateY: h.rand(-1200, 1200)
           }, {
             duration: 3000 * _this.s,
-            easing: 'ease-in'
+            easing: 'ease-in-out'
           });
         };
       })(this));

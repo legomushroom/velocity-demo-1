@@ -181,20 +181,20 @@ class Meets
         rotateX: h.rand(-360,360)
         rotateY: h.rand(-360,360)
         },
-          delay: @delay + h.time(0) + @bumpDelay
+          delay: @delay + h.time(400) + @bumpDelay
           duration: 1000*@s
           easing: 'ease-out'
           begin:=> @$blow.show()
 
       .velocity {
-        translateY: y+1200
+        translateY: y+500
+        translateX: if x < 0 then x-500 else x+500
         rotateZ: h.rand(-1200,1200)
         rotateX: h.rand(-1200,1200)
         rotateY: h.rand(-1200,1200)
-        opacity: 0
         },
           duration: 3000*@s
-          easing: 'ease-in'
+          easing: 'ease-in-out'
 
 window.Meets = Meets
 
