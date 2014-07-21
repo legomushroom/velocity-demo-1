@@ -44,7 +44,8 @@ class Svg
       x = h.rand(-500, 500)
       y = h.rand(-500, 500)
       blowX = if x < 0 then x-1000 else x+1000
-      console.log 2000 - Math.abs blowX
+      coef = (1-(2000 - Math.abs blowX)/1000)
+      # console.log coef
       $item.velocity {
         translateX: x
         translateY: y
@@ -73,8 +74,10 @@ class Svg
         rotateZ: h.rand(-1200,1200)
         rotateX: h.rand(-1200,1200)
         rotateY: h.rand(-1200,1200)
+        scale: 1+coef
         },
           duration: 600*@s
+          delay:    coef*200*@s
           easing:   'linear'
 
   showS:->

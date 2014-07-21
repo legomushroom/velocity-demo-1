@@ -52,12 +52,12 @@
     Svg.prototype.confetti = function() {
       return this.$blow.children().each((function(_this) {
         return function(i, item) {
-          var $item, blowX, x, y;
+          var $item, blowX, coef, x, y;
           $item = $(item);
           x = h.rand(-500, 500);
           y = h.rand(-500, 500);
           blowX = x < 0 ? x - 1000 : x + 1000;
-          console.log(2000 - Math.abs(blowX));
+          coef = 1 - (2000 - Math.abs(blowX)) / 1000;
           return $item.velocity({
             translateX: x,
             translateY: y,
@@ -87,9 +87,11 @@
             translateX: blowX,
             rotateZ: h.rand(-1200, 1200),
             rotateX: h.rand(-1200, 1200),
-            rotateY: h.rand(-1200, 1200)
+            rotateY: h.rand(-1200, 1200),
+            scale: 1 + coef
           }, {
             duration: 600 * _this.s,
+            delay: coef * 200 * _this.s,
             easing: 'linear'
           });
         };
