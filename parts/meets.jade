@@ -19,9 +19,10 @@ g#js-meets
         path(d="M#{x1},#{y1} L#{x2},#{y2}", opacity="1", stroke-dashoffset="#{burstLen}", stroke-dasharray="#{burstLen}", stroke="white", stroke-width="8", stroke-linecap="round")
         - angle = angle + step
 
+  - var colors = [ '#00C4FF', '#9013FE', '#FA1C46' ]
   g#js-meets-blow(transform="translate(625,435)").h-g
     - for (var i = 0; i < 25; i++)
-      rect(fill="#aaa", width="#{rand(10,30)}", height="#{rand(10,30)}")
+      rect(fill="#{colors[i % colors.length]}", width="#{rand(10,30)}", height="#{rand(10,30)}")
 
   rect(width="1280", height="900", fill="url(#space-dogs-pattern)", mask="url(#meets-mask)")
   g#js-meets-circles

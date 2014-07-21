@@ -169,14 +169,9 @@ class Meets
       $item.velocity {
         translateX: x
         translateY: y
-        rotateZ: h.rand(-360,360)
-        rotateX: h.rand(-360,360)
-        rotateY: h.rand(-360,360)
         },
-          delay: @delay + h.time(400) + @bumpDelay
-          duration: 1000*@s
-          easing: 'ease-out'
-          begin:=> @$blow.show()
+          duration: 1
+          easing: 'linear'
 
       .velocity {
         translateY: y+500
@@ -185,8 +180,10 @@ class Meets
         rotateX: h.rand(-1200,1200)
         rotateY: h.rand(-1200,1200)
         },
+          delay: @delay + @bumpDelay
           duration: 3000*@s
-          easing: 'ease-in-out'
+          easing: 'ease-out'
+          begin:=> @$blow.show()
 
 window.Meets = Meets
 

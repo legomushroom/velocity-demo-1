@@ -210,17 +210,10 @@
           y = h.rand(-700, 700);
           return $item.velocity({
             translateX: x,
-            translateY: y,
-            rotateZ: h.rand(-360, 360),
-            rotateX: h.rand(-360, 360),
-            rotateY: h.rand(-360, 360)
+            translateY: y
           }, {
-            delay: _this.delay + h.time(400) + _this.bumpDelay,
-            duration: 1000 * _this.s,
-            easing: 'ease-out',
-            begin: function() {
-              return _this.$blow.show();
-            }
+            duration: 1,
+            easing: 'linear'
           }).velocity({
             translateY: y + 500,
             translateX: x < 0 ? x - 500 : x + 500,
@@ -228,8 +221,12 @@
             rotateX: h.rand(-1200, 1200),
             rotateY: h.rand(-1200, 1200)
           }, {
+            delay: _this.delay + _this.bumpDelay,
             duration: 3000 * _this.s,
-            easing: 'ease-in-out'
+            easing: 'ease-out',
+            begin: function() {
+              return _this.$blow.show();
+            }
           });
         };
       })(this));
