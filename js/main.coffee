@@ -16,3 +16,4 @@ class Main
 setTimeout ->
   new Main
 , 500
+
