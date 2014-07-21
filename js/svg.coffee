@@ -44,7 +44,7 @@ class Svg
       x = h.rand(-500, 500)
       y = h.rand(-500, 500)
       blowX = if x < 0 then x-1000 else x+1000
-      console.log 200 - Math.Abs blowX
+      console.log 2000 - Math.abs blowX
       $item.velocity {
         translateX: x
         translateY: y

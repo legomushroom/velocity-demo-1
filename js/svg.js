@@ -57,7 +57,7 @@
           x = h.rand(-500, 500);
           y = h.rand(-500, 500);
           blowX = x < 0 ? x - 1000 : x + 1000;
-          console.log(200 - Math.Abs(blowX));
+          console.log(2000 - Math.abs(blowX));
           return $item.velocity({
             translateX: x,
             translateY: y,
