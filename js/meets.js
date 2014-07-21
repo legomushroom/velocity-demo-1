@@ -35,7 +35,7 @@
       }, {
         duration: 1
       });
-      this.$blow = $('#js-meets-blow');
+      this.$meets = $('#js-meets');
       this.$sleeves = $('.js-sleeve');
       this.$shirts = $('.js-shirt');
       this.$dogsPattern = $('#js-space-dogs-image');
@@ -186,7 +186,7 @@
           };
         })(this)
       });
-      this.$burst.children().each((function(_this) {
+      return this.$burst.children().each((function(_this) {
         return function(i, item) {
           var $item;
           $item = $(item);
@@ -199,34 +199,6 @@
             strokeDashoffset: -35
           }, {
             duration: h.time(150)
-          });
-        };
-      })(this));
-      return this.$blow.children().each((function(_this) {
-        return function(i, item) {
-          var $item, x, y;
-          $item = $(item);
-          x = h.rand(-700, 700);
-          y = h.rand(-700, 700);
-          return $item.velocity({
-            translateX: x,
-            translateY: y
-          }, {
-            duration: 1,
-            easing: 'linear'
-          }).velocity({
-            translateY: y + 500,
-            translateX: x < 0 ? x - 500 : x + 500,
-            rotateZ: h.rand(-1200, 1200),
-            rotateX: h.rand(-1200, 1200),
-            rotateY: h.rand(-1200, 1200)
-          }, {
-            delay: _this.delay + _this.bumpDelay,
-            duration: 3000 * _this.s,
-            easing: 'ease-out',
-            begin: function() {
-              return _this.$blow.show();
-            }
           });
         };
       })(this));

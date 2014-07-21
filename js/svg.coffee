@@ -5,6 +5,7 @@ class Svg
 
   vars:->
     @delay = @o.delay or 0
+    @s = 1*h.time 1
 
     @$div = $('<div />')
     @$circles = $('#js-svg-circles')
@@ -16,6 +17,7 @@ class Svg
     @$svgStroke = $('.svg-stroke')
     @$gradient = $('#js-gradient')
     @$svg = $('#js-svg')
+    @$blow = $('#js-svg-blow')
 
     @$meets = $('#js-meets')
 
@@ -34,6 +36,46 @@ class Svg
           @showS()
           @showV()
           @runG()
+          @confetti()
+
+  confetti:->
+    @$blow.children().each (i, item)=>
+      $item = $(item)
+      x = h.rand(-500, 500)
+      y = h.rand(-500, 500)
+      blowX = if x < 0 then x-1000 else x+1000
+      console.log 200 - Math.Abs blowX
+      $item.velocity {
+        translateX: x
+        translateY: y
+        rotateZ: h.rand(-360,360)
+        rotateX: h.rand(-360,360)
+        rotateY: h.rand(-360,360)
+        },
+          duration: 1
+          easing: 'linear'
+
+      .velocity {
+        translateY: y+300
+        translateX: if x < 0 then x-100 else x+100
+        rotateZ: h.rand(-1200,1200)
+        rotateX: h.rand(-1200,1200)
+        rotateY: h.rand(-1200,1200)
+        },
+          duration: 3000*@s
+          delay:    400*@s
+          easing:   'linear'
+          begin:=>  if i is 0 then @$blow.show()
+
+       .velocity {
+        translateY: y+1000
+        translateX: blowX
+        rotateZ: h.rand(-1200,1200)
+        rotateX: h.rand(-1200,1200)
+        rotateY: h.rand(-1200,1200)
+        },
+          duration: 600*@s
+          easing:   'linear'
 
   showS:->
     @$sW.velocity {

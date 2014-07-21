@@ -10,6 +10,7 @@
 
     Svg.prototype.vars = function() {
       this.delay = this.o.delay || 0;
+      this.s = 1 * h.time(1);
       this.$div = $('<div />');
       this.$circles = $('#js-svg-circles');
       this.$sW = $('#js-svg-s-wrapper');
@@ -20,6 +21,7 @@
       this.$svgStroke = $('.svg-stroke');
       this.$gradient = $('#js-gradient');
       this.$svg = $('#js-svg');
+      this.$blow = $('#js-svg-blow');
       this.$meets = $('#js-meets');
       this.maxCnt = 3;
       this.cnt = 0;
@@ -40,10 +42,58 @@
           return function() {
             _this.showS();
             _this.showV();
-            return _this.runG();
+            _this.runG();
+            return _this.confetti();
           };
         })(this)
       });
+    };
+
+    Svg.prototype.confetti = function() {
+      return this.$blow.children().each((function(_this) {
+        return function(i, item) {
+          var $item, blowX, x, y;
+          $item = $(item);
+          x = h.rand(-500, 500);
+          y = h.rand(-500, 500);
+          blowX = x < 0 ? x - 1000 : x + 1000;
+          console.log(200 - Math.Abs(blowX));
+          return $item.velocity({
+            translateX: x,
+            translateY: y,
+            rotateZ: h.rand(-360, 360),
+            rotateX: h.rand(-360, 360),
+            rotateY: h.rand(-360, 360)
+          }, {
+            duration: 1,
+            easing: 'linear'
+          }).velocity({
+            translateY: y + 300,
+            translateX: x < 0 ? x - 100 : x + 100,
+            rotateZ: h.rand(-1200, 1200),
+            rotateX: h.rand(-1200, 1200),
+            rotateY: h.rand(-1200, 1200)
+          }, {
+            duration: 3000 * _this.s,
+            delay: 400 * _this.s,
+            easing: 'linear',
+            begin: function() {
+              if (i === 0) {
+                return _this.$blow.show();
+              }
+            }
+          }).velocity({
+            translateY: y + 1000,
+            translateX: blowX,
+            rotateZ: h.rand(-1200, 1200),
+            rotateX: h.rand(-1200, 1200),
+            rotateY: h.rand(-1200, 1200)
+          }, {
+            duration: 600 * _this.s,
+            easing: 'linear'
+          });
+        };
+      })(this));
     };
 
     Svg.prototype.showS = function() {

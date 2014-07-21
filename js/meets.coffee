@@ -18,8 +18,8 @@ class Meets
     @$leftShirt = $('#js-left-shirt')
     @$leftShirt.velocity {translateX: -500}, duration:1
 
-
-    @$blow     = $('#js-meets-blow')
+    @$meets    = $('#js-meets')
+    # @$blow     = $('#js-meets-blow')
 
     @$sleeves  = $('.js-sleeve')
     @$shirts   = $('.js-shirt')
@@ -162,28 +162,6 @@ class Meets
         },
           duration: h.time(150)
 
-    @$blow.children().each (i, item)=>
-      $item = $(item)
-      x = h.rand(-700, 700)
-      y = h.rand(-700, 700)
-      $item.velocity {
-        translateX: x
-        translateY: y
-        },
-          duration: 1
-          easing: 'linear'
-
-      .velocity {
-        translateY: y+500
-        translateX: if x < 0 then x-500 else x+500
-        rotateZ: h.rand(-1200,1200)
-        rotateX: h.rand(-1200,1200)
-        rotateY: h.rand(-1200,1200)
-        },
-          delay: @delay + @bumpDelay
-          duration: 3000*@s
-          easing: 'ease-out'
-          begin:=> @$blow.show()
 
 window.Meets = Meets
 
