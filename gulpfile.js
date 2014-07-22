@@ -10,7 +10,6 @@ var jade          = require('gulp-jade');
 var watch         = require('gulp-jade');
 var coffeelint    = require('gulp-coffeelint');
 var plumber       = require('gulp-plumber');
-// var karma         = require('gulp-karma');
 var concat        = require('gulp-concat');
 var csslint       = require('gulp-csslint');
 
@@ -213,8 +212,6 @@ gulp.task('default', function(){
     gulp.run('index:jade');
   });
 });
-
-
 
 
 
