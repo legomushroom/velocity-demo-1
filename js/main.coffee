@@ -10,7 +10,7 @@ class Main
     new Svg           delay: h.time(5600)
     new Triangles     delay: h.time(8600)
     new Waves         delay: h.time(11000)
-    new Fish          delay: h.time(11600)
+    new Fish          delay: h.time(11800)
     new Logo          delay: h.time(14300)
 
 setTimeout ->

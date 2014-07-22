@@ -26,7 +26,7 @@
         delay: h.time(11000)
       });
       new Fish({
-        delay: h.time(11600)
+        delay: h.time(11800)
       });
       return new Logo({
         delay: h.time(14300)

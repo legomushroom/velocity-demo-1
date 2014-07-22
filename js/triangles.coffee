@@ -21,7 +21,7 @@ class Triangles
     @$flowersCream = $('#js-flowers-cream')
     @$sliceLine    = $('#js-slice-line')
     @$sliceLine.velocity {
-      rotateZ: 80
+      rotateZ: 20
       }, duration: 1
     @$divSparks    = $('#js-div-sparks')
 
@@ -63,7 +63,7 @@ class Triangles
       duration: @dur
       delay:    @start
 
-    @start = @start + @dur - 200*@s
+    @start = @start + @dur - 600*@s
     @dur = 400*@s
     @$sliceLine.velocity {
       rotateZ: 315
