@@ -13,6 +13,25 @@
 // @import 'css-assets/font/stylesheet-outage.styl'
 // @import 'pages/post'
 
+html, body
+  rect 100%
+
+.container
+  rect 100%
+  max-width 1280px
+  position relative
+  fly()
+  .container__inner
+    position absolute
+    nw 0
+    width 100%
+    padding-bottom 70.3125%
+    svg
+      position absolute
+      rect 100%
+      nw 0
+
+
 svg
   max-rect 128*gs
   display block
@@ -28,11 +47,7 @@ svg
   path
     opacity 0
 
-
 .svg-letter
   stroke white
-  // opacity 0
   stroke-width 8
 
-// .svg-stroke
-//   stroke-width 5

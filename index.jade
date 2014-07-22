@@ -9,16 +9,17 @@ html
     - var rand = function(min, max){
     -  return Math.floor((Math.random() * ((max + 1) - min)) + min)
     - }
-
-    include parts/assets.svg
-    svg(viewBox="0 0 1280 900")
-      include parts/meets
-      include parts/caleydoscope
-      include parts/svg
-      include parts/triangles
-      include parts/logo.svg
-      include parts/waves.svg
-      include parts/fish
+    .container
+      .container__inner
+        include parts/assets.svg
+        svg(viewBox="0 0 1280 900")
+          include parts/meets
+          include parts/caleydoscope
+          include parts/svg
+          include parts/triangles
+          include parts/logo.svg
+          include parts/waves.svg
+          include parts/fish
 
     script(src="bower_components/jquery/dist/jquery.js")
     script(src="bower_components/velocity/jquery.velocity.min.js")
