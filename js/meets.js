@@ -36,6 +36,7 @@
         duration: 1
       });
       this.$meets = $('#js-meets');
+      this.$blow = $('#js-meets-blow');
       this.$sleeves = $('.js-sleeve');
       this.$shirts = $('.js-shirt');
       this.$dogsPattern = $('#js-space-dogs-image');
@@ -186,7 +187,7 @@
           };
         })(this)
       });
-      return this.$burst.children().each((function(_this) {
+      this.$burst.children().each((function(_this) {
         return function(i, item) {
           var $item;
           $item = $(item);
@@ -199,6 +200,28 @@
             strokeDashoffset: -35
           }, {
             duration: h.time(150)
+          });
+        };
+      })(this));
+      return this.$blow.children().each((function(_this) {
+        return function(i, item) {
+          var $item, data, x2, y2;
+          $item = $(item);
+          data = $item.data();
+          x2 = data.x;
+          y2 = data.y;
+          return $item.velocity({
+            r: 0,
+            translateX: x2,
+            translateY: y2
+          }, {
+            delay: _this.delay + h.time(300) + _this.bumpDelay,
+            duration: 400 * _this.s,
+            begin: function() {
+              if (i === 0) {
+                return _this.$blow.show();
+              }
+            }
           });
         };
       })(this));

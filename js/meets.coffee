@@ -19,7 +19,7 @@ class Meets
     @$leftShirt.velocity {translateX: -500}, duration:1
 
     @$meets    = $('#js-meets')
-    # @$blow     = $('#js-meets-blow')
+    @$blow     = $('#js-meets-blow')
 
     @$sleeves  = $('.js-sleeve')
     @$shirts   = $('.js-shirt')
@@ -77,6 +77,7 @@ class Meets
       },
         duration: 1
         delay: @delay
+        # begin:=> if i is 0 then @$meets.show()
       
       $item.velocity {
         r: 0
@@ -153,14 +154,34 @@ class Meets
       $item
         .velocity {
           strokeDashoffset: 0
+          # strokeWidth: 4
         },
           delay: @delay + h.time(400) + @bumpDelay
           duration: h.time(150)
 
         .velocity {
           strokeDashoffset: -35
+          # strokeWidth: 0
         },
           duration: h.time(150)
+
+    @$blow.children().each (i, item)=>
+      $item = $(item)
+      data = $item.data()
+      x2 = data.x
+      y2 = data.y
+      $item
+        .velocity {
+          r: 0
+          translateX: x2
+          translateY: y2
+        },
+          delay: @delay + h.time(300) + @bumpDelay
+          duration: 400*@s
+          begin:=>
+            if i is 0
+              @$blow.show()
+
 
 
 window.Meets = Meets

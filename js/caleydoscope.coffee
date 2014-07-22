@@ -85,7 +85,7 @@ class Caleydoscope
           duration: 1000*@s + h.rand(0, 100)*@s
           delay: 600*@s + h.rand(0, 500)*@s
           easing: 'linear'
-          begin:=> @$velocityText.show()
+          begin:=> if i is 0 then @$velocityText.show()
 
         .velocity {
           rotateZ: h.rand(25, 120)

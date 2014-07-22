@@ -108,7 +108,9 @@
             delay: 600 * _this.s + h.rand(0, 500) * _this.s,
             easing: 'linear',
             begin: function() {
-              return _this.$velocityText.show();
+              if (i === 0) {
+                return _this.$velocityText.show();
+              }
             }
           }).velocity({
             rotateZ: h.rand(25, 120),

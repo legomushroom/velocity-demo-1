@@ -28,6 +28,11 @@
       this.$owlsImage = $('#js-owls-image');
       this.$flowersCream = $('#js-flowers-cream');
       this.$sliceLine = $('#js-slice-line');
+      this.$sliceLine.velocity({
+        rotateZ: 80
+      }, {
+        duration: 1
+      });
       this.$divSparks = $('#js-div-sparks');
       this.$triangles = $('#js-triangles');
       this.$creamTriangle1 = $('#js-cream-triangle1').css({

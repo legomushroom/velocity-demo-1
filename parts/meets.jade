@@ -3,11 +3,11 @@ defs
     stop(stop-color="#FFFFFF", offset="0%")
     stop(stop-color="#FFFFFF", stop-opacity="0", offset="100%")
 
-g#js-meets
+g#js-meets.h-g1
   - var blue = '#1F2947'
-  - var burstLen = 35, burstStart = 100
   mask#burst-mask
     g#js-meets-burst(transform="translate(0,10)")
+      - var burstLen = 35, burstStart = 100
       - var cnt = 7, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
       - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 50;
       - var step = (2*PI)/cnt, initRotate = 40;
@@ -19,6 +19,19 @@ g#js-meets
         path(d="M#{x1},#{y1} L#{x2},#{y2}", opacity="1", stroke-dashoffset="#{burstLen}", stroke-dasharray="#{burstLen}", stroke="white", stroke-width="8", stroke-linecap="round")
         - angle = angle + step
 
+    g#js-meets-blow.h-g
+      - var burstLen = 250, burstStart = 0
+      - var cnt = 6, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
+      - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 1.5;
+      - var step = (2*PI)/cnt, initRotate = 40;
+        - for (var i = 0; i < cnt; i++)
+          - var x1 = centerX + Math.cos(angle)*radius
+          - var y1 = centerY + Math.sin(angle)*radius
+          - var x2 = centerX + Math.cos(angle)*radius2
+          - var y2 = centerY + Math.sin(angle)*radius2
+          circle(cx="#{x1}", cy="#{y1}", data-x="#{x2-640}", data-y="#{y2-450}", fill="#fff", r="50")
+          - angle = angle + step
+
   rect(width="1280", height="900", fill="url(#space-dogs-pattern)", mask="url(#meets-mask)")
   g#js-meets-circles
     - for (var i = 0; i < 12; i++ )
@@ -27,6 +40,7 @@ g#js-meets
       circle(fill="white", stroke="none", r="#{rand(50,100)}", transform="translate(#{x},#{y})", data-x="#{x}", data-y="#{y}")
 
   rect(width="1280", height="900", fill="url(#owls-pattern)", mask="url(#burst-mask)")
+  
 
   g(stroke="none", stroke-width="1", fill="none", fill-rule="evenodd", transform="translate(23,130)")
     mask#meets-mask

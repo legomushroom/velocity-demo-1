@@ -20,6 +20,9 @@ class Triangles
     @$owlsImage    = $('#js-owls-image')
     @$flowersCream = $('#js-flowers-cream')
     @$sliceLine    = $('#js-slice-line')
+    @$sliceLine.velocity {
+      rotateZ: 80
+      }, duration: 1
     @$divSparks    = $('#js-div-sparks')
 
     @$triangles    = $('#js-triangles')
