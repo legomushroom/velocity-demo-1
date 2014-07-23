@@ -72,6 +72,7 @@
         delay: this.delay + this.bumpDelay,
         easing: 'ease-in'
       });
+      this.isShirtWalls = false;
       deltaX2 = this.rightShirtX2 - this.rightShirtX1;
       this.rightShirt = this.$rightShirt[0];
       this.$rightShirt.velocity({
@@ -80,14 +81,11 @@
         duration: bumpDuration,
         delay: this.delay + this.bumpDelay,
         easing: 'ease-in',
-        begin: (function(_this) {
-          return function() {
-            return _this.$shirtWalls.show();
-          };
-        })(this),
         progress: (function(_this) {
           return function($els, proc) {
-            return _this.rightShirt.setAttribute('x', _this.rightShirtX1 + deltaX2 * proc);
+            _this.rightShirt.setAttribute('x', _this.rightShirtX1 + deltaX2 * proc);
+            !_this.isShirtWalls && _this.$shirtWalls.show();
+            return _this.isShirtWalls = true;
           };
         })(this)
       });

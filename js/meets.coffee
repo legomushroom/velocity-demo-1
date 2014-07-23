@@ -67,6 +67,8 @@ class Meets
         delay: @delay + @bumpDelay
         easing: 'ease-in'
 
+    
+    @isShirtWalls = false
     deltaX2 = @rightShirtX2 - @rightShirtX1
     @rightShirt = @$rightShirt[0]
     @$rightShirt.velocity { p: 0 },
@@ -74,9 +76,10 @@ class Meets
         duration: bumpDuration
         delay: @delay + @bumpDelay
         easing: 'ease-in'
-        begin:=> @$shirtWalls.show()
         progress:($els, proc)=>
           @rightShirt.setAttribute 'x', @rightShirtX1 + deltaX2*proc
+          !@isShirtWalls and @$shirtWalls.show()
+          @isShirtWalls = true
 
     @$circles.children().each (i, item)=>
       $item = $(item)
