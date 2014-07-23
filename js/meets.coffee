@@ -15,6 +15,8 @@ class Meets
     @$rightShirt = $('#js-right-shirt')
     @rightShirtX1 = parseInt(@$rightShirt.attr('x'), 10)
     @rightShirtX2 = parseInt(@$rightShirt.attr('x2'), 10)
+
+    @$shirtWalls = $('.js-shirt-wall')
     # @$rightShirt.attr 'x', -500
 
     @$leftShirt = $('#js-left-shirt')
@@ -67,11 +69,12 @@ class Meets
 
     deltaX2 = @rightShirtX2 - @rightShirtX1
     @rightShirt = @$rightShirt[0]
-    @$rightShirt.velocity { translateX: 0 },
+    @$rightShirt.velocity { p: 0 },
         # delay: @delay
         duration: bumpDuration
         delay: @delay + @bumpDelay
         easing: 'ease-in'
+        begin:=> @$shirtWalls.show()
         progress:($els, proc)=>
           @rightShirt.setAttribute 'x', @rightShirtX1 + deltaX2*proc
 

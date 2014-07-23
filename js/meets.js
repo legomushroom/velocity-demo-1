@@ -26,6 +26,7 @@
       this.$rightShirt = $('#js-right-shirt');
       this.rightShirtX1 = parseInt(this.$rightShirt.attr('x'), 10);
       this.rightShirtX2 = parseInt(this.$rightShirt.attr('x2'), 10);
+      this.$shirtWalls = $('.js-shirt-wall');
       this.$leftShirt = $('#js-left-shirt');
       this.leftShirtX1 = parseInt(this.$leftShirt.attr('x'), 10);
       this.leftShirtX2 = parseInt(this.$leftShirt.attr('x2'), 10);
@@ -74,11 +75,16 @@
       deltaX2 = this.rightShirtX2 - this.rightShirtX1;
       this.rightShirt = this.$rightShirt[0];
       this.$rightShirt.velocity({
-        translateX: 0
+        p: 0
       }, {
         duration: bumpDuration,
         delay: this.delay + this.bumpDelay,
         easing: 'ease-in',
+        begin: (function(_this) {
+          return function() {
+            return _this.$shirtWalls.show();
+          };
+        })(this),
         progress: (function(_this) {
           return function($els, proc) {
             return _this.rightShirt.setAttribute('x', _this.rightShirtX1 + deltaX2 * proc);
