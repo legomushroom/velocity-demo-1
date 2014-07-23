@@ -26,10 +26,10 @@
         delay: h.time(11000)
       });
       new Fish({
-        delay: h.time(11800)
+        delay: h.time(11200)
       });
       return new Logo({
-        delay: h.time(14300)
+        delay: h.time(14000)
       });
     };
 

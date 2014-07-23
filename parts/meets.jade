@@ -19,6 +19,7 @@ g#js-meets.h-g1
         path(d="M#{x1},#{y1} L#{x2},#{y2}", opacity="1", stroke-dashoffset="#{burstLen}", stroke-dasharray="#{burstLen}", stroke="white", stroke-width="8", stroke-linecap="round")
         - angle = angle + step
 
+  mask#blow-mask
     g#js-meets-blow.h-g
       - var burstLen = 250, burstStart = 0
       - var cnt = 6, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
@@ -33,6 +34,7 @@ g#js-meets.h-g1
           - angle = angle + step
 
   rect(width="1280", height="900", fill="url(#space-dogs-pattern)", mask="url(#meets-mask)")
+  rect(width="1280", height="900", fill="url(#wood-pattern)", mask="url(#blow-mask)")
   g#js-meets-circles
     - for (var i = 0; i < 12; i++ )
       - var x = 640 + rand(-140,140);

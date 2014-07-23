@@ -29,7 +29,7 @@
       this.$flowersCream = $('#js-flowers-cream');
       this.$sliceLine = $('#js-slice-line');
       this.$sliceLine.velocity({
-        rotateZ: 20
+        rotateZ: 120
       }, {
         duration: 1
       });
