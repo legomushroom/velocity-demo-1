@@ -172,7 +172,7 @@
         };
       })(this));
       this.$caleydoscope.css({
-        'transform-origin': '650px 50%'
+        'transform-origin': '640px 450px'
       });
       this.$caleydoscope.velocity({
         rotateZ: 720

@@ -131,7 +131,7 @@ class Caleydoscope
           duration: 900
 
 
-    @$caleydoscope.css 'transform-origin': '650px 50%'
+    @$caleydoscope.css 'transform-origin': '640px 450px'
     @$caleydoscope.velocity {
       rotateZ: 720
       },
