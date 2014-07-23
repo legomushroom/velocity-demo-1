@@ -24,17 +24,11 @@
         duration: 1
       });
       this.$rightShirt = $('#js-right-shirt');
-      this.$rightShirt.velocity({
-        translateX: 500
-      }, {
-        duration: 1
-      });
+      this.rightShirtX1 = parseInt(this.$rightShirt.attr('x'), 10);
+      this.rightShirtX2 = parseInt(this.$rightShirt.attr('x2'), 10);
       this.$leftShirt = $('#js-left-shirt');
-      this.$leftShirt.velocity({
-        translateX: -500
-      }, {
-        duration: 1
-      });
+      this.leftShirtX1 = parseInt(this.$leftShirt.attr('x'), 10);
+      this.leftShirtX2 = parseInt(this.$leftShirt.attr('x2'), 10);
       this.$meets = $('#js-meets');
       this.$blow = $('#js-meets-blow');
       this.$sleeves = $('.js-sleeve');
@@ -55,7 +49,7 @@
     };
 
     Meets.prototype.run = function() {
-      var bumpDuration, fistAngle, fistDelay, fistDuration, fistDuration2, fistX;
+      var bumpDuration, deltaX, deltaX2, fistAngle, fistDelay, fistDuration, fistDuration2, fistX;
       bumpDuration = h.time(400);
       this.$leftHand.velocity({
         translateX: 0
@@ -77,12 +71,19 @@
         delay: this.delay + this.bumpDelay,
         easing: 'ease-in'
       });
+      deltaX2 = this.rightShirtX2 - this.rightShirtX1;
+      this.rightShirt = this.$rightShirt[0];
       this.$rightShirt.velocity({
         translateX: 0
       }, {
         duration: bumpDuration,
         delay: this.delay + this.bumpDelay,
-        easing: 'ease-in'
+        easing: 'ease-in',
+        progress: (function(_this) {
+          return function($els, proc) {
+            return _this.rightShirt.setAttribute('x', _this.rightShirtX1 + deltaX2 * proc);
+          };
+        })(this)
       });
       this.$circles.children().each((function(_this) {
         return function(i, item) {
@@ -107,12 +108,19 @@
           });
         };
       })(this));
+      deltaX = this.leftShirtX1 - this.leftShirtX2;
+      this.leftShirt = this.$leftShirt[0];
       this.$leftShirt.velocity({
-        translateX: 0
+        p: 0
       }, {
         duration: bumpDuration,
         easing: 'ease-in',
         delay: this.delay + this.bumpDelay,
+        progress: (function(_this) {
+          return function($els, proc) {
+            return _this.leftShirt.setAttribute('x', _this.leftShirtX1 - deltaX * proc);
+          };
+        })(this),
         complete: (function(_this) {
           return function() {
             _this.$dogsPattern.velocity({

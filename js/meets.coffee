@@ -13,10 +13,14 @@ class Meets
     @$rightHand.velocity {translateX: 500}, duration:1
     
     @$rightShirt = $('#js-right-shirt')
-    @$rightShirt.velocity {translateX: 500}, duration:1
+    @rightShirtX1 = parseInt(@$rightShirt.attr('x'), 10)
+    @rightShirtX2 = parseInt(@$rightShirt.attr('x2'), 10)
+    # @$rightShirt.attr 'x', -500
 
     @$leftShirt = $('#js-left-shirt')
-    @$leftShirt.velocity {translateX: -500}, duration:1
+    @leftShirtX1 = parseInt @$leftShirt.attr('x'), 10
+    @leftShirtX2 = parseInt @$leftShirt.attr('x2'), 10
+    # @$leftShirt.attr 'x', -500
 
     @$meets    = $('#js-meets')
     @$blow     = $('#js-meets-blow')
@@ -61,11 +65,15 @@ class Meets
         delay: @delay + @bumpDelay
         easing: 'ease-in'
 
+    deltaX2 = @rightShirtX2 - @rightShirtX1
+    @rightShirt = @$rightShirt[0]
     @$rightShirt.velocity { translateX: 0 },
         # delay: @delay
         duration: bumpDuration
         delay: @delay + @bumpDelay
         easing: 'ease-in'
+        progress:($els, proc)=>
+          @rightShirt.setAttribute 'x', @rightShirtX1 + deltaX2*proc
 
     @$circles.children().each (i, item)=>
       $item = $(item)
@@ -86,12 +94,14 @@ class Meets
         rotateZ: h.rand(-360,360)
       }, duration: h.time(1000)
 
-
-    @$leftShirt.velocity { translateX: 0 },
-      # delay: @delay
+    deltaX = @leftShirtX1 - @leftShirtX2
+    @leftShirt = @$leftShirt[0]
+    @$leftShirt.velocity { p: 0 },
       duration: bumpDuration
       easing: 'ease-in'
       delay: @delay + @bumpDelay
+      progress:($els, proc)=>
+        @leftShirt.setAttribute 'x', @leftShirtX1 - deltaX*proc
       complete: =>
         @$dogsPattern.velocity {
           translateX: -150

@@ -10,8 +10,8 @@
     }
 
     Main.prototype.run = function() {
-      return new Caleydoscope({
-        delay: h.time(1000)
+      return new Meets({
+        delay: h.time(0)
       });
     };
 
