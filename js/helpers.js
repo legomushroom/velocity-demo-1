@@ -14,6 +14,14 @@
       return time * this.s;
     };
 
+    Helpers.prototype.isFF = function() {
+      return navigator.userAgent.search("Firefox") > -1;
+    };
+
+    Helpers.prototype.isIE9 = function() {
+      return navigator.userAgent.search("MSIE 9.0") > -1;
+    };
+
     Helpers.prototype.elasticOut = function(k) {
       var a, p, s;
       a = 0.1;

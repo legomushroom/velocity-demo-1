@@ -3,8 +3,9 @@ class Helpers
   rand:(min,max)->
     Math.floor((Math.random() * ((max + 1) - min)) + min)
 
-  time:(time)->
-    time*@s
+  time:(time)-> time*@s
+  isFF:->  navigator.userAgent.search("Firefox") > -1
+  isIE9:-> navigator.userAgent.search("MSIE 9.0") > -1
 
   elasticOut:(k)->
     a = 0.1

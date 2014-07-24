@@ -20,7 +20,8 @@ class Triangles
     @$owlsImage    = $('#js-owls-image')
     @$flowersCream = $('#js-flowers-cream')
     @$sliceLine    = $('#js-slice-line')
-    @$sliceLine.css 'transform-origin': '50% 50%'
+    
+    @$sliceLine.css 'transform-origin': '640px 450px'
     @$sliceLine.velocity {
       rotateZ: 120
       }, duration: 1
@@ -96,8 +97,8 @@ class Triangles
           duration: 10*@dur
           easing: 'easeOutElastic'
 
-    @$creamTriangle1.css 'transform-origin': '50% 50%'
-
+    @$creamTriangle1.css 'transform-origin': '50px'
+    # @$creamTriangle1.css 'transform-origin': '50% 50%'
     @$creamTriangle1.velocity {
       translateX: 490
       translateY: 300
@@ -125,7 +126,7 @@ class Triangles
         translateX: 490 - translateSize/2 - 150
         translateY: 300 - translateSize/2 + 650
         rotateZ: -120
-        transformOrigin: '50%'
+        transformOrigin: '100px'
       ,
         duration: 36*@dur
         easing: 'linear'

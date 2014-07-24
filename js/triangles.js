@@ -29,7 +29,7 @@
       this.$flowersCream = $('#js-flowers-cream');
       this.$sliceLine = $('#js-slice-line');
       this.$sliceLine.css({
-        'transform-origin': '50% 50%'
+        'transform-origin': '640px 450px'
       });
       this.$sliceLine.velocity({
         rotateZ: 120
@@ -110,7 +110,7 @@
         easing: 'easeOutElastic'
       });
       this.$creamTriangle1.css({
-        'transform-origin': '50% 50%'
+        'transform-origin': '50px'
       });
       this.$creamTriangle1.velocity({
         translateX: 490,
@@ -135,7 +135,7 @@
         translateX: 490 - translateSize / 2 - 150,
         translateY: 300 - translateSize / 2 + 650,
         rotateZ: -120,
-        transformOrigin: '50%'
+        transformOrigin: '100px'
       }, {
         duration: 36 * this.dur,
         easing: 'linear'
