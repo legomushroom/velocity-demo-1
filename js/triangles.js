@@ -28,6 +28,9 @@
       this.$owlsImage = $('#js-owls-image');
       this.$flowersCream = $('#js-flowers-cream');
       this.$sliceLine = $('#js-slice-line');
+      this.$sliceLine.css({
+        'transform-origin': '50% 50%'
+      });
       this.$sliceLine.velocity({
         rotateZ: 120
       }, {
@@ -78,8 +81,7 @@
         rotateZ: 315,
         scale: 1,
         opacity: 100,
-        width: 600,
-        transformOrigin: '50% 50%'
+        width: 600
       }, {
         delay: this.start,
         duration: this.dur

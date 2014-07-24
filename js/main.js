@@ -10,7 +10,7 @@
     }
 
     Main.prototype.run = function() {
-      return new Meets({
+      return new Triangles({
         delay: h.time(0)
       });
     };
