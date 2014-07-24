@@ -126,6 +126,7 @@ class Triangles
         translateX: 490 - translateSize/2 - 150
         translateY: 300 - translateSize/2 + 650
         rotateZ: -120
+        opacity: 0
         transformOrigin: '100px'
       ,
         duration: 36*@dur
