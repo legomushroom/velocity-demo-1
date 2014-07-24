@@ -21,7 +21,7 @@ class Logo
     @$hand       = $('#js-logo-hand')
     @$handCircle = $('#js-hand-circle')
     @$shadow     = $('#js-logo-shadow')
-    @$shadow.css 'transform-origin': 'center'
+    @$shadow.css 'transform-origin': '180px'
     @$shadow.velocity {
       scale: .75
       }

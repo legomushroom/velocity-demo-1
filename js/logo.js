@@ -34,7 +34,7 @@
       this.$handCircle = $('#js-hand-circle');
       this.$shadow = $('#js-logo-shadow');
       this.$shadow.css({
-        'transform-origin': 'center'
+        'transform-origin': '180px'
       });
       this.$shadow.velocity({
         scale: .75
