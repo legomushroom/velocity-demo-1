@@ -100,7 +100,7 @@
         easing: 'ease-in'
       });
       this.$wave1Top.css({
-        'transform-origin': 'center bottom'
+        'transform-origin': '1000px 50px'
       });
       this.$wave1Top.velocity({
         rotateX: -90
@@ -115,7 +115,7 @@
         })(this)
       });
       this.$wave1Top2.css({
-        'transform-origin': 'center bottom'
+        'transform-origin': '1000px 50px'
       });
       return this.$wave1Top2.velocity({
         rotateX: -180,
@@ -157,7 +157,7 @@
         easing: 'ease-in'
       });
       this.$wave2Top.css({
-        'transform-origin': 'center bottom'
+        'transform-origin': '1000px 50px'
       });
       this.$wave2Top.velocity({
         rotateX: -90
@@ -166,7 +166,7 @@
         duration: topRotateDur2
       });
       this.$wave2Top2.css({
-        'transform-origin': 'center bottom'
+        'transform-origin': '1000px 50px'
       });
       this.$wave2Top2.velocity({
         rotateX: -180,

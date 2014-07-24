@@ -10,7 +10,7 @@
     }
 
     Main.prototype.run = function() {
-      return new Triangles({
+      return new Waves({
         delay: h.time(0)
       });
     };

@@ -83,7 +83,7 @@ class Waves
         duration: wave1Time
         easing: 'ease-in'
 
-    @$wave1Top.css 'transform-origin': 'center bottom'
+    @$wave1Top.css 'transform-origin': '1000px 50px'
     @$wave1Top.velocity {
       rotateX: -90
     },
@@ -92,7 +92,7 @@ class Waves
       easing: 'ease-out'
       complete:=> @$wave1Top.hide()
 
-    @$wave1Top2.css 'transform-origin': 'center bottom'
+    @$wave1Top2.css 'transform-origin': '1000px 50px'
     @$wave1Top2.velocity {
       rotateX: -180
       translateY: 4
@@ -121,14 +121,14 @@ class Waves
         duration: wave2Time
         easing: 'ease-in'
 
-    @$wave2Top.css 'transform-origin': 'center bottom'
+    @$wave2Top.css 'transform-origin': '1000px 50px'
     @$wave2Top.velocity {
       rotateX: -90
     },
       delay: delay + wave2Time
       duration: topRotateDur2
 
-    @$wave2Top2.css 'transform-origin': 'center bottom'
+    @$wave2Top2.css 'transform-origin': '1000px 50px'
     @$wave2Top2.velocity {
       rotateX: -180
       translateY: 4
