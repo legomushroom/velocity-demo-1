@@ -2,52 +2,91 @@ defs
   lineargradient#linearGradient-1(x1="100%", y1="50%", x2="0%", y2="50%")
     stop(stop-color="#FFFFFF", offset="0%")
     stop(stop-color="#FFFFFF", stop-opacity="0", offset="100%")
+  lineargradient#wave-gradient(x1='50%', y1='0%', x2='50%', y2='100%')
+    stop(stop-color='#79FFD3', offset='0%')
+    stop(stop-color='#2AC3EF', offset='46.2176487%')
+    stop(stop-color='#A752BA', offset='100%')
+  pattern#flowers-cream-pattern(width='400', height='400', patternunits='userSpaceOnUse')
+    image(width='400', height='400', xlink:href='css/i/flowers-cream.png')
+  pattern#owls-pattern(width='400', height='300', patternunits='userSpaceOnUse', y='200')
+    image#js-owls-image(width='400', height='300', xlink:href='css/i/owls.jpg')
+  pattern#owls-pattern2(width='150', height='150', patternunits='userSpaceOnUse', y='200')
+    image#js-owls-image2(x='-75', y='-75', width='300', height='300', xlink:href='css/i/caleydoscope3.jpg')
+  pattern#cheese-pattern(width='400', height='300', patternunits='userSpaceOnUse', y='200')
+    image#js-cheese-image(width='400', height='300', xlink:href='css/i/cheese.jpg')
+  pattern#caleydoscope-pattern(width='150', height='150', patternunits='userSpaceOnUse')
+    image#js-caleydoscope-image(width='300', height='300', xlink:href='css/i/caleydoscope.png', x='-150', y='-150')
+  pattern#caleydoscope-pattern2(width='150', height='150', patternunits='userSpaceOnUse')
+    image#js-caleydoscope-image2(width='300', height='300', xlink:href='css/i/caleydoscope.png', x='-150', y='-150')
+  pattern#caleydoscope-pattern3(width='150', height='150', patternunits='userSpaceOnUse')
+    image#js-caleydoscope-image3(width='300', height='300', xlink:href='css/i/caleydoscope2.jpg', x='-150', y='-150')
+  pattern#caleydoscope-pattern4(width='150', height='150', patternunits='userSpaceOnUse')
+    image#js-caleydoscope-image4(width='300', height='300', xlink:href='css/i/caleydoscope2.jpg', x='-150', y='-150')
+  pattern#caleydoscope-pattern5(width='150', height='150', patternunits='userSpaceOnUse')
+    image#js-caleydoscope-image5(width='300', height='300', xlink:href='css/i/caleydoscope4.jpg', x='-150', y='-150')
+  pattern#caleydoscope-pattern6(width='150', height='150', patternunits='userSpaceOnUse')
+    image#js-caleydoscope-image6(width='300', height='300', xlink:href='css/i/caleydoscope5.jpg', x='-150', y='-150')
+  pattern#wood-pattern(width='400', height='300', patternunits='userSpaceOnUse', y='200')
+    image#js-wood-image(width='400', height='300', xlink:href='css/i/wood.jpg')
+  pattern#space-dogs-pattern(width='200', height='150', patternunits='userSpaceOnUse', y='200')
+    image#js-space-dogs-image(width='400', height='300', xlink:href='css/i/space-dogs.jpg')
+  pattern#rose-pattern(width='175', height='175', patternunits='userSpaceOnUse', y='175')
+    image#js-rose-image(width='175', height='175', xlink:href='css/i/flowers-roses.jpg')
+  pattern#blue-flowers-pattern(width='375', height='250.5', patternunits='userSpaceOnUse', x='0', y='200')
+    image#js-blue-image(width='375', height='250.5', xlink:href='css/i/flowers-blue.jpg')
+  filter#f_multiply(filterunits='objectBoundingBox', x='0%', y='0%', width='100%', height='100%')
+    feflood(x='0', y='0', width='96', height='32', flood-color='#EA312F', result='a')
+    feflood(x='0', y='50', width='96', height='32', flood-color='#EA312F', result='b')
+    feflood(x='0', y='50', width='32', height='96', flood-opacity='0.8', flood-color='#3A5BA6', result='c')
+    feblend(in='a', in2='b', result='ab', mode='multiply')
+    feblend(in='ab', in2='c', mode='multiply')
+
 
 g#js-meets.h-g1
   - var blue = '#1F2947'
-  mask#burst-mask
-    g#js-meets-burst(transform="translate(0,10)")
-      - var burstLen = 35, burstStart = 100
-      - var cnt = 7, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
-      - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 50;
-      - var step = (2*PI)/cnt, initRotate = 40;
+  //- mask#burst-mask
+  g#js-meets-burst(transform="translate(0,10)")
+    - var burstLen = 35, burstStart = 100
+    - var cnt = 7, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
+    - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 50;
+    - var step = (2*PI)/cnt, initRotate = 40;
+    - for (var i = 0; i < cnt; i++)
+      - var x1 = centerX + Math.cos(angle)*radius
+      - var y1 = centerY + Math.sin(angle)*radius
+      - var x2 = centerX + Math.cos(angle)*radius2
+      - var y2 = centerY + Math.sin(angle)*radius2
+      path(d="M#{x1},#{y1} L#{x2},#{y2}", opacity="1", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="url(#owls-pattern)", stroke-width="8", stroke-linecap="round")
+      - angle = angle + step
+
+  //- mask#blow-mask
+  g#js-meets-blow.h-g
+    - var burstLen = 250, burstStart = 0
+    - var cnt = 6, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
+    - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 1.5;
+    - var step = (2*PI)/cnt, initRotate = 40;
       - for (var i = 0; i < cnt; i++)
         - var x1 = centerX + Math.cos(angle)*radius
         - var y1 = centerY + Math.sin(angle)*radius
         - var x2 = centerX + Math.cos(angle)*radius2
         - var y2 = centerY + Math.sin(angle)*radius2
-        path(d="M#{x1},#{y1} L#{x2},#{y2}", opacity="1", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="8", stroke-linecap="round")
+        circle(cx="#{x1}", cy="#{y1}", data-x="#{x2-640}", data-y="#{y2-450}", fill="url(#wood-pattern)", r="50")
         - angle = angle + step
 
-  mask#blow-mask
-    g#js-meets-blow.h-g
-      - var burstLen = 250, burstStart = 0
-      - var cnt = 6, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
-      - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 1.5;
-      - var step = (2*PI)/cnt, initRotate = 40;
-        - for (var i = 0; i < cnt; i++)
-          - var x1 = centerX + Math.cos(angle)*radius
-          - var y1 = centerY + Math.sin(angle)*radius
-          - var x2 = centerX + Math.cos(angle)*radius2
-          - var y2 = centerY + Math.sin(angle)*radius2
-          circle(cx="#{x1}", cy="#{y1}", data-x="#{x2-640}", data-y="#{y2-450}", fill="#fff", r="50")
-          - angle = angle + step
-
-  rect(width="1280", height="900", fill="url(#space-dogs-pattern)", mask="url(#meets-mask)")
-  rect(width="1280", height="900", fill="url(#wood-pattern)", mask="url(#blow-mask)")
+  //- rect(width="1280", height="900", fill="url(#space-dogs-pattern)", mask="url(#meets-mask)")
+  //- rect(width="1280", height="900", fill="url(#wood-pattern)", mask="url(#blow-mask)")
   g#js-meets-circles
     - for (var i = 0; i < 12; i++ )
       - var x = 640 + rand(-140,140);
       - var y = 250 + rand(-50,50);
       circle(fill="white", stroke="none", r="#{rand(50,100)}", transform="translate(#{x},#{y})", data-x="#{x}", data-y="#{y}")
 
-  rect(width="1280", height="900", fill="url(#owls-pattern)", mask="url(#burst-mask)")
+  //- rect(width="1280", height="900", fill="url(#owls-pattern)", mask="url(#burst-mask)")
 
   g(stroke="none", stroke-width="1", fill="none", fill-rule="evenodd", transform="translate(23,130)")
-    mask#meets-mask
-      g#MEETS(transform="translate(510, 200)", fill="white")
-        path#Mask(d="M47.28,91 L66.36,91 L66.36,5.32 L46.08,5.32 L35.04,50.2 L23.88,5.32 L3.6,5.32 L3.6,91 L22.68,91 L22.68,52.36 L29.16,91 L41.04,91 L47.28,52.36 L47.28,91 Z M92.64,22 L113.4,22 L113.4,5.32 L73.56,5.32 L73.56,91 L113.4,91 L113.4,74.32 L92.64,74.32 L92.64,55.6 L107.4,55.6 L107.4,38.92 L92.64,38.92 L92.64,22 Z M139.68,22 L160.44,22 L160.44,5.32 L120.6,5.32 L120.6,91 L160.44,91 L160.44,74.32 L139.68,74.32 L139.68,55.6 L154.44,55.6 L154.44,38.92 L139.68,38.92 L139.68,22 Z M203.88,22 L221.04,22 L221.04,5.32 L167.64,5.32 L167.64,22 L184.8,22 L184.8,91 L203.88,91 L203.88,22 Z M253.32,20.56 C256.32,20.56 256.8,23.2 256.8,33.64 L277.68,33.64 C277.68,16 271.32,3.88 253.8,3.88 C234.36,3.88 229.32,10.84 229.32,28.48 C229.32,54.16 256.2,52.12 256.2,67.96 C256.2,72.76 255.72,75.76 252.84,75.76 C249.12,75.76 249.12,69.4 249.12,61.72 L228.24,61.72 C228.24,79.36 232.2,92.44 252.84,92.44 C274.92,92.44 277.08,82.48 277.08,68.08 C277.08,43.12 249.72,44.08 249.72,28.96 C249.72,22.12 250.68,20.56 253.32,20.56 L253.32,20.56 Z", fill-opacity="0.1")
-        path#Mask(d="M43.28,87 L62.36,87 L62.36,1.32 L42.08,1.32 L31.04,46.2 L19.88,1.32 L-0.4,1.32 L-0.4,87 L18.68,87 L18.68,48.36 L25.16,87 L37.04,87 L43.28,48.36 L43.28,87 Z M88.64,18 L109.4,18 L109.4,1.32 L69.56,1.32 L69.56,87 L109.4,87 L109.4,70.32 L88.64,70.32 L88.64,51.6 L103.4,51.6 L103.4,34.92 L88.64,34.92 L88.64,18 Z M135.68,18 L156.44,18 L156.44,1.32 L116.6,1.32 L116.6,87 L156.44,87 L156.44,70.32 L135.68,70.32 L135.68,51.6 L150.44,51.6 L150.44,34.92 L135.68,34.92 L135.68,18 Z M199.88,18 L217.04,18 L217.04,1.32 L163.64,1.32 L163.64,18 L180.8,18 L180.8,87 L199.88,87 L199.88,18 Z M249.32,16.56 C252.32,16.56 252.8,19.2 252.8,29.64 L273.68,29.64 C273.68,12 267.32,-0.12 249.8,-0.12 C230.36,-0.12 225.32,6.84 225.32,24.48 C225.32,50.16 252.2,48.12 252.2,63.96 C252.2,68.76 251.72,71.76 248.84,71.76 C245.12,71.76 245.12,65.4 245.12,57.72 L224.24,57.72 C224.24,75.36 228.2,88.44 248.84,88.44 C270.92,88.44 273.08,78.48 273.08,64.08 C273.08,39.12 245.72,40.08 245.72,24.96 C245.72,18.12 246.68,16.56 249.32,16.56 L249.32,16.56 Z")
+    //- mask#meets-mask
+    g#MEETS(transform="translate(490, 0)", fill="url(#space-dogs-pattern)")
+      path#Mask(d="M47.28,91 L66.36,91 L66.36,5.32 L46.08,5.32 L35.04,50.2 L23.88,5.32 L3.6,5.32 L3.6,91 L22.68,91 L22.68,52.36 L29.16,91 L41.04,91 L47.28,52.36 L47.28,91 Z M92.64,22 L113.4,22 L113.4,5.32 L73.56,5.32 L73.56,91 L113.4,91 L113.4,74.32 L92.64,74.32 L92.64,55.6 L107.4,55.6 L107.4,38.92 L92.64,38.92 L92.64,22 Z M139.68,22 L160.44,22 L160.44,5.32 L120.6,5.32 L120.6,91 L160.44,91 L160.44,74.32 L139.68,74.32 L139.68,55.6 L154.44,55.6 L154.44,38.92 L139.68,38.92 L139.68,22 Z M203.88,22 L221.04,22 L221.04,5.32 L167.64,5.32 L167.64,22 L184.8,22 L184.8,91 L203.88,91 L203.88,22 Z M253.32,20.56 C256.32,20.56 256.8,23.2 256.8,33.64 L277.68,33.64 C277.68,16 271.32,3.88 253.8,3.88 C234.36,3.88 229.32,10.84 229.32,28.48 C229.32,54.16 256.2,52.12 256.2,67.96 C256.2,72.76 255.72,75.76 252.84,75.76 C249.12,75.76 249.12,69.4 249.12,61.72 L228.24,61.72 C228.24,79.36 232.2,92.44 252.84,92.44 C274.92,92.44 277.08,82.48 277.08,68.08 C277.08,43.12 249.72,44.08 249.72,28.96 C249.72,22.12 250.68,20.56 253.32,20.56 L253.32,20.56 Z", fill-opacity="0.1")
+      path#Mask(d="M43.28,87 L62.36,87 L62.36,1.32 L42.08,1.32 L31.04,46.2 L19.88,1.32 L-0.4,1.32 L-0.4,87 L18.68,87 L18.68,48.36 L25.16,87 L37.04,87 L43.28,48.36 L43.28,87 Z M88.64,18 L109.4,18 L109.4,1.32 L69.56,1.32 L69.56,87 L109.4,87 L109.4,70.32 L88.64,70.32 L88.64,51.6 L103.4,51.6 L103.4,34.92 L88.64,34.92 L88.64,18 Z M135.68,18 L156.44,18 L156.44,1.32 L116.6,1.32 L116.6,87 L156.44,87 L156.44,70.32 L135.68,70.32 L135.68,51.6 L150.44,51.6 L150.44,34.92 L135.68,34.92 L135.68,18 Z M199.88,18 L217.04,18 L217.04,1.32 L163.64,1.32 L163.64,18 L180.8,18 L180.8,87 L199.88,87 L199.88,18 Z M249.32,16.56 C252.32,16.56 252.8,19.2 252.8,29.64 L273.68,29.64 C273.68,12 267.32,-0.12 249.8,-0.12 C230.36,-0.12 225.32,6.84 225.32,24.48 C225.32,50.16 252.2,48.12 252.2,63.96 C252.2,68.76 251.72,71.76 248.84,71.76 C245.12,71.76 245.12,65.4 245.12,57.72 L224.24,57.72 C224.24,75.36 228.2,88.44 248.84,88.44 C270.92,88.44 273.08,78.48 273.08,64.08 C273.08,39.12 245.72,40.08 245.72,24.96 C245.72,18.12 246.68,16.56 249.32,16.56 L249.32,16.56 Z")
     //- circle#js-circle(stroke-width="20", stroke="#{blue}", r="75", transform="translate(620,325)", opacity="0")
     g#right-hand(transform="translate(614.000000, 271.000000)")
       g#js-right-hand(opacity="0", transform="translate(0, 0)")
@@ -61,11 +100,12 @@ g#js-meets.h-g1
         rect.js-sleeve(fill-opacity="0.1", fill="#000000", x="139", y="25", width="27", height="75", rx="5")
         rect.js-sleeve(fill="#FFFFFF", x="143", y="20", width="27", height="80", rx="5")
 
-        mask#right-shirt
-          rect#js-right-shirt.js-shirt(x="1570", fill="white", rx="5", x2="770", y="288", width="282", height="97")
-        rect#fist-mask(transform="translate(100,42.5)", fill="#FBF7E8", width="40", height="39")
+        //- mask#right-shirt
+        rect#js-right-shirt.js-shirt(transform="translate(-614.000000, -271.000000)", x="1570", fill="url(#blue-flowers-pattern)", rx="5", x2="770", y="288", width="282", height="97")
 
-    rect.js-shirt-wall(width="1280", height="900", mask="url(#right-shirt)", fill="url(#blue-flowers-pattern)").h-g
+        rect#fist-mask(transform="translate(100,42.5)", fill="#FBF7E8", width="40", height="39")
+        
+    //- rect.js-shirt-wall(width="1280", height="900", mask="url(#right-shirt)", fill="url(#blue-flowers-pattern)").h-g
 
     g#gradient-group(transform="translate(600,300)")
       rect#white-rect(fill="#FFFFFF", x="440", y="-100", width="300", height="300")
@@ -85,10 +125,10 @@ g#js-meets.h-g1
         rect.js-sleeve(fill="#FFFFFF", x="143", y="17", width="27", height="80", rx="5")
         rect#fist-mask(transform="translate(100,40)", fill="#FBF7E8", width="40", height="38.5")
 
-      mask#left-shirt
-        rect#js-left-shirt.js-shirt(x="-500", rx="5", fill="white", x2="183", y="280", width="282", height="97")
+      //- mask#left-shirt
+      rect#js-left-shirt.js-shirt(transform="translate(-26,-270)", x="1500", rx="5", fill="url(#rose-pattern)", x2="183", y="280", width="282", height="97")
       
-    rect.js-shirt-wall(width="1280", height="900", mask="url(#left-shirt)", fill="url(#rose-pattern)").h-g
+    //- rect.js-shirt-wall(width="1280", height="900", mask="url(#left-shirt)", fill="url(#rose-pattern)").h-g
 
     g#gradient-group-left(transform="translate(312.000000, 322.000000) rotate(-180.000000) translate(-312.000000, -322.000000) translate(3.000000, 260.000000)")
       rect#white-gradient(fill="url(#linearGradient-1)", x="264", y="-100", width="177", height="300")

@@ -10,27 +10,16 @@
     }
 
     Main.prototype.run = function() {
-      new Caleydoscope({
-        delay: h.time(1000)
+      this.prepareFF();
+      return new Meets({
+        delay: h.time(0)
       });
-      new Meets({
-        delay: h.time(3900)
-      });
-      new Svg({
-        delay: h.time(5600)
-      });
-      new Triangles({
-        delay: h.time(8600)
-      });
-      new Waves({
-        delay: h.time(11000)
-      });
-      new Fish({
-        delay: h.time(11200)
-      });
-      return new Logo({
-        delay: h.time(14000)
-      });
+    };
+
+    Main.prototype.prepareFF = function() {};
+
+    Main.prototype.insertAfter = function(newNode, referenceNode) {
+      return referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     };
 
     return Main;
