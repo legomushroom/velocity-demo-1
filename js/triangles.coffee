@@ -126,7 +126,7 @@ class Triangles
         translateX: 490 - translateSize/2 - 150
         translateY: 300 - translateSize/2 + 650
         rotateZ: -120
-        # opacity: 0
+        opacity: if h.isFF() then 0 else 1
         transformOrigin: '100px'
       ,
         duration: 36*@dur
@@ -189,16 +189,6 @@ class Triangles
         delay: (@blowDelay+50)*@s
         easing: 'ease-out'
         complete:=> @$svg.hide()
-
-    # @$sW.css 'transform-origin': 'center center'
-    # @$sW.velocity {
-    #   translateX: -1200
-    #   translateY: 50
-    #   rotateZ: 50
-    #   },
-    #     duration: 1200*@s
-    #     delay: @blowDelay*@s
-    #     easing: 'ease-out'
 
     @$gradientWrapper.css 'transform-origin': 'center 700px'
     @$gradientWrapper.velocity {

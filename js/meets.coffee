@@ -58,8 +58,7 @@ class Meets
       easing: 'ease-in'
       delay: @delay + @bumpDelay
       begin:=>
-        @$leftHand.show()
-        @$rightHand.show()
+        @$leftHand.css('opacity': 1); @$rightHand.css('opacity': 1)
 
     @$rightHand.velocity { translateX: 0 },
         # delay: @delay
@@ -176,7 +175,7 @@ class Meets
           duration: h.time(150)
 
         .velocity {
-          strokeDashoffset: -35
+          strokeDashoffset: -36
           # strokeWidth: 0
         },
           duration: h.time(150)

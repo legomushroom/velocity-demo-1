@@ -50,7 +50,9 @@
     };
 
     Svg.prototype.confetti = function() {
-      return this.$blow.children().each((function(_this) {
+      var isFF;
+      isFF = h.isFF();
+      return !isFF && this.$blow.children().each((function(_this) {
         return function(i, item) {
           var $item, blowX, coef, x, y;
           $item = $(item);

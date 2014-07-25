@@ -16,7 +16,7 @@ g#js-meets.h-g1
         - var y1 = centerY + Math.sin(angle)*radius
         - var x2 = centerX + Math.cos(angle)*radius2
         - var y2 = centerY + Math.sin(angle)*radius2
-        path(d="M#{x1},#{y1} L#{x2},#{y2}", opacity="1", stroke-dashoffset="#{burstLen}", stroke-dasharray="#{burstLen}", stroke="white", stroke-width="8", stroke-linecap="round")
+        path(d="M#{x1},#{y1} L#{x2},#{y2}", opacity="1", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="8", stroke-linecap="round")
         - angle = angle + step
 
   mask#blow-mask
@@ -50,7 +50,7 @@ g#js-meets.h-g1
         path#Mask(d="M43.28,87 L62.36,87 L62.36,1.32 L42.08,1.32 L31.04,46.2 L19.88,1.32 L-0.4,1.32 L-0.4,87 L18.68,87 L18.68,48.36 L25.16,87 L37.04,87 L43.28,48.36 L43.28,87 Z M88.64,18 L109.4,18 L109.4,1.32 L69.56,1.32 L69.56,87 L109.4,87 L109.4,70.32 L88.64,70.32 L88.64,51.6 L103.4,51.6 L103.4,34.92 L88.64,34.92 L88.64,18 Z M135.68,18 L156.44,18 L156.44,1.32 L116.6,1.32 L116.6,87 L156.44,87 L156.44,70.32 L135.68,70.32 L135.68,51.6 L150.44,51.6 L150.44,34.92 L135.68,34.92 L135.68,18 Z M199.88,18 L217.04,18 L217.04,1.32 L163.64,1.32 L163.64,18 L180.8,18 L180.8,87 L199.88,87 L199.88,18 Z M249.32,16.56 C252.32,16.56 252.8,19.2 252.8,29.64 L273.68,29.64 C273.68,12 267.32,-0.12 249.8,-0.12 C230.36,-0.12 225.32,6.84 225.32,24.48 C225.32,50.16 252.2,48.12 252.2,63.96 C252.2,68.76 251.72,71.76 248.84,71.76 C245.12,71.76 245.12,65.4 245.12,57.72 L224.24,57.72 C224.24,75.36 228.2,88.44 248.84,88.44 C270.92,88.44 273.08,78.48 273.08,64.08 C273.08,39.12 245.72,40.08 245.72,24.96 C245.72,18.12 246.68,16.56 249.32,16.56 L249.32,16.56 Z")
     //- circle#js-circle(stroke-width="20", stroke="#{blue}", r="75", transform="translate(620,325)", opacity="0")
     g#right-hand(transform="translate(614.000000, 271.000000)")
-      g#js-right-hand.h-g(transform="translate(0, 0)")
+      g#js-right-hand(opacity="0", transform="translate(0, 0)")
         rect#Rectangle-24(fill-opacity="0.1", fill="#1F2947", x="110", y="48", width="90", height="44")
         rect#Rectangle-25(stroke="#1F2947", stroke-width="5", fill="#FBF7E8", x="114", y="40", width="90", height="44")
         g#js-right-fist
@@ -73,7 +73,7 @@ g#js-meets.h-g1
       circle#js-right-button.h-g(fill="#FFFFFF", cx="205", cy="67", r="7.5")
 
     g#left-hand(transform="translate(312.000000, 322.000000) rotate(-180.000000) translate(-312.000000, -322.000000) translate(3.000000, 260.000000)")
-      g#js-left-hand.h-g
+      g#js-left-hand(opacity="0")
         rect#Rectangle-24(fill-opacity="0.1", fill="#1F2947", x="110", y="29", width="90", height="44")
         rect#Rectangle-25(stroke="#1F2947", stroke-width="5", fill="#FBF7E8", x="114", y="37", width="90", height="44")
         g#js-left-fist

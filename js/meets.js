@@ -60,8 +60,12 @@
         delay: this.delay + this.bumpDelay,
         begin: (function(_this) {
           return function() {
-            _this.$leftHand.show();
-            return _this.$rightHand.show();
+            _this.$leftHand.css({
+              'opacity': 1
+            });
+            return _this.$rightHand.css({
+              'opacity': 1
+            });
           };
         })(this)
       });
@@ -209,7 +213,7 @@
             delay: _this.delay + h.time(400) + _this.bumpDelay,
             duration: h.time(150)
           }).velocity({
-            strokeDashoffset: -35
+            strokeDashoffset: -36
           }, {
             duration: h.time(150)
           });

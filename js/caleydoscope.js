@@ -42,7 +42,7 @@
       $mask1 = $('#js-c-mask1');
       caleydDelay1 = 100 * this.s;
       this.$caleydoscopeEntire;
-      len = 20;
+      len = 21;
       this.$burst.children().each((function(_this) {
         return function(i, item) {
           var $item;
@@ -59,7 +59,7 @@
           });
         };
       })(this));
-      len = 10;
+      len = 11;
       this.$burst2.children().each((function(_this) {
         return function(i, item) {
           var $item;

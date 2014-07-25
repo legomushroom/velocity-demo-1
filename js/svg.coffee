@@ -39,8 +39,13 @@ class Svg
           @confetti()
 
   confetti:->
-    @$blow.children().each (i, item)=>
+    # @$meets.hide()
+    isFF = h.isFF()
+    !isFF and @$blow.children().each (i, item)=>
       $item = $(item)
+      # if isFF and i > 2
+      #   $item.hide()
+      #   return
       x = h.rand(-500, 500)
       y = h.rand(-500, 500)
       blowX = if x < 0 then x-1000 else x+1000

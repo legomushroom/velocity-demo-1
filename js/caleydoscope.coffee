@@ -30,7 +30,7 @@ class Caleydoscope
     caleydDelay1 = 100*@s
     @$caleydoscopeEntire
 
-    len = 20
+    len = 21
     @$burst.children().each (i, item)=>
       $item = $ item
       $item.velocity {
@@ -43,7 +43,7 @@ class Caleydoscope
         strokeDashoffset: -len
         }, duration: 200*@s
 
-    len = 10
+    len = 11
     @$burst2.children().each (i, item)=>
       $item = $ item
       $item.velocity {

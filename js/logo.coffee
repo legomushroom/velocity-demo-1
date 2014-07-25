@@ -77,7 +77,6 @@ class Logo
         delay: 2*245*@s
         begin:=> @$shadow3.velocity {opacity: .1}
 
-
     circlesDelay = entireDur - 300
     textDuration = 900
     @$text.velocity {
@@ -130,19 +129,6 @@ class Logo
                         duration: 1500*@s
 
                   , 2000*@s
-
-
-    # @$circle2.velocity {
-    #   r: 180
-    #   },
-    #     delay: (circlesDur+50)*@s
-
-    # @$circle3.velocity {
-    #   r: 180
-    #   },
-    #     delay: (circlesDur+100)*@s
-
-    
 
   prepareLines:->
     @$logoLines.children().each (i, line)->
