@@ -181,7 +181,7 @@
 
     Triangles.prototype.blow = function() {
       this.$gW.css({
-        'transform-origin': 'center center'
+        'transform-origin': '640px 450px'
       });
       this.$gW.velocity({
         translateX: 1800,
@@ -193,7 +193,7 @@
         easing: 'ease-out'
       });
       this.$vW.css({
-        'transform-origin': 'center center'
+        'transform-origin': '400px 400px'
       });
       this.$vW.velocity({
         translateY: 2000,
@@ -205,7 +205,7 @@
         easing: 'ease-out'
       });
       this.$svgTextW.css({
-        'transform-origin': 'center center'
+        'transform-origin': '650px 650px'
       });
       this.$svgTextW.velocity({
         translateY: 2000,
@@ -222,7 +222,7 @@
         })(this)
       });
       this.$gradientWrapper.css({
-        'transform-origin': 'center 700px'
+        'transform-origin': '640px 700px'
       });
       return this.$gradientWrapper.velocity({
         translateX: -1600,

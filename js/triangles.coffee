@@ -159,7 +159,7 @@ class Triangles
     @blow()
 
   blow:->
-    @$gW.css 'transform-origin': 'center center'
+    @$gW.css 'transform-origin': '640px 450px'
     @$gW.velocity {
       translateX: 1800
       translateY: 1000
@@ -169,7 +169,7 @@ class Triangles
         delay: @blowDelay*@s
         easing: 'ease-out'
 
-    @$vW.css 'transform-origin': 'center center'
+    @$vW.css 'transform-origin': '400px 400px'
     @$vW.velocity {
       translateY: 2000
       translateX: -60
@@ -179,7 +179,7 @@ class Triangles
         delay: @blowDelay*@s
         easing: 'ease-out'
 
-    @$svgTextW.css 'transform-origin': 'center center'
+    @$svgTextW.css 'transform-origin': '650px 650px'
     @$svgTextW.velocity {
       translateY: 2000
       translateX: -20
@@ -190,7 +190,7 @@ class Triangles
         easing: 'ease-out'
         complete:=> @$svg.hide()
 
-    @$gradientWrapper.css 'transform-origin': 'center 700px'
+    @$gradientWrapper.css 'transform-origin': '640px 700px'
     @$gradientWrapper.velocity {
       translateX: -1600
       # translateY: 50
