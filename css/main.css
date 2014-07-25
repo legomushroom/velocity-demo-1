@@ -1683,6 +1683,6 @@ svg {
   opacity: 0;
 }
 .svg-letter {
-  stroke: #fff;
+  fill: none;
   stroke-width: 8;
 }

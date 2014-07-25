@@ -21,7 +21,7 @@ class Svg
 
     @$meets = $('#js-meets')
 
-    @maxCnt = 3
+    @maxCnt = 1
     @cnt = 0
     @delayStep = 200
 
@@ -41,11 +41,11 @@ class Svg
   confetti:->
     # @$meets.hide()
     isFF = h.isFF()
-    !isFF and @$blow.children().each (i, item)=>
+    @$blow.children().each (i, item)=>
       $item = $(item)
-      # if isFF and i > 2
-      #   $item.hide()
-      #   return
+      if isFF and i > 7
+        $item.hide()
+        return
       x = h.rand(-500, 500)
       y = h.rand(-500, 500)
       blowX = if x < 0 then x-1000 else x+1000

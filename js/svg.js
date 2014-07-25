@@ -23,7 +23,7 @@
       this.$svg = $('#js-svg');
       this.$blow = $('#js-svg-blow');
       this.$meets = $('#js-meets');
-      this.maxCnt = 3;
+      this.maxCnt = 1;
       this.cnt = 0;
       return this.delayStep = 200;
     };
@@ -52,10 +52,14 @@
     Svg.prototype.confetti = function() {
       var isFF;
       isFF = h.isFF();
-      return !isFF && this.$blow.children().each((function(_this) {
+      return this.$blow.children().each((function(_this) {
         return function(i, item) {
           var $item, blowX, coef, x, y;
           $item = $(item);
+          if (isFF && i > 7) {
+            $item.hide();
+            return;
+          }
           x = h.rand(-500, 500);
           y = h.rand(-500, 500);
           blowX = x < 0 ? x - 1000 : x + 1000;
