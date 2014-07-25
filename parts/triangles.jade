@@ -7,18 +7,18 @@ g#js-triangles.h-g
 
   mask#dust-mask
     include dust.svg
-    rect(id="js-slice-line", transform="scale(0) rotate(0)", opacity="0", height="2", width="400", x=340, y=450, fill="white")
+  rect(id="js-slice-line", transform="scale(0) rotate(0)", opacity="0", height="2", width="400", x=340, y=450, fill="url(#owls-pattern)")
 
   rect(fill="url(#owls-pattern)", mask="url(#dust-mask)", width="1280", height="800")
 
-  mask#div-sparks-mask
-    g#js-div-sparks.h-g(stroke="white", stroke-width="1", transform="translate(235,50)")
-      path#Path-1(d="M774.768438,-0.312275905 L458.962027,337.084693")
-      path#Path-2(d="M629.534911,164.827713 L459.892692,333.790631")
-      path#Path-3(d="M695.730037,149.127504 L460.937316,334.955134")
-      path#Path-4(d="M458.229458,337.575208 L-0.456375436,786.648057")
-      path#Path-5(d="M582.356135,228.558727 L458.422328,336.872135")
-      path#Path-6(d="M595.479623,203.599569 L513.360903,277.612355")
-      path#Path-7(d="M573.797284,227.506022 L521.744715,276.654458")
+  //- mask#div-sparks-mask
+  g#js-div-sparks.h-g(stroke="red", stroke-width="1", transform="translate(235,50)")
+    path#Path-1(d="M774.768438,-0.312275905 L458.962027,337.084693")
+    path#Path-2(d="M629.534911,164.827713 L459.892692,333.790631")
+    path#Path-3(d="M695.730037,149.127504 L460.937316,334.955134")
+    path#Path-4(d="M458.229458,337.575208 L-0.456375436,786.648057")
+    path#Path-5(d="M582.356135,228.558727 L458.422328,336.872135")
+    path#Path-6(d="M595.479623,203.599569 L513.360903,277.612355")
+    path#Path-7(d="M573.797284,227.506022 L521.744715,276.654458")
 
-  rect(fill="url(#wood-pattern)", mask="url(#div-sparks-mask)", width="1280", height="800")
+  //- rect(fill="url(#wood-pattern)", mask="url(#div-sparks-mask)", width="1280", height="800")

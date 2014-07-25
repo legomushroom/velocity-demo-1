@@ -21,6 +21,8 @@ class Svg
 
     @$meets = $('#js-meets')
 
+    @$sPattern = $('#rose-pattern')
+
     @maxCnt = 1
     @cnt = 0
     @delayStep = 200
@@ -92,23 +94,36 @@ class Svg
         duration: h.time 1200
         complete:=> @runS()
 
-  runS:->
+  runS:(isSecond)->
+    if !isSecond
+      @$s.velocity {
+        'translateY': 194
+        'translateX': 52
+      }, duration: 1
+
     @$s.velocity {
-      'translateY': -194
-      'translateX': -52
+      'translateY': if isSecond then -194 else 0
+      'translateX': if isSecond then -52  else 0
       },
         duration: h.time 1000
-        delay: @delayStep
+        delay:    @delayStep
         easing:   'easeOutBounce'
         complete:=>
           if @cnt++ is @maxCnt then @destroy()
           return if @isDestroy
-          @$s.velocity {
-            'translateY': 0
-            'translateX': 0
-            },
-              duration: 1
-          @runS()
+          # @$s.velocity {
+          #   'translateY': 0
+          #   'translateX': 0
+          #   }, duration: 1
+          @runS(true)
+
+    @$sPattern.velocity {
+      'y': if isSecond then 3*194 else 2*194
+      # 'x': if isSecond then 2*52  else 52
+      },
+        duration: h.time 1000
+        delay:    @delayStep
+        easing:   'easeOutBounce'
 
   showV:->
     @preV(); @runV()
@@ -177,7 +192,6 @@ class Svg
           return if @isDestroy
           @runG()
           @$text.velocity {opacity:1}
-
 
   hider:->
     dfr = new $.Deferred

@@ -23,6 +23,7 @@
       this.$svg = $('#js-svg');
       this.$blow = $('#js-svg-blow');
       this.$meets = $('#js-meets');
+      this.$sPattern = $('#rose-pattern');
       this.maxCnt = 1;
       this.cnt = 0;
       return this.delayStep = 200;
@@ -117,10 +118,18 @@
       });
     };
 
-    Svg.prototype.runS = function() {
-      return this.$s.velocity({
-        'translateY': -194,
-        'translateX': -52
+    Svg.prototype.runS = function(isSecond) {
+      if (!isSecond) {
+        this.$s.velocity({
+          'translateY': 194,
+          'translateX': 52
+        }, {
+          duration: 1
+        });
+      }
+      this.$s.velocity({
+        'translateY': isSecond ? -194 : 0,
+        'translateX': isSecond ? -52 : 0
       }, {
         duration: h.time(1000),
         delay: this.delayStep,
@@ -133,15 +142,16 @@
             if (_this.isDestroy) {
               return;
             }
-            _this.$s.velocity({
-              'translateY': 0,
-              'translateX': 0
-            }, {
-              duration: 1
-            });
-            return _this.runS();
+            return _this.runS(true);
           };
         })(this)
+      });
+      return this.$sPattern.velocity({
+        'y': isSecond ? 3 * 194 : 2 * 194
+      }, {
+        duration: h.time(1000),
+        delay: this.delayStep,
+        easing: 'easeOutBounce'
       });
     };
 

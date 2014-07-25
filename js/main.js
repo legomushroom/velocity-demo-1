@@ -10,8 +10,11 @@
     }
 
     Main.prototype.run = function() {
-      return new Svg({
+      new Svg({
         delay: h.time(0)
+      });
+      return new Triangles({
+        delay: h.time(3600)
       });
     };
 
