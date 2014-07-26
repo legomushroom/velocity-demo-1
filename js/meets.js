@@ -210,7 +210,7 @@
           return $item.velocity({
             strokeDashoffset: 0
           }, {
-            delay: _this.delay + h.time(400) + _this.bumpDelay,
+            delay: _this.delay + h.time(500) + _this.bumpDelay,
             duration: h.time(150)
           }).velocity({
             strokeDashoffset: -36
@@ -222,8 +222,26 @@
       this.$smoke = $('#js-smoke');
       new Spriter({
         sprites: this.$smoke.children(),
-        duration: 600 * this.s,
-        delay: this.delay + h.time(400) + this.bumpDelay
+        duration: 400 * this.s,
+        delay: this.delay + 400 * this.s + this.bumpDelay
+      });
+      this.$burst.css({
+        'transform-origin': '640px 450px '
+      });
+      this.$burst.velocity({
+        rotateZ: 20
+      }, {
+        delay: this.delay + h.time(400) + this.bumpDelay,
+        duration: 600 * this.s
+      });
+      this.$blow.css({
+        'transform-origin': '640px 450px '
+      });
+      this.$blow.velocity({
+        rotateZ: 30
+      }, {
+        delay: this.delay + h.time(500) + this.bumpDelay,
+        duration: 600 * this.s
       });
       return this.$blow.children().each((function(_this) {
         return function(i, item) {
@@ -237,8 +255,8 @@
             translateX: x2,
             translateY: y2
           }, {
-            delay: _this.delay + h.time(300) + _this.bumpDelay,
-            duration: 400 * _this.s,
+            delay: _this.delay + h.time(500) + _this.bumpDelay,
+            duration: 600 * _this.s,
             begin: function() {
               if (i === 0) {
                 return _this.$blow.show();

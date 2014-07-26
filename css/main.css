@@ -1679,6 +1679,9 @@ svg {
   display: none;
   fill: #fff;
 }
+.smoke g {
+  display: none;
+}
 .caleydoscope path {
   opacity: 0;
 }

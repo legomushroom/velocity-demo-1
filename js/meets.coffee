@@ -171,7 +171,7 @@ class Meets
           strokeDashoffset: 0
           # strokeWidth: 4
         },
-          delay: @delay + h.time(400) + @bumpDelay
+          delay: @delay + h.time(500) + @bumpDelay
           duration: h.time(150)
 
         .velocity {
@@ -183,8 +183,23 @@ class Meets
     @$smoke = $('#js-smoke')
     new Spriter
       sprites:  @$smoke.children()
-      duration: 600*@s
-      delay:    @delay + h.time(400) + @bumpDelay
+      duration: 400*@s
+      delay:    @delay + 400*@s + @bumpDelay
+      # easing: 'ease-out'
+
+    @$burst.css 'transform-origin': '640px 450px '
+    @$burst.velocity {
+      rotateZ: 20
+      },
+        delay: @delay + h.time(400) + @bumpDelay
+        duration: 600*@s
+
+    @$blow.css 'transform-origin': '640px 450px '
+    @$blow.velocity {
+      rotateZ: 30
+      },
+        delay: @delay + h.time(500) + @bumpDelay
+        duration: 600*@s
 
     @$blow.children().each (i, item)=>
       $item = $(item)
@@ -197,8 +212,8 @@ class Meets
           translateX: x2
           translateY: y2
         },
-          delay: @delay + h.time(300) + @bumpDelay
-          duration: 400*@s
+          delay: @delay + h.time(500) + @bumpDelay
+          duration: 600*@s
           begin:=>
             if i is 0
               @$blow.show()
