@@ -1,5 +1,5 @@
 class Helpers
-  s: 1
+  s: 10
   rand:(min,max)->
     Math.floor((Math.random() * ((max + 1) - min)) + min)
 

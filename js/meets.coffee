@@ -180,6 +180,12 @@ class Meets
         },
           duration: h.time(150)
 
+    @$smoke = $('#js-smoke')
+    new Spriter
+      sprites:  @$smoke.children()
+      duration: 600*@s
+      delay:    @delay + h.time(400) + @bumpDelay
+
     @$blow.children().each (i, item)=>
       $item = $(item)
       data = $item.data()

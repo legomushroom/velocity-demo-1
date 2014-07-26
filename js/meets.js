@@ -219,6 +219,12 @@
           });
         };
       })(this));
+      this.$smoke = $('#js-smoke');
+      new Spriter({
+        sprites: this.$smoke.children(),
+        duration: 600 * this.s,
+        delay: this.delay + h.time(400) + this.bumpDelay
+      });
       return this.$blow.children().each((function(_this) {
         return function(i, item) {
           var $item, data, x2, y2;

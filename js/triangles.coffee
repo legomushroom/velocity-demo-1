@@ -155,6 +155,7 @@ class Triangles
           duration: @dur
           begin:=>
             @$divSparks.show()
+          complete:-> $item.hide()
 
     @blow()
 

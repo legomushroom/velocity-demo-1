@@ -172,6 +172,9 @@
             duration: _this.dur,
             begin: function() {
               return _this.$divSparks.show();
+            },
+            complete: function() {
+              return $item.hide();
             }
           });
         };
