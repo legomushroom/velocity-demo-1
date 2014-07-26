@@ -28,8 +28,11 @@
       new Fish({
         delay: h.time(11500)
       });
-      return new Logo({
+      new Logo({
         delay: h.time(14300)
+      });
+      return new Mushroom({
+        delay: h.time(16300)
       });
     };
 

@@ -11,6 +11,7 @@ class Main
     new Waves         delay: h.time(11300)
     new Fish          delay: h.time(11500)
     new Logo          delay: h.time(14300)
+    new Mushroom      delay: h.time(16300)
 
   insertAfter:(newNode, referenceNode)->
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
