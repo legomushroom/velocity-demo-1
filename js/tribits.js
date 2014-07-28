@@ -32,7 +32,7 @@
           $bit.css({
             'transform-origin': 'center center'
           }).velocity({
-            translateY: -340,
+            translateY: -320,
             translateX: h.rand(0, -50),
             rotateZ: h.rand(-950, 950)
           }, {

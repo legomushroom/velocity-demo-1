@@ -17,7 +17,7 @@ class Tribits
       dur = 1400*@s + h.rand(0, 200)*@s
       $bit.css 'transform-origin': 'center center'
       .velocity {
-        translateY: -340
+        translateY: -320
         translateX: h.rand 0,-50
         rotateZ: h.rand(-950, 950)
         }, duration: 1
