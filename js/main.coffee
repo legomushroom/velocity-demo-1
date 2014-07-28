@@ -5,6 +5,7 @@ class Main
     
   run:->
     new Triangles     delay: h.time(0)
+    new Tribits       delay: h.time(1100)
     # new Caleydoscope  delay: h.time(1000)
     # new Meets         delay: h.time(3900)
     # new Svg           delay: h.time(5900)

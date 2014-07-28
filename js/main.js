@@ -10,8 +10,11 @@
     }
 
     Main.prototype.run = function() {
-      return new Triangles({
+      new Triangles({
         delay: h.time(0)
+      });
+      return new Tribits({
+        delay: h.time(1100)
       });
     };
 
