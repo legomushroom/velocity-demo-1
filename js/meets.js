@@ -27,6 +27,7 @@
       this.rightShirtX1 = parseInt(this.$rightShirt.attr('x'), 10);
       this.rightShirtX2 = parseInt(this.$rightShirt.attr('x2'), 10);
       this.$shirtWalls = $('.js-shirt-wall');
+      this.$firework = $('#js-firework');
       this.$leftShirt = $('#js-left-shirt');
       this.leftShirtX1 = parseInt(this.$leftShirt.attr('x'), 10);
       this.leftShirtX2 = parseInt(this.$leftShirt.attr('x2'), 10);
@@ -50,7 +51,7 @@
     };
 
     Meets.prototype.run = function() {
-      var bumpDuration, deltaX, deltaX2, fistAngle, fistDelay, fistDuration, fistDuration2, fistX;
+      var $childs, bumpDuration, deltaX, deltaX2, ffLen, fistAngle, fistDelay, fistDuration, fistDuration2, fistX;
       bumpDuration = h.time(400);
       this.$leftHand.velocity({
         translateX: 0
@@ -243,6 +244,46 @@
         delay: this.delay + h.time(500) + this.bumpDelay,
         duration: 600 * this.s
       });
+      $childs = this.$firework.children();
+      ffLen = $childs.length;
+      $childs.css({
+        'transform-origin': '50% 50%'
+      });
+      $childs.velocity({
+        scale: .75
+      }, {
+        duration: 1
+      });
+      $childs.each((function(_this) {
+        return function(i, child) {
+          var $line, currLen, len;
+          $line = $(child);
+          len = $line[0].getTotalLength();
+          currLen = i === ffLen - 1 ? len : -len;
+          $line.velocity({
+            strokeDashoffset: currLen,
+            strokeDasharray: len
+          }, {
+            duration: 1
+          });
+          $line.velocity({
+            strokeDashoffset: 0,
+            strokeWidth: 5
+          }, {
+            duration: 150 * _this.s,
+            delay: _this.delay + h.time(400) + _this.bumpDelay + h.rand(0, 200) * _this.s,
+            begin: function() {
+              return i === 0 && _this.$firework.show();
+            }
+          });
+          return $line.velocity({
+            strokeDashoffset: i === ffLen - 1 ? -len : len,
+            strokeWidth: 0
+          }, {
+            duration: 150 * _this.s
+          });
+        };
+      })(this));
       return this.$blow.children().each((function(_this) {
         return function(i, item) {
           var $item, data, x2, y2;

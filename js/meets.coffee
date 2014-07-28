@@ -18,6 +18,7 @@ class Meets
 
     @$shirtWalls = $('.js-shirt-wall')
     # @$rightShirt.attr 'x', -500
+    @$firework = $ '#js-firework'
 
     @$leftShirt = $('#js-left-shirt')
     @leftShirtX1 = parseInt @$leftShirt.attr('x'), 10
@@ -200,6 +201,36 @@ class Meets
       },
         delay: @delay + h.time(500) + @bumpDelay
         duration: 600*@s
+
+
+    $childs = @$firework.children()
+    ffLen = $childs.length
+    $childs.css 'transform-origin': '50% 50%'
+    $childs.velocity {
+      scale: .75
+      }, duration: 1
+    $childs.each (i, child)=>
+      $line = $ child
+      len = $line[0].getTotalLength()
+      currLen = if i is ffLen-1 then len else -len
+      $line.velocity {
+        strokeDashoffset: currLen
+        strokeDasharray:  len
+        }, duration: 1
+      $line.velocity {
+        strokeDashoffset: 0
+        # opacity: .5
+        strokeWidth: 5
+        },
+          duration: 150*@s
+          delay: @delay + h.time(400) + @bumpDelay + h.rand(0,200)*@s
+          begin:=> i is 0 and @$firework.show()
+      $line.velocity {
+        strokeDashoffset: if i is ffLen-1 then -len else len
+        # opacity: 0
+        strokeWidth: 0
+        },
+          duration: 150*@s
 
     @$blow.children().each (i, item)=>
       $item = $(item)
