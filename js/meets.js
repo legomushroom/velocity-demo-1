@@ -271,7 +271,7 @@
             strokeWidth: 5
           }, {
             duration: 150 * _this.s,
-            delay: _this.delay + h.time(400) + _this.bumpDelay + h.rand(0, 200) * _this.s,
+            delay: _this.delay + h.time(400) + _this.bumpDelay + h.rand(0, 300) * _this.s,
             begin: function() {
               return i === 0 && _this.$firework.show();
             }

@@ -223,7 +223,7 @@ class Meets
         strokeWidth: 5
         },
           duration: 150*@s
-          delay: @delay + h.time(400) + @bumpDelay + h.rand(0,200)*@s
+          delay: @delay + h.time(400) + @bumpDelay + h.rand(0,300)*@s
           begin:=> i is 0 and @$firework.show()
       $line.velocity {
         strokeDashoffset: if i is ffLen-1 then -len else len
