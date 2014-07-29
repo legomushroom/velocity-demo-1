@@ -13,6 +13,7 @@
       this.$wave1 = $('#js-wave1');
       this.$wave1Top = $('#js-wave1-top');
       this.$wave1Top2 = $('#js-wave1-top2');
+      this.$entireBits = $('#js-entire-tri-bits');
       this.$creamTriangle1 = $('#js-cream-triangle1').css({
         'transform': 'translate(490px,300px)'
       });
@@ -74,7 +75,7 @@
     };
 
     Waves.prototype.run = function() {
-      this.wave1(this.delay + h.time(1700));
+      this.wave1(this.delay + h.time(2200));
       return this.wave2(this.delay);
     };
 
@@ -129,7 +130,7 @@
 
     Waves.prototype.wave2 = function(delay) {
       var topRotateDur2, wave2Time;
-      wave2Time = h.time(1500);
+      wave2Time = h.time(2000);
       topRotateDur2 = wave2Time / 4;
       this.$wave2.velocity({
         translateY: this.wave2Y
@@ -188,7 +189,12 @@
         translateY: 800,
         translateX: 800
       }, {
-        duration: 1
+        duration: 1,
+        begin: (function(_this) {
+          return function() {
+            return _this.$entireBits.hide();
+          };
+        })(this)
       });
     };
 

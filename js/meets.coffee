@@ -220,7 +220,7 @@ class Meets
       $line.velocity {
         strokeDashoffset: 0
         # opacity: .5
-        strokeWidth: 5
+        strokeWidth: 4
         },
           duration: 150*@s
           delay: @delay + h.time(400) + @bumpDelay + h.rand(0,300)*@s

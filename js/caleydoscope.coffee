@@ -60,7 +60,7 @@ class Caleydoscope
       r: 75
     },
       delay: 1800*@s + caleydDelay1
-      duration: 600*@s
+      duration: 500*@s
       # easing: 'easeOutElastic'
 
     @$velocityText.children().each (i, item)=>

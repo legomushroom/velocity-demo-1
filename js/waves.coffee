@@ -8,6 +8,8 @@ class Waves
     @$wave1        = $('#js-wave1')
     @$wave1Top     = $('#js-wave1-top')
     @$wave1Top2    = $('#js-wave1-top2')
+    @$entireBits   = $('#js-entire-tri-bits')
+
     @$creamTriangle1 = $('#js-cream-triangle1')
       .css 'transform': 'translate(490px,300px)'
 
@@ -63,7 +65,7 @@ class Waves
     }, duration: 1
 
   run:->
-    @wave1(@delay + h.time(1700))
+    @wave1(@delay + h.time(2200))
     @wave2(@delay)
 
   wave1:(delay)->
@@ -103,7 +105,7 @@ class Waves
 
 
   wave2:(delay)->
-    wave2Time = h.time(1500)
+    wave2Time = h.time(2000)
     topRotateDur2 = wave2Time/4
     @$wave2.velocity({ translateY: @wave2Y},
       delay: delay
@@ -150,5 +152,6 @@ class Waves
         translateX: 800
       },
         duration: 1
+        begin:=> @$entireBits.hide()
 
 window.Waves = Waves

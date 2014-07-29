@@ -20,11 +20,67 @@
     Tribits.prototype.vars = function() {
       this.delay = this.o.delay || 0;
       this.s = 1 * h.time(1);
-      return this.$bits = $('#js-tri-bits1');
+      this.$bits1 = $('#js-tri-bits1');
+      this.$bits2 = $('#js-tri-bits2');
+      return this.$bits3 = $('#js-tri-bits3');
     };
 
     Tribits.prototype.run = function() {
-      return this.$bits.children().each((function(_this) {
+      this.runBits1();
+      this.runBits2();
+      return this.runBits3();
+    };
+
+    Tribits.prototype.runBits3 = function() {
+      return this.$bits3.children().each((function(_this) {
+        return function(i, bit) {
+          var $bit;
+          $bit = $(bit);
+          $bit.css({
+            'transform-origin': 'center center'
+          });
+          return $bit.velocity({
+            translateY: 800 + h.rand(-150, 150),
+            translateX: -800 + h.rand(-150, 150),
+            rotateZ: h.rand(-600, 600)
+          }, {
+            duration: 150 * _this.s,
+            delay: h.rand(0, 15) * _this.s,
+            easing: 'ease-in',
+            begin: function() {
+              return $bit.show();
+            }
+          });
+        };
+      })(this));
+    };
+
+    Tribits.prototype.runBits2 = function() {
+      return this.$bits2.children().each((function(_this) {
+        return function(i, bit) {
+          var $bit;
+          $bit = $(bit);
+          $bit.css({
+            'transform-origin': 'center center'
+          });
+          return $bit.velocity({
+            translateY: -600 + h.rand(-150, 150),
+            translateX: 600 + h.rand(-150, 150),
+            rotateZ: h.rand(-600, 600)
+          }, {
+            duration: 150 * _this.s,
+            delay: h.rand(0, 25) * _this.s,
+            easing: 'ease-in',
+            begin: function() {
+              return $bit.show();
+            }
+          });
+        };
+      })(this));
+    };
+
+    Tribits.prototype.runBits1 = function() {
+      return this.$bits1.children().each((function(_this) {
         return function(i, bit) {
           var $bit, $child, dur;
           $bit = $(bit);
@@ -44,7 +100,7 @@
           }, {
             easing: 'easeOutBounce',
             duration: dur,
-            delay: h.rand(0, 300) * _this.s,
+            delay: h.rand(0, 200) * _this.s,
             begin: function() {
               return $bit.show();
             }
@@ -58,7 +114,7 @@
             duration: 1
           }).velocity({
             translateY: 0,
-            translateX: 0
+            translateX: h.rand(-50, 50)
           }, {
             duration: dur + 300 * _this.s,
             easing: 'ease-out',

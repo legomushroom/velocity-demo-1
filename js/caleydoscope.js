@@ -80,7 +80,7 @@
         r: 75
       }, {
         delay: 1800 * this.s + caleydDelay1,
-        duration: 600 * this.s
+        duration: 500 * this.s
       });
       this.$velocityText.children().each((function(_this) {
         return function(i, item) {

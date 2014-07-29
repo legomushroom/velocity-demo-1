@@ -268,7 +268,7 @@
           });
           $line.velocity({
             strokeDashoffset: 0,
-            strokeWidth: 5
+            strokeWidth: 4
           }, {
             duration: 150 * _this.s,
             delay: _this.delay + h.time(400) + _this.bumpDelay + h.rand(0, 300) * _this.s,
