@@ -77,36 +77,36 @@ cf = clearfix
 .cf, clearfix
   clearfix()
 
-metrics()
-  maxSize = 20
-  short = w h
-  long  = width height
-  for property, j in long
-    for i in 1..maxSize
-      .{property}-x{i}-g, .{short[j]}-x{i}-g
-        {property} i*gs
+// metrics()
+//   maxSize = 20
+//   short = w h
+//   long  = width height
+//   for property, j in long
+//     for i in 1..maxSize
+//       .{property}-x{i}-g, .{short[j]}-x{i}-g
+//         {property} i*gs
   
-  maxSize = 20
-  short = m p
-  long  = margin padding
-  for property, j in long
-    for i in 1..maxSize
-      shortSide = -l -r -t -b ''
-      longSide  = -left -right -top -bottom ''
-      for prop, x in longSide
+//   maxSize = 20
+//   short = m p
+//   long  = margin padding
+//   for property, j in long
+//     for i in 1..maxSize
+//       shortSide = -l -r -t -b ''
+//       longSide  = -left -right -top -bottom ''
+//       for prop, x in longSide
 
-        .{property}{prop}-x{i}-g, .{short[j]}{shortSide[x]}-x{i}-g
-          {property}{prop} i*gs
+//         .{property}{prop}-x{i}-g, .{short[j]}{shortSide[x]}-x{i}-g
+//           {property}{prop} i*gs
 
 
-colors()
-  colors    =      c-blue1   c-blue2   c-blue3   c-facebook  c-linkedin    c-twitter  c-google c-grey1   c-grey2   c-grey3   c-grey4   c-grey5    c-grey6  c-grey7  c-grey8  c-grey9  c-grey10
-  colorsNames =   'c-blue1' 'c-blue2' 'c-blue3' 'c-facebook' 'c-linkedin' 'c-twitter' 'c-google' 'c-grey1' 'c-grey2' 'c-grey3' 'c-grey4' 'c-grey5' 'c-grey6'  'c-grey7' 'c-grey8' 'c-grey9' 'c-grey10'
-  for color, i in colors
-    .{colorsNames[i]}-bg-g
-      background-color color
+// colors()
+//   colors    =      c-blue1   c-blue2   c-blue3   c-facebook  c-linkedin    c-twitter  c-google c-grey1   c-grey2   c-grey3   c-grey4   c-grey5    c-grey6  c-grey7  c-grey8  c-grey9  c-grey10
+//   colorsNames =   'c-blue1' 'c-blue2' 'c-blue3' 'c-facebook' 'c-linkedin' 'c-twitter' 'c-google' 'c-grey1' 'c-grey2' 'c-grey3' 'c-grey4' 'c-grey5' 'c-grey6'  'c-grey7' 'c-grey8' 'c-grey9' 'c-grey10'
+//   for color, i in colors
+//     .{colorsNames[i]}-bg-g
+//       background-color color
       
-metrics()
-colors()
+// metrics()
+// colors()
 
 

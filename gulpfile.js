@@ -44,7 +44,12 @@ var paths = {
 }
               
 gulp.task('build', function(){
-  return gulp.src(paths.src.js)
+  var scripts = [
+    'bower_components/jquery/dist/jquery.js',
+    'bower_components/velocity/jquery.velocity.js',
+    'js/**/*.js'
+  ]
+  return gulp.src(scripts)
           .pipe(concat('main.min.js'))
           .pipe(gulp.dest(distFolder+'js/'))
 });
