@@ -37,7 +37,7 @@
           var $bit;
           $bit = $(bit);
           $bit.css({
-            'transform-origin': 'center center'
+            'transform-origin': '5px 5px'
           });
           return $bit.velocity({
             translateY: 800 + h.rand(-150, 150),
@@ -61,7 +61,7 @@
           var $bit;
           $bit = $(bit);
           $bit.css({
-            'transform-origin': 'center center'
+            'transform-origin': '5px 5px'
           });
           return $bit.velocity({
             translateY: -600 + h.rand(-150, 150),
@@ -90,7 +90,7 @@
           }).velocity({
             translateY: -320,
             translateX: h.rand(0, -50),
-            rotateZ: h.rand(-950, 950)
+            rotateZ: h.isFF() ? 0 : h.rand(-950, 950)
           }, {
             duration: 1
           }).velocity({

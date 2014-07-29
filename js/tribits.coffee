@@ -22,7 +22,7 @@ class Tribits
   runBits3:->
     @$bits3.children().each (i, bit)=>
       $bit = $ bit
-      $bit.css 'transform-origin': 'center center'
+      $bit.css 'transform-origin': '5px 5px'
       $bit.velocity {
         translateY: 800 + h.rand -150, 150
         translateX: -800  + h.rand -150, 150
@@ -36,7 +36,7 @@ class Tribits
   runBits2:->
     @$bits2.children().each (i, bit)=>
       $bit = $ bit
-      $bit.css 'transform-origin': 'center center'
+      $bit.css 'transform-origin': '5px 5px'
       $bit.velocity {
         translateY: -600 + h.rand -150, 150
         translateX: 600  + h.rand -150, 150
@@ -55,7 +55,7 @@ class Tribits
       .velocity {
         translateY: -320
         translateX: h.rand 0,-50
-        rotateZ: h.rand(-950, 950)
+        rotateZ: if h.isFF() then 0 else h.rand(-950, 950)
         }, duration: 1
       .velocity {
         translateY: 0
