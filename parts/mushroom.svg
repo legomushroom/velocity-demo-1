@@ -1,7 +1,7 @@
 <a xlink:href="http://twitter.com/legomushroom">
   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(1160,810)" class="h-g" id="js-entire-mushroom">
       <g id="m-fill" transform="translate(57.000000, 0.000000)">
-          <g id="js-mushroom">
+          <g id="js-mushroom" tramsform="translate(0,-1)">
               <rect id="Rectangle-11" fill="#E46A75" x="10" y="0" width="5" height="5"></rect>
                <rect id="Rectangle-10" fill="#E46A75" x="15" y="0" width="5" height="5"></rect>
 
