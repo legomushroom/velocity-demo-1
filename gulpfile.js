@@ -47,7 +47,18 @@ gulp.task('build', function(){
   var scripts = [
     'bower_components/jquery/dist/jquery.js',
     'bower_components/velocity/jquery.velocity.js',
-    'js/**/*.js'
+    'js/helpers.js',
+    'js/spriter.js',
+    'js/waves.js',
+    'js/caleydoscope.js',
+    'js/triangles.js',
+    'js/svg.js',
+    'js/meets.js',
+    'js/logo.js',
+    'js/fish.js',
+    'js/mushroom.js',
+    'js/tribits.js',
+    'js/main.js'
   ]
   return gulp.src(scripts)
           .pipe(concat('main.min.js'))
