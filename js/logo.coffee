@@ -10,6 +10,7 @@ class Logo
     @s = 1*h.time(1)
     @$logo      = $('#js-logo')
     @$logoV     = $('#js-logo-v')
+
     @$logoV.velocity {
       translateX: 21
       translateY: 21

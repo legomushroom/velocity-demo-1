@@ -33,7 +33,6 @@ class Fish
       translateY: 390
       }, duration: 1
 
-
     @$fishW = $('#js-fish-wrapper')
 
   run:->
