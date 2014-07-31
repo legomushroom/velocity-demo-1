@@ -23,7 +23,15 @@
     };
 
     Helpers.prototype.isSafari = function() {
-      return /^((?!chrome).)*safari/i.test(navigator.userAgent);
+      var ua;
+      ua = navigator.userAgent.toLowerCase();
+      if (ua.indexOf('safari') !== -1) {
+        if (ua.indexOf('chrome') > -1) {
+          return false;
+        } else {
+          return true;
+        }
+      }
     };
 
     Helpers.prototype.elasticOut = function(k) {
