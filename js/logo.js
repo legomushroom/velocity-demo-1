@@ -134,7 +134,8 @@
       handDelay = entireDur;
       return this.$hand.velocity({
         translateX: 280,
-        translateY: 291
+        translateY: 291,
+        opacity: 0
       }, {
         duration: 1
       }).velocity({
@@ -182,12 +183,14 @@
 
     Logo.prototype.prepareLines = function() {
       return this.$logoLines.children().each(function(i, line) {
-        var $line, length;
+        var $line, isOffset, length, offset;
         $line = $(line);
         length = line.getTotalLength();
+        isOffset = h.isFF() || h.isIE9() || h.isSafari();
+        offset = isOffset ? parseInt($line.attr('stroke-width'), 10) : 0;
         return $line.css({
-          'stroke-dasharray': "" + length + "px",
-          'stroke-dashoffset': "" + (-length) + "px"
+          'stroke-dasharray': "" + (length + offset) + "px",
+          'stroke-dashoffset': "" + (-length - (offset / 2)) + "px"
         });
       });
     };

@@ -22,6 +22,10 @@
       return navigator.userAgent.search("MSIE 9.0") > -1;
     };
 
+    Helpers.prototype.isSafari = function() {
+      return /^((?!chrome).)*safari/i.test(navigator.userAgent);
+    };
+
     Helpers.prototype.elasticOut = function(k) {
       var a, p, s;
       a = 0.1;

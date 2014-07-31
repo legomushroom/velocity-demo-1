@@ -6,6 +6,7 @@ class Helpers
   time:(time)-> time*@s
   isFF:->  navigator.userAgent.search("Firefox") > -1
   isIE9:-> navigator.userAgent.search("MSIE 9.0") > -1
+  isSafari:-> /^((?!chrome).)*safari/i.test(navigator.userAgent)
 
   elasticOut:(k)->
     a = 0.1

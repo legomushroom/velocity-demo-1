@@ -96,6 +96,7 @@ class Logo
     @$hand.velocity {
       translateX: 280
       translateY: 291
+      opacity: 0
       }, duration: 1
       
       .velocity {
@@ -107,7 +108,6 @@ class Logo
           delay: (entireDur+100)*@s
           complete:=>
             @$hand.velocity {opacity:0}, duration: 400*@s
-
             @$handCircle.velocity {
               r: 25
               strokeWidth: 0
@@ -128,16 +128,16 @@ class Logo
                       },
                         loop: 40
                         duration: 1500*@s
-
                   , 2000*@s
 
   prepareLines:->
     @$logoLines.children().each (i, line)->
       $line = $(line)
       length = line.getTotalLength()
+      isOffset = h.isFF() or h.isIE9() or h.isSafari()
+      offset = if isOffset then parseInt($line.attr('stroke-width'),10) else 0
       $line.css
-        'stroke-dasharray': "#{length}px"
-        'stroke-dashoffset': "#{-length}px"
-
+        'stroke-dasharray': "#{length+offset}px"
+        'stroke-dashoffset': "#{-length-(offset/2)}px"
 
 window.Logo = Logo
