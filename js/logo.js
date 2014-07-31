@@ -31,6 +31,12 @@
       this.$logoLines = $('#js-logo-lines');
       this.$text = $('#js-logo-text');
       this.$hand = $('#js-logo-hand');
+      if (h.isSafari()) {
+        this.$hand.css({
+          'display': 'none',
+          'opacity': 1
+        });
+      }
       this.$handCircle = $('#js-hand-circle');
       this.$shadow = $('#js-logo-shadow');
       this.$shadow.css({
@@ -136,7 +142,16 @@
         translateX: 280,
         translateY: 291
       }, {
-        duration: 1
+        duration: 1,
+        begin: (function(_this) {
+          return function() {
+            if (h.isSafari()) {
+              return _this.$hand.css({
+                'display': 'inline'
+              });
+            }
+          };
+        })(this)
       }).velocity({
         translateX: 190,
         translateY: 241,

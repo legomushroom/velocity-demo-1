@@ -20,6 +20,11 @@ class Logo
     
     @$text       = $('#js-logo-text')
     @$hand       = $('#js-logo-hand')
+    
+    if h.isSafari() then @$hand.css
+      'display': 'none'
+      'opacity': 1
+
     @$handCircle = $('#js-hand-circle')
     @$shadow     = $('#js-logo-shadow')
     @$shadow.css 'transform-origin': '180px'
@@ -96,38 +101,40 @@ class Logo
     @$hand.velocity {
       translateX: 280
       translateY: 291
-      }, duration: 1
-      
-      .velocity {
-        translateX: 190
-        translateY: 241
-        opacity: 1
-        },
-          duration: 500*@s
-          delay: (entireDur+100)*@s
-          complete:=>
-            @$hand.velocity {opacity:0}, duration: 400*@s
-            @$handCircle.velocity {
-              r: 25
-              strokeWidth: 0
-              opacity: 100
-              },
-                duration: 500*@s
-                complete:=>
-                  setTimeout =>
-                    @$logoV.velocity {
-                      translateY: 31
-                      },
-                        loop: 40
-                        duration: 1500*@s
+      },
+        duration: 1
+        begin:=> if h.isSafari() then @$hand.css 'display': 'inline'
+        
+    .velocity {
+      translateX: 190
+      translateY: 241
+      opacity: 1
+      },
+        duration: 500*@s
+        delay: (entireDur+100)*@s
+        complete:=>
+          @$hand.velocity {opacity:0}, duration: 400*@s
+          @$handCircle.velocity {
+            r: 25
+            strokeWidth: 0
+            opacity: 100
+            },
+              duration: 500*@s
+              complete:=>
+                setTimeout =>
+                  @$logoV.velocity {
+                    translateY: 31
+                    },
+                      loop: 40
+                      duration: 1500*@s
 
-                    @$shadow.velocity {
-                      opacity: .35
-                      scale: 1
-                      },
-                        loop: 40
-                        duration: 1500*@s
-                  , 2000*@s
+                  @$shadow.velocity {
+                    opacity: .35
+                    scale: 1
+                    },
+                      loop: 40
+                      duration: 1500*@s
+                , 2000*@s
 
   prepareLines:->
     @$logoLines.children().each (i, line)->
