@@ -96,7 +96,6 @@ class Logo
     @$hand.velocity {
       translateX: 280
       translateY: 291
-      opacity: 0
       }, duration: 1
       
       .velocity {
