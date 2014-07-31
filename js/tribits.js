@@ -69,7 +69,7 @@
             rotateZ: h.rand(-600, 600)
           }, {
             duration: 150 * _this.s,
-            delay: h.rand(0, 25) * _this.s,
+            delay: h.rand(0, 50) * _this.s,
             easing: 'ease-in',
             begin: function() {
               return $bit.show();

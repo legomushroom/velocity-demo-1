@@ -51,8 +51,7 @@
             delay: (len - i - 1) * 15 * _this.s,
             easing: 'easeOutBounce',
             begin: function() {
-              i === 1 && _this.$mEntire.show();
-              return i === 1 && console.log('aa');
+              return i === 1 && _this.$mEntire.show();
             }
           });
         };

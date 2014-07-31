@@ -43,7 +43,7 @@ class Tribits
         rotateZ: h.rand(-600,600)
         },
           duration: 150*@s
-          delay: h.rand(0, 25)*@s
+          delay: h.rand(0, 50)*@s
           easing: 'ease-in'
           begin:-> $bit.show()
 

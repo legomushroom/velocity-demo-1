@@ -40,7 +40,6 @@ class Mushroom
           easing: 'easeOutBounce'
           begin:=>
             i is 1 and @$mEntire.show()
-            i is 1 and console.log 'aa'
 
     @$text1.velocity {
       opacity: 1

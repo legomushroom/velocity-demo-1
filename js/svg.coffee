@@ -52,7 +52,6 @@ class Svg
       y = h.rand(-500, 500)
       blowX = if x < 0 then x-1000 else x+1000
       coef = (1-(2000 - Math.abs blowX)/1000)
-      # console.log coef
       $item.velocity {
         translateX: x
         translateY: y
