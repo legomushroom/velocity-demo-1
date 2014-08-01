@@ -17,8 +17,6 @@ class Main
     new Mushroom      delay: h.time(16300)
 
 
-# TODO: onload
-setTimeout ->
+$(window).load ->
   new Main
-, 500
 

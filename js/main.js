@@ -43,8 +43,8 @@
 
   })();
 
-  setTimeout(function() {
+  $(window).load(function() {
     return new Main;
-  }, 500);
+  });
 
 }).call(this);
