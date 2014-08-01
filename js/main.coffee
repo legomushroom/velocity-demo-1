@@ -16,6 +16,8 @@ class Main
     new Logo          delay: h.time(14300)
     new Mushroom      delay: h.time(16300)
 
+
+# TODO: onload
 setTimeout ->
   new Main
 , 500
