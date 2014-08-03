@@ -48,8 +48,8 @@ class Svg
       if isFF and i > 7
         $item.hide()
         return
-      x = h.rand(-500, 500)
-      y = h.rand(-500, 500)
+      x = h.rand(-400, 400)
+      y = h.rand(-400, 400)
       blowX = if x < 0 then x-1000 else x+1000
       coef = (1-(2000 - Math.abs blowX)/1000)
       $item.velocity {
@@ -116,13 +116,13 @@ class Svg
           #   }, duration: 1
           @runS(true)
 
-    @$sPattern.velocity {
-      'y': if isSecond then 3*194 else 2*194
-      # 'x': if isSecond then 2*52  else 52
-      },
-        duration: h.time 1000
-        delay:    @delayStep
-        easing:   'easeOutBounce'
+    # @$sPattern.velocity {
+    #   'y': if isSecond then 3*194 else 2*194
+    #   # 'x': if isSecond then 2*52  else 52
+    #   },
+    #     duration: h.time 1000
+    #     delay:    @delayStep
+    #     easing:   'easeOutBounce'
 
   showV:->
     @preV(); @runV()

@@ -5,16 +5,7 @@
     function Tribits(o) {
       this.o = o != null ? o : {};
       this.vars();
-      $('<div />').velocity({
-        p: 1
-      }, {
-        duration: this.delay,
-        complete: (function(_this) {
-          return function() {
-            return _this.run();
-          };
-        })(this)
-      });
+      this.run();
     }
 
     Tribits.prototype.vars = function() {
@@ -45,7 +36,7 @@
             rotateZ: h.rand(-600, 600)
           }, {
             duration: 150 * _this.s,
-            delay: h.rand(0, 15) * _this.s,
+            delay: h.rand(0, 15) * _this.s + _this.delay * _this.s,
             easing: 'ease-in',
             begin: function() {
               return $bit.show();
@@ -69,7 +60,7 @@
             rotateZ: h.rand(-600, 600)
           }, {
             duration: 150 * _this.s,
-            delay: h.rand(0, 50) * _this.s,
+            delay: h.rand(0, 50) * _this.s + _this.delay * _this.s,
             easing: 'ease-in',
             begin: function() {
               return $bit.show();
@@ -100,7 +91,7 @@
           }, {
             easing: 'easeOutBounce',
             duration: dur,
-            delay: h.rand(0, 200) * _this.s,
+            delay: h.rand(0, 200) * _this.s + _this.delay * _this.s,
             begin: function() {
               return $bit.show();
             }
@@ -116,6 +107,7 @@
             translateY: 0,
             translateX: h.rand(-50, 50)
           }, {
+            delay: _this.delay * _this.s,
             duration: dur + 300 * _this.s,
             easing: 'ease-out',
             begin: function() {

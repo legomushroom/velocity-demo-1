@@ -1,11 +1,7 @@
 class Fish
   constructor:(@o={})->
     @vars()
-    $('<div />').velocity {
-      p: 1
-      },
-        duration: @delay
-        complete:=> @$fishEntire.show(); @run()
+    @run()
 
   vars:->
     @delay = @o.delay or 0
@@ -56,7 +52,8 @@ class Fish
       },
         duration: 1600*@s
         easing: 'ease-in-out'
-        delay:  100*@s + delayForSplash*@s
+        delay:  100*@s + delayForSplash*@s + @delay
+        begin:=> @$fishEntire.show()
 
     @$shadow.velocity {
       translateX: 40
@@ -66,7 +63,7 @@ class Fish
       },
         duration: 800*@s
         easing: 'ease-in'
-        delay:  100*@s + delayForSplash*@s
+        delay:  100*@s + delayForSplash*@s + @delay
 
     .velocity {
       translateX: 30
@@ -88,6 +85,7 @@ class Fish
           r: 10
           },
             duration: 300*@s
+            delay: @delay
 
         $item.velocity {
           translateX: h.rand(-5*bubbleRadius,5*bubbleRadius)
@@ -105,7 +103,7 @@ class Fish
           r: h.rand(15, 20)
           },
             duration: 200*@s + h.rand(50,100)*@s
-            delay: h.rand(50,150)*@s + o.delayForSplash*@s
+            delay: h.rand(50,150)*@s + o.delayForSplash*@s + @delay
 
         $item.velocity {
           translateX: 0
@@ -123,7 +121,7 @@ class Fish
         r: h.rand(10, 15)
         },
           duration: 300*@s
-          delay: h.rand(50,150)*@s + o.delayForSplash*@s
+          delay: h.rand(50,150)*@s + o.delayForSplash*@s + @delay
 
       $item.velocity {
         translateX: 0

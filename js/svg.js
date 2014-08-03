@@ -61,8 +61,8 @@
             $item.hide();
             return;
           }
-          x = h.rand(-500, 500);
-          y = h.rand(-500, 500);
+          x = h.rand(-400, 400);
+          y = h.rand(-400, 400);
           blowX = x < 0 ? x - 1000 : x + 1000;
           coef = 1 - (2000 - Math.abs(blowX)) / 1000;
           return $item.velocity({
@@ -127,7 +127,7 @@
           duration: 1
         });
       }
-      this.$s.velocity({
+      return this.$s.velocity({
         'translateY': isSecond ? -194 : 0,
         'translateX': isSecond ? -52 : 0
       }, {
@@ -145,13 +145,6 @@
             return _this.runS(true);
           };
         })(this)
-      });
-      return this.$sPattern.velocity({
-        'y': isSecond ? 3 * 194 : 2 * 194
-      }, {
-        duration: h.time(1000),
-        delay: this.delayStep,
-        easing: 'easeOutBounce'
       });
     };
 

@@ -1,11 +1,8 @@
 class Tribits
   constructor:(@o={})->
     @vars()
-    $('<div />').velocity {
-      p: 1
-      },
-        duration: @delay
-        complete:=> @run()
+    @run()
+
   vars:->
     @delay = @o.delay or 0
     @s = 1*h.time 1
@@ -29,7 +26,7 @@ class Tribits
         rotateZ: h.rand(-600,600)
         },
           duration: 150*@s
-          delay: h.rand(0, 15)*@s
+          delay: h.rand(0, 15)*@s + @delay*@s
           easing: 'ease-in'
           begin:-> $bit.show()
   
@@ -43,7 +40,7 @@ class Tribits
         rotateZ: h.rand(-600,600)
         },
           duration: 150*@s
-          delay: h.rand(0, 50)*@s
+          delay: h.rand(0, 50)*@s + @delay*@s
           easing: 'ease-in'
           begin:-> $bit.show()
 
@@ -64,7 +61,7 @@ class Tribits
         },
           easing: 'easeOutBounce'
           duration: dur
-          delay: h.rand(0, 200)*@s
+          delay: h.rand(0, 200)*@s + @delay*@s
           begin:-> $bit.show()
 
       $child = $bit.children()
@@ -79,7 +76,7 @@ class Tribits
         translateY: 0
         translateX: h.rand(-50,50)
         },
-          # delay: 500*@s
+          delay: @delay*@s
           duration: dur + 300*@s
           easing: 'ease-out'
           # easing: 'linear'

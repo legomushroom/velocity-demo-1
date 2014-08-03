@@ -5,17 +5,7 @@
     function Fish(o) {
       this.o = o != null ? o : {};
       this.vars();
-      $('<div />').velocity({
-        p: 1
-      }, {
-        duration: this.delay,
-        complete: (function(_this) {
-          return function() {
-            _this.$fishEntire.show();
-            return _this.run();
-          };
-        })(this)
-      });
+      this.run();
     }
 
     Fish.prototype.vars = function() {
@@ -74,7 +64,12 @@
       }, {
         duration: 1600 * this.s,
         easing: 'ease-in-out',
-        delay: 100 * this.s + delayForSplash * this.s
+        delay: 100 * this.s + delayForSplash * this.s + this.delay,
+        begin: (function(_this) {
+          return function() {
+            return _this.$fishEntire.show();
+          };
+        })(this)
       });
       return this.$shadow.velocity({
         translateX: 40,
@@ -84,7 +79,7 @@
       }, {
         duration: 800 * this.s,
         easing: 'ease-in',
-        delay: 100 * this.s + delayForSplash * this.s
+        delay: 100 * this.s + delayForSplash * this.s + this.delay
       }).velocity({
         translateX: 30,
         translateY: -150,
@@ -109,7 +104,8 @@
               translateY: h.rand(0, bubbleRadius),
               r: 10
             }, {
-              duration: 300 * _this.s
+              duration: 300 * _this.s,
+              delay: _this.delay
             });
             return $item.velocity({
               translateX: h.rand(-5 * bubbleRadius, 5 * bubbleRadius),
@@ -129,7 +125,7 @@
               r: h.rand(15, 20)
             }, {
               duration: 200 * _this.s + h.rand(50, 100) * _this.s,
-              delay: h.rand(50, 150) * _this.s + o.delayForSplash * _this.s
+              delay: h.rand(50, 150) * _this.s + o.delayForSplash * _this.s + _this.delay
             });
             return $item.velocity({
               translateX: 0,
@@ -154,7 +150,7 @@
             r: h.rand(10, 15)
           }, {
             duration: 300 * _this.s,
-            delay: h.rand(50, 150) * _this.s + o.delayForSplash * _this.s
+            delay: h.rand(50, 150) * _this.s + o.delayForSplash * _this.s + _this.delay
           });
           return $item.velocity({
             translateX: 0,
