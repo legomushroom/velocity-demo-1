@@ -133,9 +133,9 @@ class Caleydoscope
 
     @$caleydoscope.css 'transform-origin': '640px 450px'
     @$caleydoscope.velocity {
-      rotateZ: 720
+      rotateZ: 360
       },
-        duration: 12000*@s
+        duration: 6000*@s
         easing: 'linear'
 
 
@@ -157,23 +157,23 @@ class Caleydoscope
       duration: 5000
       easing: 'ease'
 
-    @$caleydoscopeImage3.css 'transform-origin': 'center center'
-    @$caleydoscopeImage3.velocity {
-      translateX: -150
-      translateY: -150
-    },
-      loop: 0
-      duration: 5000
-      easing: 'ease'
+    # @$caleydoscopeImage3.css 'transform-origin': 'center center'
+    # @$caleydoscopeImage3.velocity {
+    #   translateX: -150
+    #   translateY: -150
+    # },
+    #   loop: 0
+    #   duration: 5000
+    #   easing: 'ease'
 
-    @$caleydoscopeImage4.css 'transform-origin': 'center center'
-    @$caleydoscopeImage4.velocity {
-      translateX: 150
-      translateY: 150
-    },
-      loop: 0
-      duration: 5000
-      easing: 'ease'
+    # @$caleydoscopeImage4.css 'transform-origin': 'center center'
+    # @$caleydoscopeImage4.velocity {
+    #   translateX: 150
+    #   translateY: 150
+    # },
+    #   loop: 0
+    #   duration: 5000
+    #   easing: 'ease'
 
     @$caleydoscopeImage5.css 'transform-origin': 'center center'
     @$caleydoscopeImage5.velocity {
@@ -184,13 +184,13 @@ class Caleydoscope
       duration: 5000
       easing: 'ease'
 
-    @$caleydoscopeImage6.css 'transform-origin': 'center center'
-    @$caleydoscopeImage6.velocity {
-      translateX: 150
-      translateY: 150
-    },
-      loop: 0
-      duration: 5000
-      easing: 'ease'
+    # @$caleydoscopeImage6.css 'transform-origin': 'center center'
+    # @$caleydoscopeImage6.velocity {
+    #   translateX: 150
+    #   translateY: 150
+    # },
+    #   loop: 0
+    #   duration: 5000
+    #   easing: 'ease'
 
 window.Caleydoscope = Caleydoscope
