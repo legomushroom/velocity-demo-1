@@ -1,18 +1,15 @@
 class Caleydoscope
   constructor:(@o={})->
     @vars()
-    $('<div />').velocity {
-      p: 1
-      },
-        duration: @delay
-        complete:=> @$caleydoscopeEntire.show(); @run()
+    @run()
 
   vars:->
     @s = 1*h.time(1)
     @$velocityText = $('#js-velocity-text')
     @$blow         = $('#js-c-blow')
     @$caleydoscopePattern = $('#caleydoscope-pattern')
-    @$caleydoscopeImage = $('#js-caleydoscope-image')
+    @$caleydoscopeInner   = $('#js-caleydoscope-inner')
+    @$caleydoscopeImage  = $('#js-caleydoscope-image')
     @$caleydoscopeImage2 = $('#js-caleydoscope-image2')
     @$caleydoscopeImage3 = $('#js-caleydoscope-image3')
     @$caleydoscopeImage4 = $('#js-caleydoscope-image4')
@@ -36,7 +33,7 @@ class Caleydoscope
       $item.velocity {
         strokeDashoffset: 0
         },
-          delay: 2300*@s
+          delay: 2300*@s + @delay
           duration: 200*@s
 
       .velocity {
@@ -49,7 +46,7 @@ class Caleydoscope
       $item.velocity {
         strokeDashoffset: 0
         },
-          delay: 2500*@s
+          delay: 2500*@s + @delay
           duration: 200*@s
 
       .velocity {
@@ -59,7 +56,7 @@ class Caleydoscope
     $mask1.velocity {
       r: 75
     },
-      delay: 1800*@s + caleydDelay1
+      delay: 1800*@s + caleydDelay1 + @delay
       duration: 500*@s
       # easing: 'easeOutElastic'
 
@@ -83,7 +80,7 @@ class Caleydoscope
           rotateY: 0
         },
           duration: 1000*@s + h.rand(0, 100)*@s
-          delay: 600*@s + h.rand(0, 500)*@s
+          delay: 600*@s + h.rand(0, 500)*@s + @delay
           easing: 'linear'
           begin:=> if i is 0 then @$velocityText.show()
 
@@ -101,10 +98,9 @@ class Caleydoscope
     @$blow.children().each (i, item)=>
       $item  = $(item)
       $item.velocity {
-        r:  if i is 0 then 75 else h.rand(10, 50)
+        r:  if i is 0 then 55 else h.rand(10, 50)
         },
-          delay: 1350*@s + h.rand(0, 500)*@s
-          duration: 400*@s + h.rand(0, 300)*@s
+          duration: 1
 
         .velocity {
           translateY: h.rand(-150, 150)
@@ -113,8 +109,9 @@ class Caleydoscope
           rotateZ: h.rand(-100,100)
         },
           duration: 800*@s
-          delay: 400*@s + caleydDelay1 + h.rand(0, 300)*@s
+          delay: 2500*@s + caleydDelay1 + h.rand(0, 600)*@s
           begin: =>
+            i is 0 and @$blow.show()
             @$blow.css 'opacity': 1
             $mask1.css 'opacity': 0
           complete:-> $item.hide()
@@ -123,12 +120,24 @@ class Caleydoscope
     $paths.each (i, item)=>
       $path = $(item)
       length = $path[0].getTotalLength()
-      $path
-        .velocity {
-          opacity: 1
+      $path.css 'transform-origin': 'center center'
+      rotate = parseInt $path.attr('transform')?.match(/rotate\((.+?)\)/)[1], 10
+      
+      $path.velocity {rotateZ: rotate}, duration: 1
+      .velocity {
+        opacity: 1
         },
-          delay: h.rand(1,150)*@s + i*150*@s
-          duration: 900
+          delay: h.rand(1,150)*@s + i*150*@s + @delay
+          duration: 900*@s
+
+      .velocity {
+        rotateZ: h.rand(-500,500)
+        translateX: h.rand(-800,800)
+        translateY: h.rand(-800,800)
+        scale: 0
+      },
+        delay: 2000*@s - i*150*@s
+        duration: 900*@s
 
 
     @$caleydoscope.css 'transform-origin': '640px 450px'
@@ -136,17 +145,26 @@ class Caleydoscope
       rotateZ: 360
       },
         duration: 6000*@s
+        delay: @delay
+        easing: 'linear'
+        begin:=> @$caleydoscopeEntire.show()
+
+    @$caleydoscopeInner.css 'transform-origin': 'center center'
+    @$caleydoscopeInner.velocity {
+      scale: .5
+      },
+        duration: 2000*@s
+        delay: @delay
         easing: 'linear'
 
-
-    @$caleydoscopeImage.css 'transform-origin': 'center center'
-    @$caleydoscopeImage.velocity {
-      translateX: -150
-      translateY: -150
-    },
-      loop: 0
-      duration: 5000
-      easing: 'ease'
+    # @$caleydoscopeImage.css 'transform-origin': 'center center'
+    # @$caleydoscopeImage.velocity {
+    #   translateX: -150
+    #   translateY: -150
+    # },
+    #   loop: 0
+    #   duration: 5000
+    #   easing: 'ease'
 
     @$caleydoscopeImage2.css 'transform-origin': 'center center'
     @$caleydoscopeImage2.velocity {
@@ -175,14 +193,14 @@ class Caleydoscope
     #   duration: 5000
     #   easing: 'ease'
 
-    @$caleydoscopeImage5.css 'transform-origin': 'center center'
-    @$caleydoscopeImage5.velocity {
-      translateX: -150
-      translateY: -150
-    },
-      loop: 0
-      duration: 5000
-      easing: 'ease'
+    # @$caleydoscopeImage5.css 'transform-origin': 'center center'
+    # @$caleydoscopeImage5.velocity {
+    #   translateX: -150
+    #   translateY: -150
+    # },
+    #   loop: 0
+    #   duration: 5000
+    #   easing: 'ease'
 
     # @$caleydoscopeImage6.css 'transform-origin': 'center center'
     # @$caleydoscopeImage6.velocity {
