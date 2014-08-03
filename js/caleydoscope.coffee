@@ -97,8 +97,9 @@ class Caleydoscope
 
     @$blow.children().each (i, item)=>
       $item  = $(item)
+      $item.css 'transform-origin': "#{h.rand(0,300)}px #{h.rand(0,300)}px"
       $item.velocity {
-        r:  if i is 0 then 55 else h.rand(10, 50)
+        r:  if i is 0 then 65 else h.rand(10, 50)
         },
           duration: 1
 
@@ -109,7 +110,7 @@ class Caleydoscope
           rotateZ: h.rand(-100,100)
         },
           duration: 800*@s
-          delay: 2500*@s + caleydDelay1 + h.rand(0, 600)*@s
+          delay: 2450*@s + caleydDelay1 + h.rand(0, 600)*@s
           begin: =>
             i is 0 and @$blow.show()
             @$blow.css 'opacity': 1

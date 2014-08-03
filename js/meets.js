@@ -31,6 +31,13 @@
       this.$leftShirt = $('#js-left-shirt');
       this.leftShirtX1 = parseInt(this.$leftShirt.attr('x'), 10);
       this.leftShirtX2 = parseInt(this.$leftShirt.attr('x2'), 10);
+      this.shirtOffsetX = 0;
+      if (h.isMobile() || h.isIOS()) {
+        this.$rightShirt[0].setAttribute('y', 10);
+        this.$leftShirt[0].setAttribute('y', 10);
+        this.shirtOffsetX = -20;
+        this.rightShirtX2 -= 600;
+      }
       this.$meets = $('#js-meets');
       this.$blow = $('#js-meets-blow');
       this.$sleeves = $('.js-sleeve');
@@ -127,7 +134,7 @@
         delay: this.delay + this.bumpDelay,
         progress: (function(_this) {
           return function($els, proc) {
-            return _this.leftShirt.setAttribute('x', _this.leftShirtX1 - deltaX * proc);
+            return _this.leftShirt.setAttribute('x', _this.leftShirtX1 - deltaX * proc + _this.shirtOffsetX);
           };
         })(this),
         complete: (function(_this) {

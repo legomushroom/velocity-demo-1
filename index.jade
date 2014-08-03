@@ -9,6 +9,11 @@ html
     - var rand = function(min, max){
     -  return Math.floor((Math.random() * ((max + 1) - min)) + min)
     - }
+    - var colors = ['deeppink', 'deeppink', '#17F7B9', '#562E74', '#E1E44A', '#6F77B1', '#9E3375', 'deeppink']
+    - var randColor = function() {
+    -   return colors[rand(0, colors.length-1)]
+    - }
+    
     .container
       .container__inner
         svg(viewBox="0 0 1280 900")

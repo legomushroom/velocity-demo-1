@@ -121,8 +121,11 @@
         return function(i, item) {
           var $item;
           $item = $(item);
+          $item.css({
+            'transform-origin': "" + (h.rand(0, 300)) + "px " + (h.rand(0, 300)) + "px"
+          });
           return $item.velocity({
-            r: i === 0 ? 55 : h.rand(10, 50)
+            r: i === 0 ? 65 : h.rand(10, 50)
           }, {
             duration: 1
           }).velocity({
@@ -132,7 +135,7 @@
             rotateZ: h.rand(-100, 100)
           }, {
             duration: 800 * _this.s,
-            delay: 2500 * _this.s + caleydDelay1 + h.rand(0, 600) * _this.s,
+            delay: 2450 * _this.s + caleydDelay1 + h.rand(0, 600) * _this.s,
             begin: function() {
               i === 0 && _this.$blow.show();
               _this.$blow.css({

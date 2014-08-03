@@ -4,8 +4,10 @@ class Main
     @run()
     
   run:->
-    # new Logo          delay: h.time(0)
-    new Caleydoscope  delay: h.time(0)
+    new Meets           delay: h.time(0)
+
+    # new Caleydoscope    delay: h.time(0)
+    # new Meets           delay: h.time(2900)
 
     # new Caleydoscope  delay: h.time(1000)
     # new Meets         delay: h.time(3900)
