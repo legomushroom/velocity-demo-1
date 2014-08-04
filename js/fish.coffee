@@ -100,7 +100,7 @@ class Fish
         $item.velocity {
           translateX: h.rand(-bubbleRadius,bubbleRadius)
           translateY: h.rand(0,bubbleRadius)
-          r: h.rand(15, 20)
+          r: h.rand(20, 25)
           },
             duration: 200*@s + h.rand(50,100)*@s
             delay: h.rand(50,150)*@s + o.delayForSplash*@s + @delay

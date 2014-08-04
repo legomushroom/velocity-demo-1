@@ -122,7 +122,7 @@
             $item.velocity({
               translateX: h.rand(-bubbleRadius, bubbleRadius),
               translateY: h.rand(0, bubbleRadius),
-              r: h.rand(15, 20)
+              r: h.rand(20, 25)
             }, {
               duration: 200 * _this.s + h.rand(50, 100) * _this.s,
               delay: h.rand(50, 150) * _this.s + o.delayForSplash * _this.s + _this.delay
