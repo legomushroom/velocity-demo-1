@@ -110,10 +110,7 @@
             scale: 0
           }, {
             duration: 500 * _this.s + h.rand(0, 100) * _this.s,
-            delay: caleydDelay1 + h.rand(0, 200) * _this.s + h.time(1000),
-            complete: function() {
-              return $item.hide();
-            }
+            delay: caleydDelay1 + h.rand(0, 200) * _this.s + h.time(1000)
           });
         };
       })(this));
@@ -144,9 +141,6 @@
               return $mask1.css({
                 'opacity': 0
               });
-            },
-            complete: function() {
-              return $item.hide();
             }
           });
         };
@@ -185,7 +179,7 @@
         'transform-origin': '640px 450px'
       });
       this.$caleydoscope.velocity({
-        rotateZ: 360
+        p: 360
       }, {
         duration: 6000 * this.s,
         delay: this.delay,
@@ -196,25 +190,15 @@
           };
         })(this)
       });
-      this.$caleydoscopeInner.css({
-        'transform-origin': 'center center'
-      });
-      this.$caleydoscopeInner.velocity({
-        scale: .5
-      }, {
-        duration: 2000 * this.s,
-        delay: this.delay,
-        easing: 'linear'
-      });
       this.$caleydoscopeImage2.css({
         'transform-origin': 'center center'
       });
       return this.$caleydoscopeImage2.velocity({
-        translateX: 150,
-        translateY: 150
+        translateX: 120,
+        translateY: 120
       }, {
         loop: 0,
-        duration: 5000,
+        duration: 4500,
         easing: 'ease'
       });
     };

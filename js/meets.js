@@ -32,7 +32,7 @@
       this.leftShirtX1 = parseInt(this.$leftShirt.attr('x'), 10);
       this.leftShirtX2 = parseInt(this.$leftShirt.attr('x2'), 10);
       this.shirtOffsetX = 0;
-      if (h.isMobile() || h.isIOS()) {
+      if (h.isIOS()) {
         this.$rightShirt[0].setAttribute('y', 10);
         this.$leftShirt[0].setAttribute('y', 10);
         this.shirtOffsetX = -20;

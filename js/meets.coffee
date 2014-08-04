@@ -25,12 +25,11 @@ class Meets
     @leftShirtX2 = parseInt @$leftShirt.attr('x2'), 10
 
     @shirtOffsetX = 0
-    if h.isMobile() or h.isIOS()
+    if h.isIOS()
       @$rightShirt[0].setAttribute 'y', 10
       @$leftShirt[0].setAttribute 'y', 10
       @shirtOffsetX = -20
       @rightShirtX2 -= 600
-
 
     @$meets    = $('#js-meets')
     @$blow     = $('#js-meets-blow')
@@ -92,9 +91,11 @@ class Meets
       $item = $(item)
       x = parseFloat $item.attr 'data-x'
       y = parseFloat $item.attr 'data-y'
+      # $item.css 'transform-origin': "#{h.rand(0,50)}px #{h.rand(0,50)}px"
       $item.velocity {
         translateX: x
         translateY: y
+        # rotateZ: h.rand(-200,200)
       },
         duration: 1
         delay: @delay

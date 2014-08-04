@@ -92,7 +92,7 @@ class Caleydoscope
         },
           duration: 500*@s + h.rand(0, 100)*@s
           delay: caleydDelay1 + h.rand(0, 200)*@s + h.time(1000)
-          complete:-> $item.hide()
+          # complete:-> $item.hide()
 
 
     @$blow.children().each (i, item)=>
@@ -115,7 +115,7 @@ class Caleydoscope
             i is 0 and @$blow.show()
             @$blow.css 'opacity': 1
             $mask1.css 'opacity': 0
-          complete:-> $item.hide()
+          # complete:-> $item.hide()
 
     $paths = @$caleydoscope.find('path')
     $paths.each (i, item)=>
@@ -143,37 +143,37 @@ class Caleydoscope
 
     @$caleydoscope.css 'transform-origin': '640px 450px'
     @$caleydoscope.velocity {
-      rotateZ: 360
+      p: 360
       },
         duration: 6000*@s
         delay: @delay
         easing: 'linear'
         begin:=> @$caleydoscopeEntire.show()
 
-    @$caleydoscopeInner.css 'transform-origin': 'center center'
-    @$caleydoscopeInner.velocity {
-      scale: .5
-      },
-        duration: 2000*@s
-        delay: @delay
-        easing: 'linear'
+    # @$caleydoscopeInner.css 'transform-origin': 'center center'
+    # @$caleydoscopeInner.velocity {
+    #   scale: .5
+    #   },
+    #     duration: 2000*@s
+    #     delay: @delay
+    #     easing: 'linear'
 
     # @$caleydoscopeImage.css 'transform-origin': 'center center'
     # @$caleydoscopeImage.velocity {
-    #   translateX: -150
-    #   translateY: -150
+    #   translateX: -120
+    #   translateY: -120
     # },
     #   loop: 0
-    #   duration: 5000
+    #   duration: 6000
     #   easing: 'ease'
 
     @$caleydoscopeImage2.css 'transform-origin': 'center center'
     @$caleydoscopeImage2.velocity {
-      translateX: 150
-      translateY: 150
+      translateX: 120
+      translateY: 120
     },
       loop: 0
-      duration: 5000
+      duration: 4500
       easing: 'ease'
 
     # @$caleydoscopeImage3.css 'transform-origin': 'center center'
