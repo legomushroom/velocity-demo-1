@@ -43,21 +43,7 @@
     Fish.prototype.run = function() {
       var delayForSplash;
       delayForSplash = 100;
-      this.splash({
-        delayForSplash: delayForSplash,
-        splash1: this.$bottomSplash1,
-        splash2: this.$bottomSplash2
-      });
-      setTimeout((function(_this) {
-        return function() {
-          return _this.splash({
-            delayForSplash: delayForSplash,
-            splash1: _this.$topSplash1,
-            splash2: _this.$topSplash2,
-            isSecond: true
-          });
-        };
-      })(this), 775 * this.s);
+      this.splash();
       this.$fish.velocity({
         translateX: 30,
         translateY: -150
@@ -91,77 +77,137 @@
       });
     };
 
-    Fish.prototype.splash = function(o) {
+    Fish.prototype.splash = function() {
       var bubbleRadius;
+      this.$splash1 = $('#js-clip-splash1');
+      this.$splash1Top = $('#js-clip-top-splash1');
+      this.$splash1.css({
+        'transform-origin': 'center center'
+      });
+      this.$splash1.velocity({
+        scale: 0
+      }, {
+        duration: 1
+      }).velocity({
+        scale: 1
+      }, {
+        duration: 400 * this.s,
+        delay: this.delay + 200 * this.s,
+        easing: 'linear'
+      }).velocity({
+        scale: 0
+      }, {
+        duration: 500 * this.s,
+        easing: 'linear'
+      });
+      this.$splash1Top.css({
+        'transform-origin': 'center center'
+      });
+      this.$splash1Top.velocity({
+        scale: 0
+      }, {
+        duration: 1
+      }).velocity({
+        scale: 1
+      }, {
+        duration: 400 * this.s,
+        delay: this.delay + 200 * this.s,
+        easing: 'linear'
+      }).velocity({
+        scale: 0,
+        translateY: -20
+      }, {
+        duration: 500 * this.s,
+        easing: 'linear'
+      });
+      this.$splash2 = $('#js-clip-splash2');
+      this.$splash2Top = $('#js-clip-top-splash2');
+      this.$splash2.css({
+        'transform-origin': 'center center'
+      });
+      this.$splash2.velocity({
+        scale: 0
+      }, {
+        duration: 1
+      }).velocity({
+        scale: 1,
+        translateY: -10
+      }, {
+        duration: 300 * this.s,
+        delay: this.delay + 900 * this.s,
+        easing: 'linear'
+      }).velocity({
+        scale: 0
+      }, {
+        duration: 400 * this.s,
+        easing: 'linear'
+      });
+      this.$splash2Top.css({
+        'transform-origin': 'center center'
+      });
+      this.$splash2Top.velocity({
+        scale: 0
+      }, {
+        duration: 1
+      }).velocity({
+        scale: 1,
+        translateY: 10,
+        rotateZ: 10
+      }, {
+        duration: 300 * this.s,
+        delay: this.delay + 830 * this.s,
+        easing: 'linear'
+      }).velocity({
+        scale: 0
+      }, {
+        duration: 400 * this.s,
+        easing: 'linear'
+      });
+      this.$topSplash = $('#js-top-splash');
       bubbleRadius = 20;
-      o.splash1.children().each((function(_this) {
-        return function(i, item) {
-          var $item;
-          $item = $(item);
-          if (i > 5 && i < 12) {
-            $item.velocity({
-              translateX: h.rand(-bubbleRadius, bubbleRadius),
-              translateY: h.rand(0, bubbleRadius),
-              r: 10
-            }, {
-              duration: 300 * _this.s,
-              delay: _this.delay
-            });
-            return $item.velocity({
-              translateX: h.rand(-5 * bubbleRadius, 5 * bubbleRadius),
-              translateY: h.rand(-5 * bubbleRadius, 5 * bubbleRadius),
-              r: 0
-            }, {
-              duration: 800 * _this.s,
-              delay: h.rand(50, 100) * _this.s,
-              complete: function() {
-                return $item.hide();
-              }
-            });
-          } else {
-            $item.velocity({
-              translateX: h.rand(-bubbleRadius, bubbleRadius),
-              translateY: h.rand(0, bubbleRadius),
-              r: h.rand(20, 25)
-            }, {
-              duration: 200 * _this.s + h.rand(50, 100) * _this.s,
-              delay: h.rand(50, 150) * _this.s + o.delayForSplash * _this.s + _this.delay
-            });
-            return $item.velocity({
-              translateX: 0,
-              translateY: 0,
-              r: 0
-            }, {
-              duration: 800 * _this.s,
-              complete: function() {
-                return $item.hide();
-              }
-            });
-          }
-        };
-      })(this));
-      return o.splash2.children().each((function(_this) {
+      this.$topSplash.children().each((function(_this) {
         return function(i, item) {
           var $item;
           $item = $(item);
           $item.velocity({
             translateX: h.rand(-bubbleRadius, bubbleRadius),
-            translateY: h.rand(-bubbleRadius, 0),
-            r: h.rand(10, 15)
+            translateY: h.rand(0, bubbleRadius),
+            r: 10
           }, {
-            duration: 300 * _this.s,
-            delay: h.rand(50, 150) * _this.s + o.delayForSplash * _this.s + _this.delay
+            duration: 700 * _this.s,
+            delay: _this.delay + 600 * _this.s
           });
           return $item.velocity({
-            translateX: 0,
-            translateY: 0,
-            r: 0,
-            rotateZ: h.rand(-100, 100)
+            translateX: h.rand(-5 * bubbleRadius, 5 * bubbleRadius),
+            translateY: h.rand(-5 * bubbleRadius, 5 * bubbleRadius),
+            r: 0
+          }, {
+            duration: 500 * _this.s,
+            delay: h.rand(50, 100) * _this.s
+          });
+        };
+      })(this));
+      this.$bottomSplash = $('#js-bottom-splash');
+      bubbleRadius = 20;
+      return this.$bottomSplash.children().each((function(_this) {
+        return function(i, item) {
+          var $item;
+          $item = $(item);
+          $item.velocity({
+            translateX: h.rand(-bubbleRadius, bubbleRadius),
+            translateY: h.rand(0, bubbleRadius),
+            r: 10
+          }, {
+            duration: 300 * _this.s,
+            delay: _this.delay
+          });
+          return $item.velocity({
+            translateX: h.rand(-5 * bubbleRadius, 5 * bubbleRadius),
+            translateY: h.rand(-5 * bubbleRadius, 5 * bubbleRadius),
+            r: 0
           }, {
             duration: 800 * _this.s,
-            complete: function() {
-              return $item.hide();
-            }
+            delay: h.rand(50, 100) * _this.s
           });
         };
       })(this));

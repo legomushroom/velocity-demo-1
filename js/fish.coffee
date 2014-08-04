@@ -33,18 +33,19 @@ class Fish
 
   run:->
     delayForSplash = 100
-    @splash
-      delayForSplash: delayForSplash
-      splash1: @$bottomSplash1
-      splash2: @$bottomSplash2
+    @splash()
+    # @splash
+    #   delayForSplash: delayForSplash
+    #   splash1: @$bottomSplash1
+    #   splash2: @$bottomSplash2
 
-    setTimeout =>
-      @splash
-        delayForSplash: delayForSplash
-        splash1: @$topSplash1
-        splash2: @$topSplash2
-        isSecond: true
-    , 775*@s
+    # setTimeout =>
+    #   @splash
+    #     delayForSplash: delayForSplash
+    #     splash1: @$topSplash1
+    #     splash2: @$topSplash2
+    #     isSecond: true
+    # , 775*@s
 
     @$fish.velocity {
       translateX: 30
@@ -74,62 +75,133 @@ class Fish
         duration: 600*@s
         easing: 'ease-out'
 
-  splash:(o)->
+  splash:()->
+    @$splash1 = $('#js-clip-splash1')
+    @$splash1Top = $('#js-clip-top-splash1')
+
+    @$splash1.css 'transform-origin': 'center center'
+    @$splash1.velocity {
+      scale: 0
+      }, duration: 1
+
+    .velocity {
+      scale: 1
+      },
+        duration: 400*@s
+        delay: @delay + 200*@s
+        easing: 'linear'
+
+    .velocity {
+      scale: 0
+      },
+        duration: 500*@s
+        easing: 'linear'
+
+    @$splash1Top.css 'transform-origin': 'center center'
+    @$splash1Top.velocity {
+      scale: 0
+      }, duration: 1
+
+    .velocity {
+      scale: 1
+      },
+        duration: 400*@s
+        delay: @delay + 200*@s
+        easing: 'linear'
+
+    .velocity {
+      scale: 0
+      translateY: -20
+      },
+        duration: 500*@s
+        easing: 'linear'
+
+
+    @$splash2 = $('#js-clip-splash2')
+    @$splash2Top = $('#js-clip-top-splash2')
+
+    @$splash2.css 'transform-origin': 'center center'
+    @$splash2.velocity {
+      scale: 0
+      }, duration: 1
+
+    .velocity {
+      scale: 1
+      translateY: -10
+      # rotateZ: 10
+      },
+        duration: 300*@s
+        delay: @delay + 900*@s
+        easing: 'linear'
+
+    .velocity {
+      scale: 0
+      },
+        duration: 400*@s
+        easing: 'linear'
+
+    @$splash2Top.css 'transform-origin': 'center center'
+    @$splash2Top.velocity {
+      scale: 0
+      }, duration: 1
+
+    .velocity {
+      scale: 1
+      translateY: 10
+      rotateZ: 10
+      },
+        duration: 300*@s
+        delay: @delay + 830*@s
+        easing: 'linear'
+
+    .velocity {
+      scale: 0
+      },
+        duration: 400*@s
+        easing: 'linear'
+
+
+    @$topSplash = $('#js-top-splash')
     bubbleRadius = 20
-    o.splash1.children().each (i,item)=>
-      $item = $ item
-      if i > 5 and i < 12
-        $item.velocity {
-          translateX: h.rand(-bubbleRadius,bubbleRadius)
-          translateY: h.rand(0,bubbleRadius)
-          r: 10
-          },
-            duration: 300*@s
-            delay: @delay
-
-        $item.velocity {
-          translateX: h.rand(-5*bubbleRadius,5*bubbleRadius)
-          translateY: h.rand(-5*bubbleRadius,5*bubbleRadius)
-          r: 0
-          },
-            duration: 800*@s
-            delay:    h.rand(50,100)*@s
-            complete:-> $item.hide()
-
-      else
-        $item.velocity {
-          translateX: h.rand(-bubbleRadius,bubbleRadius)
-          translateY: h.rand(0,bubbleRadius)
-          r: h.rand(20, 25)
-          },
-            duration: 200*@s + h.rand(50,100)*@s
-            delay: h.rand(50,150)*@s + o.delayForSplash*@s + @delay
-
-        $item.velocity {
-          translateX: 0
-          translateY: 0
-          r: 0
-          },
-            duration: 800*@s
-            complete:-> $item.hide()
-
-    o.splash2.children().each (i,item)=>
+    @$topSplash.children().each (i,item)=>
       $item = $ item
       $item.velocity {
         translateX: h.rand(-bubbleRadius,bubbleRadius)
-        translateY: h.rand(-bubbleRadius,0)
-        r: h.rand(10, 15)
+        translateY: h.rand(0,bubbleRadius)
+        r: 10
         },
-          duration: 300*@s
-          delay: h.rand(50,150)*@s + o.delayForSplash*@s + @delay
+          duration: 700*@s
+          delay: @delay + 600*@s
 
       $item.velocity {
-        translateX: 0
-        translateY: 0
+        translateX: h.rand(-5*bubbleRadius,5*bubbleRadius)
+        translateY: h.rand(-5*bubbleRadius,5*bubbleRadius)
         r: 0
-        rotateZ: h.rand(-100,100)
+        },
+          duration: 500*@s
+          delay:    h.rand(50,100)*@s
+          # complete:-> $item.hide()
+
+    @$bottomSplash = $('#js-bottom-splash')
+    bubbleRadius = 20
+    @$bottomSplash.children().each (i,item)=>
+      $item = $ item
+      $item.velocity {
+        translateX: h.rand(-bubbleRadius,bubbleRadius)
+        translateY: h.rand(0,bubbleRadius)
+        r: 10
+        },
+          duration: 300*@s
+          delay: @delay
+
+      $item.velocity {
+        translateX: h.rand(-5*bubbleRadius,5*bubbleRadius)
+        translateY: h.rand(-5*bubbleRadius,5*bubbleRadius)
+        r: 0
         },
           duration: 800*@s
-          complete:-> $item.hide()
+          delay:    h.rand(50,100)*@s
+          # complete:-> $item.hide()
+
 
 window.Fish = Fish
