@@ -25,11 +25,11 @@ class Meets
     @leftShirtX2 = parseInt @$leftShirt.attr('x2'), 10
 
     @shirtOffsetX = 0
-    if h.isIOS()
-      @$rightShirt[0].setAttribute 'y', 10
-      @$leftShirt[0].setAttribute 'y', 10
-      @shirtOffsetX = -20
-      @rightShirtX2 -= 600
+    # if h.isIOS()
+    #   @$rightShirt[0].setAttribute 'y', 10
+    #   @$leftShirt[0].setAttribute 'y', 10
+    #   @shirtOffsetX = -20
+    #   @rightShirtX2 -= 600
 
     @$meets    = $('#js-meets')
     @$blow     = $('#js-meets-blow')
@@ -37,7 +37,7 @@ class Meets
     @$sleeves  = $('.js-sleeve')
     @$shirts   = $('.js-shirt')
 
-    @$dogsPattern = $('#js-space-dogs-image')
+    @$dogsPattern = $('#space-dogs-pattern')
 
     @$circles = $('#js-meets-circles')
 
@@ -118,8 +118,8 @@ class Meets
         @leftShirt.setAttribute 'x', @leftShirtX1 - deltaX*proc + @shirtOffsetX
       complete: =>
         @$dogsPattern.velocity {
-          translateX: -150
-          translateY: -150
+          x: -150
+          y: -150
           },
             duration: h.time(5000)
             easing: 'linear'

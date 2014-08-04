@@ -32,17 +32,11 @@
       this.leftShirtX1 = parseInt(this.$leftShirt.attr('x'), 10);
       this.leftShirtX2 = parseInt(this.$leftShirt.attr('x2'), 10);
       this.shirtOffsetX = 0;
-      if (h.isIOS()) {
-        this.$rightShirt[0].setAttribute('y', 10);
-        this.$leftShirt[0].setAttribute('y', 10);
-        this.shirtOffsetX = -20;
-        this.rightShirtX2 -= 600;
-      }
       this.$meets = $('#js-meets');
       this.$blow = $('#js-meets-blow');
       this.$sleeves = $('.js-sleeve');
       this.$shirts = $('.js-shirt');
-      this.$dogsPattern = $('#js-space-dogs-image');
+      this.$dogsPattern = $('#space-dogs-pattern');
       this.$circles = $('#js-meets-circles');
       this.$rightButton = $('#js-right-button');
       this.$leftButton = $('#js-left-button');
@@ -140,8 +134,8 @@
         complete: (function(_this) {
           return function() {
             _this.$dogsPattern.velocity({
-              translateX: -150,
-              translateY: -150
+              x: -150,
+              y: -150
             }, {
               duration: h.time(5000),
               easing: 'linear'

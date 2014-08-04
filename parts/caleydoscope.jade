@@ -35,14 +35,14 @@ g#js-entire-caleydoscope.h-g
   //- mask#burst-mask
   g#js-caleydoscope-burst(transform="translate(30,-45)")
     - var cnt = 4, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
-    - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 0;
+    - var centerX = 680, centerY = 400, radius = burstStart, radius2 = burstStart + burstLen, angle = 0;
     - var step = (2*PI)/cnt, initRotate = 40;
     - for (var i = 0; i < cnt; i++)
       - var x1 = centerX + Math.cos(angle)*radius
       - var y1 = centerY + Math.sin(angle)*radius
       - var x2 = centerX + Math.cos(angle)*radius2
       - var y2 = centerY + Math.sin(angle)*radius2
-      path(d="M#{x1},#{y1} L#{x2},#{y2}", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="2.5", stroke-linecap="round", opacity=".85")
+      path(d="M#{x1},#{y1} L#{x2},#{y2}", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="3.5", stroke-linecap="round", opacity=".85")
       - angle = angle + step
 
   - var blue = '#1F2947'
@@ -50,12 +50,12 @@ g#js-entire-caleydoscope.h-g
   //- mask#burst-mask
   g#js-caleydoscope-burst2(transform="translate(15,-55)")
     - var cnt = 4, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
-    - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 0;
+    - var centerX = 660, centerY = 430, radius = burstStart, radius2 = burstStart + burstLen, angle = 0;
     - var step = (2*PI)/cnt, initRotate = 40;
     - for (var i = 0; i < cnt; i++)
       - var x1 = centerX + Math.cos(angle)*radius
       - var y1 = centerY + Math.sin(angle)*radius
       - var x2 = centerX + Math.cos(angle)*radius2
       - var y2 = centerY + Math.sin(angle)*radius2
-      path(d="M#{x1},#{y1} L#{x2},#{y2}", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="2.5", stroke-linecap="round", opacity=".85")
+      path(d="M#{x1},#{y1} L#{x2},#{y2}", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="3.5", stroke-linecap="round", opacity=".85")
       - angle = angle + step
