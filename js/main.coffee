@@ -4,7 +4,7 @@ class Main
     @run()
     
   run:->
-    new Waves           delay: h.time(0)
+    new Fish            delay: h.time(0)
     
     # new Caleydoscope    delay: h.time(0)
     # new Meets           delay: h.time(2900)

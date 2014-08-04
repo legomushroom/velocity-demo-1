@@ -10,7 +10,7 @@
     }
 
     Main.prototype.run = function() {
-      return new Waves({
+      return new Fish({
         delay: h.time(0)
       });
     };
