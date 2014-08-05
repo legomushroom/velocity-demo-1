@@ -82,7 +82,7 @@
       this.$splash1 = $('#js-clip-splash1');
       this.$splash1Top = $('#js-clip-top-splash1');
       this.$splash1.css({
-        'transform-origin': 'center center'
+        'transform-origin': '78px 392px'
       });
       this.$splash1.velocity({
         scale: 0
@@ -101,7 +101,7 @@
         easing: 'linear'
       });
       this.$splash1Top.css({
-        'transform-origin': 'center center'
+        'transform-origin': '478px 994px'
       });
       this.$splash1Top.velocity({
         scale: 0
@@ -123,7 +123,7 @@
       this.$splash2 = $('#js-clip-splash2');
       this.$splash2Top = $('#js-clip-top-splash2');
       this.$splash2.css({
-        'transform-origin': 'center center'
+        'transform-origin': '80px 97px'
       });
       this.$splash2.velocity({
         scale: 0
@@ -133,7 +133,7 @@
         scale: 1
       }, {
         duration: 200 * this.s,
-        delay: this.delay + 1000 * this.s,
+        delay: this.delay + 950 * this.s,
         easing: 'linear'
       }).velocity({
         scale: 0
@@ -142,7 +142,7 @@
         easing: 'linear'
       });
       this.$splash2Top.css({
-        'transform-origin': 'center center'
+        'transform-origin': '480px 740px'
       });
       this.$splash2Top.velocity({
         scale: 0
@@ -150,16 +150,15 @@
         duration: 1
       }).velocity({
         scale: 1,
-        translateY: 20,
         rotateZ: 10
       }, {
-        duration: 200 * this.s,
+        duration: 125 * this.s,
         delay: this.delay + 930 * this.s,
         easing: 'linear'
       }).velocity({
         scale: 0
       }, {
-        duration: 300 * this.s,
+        duration: 400 * this.s,
         easing: 'linear'
       });
       this.$topSplash = $('#js-top-splash');
@@ -173,8 +172,8 @@
             translateY: h.rand(0, bubbleRadius),
             r: 10
           }, {
-            duration: 700 * _this.s,
-            delay: _this.delay + 500 * _this.s
+            duration: 500 * _this.s,
+            delay: _this.delay + 700 * _this.s
           });
           return $item.velocity({
             translateX: h.rand(-5 * bubbleRadius, 5 * bubbleRadius),

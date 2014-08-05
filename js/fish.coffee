@@ -63,10 +63,10 @@ class Fish
         easing: 'ease-out'
 
   splash:()->
-    @$splash1 = $('#js-clip-splash1')
+    @$splash1    = $('#js-clip-splash1')
     @$splash1Top = $('#js-clip-top-splash1')
 
-    @$splash1.css 'transform-origin': 'center center'
+    @$splash1.css 'transform-origin': '78px 392px'
     @$splash1.velocity {
       scale: 0
       }, duration: 1
@@ -84,7 +84,7 @@ class Fish
         duration: 500*@s
         easing: 'linear'
 
-    @$splash1Top.css 'transform-origin': 'center center'
+    @$splash1Top.css 'transform-origin': '478px 994px'
     @$splash1Top.velocity {
       scale: 0
       }, duration: 1
@@ -107,7 +107,7 @@ class Fish
     @$splash2 = $('#js-clip-splash2')
     @$splash2Top = $('#js-clip-top-splash2')
 
-    @$splash2.css 'transform-origin': 'center center'
+    @$splash2.css 'transform-origin': '80px 97px'
     @$splash2.velocity {
       scale: 0
       }, duration: 1
@@ -118,7 +118,7 @@ class Fish
       # rotateZ: 10
       },
         duration: 200*@s
-        delay: @delay + 1000*@s
+        delay: @delay + 950*@s
         easing: 'linear'
 
     .velocity {
@@ -127,24 +127,24 @@ class Fish
         duration: 300*@s
         easing: 'linear'
 
-    @$splash2Top.css 'transform-origin': 'center center'
+    @$splash2Top.css 'transform-origin': '480px 740px'
     @$splash2Top.velocity {
       scale: 0
       }, duration: 1
 
     .velocity {
       scale: 1
-      translateY: 20
+      # translateY: 10
       rotateZ: 10
       },
-        duration: 200*@s
+        duration: 125*@s
         delay: @delay + 930*@s
         easing: 'linear'
 
     .velocity {
       scale: 0
       },
-        duration: 300*@s
+        duration: 400*@s
         easing: 'linear'
 
 
@@ -157,8 +157,8 @@ class Fish
         translateY: h.rand(0,bubbleRadius)
         r: 10
         },
-          duration: 700*@s
-          delay: @delay + 500*@s
+          duration: 500*@s
+          delay: @delay + 700*@s
 
       $item.velocity {
         translateX: h.rand(-5*bubbleRadius,5*bubbleRadius)
