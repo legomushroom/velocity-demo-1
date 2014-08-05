@@ -130,16 +130,15 @@
       }, {
         duration: 1
       }).velocity({
-        scale: 1,
-        translateY: -10
+        scale: 1
       }, {
-        duration: 300 * this.s,
-        delay: this.delay + 900 * this.s,
+        duration: 200 * this.s,
+        delay: this.delay + 1000 * this.s,
         easing: 'linear'
       }).velocity({
         scale: 0
       }, {
-        duration: 400 * this.s,
+        duration: 300 * this.s,
         easing: 'linear'
       });
       this.$splash2Top.css({
@@ -151,16 +150,16 @@
         duration: 1
       }).velocity({
         scale: 1,
-        translateY: 10,
+        translateY: 20,
         rotateZ: 10
       }, {
-        duration: 300 * this.s,
-        delay: this.delay + 830 * this.s,
+        duration: 200 * this.s,
+        delay: this.delay + 930 * this.s,
         easing: 'linear'
       }).velocity({
         scale: 0
       }, {
-        duration: 400 * this.s,
+        duration: 300 * this.s,
         easing: 'linear'
       });
       this.$topSplash = $('#js-top-splash');
@@ -175,7 +174,7 @@
             r: 10
           }, {
             duration: 700 * _this.s,
-            delay: _this.delay + 600 * _this.s
+            delay: _this.delay + 500 * _this.s
           });
           return $item.velocity({
             translateX: h.rand(-5 * bubbleRadius, 5 * bubbleRadius),

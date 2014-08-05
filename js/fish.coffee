@@ -34,19 +34,6 @@ class Fish
   run:->
     delayForSplash = 100
     @splash()
-    # @splash
-    #   delayForSplash: delayForSplash
-    #   splash1: @$bottomSplash1
-    #   splash2: @$bottomSplash2
-
-    # setTimeout =>
-    #   @splash
-    #     delayForSplash: delayForSplash
-    #     splash1: @$topSplash1
-    #     splash2: @$topSplash2
-    #     isSecond: true
-    # , 775*@s
-
     @$fish.velocity {
       translateX: 30
       translateY: -150
@@ -127,17 +114,17 @@ class Fish
 
     .velocity {
       scale: 1
-      translateY: -10
+      # translateY: -10
       # rotateZ: 10
       },
-        duration: 300*@s
-        delay: @delay + 900*@s
+        duration: 200*@s
+        delay: @delay + 1000*@s
         easing: 'linear'
 
     .velocity {
       scale: 0
       },
-        duration: 400*@s
+        duration: 300*@s
         easing: 'linear'
 
     @$splash2Top.css 'transform-origin': 'center center'
@@ -147,17 +134,17 @@ class Fish
 
     .velocity {
       scale: 1
-      translateY: 10
+      translateY: 20
       rotateZ: 10
       },
-        duration: 300*@s
-        delay: @delay + 830*@s
+        duration: 200*@s
+        delay: @delay + 930*@s
         easing: 'linear'
 
     .velocity {
       scale: 0
       },
-        duration: 400*@s
+        duration: 300*@s
         easing: 'linear'
 
 
@@ -171,7 +158,7 @@ class Fish
         r: 10
         },
           duration: 700*@s
-          delay: @delay + 600*@s
+          delay: @delay + 500*@s
 
       $item.velocity {
         translateX: h.rand(-5*bubbleRadius,5*bubbleRadius)
