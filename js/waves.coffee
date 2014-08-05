@@ -36,7 +36,6 @@ class Waves
       translateY: @wave1YStart
     }, duration: 1
 
-
     @$wave2        = $('#js-wave2')
     @$wave2Top     = $('#js-wave2-top')
     @$wave2Top2    = $('#js-wave2-top2')
@@ -152,6 +151,7 @@ class Waves
         translateX: 800
       },
         duration: 1
-        begin:=> @$entireBits.hide()
+        begin:=>
+          @$entireBits.css 'opacity': 0
 
 window.Waves = Waves

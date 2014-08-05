@@ -192,7 +192,9 @@
         duration: 1,
         begin: (function(_this) {
           return function() {
-            return _this.$entireBits.hide();
+            return _this.$entireBits.css({
+              'opacity': 0
+            });
           };
         })(this)
       });
