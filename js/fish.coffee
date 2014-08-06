@@ -5,7 +5,7 @@ class Fish
 
   vars:->
     @delay = @o.delay or 0
-    @s = 1*h.time 1
+    @s = 1.25*h.time 1
 
     @$bottomSplash1 = $('#js-bottom-splash1')
     @$bottomSplash2 = $('#js-bottom-splash2')

@@ -35,33 +35,39 @@ defs
 - return patterns[rand(0, patterns.length-1)]
 -}
 
+- var colors = [ '#88C378', '#E0EFF7', '#F8CDDA' ]
+- var colors = ['#EA0004', '#92F5B8', '#FF1493', '#E01A3B', '#9EA64D']
+- var randColor = function() {
+-   return colors[rand(0, colors.length-1)]
+- }
+
 g#js-meets.h-g1
   - var blue = '#1F2947'
   //- mask#burst-mask
-  //- g#js-meets-burst(transform="translate(0,10)")
-  //-   - var burstLen = 35, burstStart = 100
-  //-   - var cnt = 7, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
-  //-   - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 50;
-  //-   - var step = (2*PI)/cnt, initRotate = 40;
-  //-   - for (var i = 0; i < cnt; i++)
-  //-     - var x1 = centerX + Math.cos(angle)*radius
-  //-     - var y1 = centerY + Math.sin(angle)*radius
-  //-     - var x2 = centerX + Math.cos(angle)*radius2
-  //-     - var y2 = centerY + Math.sin(angle)*radius2
-  //-     path(d="M#{x1},#{y1} L#{x2},#{y2}", opacity="1", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="#{randColor()}", stroke-width="8", stroke-linecap="round")
-  //-     - angle = angle + step
+  g#js-meets-burst(transform="translate(0,10)")
+    - var burstLen = 35, burstStart = 100
+    - var cnt = 7, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
+    - var centerX = 640, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 50;
+    - var step = (2*PI)/cnt, initRotate = 40;
+    - for (var i = 0; i < cnt; i++)
+      - var x1 = centerX + Math.cos(angle)*radius
+      - var y1 = centerY + Math.sin(angle)*radius
+      - var x2 = centerX + Math.cos(angle)*radius2
+      - var y2 = centerY + Math.sin(angle)*radius2
+      path(d="M#{x1},#{y1} L#{x2},#{y2}", opacity="1", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="#{randColor()}", stroke-width="2", stroke-linecap="round")
+      - angle = angle + step
 
-  //- g#js-firework.h-g(transform="translate(30,-135)", fill="none", stroke="url(#wood-pattern)", stroke-width="8")
-  //-   path#Fill-2(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M101,360.426 C155.592,358.97 210.631,358.994 264.44,369.481 C320.229,380.355 371.323,403.913 419.132,434.2 C485.658,476.345 544.614,529.172 610.663,572.02')
-  //-   path#Fill-3(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M550.652,133.096 C564.626,193.934 576.603,255.227 586.848,316.801 C596.619,375.519 605.543,434.644 611.004,493.937 C613.625,522.404 615.58,551.168 614.456,579.765')
-  //-   path#Fill-4(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M0.413,838.001 C77.606,763.151 170.323,705.087 269.251,663.499 C368.557,621.751 475.41,596.405 583.143,591.94 C592.032,591.572 600.927,591.378 609.823,591.309')
-  //-   path#Fill-5(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M1243.382,879.434 C1226.36,836.445 1203.778,795.755 1173.691,760.498 C1143.831,725.507 1106.903,697.296 1066.298,675.874 C1015.75,649.208 959.792,633.257 904.071,621.635 C844.84,609.279 784.581,602.591 724.408,596.826 C706.317,595.092 688.218,593.456 670.121,591.786 C653.117,590.217 635.214,586.374 618.315,590.324')
-  //-   path#Fill-7(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M784.603,1140.059 C792.184,1041.642 785.866,941.751 759.33,846.416 C741.86,783.655 715.462,723.158 679.666,668.652 C668.566,651.751 656.518,635.471 643.59,619.924 C636.827,611.79 629.545,604.11 622.756,596.008 C622.127,595.258 621.617,594.781 621.197,593.84')
-  //-   path#Fill-8(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M897.175,145.058 C851.836,200.077 809.459,257.703 768.383,315.945 C743.299,351.511 718.872,387.558 695.602,424.34 C675.168,456.641 655.448,489.547 638.449,523.806 C628.935,542.979 619.766,562.937 614.789,583.844')
-  //-   path#Fill-9(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M59.491,0.088 C126.434,21.774 185.544,65.656 238.582,110.705 C301.449,164.102 358.542,224.263 412.17,286.829 C460.609,343.34 506.385,402.302 548.482,463.694 C563.61,485.754 578.291,508.168 591.781,531.273 C599.741,544.908 608.28,559.114 613.131,574.238 C613.706,576.032 614.236,577.888 614.456,579.765 C614.641,581.346 617.144,581.364 616.956,579.765')
-  //-   path#Fill-11(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M1151.332,530.03 C1037.517,497.072 916.524,508.573 802.278,533.113 C739.291,546.643 677.379,564.61 615.662,582.971')
-  //-   path#Path-12(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" transform="translate(-70,0)", d='M1.2734375,583.679687 C1.2734375,583.679687 253.140625,478.742187 676.3125,579.8125')
-  //-   path#Path-12(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M613.911745,591.839235 C477.789442,717.84355 459.335258,910.443452 459.335258,910.443452')
+  g#js-firework.h-g(transform="translate(30,-135)", fill="none", stroke="url(#wood-pattern)", stroke-width="8")
+    path#Fill-2(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M101,360.426 C155.592,358.97 210.631,358.994 264.44,369.481 C320.229,380.355 371.323,403.913 419.132,434.2 C485.658,476.345 544.614,529.172 610.663,572.02')
+    path#Fill-3(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M550.652,133.096 C564.626,193.934 576.603,255.227 586.848,316.801 C596.619,375.519 605.543,434.644 611.004,493.937 C613.625,522.404 615.58,551.168 614.456,579.765')
+    path#Fill-4(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M0.413,838.001 C77.606,763.151 170.323,705.087 269.251,663.499 C368.557,621.751 475.41,596.405 583.143,591.94 C592.032,591.572 600.927,591.378 609.823,591.309')
+    path#Fill-5(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M1243.382,879.434 C1226.36,836.445 1203.778,795.755 1173.691,760.498 C1143.831,725.507 1106.903,697.296 1066.298,675.874 C1015.75,649.208 959.792,633.257 904.071,621.635 C844.84,609.279 784.581,602.591 724.408,596.826 C706.317,595.092 688.218,593.456 670.121,591.786 C653.117,590.217 635.214,586.374 618.315,590.324')
+    path#Fill-7(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M784.603,1140.059 C792.184,1041.642 785.866,941.751 759.33,846.416 C741.86,783.655 715.462,723.158 679.666,668.652 C668.566,651.751 656.518,635.471 643.59,619.924 C636.827,611.79 629.545,604.11 622.756,596.008 C622.127,595.258 621.617,594.781 621.197,593.84')
+    path#Fill-8(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M897.175,145.058 C851.836,200.077 809.459,257.703 768.383,315.945 C743.299,351.511 718.872,387.558 695.602,424.34 C675.168,456.641 655.448,489.547 638.449,523.806 C628.935,542.979 619.766,562.937 614.789,583.844')
+    path#Fill-9(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M59.491,0.088 C126.434,21.774 185.544,65.656 238.582,110.705 C301.449,164.102 358.542,224.263 412.17,286.829 C460.609,343.34 506.385,402.302 548.482,463.694 C563.61,485.754 578.291,508.168 591.781,531.273 C599.741,544.908 608.28,559.114 613.131,574.238 C613.706,576.032 614.236,577.888 614.456,579.765 C614.641,581.346 617.144,581.364 616.956,579.765')
+    path#Fill-11(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M1151.332,530.03 C1037.517,497.072 916.524,508.573 802.278,533.113 C739.291,546.643 677.379,564.61 615.662,582.971')
+    path#Path-12(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" transform="translate(-70,0)", d='M1.2734375,583.679687 C1.2734375,583.679687 253.140625,478.742187 676.3125,579.8125')
+    path#Path-12(stroke="#{randColor()}", opacity="#{rand(0, 3)/10}", stroke-linecap="round" d='M613.911745,591.839235 C477.789442,717.84355 459.335258,910.443452 459.335258,910.443452')
 
 
   include smoke.svg

@@ -10,7 +10,7 @@
     }
 
     Main.prototype.run = function() {
-      return new Fish({
+      return new Meets({
         delay: h.time(0)
       });
     };

@@ -7,6 +7,11 @@ class Caleydoscope
     @s = 1*h.time(1)
     @$velocityText = $('#js-velocity-text')
     @$blow         = $('#js-c-blow')
+    @$glare        = $('#js-glare')
+    @$glare.velocity {
+      translateX: 230
+      translateY: 280
+      }, duration: 1
     @$caleydoscopePattern = $('#caleydoscope-pattern')
     @$caleydoscopeInner   = $('#js-caleydoscope-inner')
     @$caleydoscopeImage  = $('#js-caleydoscope-image')
@@ -25,7 +30,17 @@ class Caleydoscope
   run:->
     $mask1 = $('#js-c-mask1')
     caleydDelay1 = 100*@s
-    @$caleydoscopeEntire
+    # @$caleydoscopeEntire
+
+    @$glare.velocity {
+      translateX: 800
+      rotateZ: -10
+      opacity: .75
+      },
+      duration: 550*@s
+      easing: 'linear'
+      delay: 1700*@s
+      complete: => @$glare.css 'opacity': 0
 
     len = 21
     @$burst.children().each (i, item)=>
@@ -121,12 +136,25 @@ class Caleydoscope
     $paths.each (i, item)=>
       $path = $(item)
       length = $path[0].getTotalLength()
-      $path.css 'transform-origin': 'center center'
-      rotate = parseInt $path.attr('transform')?.match(/rotate\((.+?)\)/)[1], 10
+      if !h.isFF()
+        $path.css 'transform-origin': 'center center'
+
+      trAttr = $path.attr('transform')
+      rotate = parseInt trAttr?.match(/rotate\((.+?)\)/)[1], 10
+      translate = trAttr?.match(/translate\((.+?)\)/)
+      tranform = translate?[1].split(',')
+      if tranform
+        x = parseInt tranform[0], 10
+        y = parseInt tranform[1], 10
       
-      $path.velocity {rotateZ: rotate}, duration: 1
+      if !h.isFF()
+        $path.css 'transform-origin': 'center center'
+          .velocity {rotateZ: rotate}, duration: 1
+
+      $path
       .velocity {
         opacity: 1
+        strokeWidth: 0
         },
           delay: h.rand(1,150)*@s + i*150*@s + @delay
           duration: 900*@s
@@ -150,22 +178,6 @@ class Caleydoscope
         easing: 'linear'
         begin:=> @$caleydoscopeEntire.show()
 
-    # @$caleydoscopeInner.css 'transform-origin': 'center center'
-    # @$caleydoscopeInner.velocity {
-    #   scale: .5
-    #   },
-    #     duration: 2000*@s
-    #     delay: @delay
-    #     easing: 'linear'
-
-    # @$caleydoscopeImage.css 'transform-origin': 'center center'
-    # @$caleydoscopeImage.velocity {
-    #   translateX: -120
-    #   translateY: -120
-    # },
-    #   loop: 0
-    #   duration: 6000
-    #   easing: 'ease'
 
     @$caleydoscopeImage2.css 'transform-origin': 'center center'
     @$caleydoscopeImage2.velocity {
@@ -176,40 +188,5 @@ class Caleydoscope
       duration: 4500
       easing: 'ease'
 
-    # @$caleydoscopeImage3.css 'transform-origin': 'center center'
-    # @$caleydoscopeImage3.velocity {
-    #   translateX: -150
-    #   translateY: -150
-    # },
-    #   loop: 0
-    #   duration: 5000
-    #   easing: 'ease'
-
-    # @$caleydoscopeImage4.css 'transform-origin': 'center center'
-    # @$caleydoscopeImage4.velocity {
-    #   translateX: 150
-    #   translateY: 150
-    # },
-    #   loop: 0
-    #   duration: 5000
-    #   easing: 'ease'
-
-    # @$caleydoscopeImage5.css 'transform-origin': 'center center'
-    # @$caleydoscopeImage5.velocity {
-    #   translateX: -150
-    #   translateY: -150
-    # },
-    #   loop: 0
-    #   duration: 5000
-    #   easing: 'ease'
-
-    # @$caleydoscopeImage6.css 'transform-origin': 'center center'
-    # @$caleydoscopeImage6.velocity {
-    #   translateX: 150
-    #   translateY: 150
-    # },
-    #   loop: 0
-    #   duration: 5000
-    #   easing: 'ease'
 
 window.Caleydoscope = Caleydoscope

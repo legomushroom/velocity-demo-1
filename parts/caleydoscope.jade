@@ -1,9 +1,14 @@
+- var colors = [ '#E1E44A', '#00F8B8', '#51378D' ]
+- var randColor = function() {
+-   return colors[rand(0, colors.length-1)]
+- }
+
 g#js-entire-caleydoscope.h-g
   //- mask#caleydoscope-mask.h-g
     //- circle#js-c-mask1(r="125", fill="white", stroke="none", stroke-width="0", transform="translate(640,450)")
     //- circle#js-c-mask2(r="25", fill="black", stroke="none", stroke-width="0", transform="translate(640,450)", opacity="0")
   g#js-c-blow(transform="translate(640,450)").h-g
-    - for (var i = 0; i < 5; i++)
+    - for (var i = 0; i < 7; i++)
       circle(r="0", fill="#{randColor()}")
 
   g#js-caleydoscope.caleydoscope(stroke='none', stroke-width='0', fill='none', fill-rule='evenodd')
@@ -17,8 +22,12 @@ g#js-entire-caleydoscope.h-g
         path#Path-2(d='M75.7709146,278.019768 C75.7709146,278.019768 131.268962,281.893774 181.266032,234.232641 C175.37443,228.344946 75.7709146,128.84397 75.7709146,128.84397 L75.7709146,278.019768 L75.7709146,278.019768 Z', transform='translate(128.270915, 203.343970) rotate(135.000000) translate(-128.270915, -203.343970) ')
         path#Path-2(d='M91.910156,346.234393 C91.910156,346.234393 147.408203,350.108399 197.405273,302.447266 C191.513671,296.559571 91.910156,197.058594 91.910156,197.058594 L91.910156,346.234393 L91.910156,346.234393 Z', transform='translate(144.410156, 271.558594) rotate(90.000000) translate(-144.410156, -271.558594) ')
         path#Path-2(d='M150.160377,383.287696 C150.160377,383.287696 205.658424,387.161702 255.655494,339.500569 C249.763892,333.612874 150.160377,234.111897 150.160377,234.111897 L150.160377,383.287696 L150.160377,383.287696 Z', transform='translate(202.660377, 308.611897) rotate(45.000000) translate(-202.660377, -308.611897) ')
-     
-  g#js-velocity-text(transform="translate(470,425)", fill-rule='evenodd', fill="deeppink").h-g
+ 
+  g#js-glare(opacity="0.4", fill="white")
+    rect(width="80px", height="450px", transform="rotate(-35) translate(0, 0)")
+    rect(width="20px",  height="450px", transform="rotate(-35) translate(-40, 0)", opacity=".85")
+
+  g#js-velocity-text(transform="translate(470,425)", fill-rule='evenodd', fill="#E1E44A").h-g
     path#Path(d='M50.542,10.419 L62.479,10.419 L62.479,0.828 L39.571,0.828 L39.571,50.094 L62.479,50.094 L62.479,40.503 L50.542,40.503 L50.542,29.739 L59.029,29.739 L59.029,20.148 L50.542,20.148 L50.542,10.419 Z')
     path#Path(d='M78.59,0.828 L67.619,0.828 L67.619,50.094 L89.837,50.094 L89.837,40.503 L78.59,40.503 L78.59,0.828 Z')
     path#Path(d='M110.916,-5.68434189e-14 C96.081,-5.68434189e-14 94.977,7.59 94.977,25.53 C94.977,44.091 96.081,50.922 110.916,50.922 C125.751,50.922 126.855,44.091 126.855,25.53 C126.855,7.59 125.751,-5.68434189e-14 110.916,-5.68434189e-14 Z M110.916,9.591 C114.366,9.591 114.78,12.144 114.78,25.53 C114.78,39.192 114.366,41.331 110.916,41.331 C107.466,41.331 107.052,39.192 107.052,25.53 C107.052,12.144 107.466,9.591 110.916,9.591 Z')
@@ -42,20 +51,21 @@ g#js-entire-caleydoscope.h-g
       - var y1 = centerY + Math.sin(angle)*radius
       - var x2 = centerX + Math.cos(angle)*radius2
       - var y2 = centerY + Math.sin(angle)*radius2
-      path(d="M#{x1},#{y1} L#{x2},#{y2}", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="3.5", stroke-linecap="round", opacity=".85")
+      path(d="M#{x1},#{y1} L#{x2},#{y2}", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="3.85", stroke-linecap="round")
       - angle = angle + step
 
   - var blue = '#1F2947'
   - var burstLen = 10, burstStart = 5
-  //- mask#burst-mask
   g#js-caleydoscope-burst2(transform="translate(15,-55)")
     - var cnt = 4, PI = 3.141598, rotateStep = 360/cnt, rotateAngle = 0;
-    - var centerX = 660, centerY = 430, radius = burstStart, radius2 = burstStart + burstLen, angle = 0;
+    - var centerX = 560, centerY = 450, radius = burstStart, radius2 = burstStart + burstLen, angle = 0;
     - var step = (2*PI)/cnt, initRotate = 40;
     - for (var i = 0; i < cnt; i++)
       - var x1 = centerX + Math.cos(angle)*radius
       - var y1 = centerY + Math.sin(angle)*radius
       - var x2 = centerX + Math.cos(angle)*radius2
       - var y2 = centerY + Math.sin(angle)*radius2
-      path(d="M#{x1},#{y1} L#{x2},#{y2}", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="3.5", stroke-linecap="round", opacity=".85")
+      path(d="M#{x1},#{y1} L#{x2},#{y2}", stroke-dashoffset="#{burstLen+1}", stroke-dasharray="#{burstLen+1}", stroke="white", stroke-width="3.85", stroke-linecap="round")
       - angle = angle + step
+
+

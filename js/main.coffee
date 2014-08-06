@@ -4,7 +4,7 @@ class Main
     @run()
     
   run:->
-    new Fish            delay: h.time(0)
+    new Meets           delay: h.time(0)
     
     # new Caleydoscope    delay: h.time(0)
     # new Meets           delay: h.time(2900)
@@ -16,7 +16,6 @@ class Main
     # new Fish            delay: h.time(11500)
     # new Logo            delay: h.time(13300)
     # new Mushroom        delay: h.time(15300)
-
 
 
 $(window).load ->

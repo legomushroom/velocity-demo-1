@@ -10,7 +10,7 @@
 
     Fish.prototype.vars = function() {
       this.delay = this.o.delay || 0;
-      this.s = 1 * h.time(1);
+      this.s = 1.25 * h.time(1);
       this.$bottomSplash1 = $('#js-bottom-splash1');
       this.$bottomSplash2 = $('#js-bottom-splash2');
       this.$topSplash1 = $('#js-top-splash1');

@@ -151,7 +151,6 @@ class Waves
         translateX: 800
       },
         duration: 1
-        begin:=>
-          @$entireBits.css 'opacity': 0
+        begin:=> @$entireBits.css 'opacity': 0
 
 window.Waves = Waves

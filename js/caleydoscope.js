@@ -12,6 +12,13 @@
       this.s = 1 * h.time(1);
       this.$velocityText = $('#js-velocity-text');
       this.$blow = $('#js-c-blow');
+      this.$glare = $('#js-glare');
+      this.$glare.velocity({
+        translateX: 230,
+        translateY: 280
+      }, {
+        duration: 1
+      });
       this.$caleydoscopePattern = $('#caleydoscope-pattern');
       this.$caleydoscopeInner = $('#js-caleydoscope-inner');
       this.$caleydoscopeImage = $('#js-caleydoscope-image');
@@ -32,7 +39,22 @@
       var $mask1, $paths, caleydDelay1, len;
       $mask1 = $('#js-c-mask1');
       caleydDelay1 = 100 * this.s;
-      this.$caleydoscopeEntire;
+      this.$glare.velocity({
+        translateX: 800,
+        rotateZ: -10,
+        opacity: .75
+      }, {
+        duration: 550 * this.s,
+        easing: 'linear',
+        delay: 1700 * this.s,
+        complete: (function(_this) {
+          return function() {
+            return _this.$glare.css({
+              'opacity': 0
+            });
+          };
+        })(this)
+      });
       len = 21;
       this.$burst.children().each((function(_this) {
         return function(i, item) {
@@ -148,19 +170,34 @@
       $paths = this.$caleydoscope.find('path');
       $paths.each((function(_this) {
         return function(i, item) {
-          var $path, length, rotate, _ref;
+          var $path, length, rotate, trAttr, tranform, translate, x, y;
           $path = $(item);
           length = $path[0].getTotalLength();
-          $path.css({
-            'transform-origin': 'center center'
-          });
-          rotate = parseInt((_ref = $path.attr('transform')) != null ? _ref.match(/rotate\((.+?)\)/)[1] : void 0, 10);
+          if (!h.isFF()) {
+            $path.css({
+              'transform-origin': 'center center'
+            });
+          }
+          trAttr = $path.attr('transform');
+          rotate = parseInt(trAttr != null ? trAttr.match(/rotate\((.+?)\)/)[1] : void 0, 10);
+          translate = trAttr != null ? trAttr.match(/translate\((.+?)\)/) : void 0;
+          tranform = translate != null ? translate[1].split(',') : void 0;
+          if (tranform) {
+            x = parseInt(tranform[0], 10);
+            y = parseInt(tranform[1], 10);
+          }
+          if (!h.isFF()) {
+            $path.css({
+              'transform-origin': 'center center'
+            }).velocity({
+              rotateZ: rotate
+            }, {
+              duration: 1
+            });
+          }
           return $path.velocity({
-            rotateZ: rotate
-          }, {
-            duration: 1
-          }).velocity({
-            opacity: 1
+            opacity: 1,
+            strokeWidth: 0
           }, {
             delay: h.rand(1, 150) * _this.s + i * 150 * _this.s + _this.delay,
             duration: 900 * _this.s
